@@ -5,11 +5,10 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import React from "react";
-import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import { makeStyles } from "@material-ui/core/styles";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
+import React from "react";
 
 const useStyles = makeStyles((theme) => {
   return {

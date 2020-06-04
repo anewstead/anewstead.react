@@ -35,6 +35,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "import-sort-style-eslint": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
     "prettier": "^2.0.5",
     "prettier-plugin-import-sort": "0.0.4",
     "react": "^16.13.1",
@@ -50,7 +51,8 @@
   },
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
-      "style": "eslint"
+      "style": "module",
+      "parser": "typescript"
     }
   }
 }

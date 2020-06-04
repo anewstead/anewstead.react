@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+
 import { detectColorTheme, toggleColorTheme } from "./themes";
 
 // ReduxToolKit createSlice() creates state, actions and reducers from one object

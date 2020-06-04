@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Button,
   Checkbox,
   ExpansionPanel,
   ExpansionPanelDetails,
@@ -12,12 +13,10 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
-
-import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -27,14 +26,8 @@ const useStyles = makeStyles((theme) => {
     brand: {
       display: "flex",
       alignItems: "center",
-      "& a": {
+      "& button": {
         color: "white",
-        textDecoration: "none",
-        padding: theme.spacing(),
-        borderRadius: theme.spacing(),
-        "&:hover": {
-          backgroundColor: "rgba(255,255,255, 0.1)",
-        },
       },
     },
     navExpandPanel: {
@@ -90,11 +83,11 @@ const HeaderNavMain = ({
   });
 
   const brand = (
-    <Link to="/about">
+    <Button aria-label="about" onClick={onBrandClick}>
       <Typography variant="h5" component="span">
         {brandName}
       </Typography>
-    </Link>
+    </Button>
   );
 
   const menuButton = (
@@ -120,7 +113,6 @@ const HeaderNavMain = ({
   );
 
   const [expanded, setExpanded] = useState(false);
-
   const expansionPanelOnChange = (panel) => {
     return (event, newExpanded) => {
       setExpanded(newExpanded ? panel : false);

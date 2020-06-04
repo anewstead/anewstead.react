@@ -1,10 +1,8 @@
 import React from "react";
-import styles from "./thumbnail.module.scss";
 
-const Thumbnail = (props) => {
-  const { src, alt } = props;
+const Thumbnail = ({ src, alt }) => {
   return (
-    <div className={styles["thumbnail"]}>
+    <div>
       <img src={src} alt={alt} />
     </div>
   );
