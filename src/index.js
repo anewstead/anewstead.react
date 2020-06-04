@@ -6,12 +6,12 @@ import App from "./containers/app/app";
 import store from "./containers/app/store";
 import * as serviceWorker from "./serviceWorker";
 
+// note. cannot use React.StrictMode as material UI is yet to fully update
 ReactDOM.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <App />
   </Provider>,
-  // </React.StrictMode>,
+
   document.getElementById("root")
 );
 
