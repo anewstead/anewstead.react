@@ -13,7 +13,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, styled } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
@@ -65,14 +65,19 @@ const HeaderNavMain = ({
 }) => {
   const classes = useStyles();
 
+  const MyCheckbox = styled(Checkbox)({
+    "&.MuiCheckbox-root": {
+      color: "white",
+    },
+  });
+
   const checkboxes = checkboxData.map((cb, i) => {
     return (
       <FormControlLabel
         key={"cb" + i}
         label={cb.label}
         control={
-          <Checkbox
-            color="default"
+          <MyCheckbox
             id={cb.id}
             checked={cb.checked}
             onChange={onCheckboxChange}
