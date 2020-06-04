@@ -4,52 +4,52 @@ import {
   IconButton,
   Toolbar,
   Typography,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import React from "react";
+import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => {
   return {
     brand: {
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
     },
     gridBack: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      maxHeight: '80px',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      maxHeight: "80px",
     },
     gridTitle: {
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
       flexGrow: 4,
-      justifyContent: 'center',
-      flexDirection: 'column',
+      justifyContent: "center",
+      flexDirection: "column",
     },
     gridToggle: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      maxHeight: '80px',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      maxHeight: "80px",
     },
-    gridRoot: { minHeight: '80px' },
+    gridRoot: { minHeight: "80px" },
     title: {
-      margin: '8px',
+      margin: "8px",
     },
   };
 });
 
-const HeaderNavDetail = ({ themeToggleButton }) => {
+const HeaderNavDetail = ({
+  onThemeClick,
+  onBackClick,
+  clientName,
+  projectName,
+}) => {
   const classes = useStyles();
-  let history = useHistory();
-
-  const backClick = () => {
-    history.goBack();
-  };
 
   return (
     <AppBar position="static">
@@ -60,21 +60,28 @@ const HeaderNavDetail = ({ themeToggleButton }) => {
               edge="end"
               color="inherit"
               aria-label="back"
-              onClick={backClick}
+              onClick={onBackClick}
             >
               <ArrowBackIcon fontSize="large" />
             </IconButton>
           </Grid>
           <Grid item xs={10} className={classes.gridTitle}>
             <Typography variant="h5" component="h2">
-              client name
+              {clientName || "client name"}
             </Typography>
             <Typography variant="h5" component="h3">
-              project name
+              {projectName || "project name"}
             </Typography>
           </Grid>
           <Grid item xs={1} className={classes.gridToggle}>
-            {themeToggleButton}
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="theme"
+              onClick={onThemeClick}
+            >
+              <SettingsBrightnessIcon fontSize="large" />
+            </IconButton>
           </Grid>
         </Grid>
       </Toolbar>

@@ -11,30 +11,13 @@ import {
   IconButton,
   Toolbar,
   Typography,
-} from '@material-ui/core';
-import React, { useState } from 'react';
+} from "@material-ui/core";
+import React, { useState } from "react";
 
-import { Link } from 'react-router-dom';
-import MenuIcon from '@material-ui/icons/Menu';
-import { makeStyles } from '@material-ui/core/styles';
-
-const checkboxData = [
-  {
-    id: 'sites',
-    label: 'Websites',
-    checked: true,
-  },
-  {
-    id: 'apps',
-    label: 'Apps',
-    checked: true,
-  },
-  {
-    id: 'banners',
-    label: 'Banners',
-    checked: true,
-  },
-];
+import { Link } from "react-router-dom";
+import MenuIcon from "@material-ui/icons/Menu";
+import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -42,62 +25,64 @@ const useStyles = makeStyles((theme) => {
       marginRight: theme.spacing(2),
     },
     brand: {
-      display: 'flex',
-      alignItems: 'center',
-      '& a': {
-        color: 'white',
-        textDecoration: 'none',
-        padding: '8px',
-        borderRadius: '4px',
-        '&:hover': {
-          backgroundColor: 'rgba(255,255,255, 0.1)',
+      display: "flex",
+      alignItems: "center",
+      "& a": {
+        color: "white",
+        textDecoration: "none",
+        padding: theme.spacing(),
+        borderRadius: theme.spacing(),
+        "&:hover": {
+          backgroundColor: "rgba(255,255,255, 0.1)",
         },
       },
     },
     navExpandPanel: {
-      backgroundColor: 'unset',
-      boxShadow: 'unset',
-      width: '100%',
-      color: 'white',
+      backgroundColor: "unset",
+      boxShadow: "unset",
+      width: "100%",
+      color: "white",
     },
     gridToggle: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      maxHeight: '80px',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      maxHeight: "80px",
     },
     gridCheckboxesOpen: {
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
       flexGrow: 4,
-      justifyContent: 'center',
+      justifyContent: "center",
     },
     expansionPanelSummaryContent: {
-      margin: '0 !important',
+      margin: "0 !important",
     },
-    expansionPanelSummaryRoot: { minHeight: '80px !important' },
-    gridRoot: { minHeight: '80px' },
+    expansionPanelSummaryRoot: { minHeight: "80px !important" },
+    gridRoot: { minHeight: "80px" },
   };
 });
 
-const HeaderNavMain = ({ themeToggleButton }) => {
+const HeaderNavMain = ({
+  brandName,
+  checkboxData,
+  onBrandClick,
+  onThemeClick,
+  onCheckboxChange,
+}) => {
   const classes = useStyles();
-
-  const handleCheckboxChange = (e) => {
-    console.log('handleCheckboxChange:', e.target.id);
-  };
 
   const checkboxes = checkboxData.map((cb, i) => {
     return (
       <FormControlLabel
-        key={'cb' + i}
+        key={"cb" + i}
         label={cb.label}
         control={
           <Checkbox
             color="default"
             id={cb.id}
             checked={cb.checked}
-            onChange={handleCheckboxChange}
+            onChange={onCheckboxChange}
           />
         }
       />
@@ -106,7 +91,7 @@ const HeaderNavMain = ({ themeToggleButton }) => {
 
   const [expanded, setExpanded] = useState(false);
 
-  const handleChange = (panel) => {
+  const expansionPanelOnChange = (panel) => {
     return (event, newExpanded) => {
       setExpanded(newExpanded ? panel : false);
     };
@@ -115,7 +100,7 @@ const HeaderNavMain = ({ themeToggleButton }) => {
   const brand = (
     <Link to="/about">
       <Typography variant="h5" component="span">
-        BRAND
+        {brandName}
       </Typography>
     </Link>
   );
@@ -128,8 +113,8 @@ const HeaderNavMain = ({ themeToggleButton }) => {
             <Grid item xs={10}>
               <ExpansionPanel
                 square
-                expanded={expanded === 'panel1'}
-                onChange={handleChange('panel1')}
+                expanded={expanded === "panel1"}
+                onChange={expansionPanelOnChange("panel1")}
                 className={classes.navExpandPanel}
               >
                 <ExpansionPanelSummary
@@ -186,7 +171,14 @@ const HeaderNavMain = ({ themeToggleButton }) => {
             justify="flex-start"
             className={classes.gridToggle}
           >
-            {themeToggleButton}
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="theme"
+              onClick={onThemeClick}
+            >
+              <SettingsBrightnessIcon fontSize="large" />
+            </IconButton>
           </Grid>
         </Grid>
       </Toolbar>
