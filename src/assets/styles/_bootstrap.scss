@@ -1,0 +1,28 @@
+// BOOTSTRAP SCSS OVERRIDES
+// uses values from variables.scss
+
+// bootstrap[$grid-columns]
+$grid-columns: 12 !default;
+
+// bootstrap[$grid-gutter-width]
+$grid-gutter-width: $grid-square/2 !default;
+
+// bootstrap[$grid-breakpoints]
+$grid-breakpoints: (
+  xs: 0,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg,
+  xl: $screen-xl,
+) !default;
+
+// contentArea
+// bootstrap[$container-max-widths]
+$container-max-widths: (
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg,
+  xl: $screen-xl,
+) !default;
+
+@import '~bootstrap/scss/bootstrap';

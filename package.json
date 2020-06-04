@@ -1,0 +1,50 @@
+{
+  "name": "cra-bootstrap-styled",
+  "version": "0.1.0",
+  "description": "Create-React-App bootstrap-styled",
+  "private": true,
+  "author": "Andrew Newstead",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build;",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint:html": "prettier --write $PWD/'/{src,public}/**/*.{htm,html,hbs}'",
+    "lint:js": "eslint --fix $PWD/'/src/**/*.{js,jsx,ts,tsx,json}'; prettier --write $PWD/'/src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:style": "stylelint --fix $PWD/'/src/**/*.{js,jsx,ts,tsx}'",
+    "lint": "npm run lint:js; npm run lint:style; npm run lint:html"
+  },
+  "cracoConfig": ".craco/config.js",
+  "engines": {
+    "npm": ">=6",
+    "node": ">=12"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
+    "@reduxjs/toolkit": "^1.3.6",
+    "@testing-library/jest-dom": "^5.8.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.3.4",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1",
+    "redux": "^4.0.5",
+    "stylelint": "^13.5.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1"
+  }
+}

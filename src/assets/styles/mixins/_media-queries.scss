@@ -1,0 +1,42 @@
+@mixin media-max-landscape($w) {
+  @media only screen and (max-width: $w - 1px) and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin media-min($w) {
+  @media only screen and (min-width: $w) {
+    @content;
+  }
+}
+@mixin media-max($w) {
+  @media only screen and (max-width: $w - 1px) {
+    @content;
+  }
+}
+@mixin media-min-max($min, $max) {
+  @media only screen and (min-width: $min) and (max-width: $max - 1px) {
+    @content;
+  }
+}
+@mixin media-min-height($h) {
+  @media only screen and (min-height: $h) {
+    @content;
+  }
+}
+@mixin media-max-height($h) {
+  @media only screen and (max-height: $h - 1px) {
+    @content;
+  }
+}
+@mixin media-min-max-height($min, $max) {
+  @media only screen and (min-height: $min) and (max-height: $max - 1px) {
+    @content;
+  }
+}
+
+/*
+usage:
+@include media-min($screen-lg) {
+  width: 100%;
+}
+*/
