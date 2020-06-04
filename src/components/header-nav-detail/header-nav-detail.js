@@ -51,37 +51,57 @@ const HeaderNavDetail = ({
 }) => {
   const classes = useStyles();
 
+  const backButton = (
+    <IconButton
+      edge="end"
+      color="inherit"
+      aria-label="back"
+      onClick={onBackClick}
+    >
+      <ArrowBackIcon fontSize="large" />
+    </IconButton>
+  );
+
+  const toggleButton = (
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="theme"
+      onClick={onThemeClick}
+    >
+      <SettingsBrightnessIcon fontSize="large" />
+    </IconButton>
+  );
+
+  const clientTitle = (
+    <Typography variant="h5" component="h2">
+      {clientName || "client name"}
+    </Typography>
+  );
+
+  const projectTitle = (
+    <Typography variant="h5" component="h3">
+      {projectName || "project name"}
+    </Typography>
+  );
+
   return (
     <AppBar position="static">
       <Toolbar>
         <Grid container className={classes.gridRoot}>
           <Grid item xs={1} className={classes.gridBack}>
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="back"
-              onClick={onBackClick}
-            >
-              <ArrowBackIcon fontSize="large" />
-            </IconButton>
+            {/* BACK BUTTON */}
+            {backButton}
           </Grid>
           <Grid item xs={10} className={classes.gridTitle}>
-            <Typography variant="h5" component="h2">
-              {clientName || "client name"}
-            </Typography>
-            <Typography variant="h5" component="h3">
-              {projectName || "project name"}
-            </Typography>
+            {/* CLIENT TITLE */}
+            {clientTitle}
+            {/* PROJECT TITLE */}
+            {projectTitle}
           </Grid>
           <Grid item xs={1} className={classes.gridToggle}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="theme"
-              onClick={onThemeClick}
-            >
-              <SettingsBrightnessIcon fontSize="large" />
-            </IconButton>
+            {/* TOGGLE BUTTON */}
+            {toggleButton}
           </Grid>
         </Grid>
       </Toolbar>
