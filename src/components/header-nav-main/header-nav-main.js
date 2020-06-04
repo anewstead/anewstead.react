@@ -89,14 +89,6 @@ const HeaderNavMain = ({
     );
   });
 
-  const [expanded, setExpanded] = useState(false);
-
-  const expansionPanelOnChange = (panel) => {
-    return (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
-    };
-  };
-
   const brand = (
     <Link to="/about">
       <Typography variant="h5" component="span">
@@ -104,6 +96,36 @@ const HeaderNavMain = ({
       </Typography>
     </Link>
   );
+
+  const menuButton = (
+    <IconButton
+      edge="start"
+      className={classes.menuButton}
+      color="inherit"
+      aria-label="menu"
+    >
+      <MenuIcon fontSize="large" />
+    </IconButton>
+  );
+
+  const toggleButton = (
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="theme"
+      onClick={onThemeClick}
+    >
+      <SettingsBrightnessIcon fontSize="large" />
+    </IconButton>
+  );
+
+  const [expanded, setExpanded] = useState(false);
+
+  const expansionPanelOnChange = (panel) => {
+    return (event, newExpanded) => {
+      setExpanded(newExpanded ? panel : false);
+    };
+  };
 
   return (
     <AppBar position="static">
@@ -126,14 +148,8 @@ const HeaderNavMain = ({
                   id="panel1d-header"
                 >
                   <Grid item>
-                    <IconButton
-                      edge="start"
-                      className={classes.menuButton}
-                      color="inherit"
-                      aria-label="menu"
-                    >
-                      <MenuIcon fontSize="large" />
-                    </IconButton>
+                    {/* MENU BUTTON */}
+                    {menuButton}
                   </Grid>
                   <Grid
                     item
@@ -142,12 +158,16 @@ const HeaderNavMain = ({
                     justify="center"
                     className={classes.brand}
                   >
+                    {/* BRAND */}
                     {brand}
                   </Grid>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Grid item xs={12}>
-                    <FormGroup>{checkboxes}</FormGroup>
+                    <FormGroup>
+                      {/* CHECKBOXES */}
+                      {checkboxes}
+                    </FormGroup>
                   </Grid>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
@@ -156,10 +176,14 @@ const HeaderNavMain = ({
 
           <Hidden xsDown>
             <Grid item sm className={classes.brand}>
+              {/* BRAND */}
               {brand}
             </Grid>
             <Grid item sm className={classes.gridCheckboxesOpen}>
-              <FormGroup row>{checkboxes}</FormGroup>
+              <FormGroup row>
+                {/* CHECKBOXES */}
+                {checkboxes}
+              </FormGroup>
             </Grid>
           </Hidden>
 
@@ -171,14 +195,8 @@ const HeaderNavMain = ({
             justify="flex-start"
             className={classes.gridToggle}
           >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="theme"
-              onClick={onThemeClick}
-            >
-              <SettingsBrightnessIcon fontSize="large" />
-            </IconButton>
+            {/* TOGGLE BUTTON */}
+            {toggleButton}
           </Grid>
         </Grid>
       </Toolbar>
