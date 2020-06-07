@@ -13,28 +13,26 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { makeStyles, styled } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
 
 const useStyles = makeStyles((theme) => {
   return {
+    appBar: {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.text.primary,
+    },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     brand: {
       display: "flex",
       alignItems: "center",
-      "& button": {
-        color: "white",
-      },
     },
-    navExpandPanel: {
-      backgroundColor: "unset",
-      boxShadow: "unset",
-      width: "100%",
-      color: "white",
+    gridRoot: {
+      minHeight: "80px",
     },
     gridToggle: {
       display: "flex",
@@ -48,11 +46,17 @@ const useStyles = makeStyles((theme) => {
       flexGrow: 4,
       justifyContent: "center",
     },
+    expansionPanel: {
+      backgroundColor: "unset",
+      boxShadow: "unset",
+      width: "100%",
+    },
     expansionPanelSummaryContent: {
       margin: "0 !important",
     },
-    expansionPanelSummaryRoot: { minHeight: "80px !important" },
-    gridRoot: { minHeight: "80px" },
+    expansionPanelSummaryRoot: {
+      minHeight: "80px !important",
+    },
   };
 });
 
@@ -65,20 +69,15 @@ const HeaderNavMain = ({
 }) => {
   const classes = useStyles();
 
-  const MyCheckbox = styled(Checkbox)({
-    "&.MuiCheckbox-root": {
-      color: "white",
-    },
-  });
-
   const checkboxes = checkboxData.map((cb, i) => {
     return (
       <FormControlLabel
         key={"cb" + i}
         label={cb.label}
         control={
-          <MyCheckbox
+          <Checkbox
             id={cb.id}
+            color="default"
             checked={cb.checked}
             onChange={onCheckboxChange}
           />
@@ -96,23 +95,13 @@ const HeaderNavMain = ({
   );
 
   const menuButton = (
-    <IconButton
-      edge="start"
-      className={classes.menuButton}
-      color="inherit"
-      aria-label="menu"
-    >
+    <IconButton edge="start" className={classes.menuButton} aria-label="menu">
       <MenuIcon fontSize="large" />
     </IconButton>
   );
 
   const toggleButton = (
-    <IconButton
-      edge="start"
-      color="inherit"
-      aria-label="theme"
-      onClick={onThemeClick}
-    >
+    <IconButton edge="start" aria-label="theme" onClick={onThemeClick}>
       <SettingsBrightnessIcon fontSize="large" />
     </IconButton>
   );
@@ -125,79 +114,81 @@ const HeaderNavMain = ({
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Grid container justify="space-between" className={classes.gridRoot}>
-          <Hidden smUp>
-            <Grid item xs={10}>
-              <ExpansionPanel
-                square
-                expanded={expanded === "panel1"}
-                onChange={expansionPanelOnChange("panel1")}
-                className={classes.navExpandPanel}
-              >
-                <ExpansionPanelSummary
-                  classes={{
-                    root: classes.expansionPanelSummaryRoot,
-                    content: classes.expansionPanelSummaryContent,
-                  }}
-                  aria-controls="panel1d-content"
-                  id="panel1d-header"
+    <nav>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar>
+          <Grid container justify="space-between" className={classes.gridRoot}>
+            <Hidden smUp>
+              <Grid item xs={10}>
+                <ExpansionPanel
+                  square
+                  expanded={expanded === "panel1"}
+                  onChange={expansionPanelOnChange("panel1")}
+                  className={classes.expansionPanel}
                 >
-                  <Grid item>
-                    {/* MENU BUTTON */}
-                    {menuButton}
-                  </Grid>
-                  <Grid
-                    item
-                    xs
-                    container
-                    justify="center"
-                    className={classes.brand}
+                  <ExpansionPanelSummary
+                    classes={{
+                      root: classes.expansionPanelSummaryRoot,
+                      content: classes.expansionPanelSummaryContent,
+                    }}
+                    aria-controls="panel1d-content"
+                    id="panel1d-header"
                   >
-                    {/* BRAND */}
-                    {brand}
-                  </Grid>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Grid item xs={12}>
-                    <FormGroup>
-                      {/* CHECKBOXES */}
-                      {checkboxes}
-                    </FormGroup>
-                  </Grid>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            </Grid>
-          </Hidden>
+                    <Grid item>
+                      {/* MENU BUTTON */}
+                      {menuButton}
+                    </Grid>
+                    <Grid
+                      item
+                      xs
+                      container
+                      justify="center"
+                      className={classes.brand}
+                    >
+                      {/* BRAND */}
+                      {brand}
+                    </Grid>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid item xs={12}>
+                      <FormGroup>
+                        {/* CHECKBOXES */}
+                        {checkboxes}
+                      </FormGroup>
+                    </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </Grid>
+            </Hidden>
 
-          <Hidden xsDown>
-            <Grid item sm className={classes.brand}>
-              {/* BRAND */}
-              {brand}
-            </Grid>
-            <Grid item sm className={classes.gridCheckboxesOpen}>
-              <FormGroup row>
-                {/* CHECKBOXES */}
-                {checkboxes}
-              </FormGroup>
-            </Grid>
-          </Hidden>
+            <Hidden xsDown>
+              <Grid item sm className={classes.brand}>
+                {/* BRAND */}
+                {brand}
+              </Grid>
+              <Grid item sm className={classes.gridCheckboxesOpen}>
+                <FormGroup row>
+                  {/* CHECKBOXES */}
+                  {checkboxes}
+                </FormGroup>
+              </Grid>
+            </Hidden>
 
-          <Grid
-            item
-            xs={2}
-            sm
-            container
-            justify="flex-start"
-            className={classes.gridToggle}
-          >
-            {/* TOGGLE BUTTON */}
-            {toggleButton}
+            <Grid
+              item
+              xs={2}
+              sm
+              container
+              justify="flex-start"
+              className={classes.gridToggle}
+            >
+              {/* TOGGLE BUTTON */}
+              {toggleButton}
+            </Grid>
           </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </nav>
   );
 };
 

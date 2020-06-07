@@ -1,3 +1,4 @@
+import { blueGrey, grey } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 
 // remember preference for next time user visits
@@ -27,15 +28,38 @@ export const toggleColorTheme = () => {
   return theme;
 };
 
+const globalOverrides = {
+  MuiCssBaseline: {
+    "@global": {
+      html: {
+        fontSmoothing: "auto",
+      },
+      img: {
+        display: "block",
+      },
+    },
+  },
+};
+
 const themes = {
   light: createMuiTheme({
+    overrides: globalOverrides,
     palette: {
       type: "light",
+      background: {
+        paper: blueGrey[50],
+        default: grey[300],
+      },
     },
   }),
   dark: createMuiTheme({
+    overrides: globalOverrides,
     palette: {
       type: "dark",
+      background: {
+        paper: blueGrey[800],
+        default: grey[800],
+      },
     },
   }),
 };

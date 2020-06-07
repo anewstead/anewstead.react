@@ -12,15 +12,21 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => {
   return {
+    appBar: {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.text.primary,
+    },
     brand: {
       display: "flex",
       alignItems: "center",
+    },
+    gridRoot: {
+      minHeight: "80px",
     },
     gridBack: {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
-      maxHeight: "80px",
     },
     gridTitle: {
       display: "flex",
@@ -33,11 +39,6 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-end",
-      maxHeight: "80px",
-    },
-    gridRoot: { minHeight: "80px" },
-    title: {
-      margin: "8px",
     },
   };
 });
@@ -51,23 +52,13 @@ const HeaderNavDetail = ({
   const classes = useStyles();
 
   const backButton = (
-    <IconButton
-      edge="end"
-      color="inherit"
-      aria-label="back"
-      onClick={onBackClick}
-    >
+    <IconButton edge="end" aria-label="back" onClick={onBackClick}>
       <ArrowBackIcon fontSize="large" />
     </IconButton>
   );
 
   const toggleButton = (
-    <IconButton
-      edge="start"
-      color="inherit"
-      aria-label="theme"
-      onClick={onThemeClick}
-    >
+    <IconButton edge="start" aria-label="theme" onClick={onThemeClick}>
       <SettingsBrightnessIcon fontSize="large" />
     </IconButton>
   );
@@ -85,26 +76,28 @@ const HeaderNavDetail = ({
   );
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Grid container className={classes.gridRoot}>
-          <Grid item xs={1} className={classes.gridBack}>
-            {/* BACK BUTTON */}
-            {backButton}
+    <nav>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar>
+          <Grid container className={classes.gridRoot}>
+            <Grid item xs={1} className={classes.gridBack}>
+              {/* BACK BUTTON */}
+              {backButton}
+            </Grid>
+            <Grid item xs={10} className={classes.gridTitle}>
+              {/* CLIENT TITLE */}
+              {clientTitle}
+              {/* PROJECT TITLE */}
+              {projectTitle}
+            </Grid>
+            <Grid item xs={1} className={classes.gridToggle}>
+              {/* TOGGLE BUTTON */}
+              {toggleButton}
+            </Grid>
           </Grid>
-          <Grid item xs={10} className={classes.gridTitle}>
-            {/* CLIENT TITLE */}
-            {clientTitle}
-            {/* PROJECT TITLE */}
-            {projectTitle}
-          </Grid>
-          <Grid item xs={1} className={classes.gridToggle}>
-            {/* TOGGLE BUTTON */}
-            {toggleButton}
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </nav>
   );
 };
 
