@@ -4,8 +4,9 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React from "react";
@@ -30,10 +31,13 @@ const useStyles = makeStyles((theme) => {
     },
     gridTitle: {
       display: "flex",
-      alignItems: "center",
+      alignItems: "flex-end",
       flexGrow: 4,
       justifyContent: "center",
       flexDirection: "column",
+      [theme.breakpoints.up("sm")]: {
+        alignItems: "center",
+      },
     },
     gridToggle: {
       display: "flex",
@@ -43,13 +47,12 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const HeaderNavDetail = ({
-  onThemeClick,
-  onBackClick,
-  clientName,
-  projectName,
-}) => {
+const HeaderNavDetail = (props) => {
+  const { onThemeClick, onBackClick, titleText, subtitleText } = props;
+
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = !useMediaQuery(theme.breakpoints.up("sm"));
 
   const backButton = (
     <IconButton edge="end" aria-label="back" onClick={onBackClick}>
@@ -63,37 +66,42 @@ const HeaderNavDetail = ({
     </IconButton>
   );
 
-  const clientTitle = (
-    <Typography variant="h5" component="h2">
-      {clientName || "client name"}
+  const title = (
+    <Typography variant={isMobile ? "subtitle1" : "h5"} component="h2">
+      {titleText || "client name"}
     </Typography>
   );
 
-  const projectTitle = (
-    <Typography variant="h5" component="h3">
-      {projectName || "project name"}
+  const subtitle = (
+    <Typography variant={isMobile ? "subtitle2" : "h5"} component="h3">
+      {subtitleText || "project name"}
     </Typography>
   );
 
   return (
     <nav>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar variant={isMobile ? "dense" : "regular"}>
           <Grid container className={classes.gridRoot}>
             <Grid item xs={1} className={classes.gridBack}>
               {/* BACK BUTTON */}
               {backButton}
             </Grid>
-            <Grid item xs={10} className={classes.gridTitle}>
-              {/* CLIENT TITLE */}
-              {clientTitle}
-              {/* PROJECT TITLE */}
-              {projectTitle}
+            <Grid item xs={11} sm={10} className={classes.gridTitle}>
+              {/* TITLE */}
+              {title}
+              {/* SUBTITLE */}
+              {subtitle}
             </Grid>
-            <Grid item xs={1} className={classes.gridToggle}>
-              {/* TOGGLE BUTTON */}
-              {toggleButton}
-            </Grid>
+
+            {isMobile ? (
+              ""
+            ) : (
+              <Grid item xs={1} className={classes.gridToggle}>
+                {/* TOGGLE BUTTON */}
+                {toggleButton}
+              </Grid>
+            )}
           </Grid>
         </Toolbar>
       </AppBar>

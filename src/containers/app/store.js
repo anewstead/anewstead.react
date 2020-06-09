@@ -9,8 +9,16 @@ import { detectColorTheme, toggleColorTheme } from "./themes";
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "fetchJsonData",
   async (url) => {
+    // session cache to avoid lots of calls to API during dev
+    const lsData = sessionStorage.getItem("data");
+    if (lsData) {
+      // console.log("SESSION DATA");
+      return JSON.parse(lsData);
+    }
+    // console.log("LOADING DATA");
     const response = await fetch(url);
     const data = await response.json();
+    sessionStorage.setItem("data", JSON.stringify(data));
     return data;
   }
 );

@@ -71,6 +71,7 @@ const withLayout = (PageComponent) => {
             brandName={navBrand}
             onBackClick={backClick}
             onThemeClick={themeClick}
+            {...props}
           />
         );
         break;
@@ -83,6 +84,7 @@ const withLayout = (PageComponent) => {
             onBrandClick={brandClick}
             onThemeClick={themeClick}
             onCheckboxChange={checkboxChange}
+            {...props}
           />
         );
         break;

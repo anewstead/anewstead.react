@@ -1,6 +1,7 @@
 import { Card, Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Layout from "../app/withLayout";
 
@@ -41,7 +42,9 @@ const Home = () => {
       return (
         <Grid item key={i} className={classes.gridItem}>
           <Card elevation={6}>
-            <img src={url} alt={alt} />
+            <Link to={`/${obj.view.type}/${obj.id}`}>
+              <img src={url} alt={alt} />
+            </Link>
           </Card>
         </Grid>
       );
@@ -51,6 +54,7 @@ const Home = () => {
   return (
     <Container className={classes.root}>
       <Grid container spacing={2} justify="center">
+        {/* THUMBS */}
         {thumbs}
       </Grid>
     </Container>
