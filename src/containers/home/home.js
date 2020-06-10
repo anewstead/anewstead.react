@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Home = () => {
+const Home = (props) => {
   const classes = useStyles();
 
   const mainData = useSelector((state) => {

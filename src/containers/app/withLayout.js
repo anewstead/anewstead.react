@@ -36,7 +36,8 @@ const withLayout = (PageComponent) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const headerNav = props.headerNav || "main"; // e.g. <Home headerNav='detail' />
+    const headerNav = props.headerNav; // e.g. <Home headerNav='detail' />
+    console.log("headerNav", headerNav);
 
     const navBrand = useSelector((state) => {
       return state.app.nav.brand;
@@ -65,18 +66,7 @@ const withLayout = (PageComponent) => {
 
     let nav;
     switch (headerNav) {
-      case "detail":
-        nav = (
-          <HeaderNavDetail
-            brandName={navBrand}
-            onBackClick={backClick}
-            onThemeClick={themeClick}
-            {...props}
-          />
-        );
-        break;
-
-      default:
+      case "main":
         nav = (
           <HeaderNavMain
             brandName={navBrand}
@@ -84,6 +74,17 @@ const withLayout = (PageComponent) => {
             onBrandClick={brandClick}
             onThemeClick={themeClick}
             onCheckboxChange={checkboxChange}
+            {...props}
+          />
+        );
+        break;
+
+      default:
+        nav = (
+          <HeaderNavDetail
+            brandName={navBrand}
+            onBackClick={backClick}
+            onThemeClick={themeClick}
             {...props}
           />
         );

@@ -52,7 +52,7 @@ const HeaderNavDetail = (props) => {
 
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = !useMediaQuery(theme.breakpoints.up("sm"));
+  const isXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const backButton = (
     <IconButton edge="end" aria-label="back" onClick={onBackClick}>
@@ -67,21 +67,21 @@ const HeaderNavDetail = (props) => {
   );
 
   const title = (
-    <Typography variant={isMobile ? "subtitle1" : "h5"} component="h2">
-      {titleText || "client name"}
+    <Typography variant={isXS ? "subtitle1" : "h5"} component="h2">
+      {titleText}
     </Typography>
   );
 
   const subtitle = (
-    <Typography variant={isMobile ? "subtitle2" : "h5"} component="h3">
-      {subtitleText || "project name"}
+    <Typography variant={isXS ? "subtitle2" : "h5"} component="h3">
+      {subtitleText}
     </Typography>
   );
 
   return (
     <nav>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar variant={isMobile ? "dense" : "regular"}>
+        <Toolbar variant={isXS ? "dense" : "regular"}>
           <Grid container className={classes.gridRoot}>
             <Grid item xs={1} className={classes.gridBack}>
               {/* BACK BUTTON */}
@@ -94,7 +94,7 @@ const HeaderNavDetail = (props) => {
               {subtitle}
             </Grid>
 
-            {isMobile ? (
+            {isXS ? (
               ""
             ) : (
               <Grid item xs={1} className={classes.gridToggle}>

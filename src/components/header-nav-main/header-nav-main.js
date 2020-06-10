@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     menuButton: {
       marginRight: theme.spacing(2),
     },
-    brand: {
+    gridBrand: {
       display: "flex",
       alignItems: "center",
     },
@@ -42,8 +42,7 @@ const useStyles = makeStyles((theme) => {
     },
     gridCheckboxesOpen: {
       display: "flex",
-      alignItems: "center",
-      flexGrow: 4,
+      flexGrow: 2,
       justifyContent: "center",
     },
     expansionPanel: {
@@ -143,7 +142,7 @@ const HeaderNavMain = ({
                       xs
                       container
                       justify="center"
-                      className={classes.brand}
+                      className={classes.gridBrand}
                     >
                       {/* BRAND */}
                       {brand}
@@ -162,7 +161,7 @@ const HeaderNavMain = ({
             </Hidden>
 
             <Hidden xsDown>
-              <Grid item sm className={classes.brand}>
+              <Grid item sm className={classes.gridBrand}>
                 {/* BRAND */}
                 {brand}
               </Grid>

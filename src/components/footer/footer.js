@@ -1,5 +1,6 @@
 import { Container, makeStyles } from "@material-ui/core";
 import React from "react";
+
 const useStyles = makeStyles((theme) => {
   return {
     footer: {
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
+
 const Footer = ({ brand }) => {
   const classes = useStyles();
   return (
