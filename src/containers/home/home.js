@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => {
         },
       },
     },
+    info: {
+      padding: theme.spacing(4),
+    },
   };
 });
 
@@ -35,8 +38,36 @@ const Home = (props) => {
     return state.app.baseContentURL;
   });
 
-  const thumbs = mainData
-    .map((obj, i) => {
+  const checkboxes = useSelector((state) => {
+    return state.app.nav.checkboxes;
+  });
+
+  const showSites = checkboxes.find((obj) => {
+    return obj.id === "site";
+  }).checked;
+
+  const showApps = checkboxes.find((obj) => {
+    return obj.id === "app";
+  }).checked;
+
+  const showAds = checkboxes.find((obj) => {
+    return obj.id === "banner";
+  }).checked;
+
+  const displayData = mainData
+    .filter((obj) => {
+      return (
+        (showSites && obj.type === "site") ||
+        (showApps && obj.type === "app") ||
+        (showAds && obj.type === "banner")
+      );
+    })
+    .sort((a, b) => {
+      return Number(b.id) - Number(a.id);
+    });
+
+  let content = displayData.length ? (
+    displayData.map((obj, i) => {
       const url = `${baseContentURL}img/thumbs/${obj.thumb}`;
       const alt = `${obj.client} - ${obj.brand} - ${obj.project}`;
       return (
@@ -49,13 +80,15 @@ const Home = (props) => {
         </Grid>
       );
     })
-    .reverse();
+  ) : (
+    <Card className={classes.info}>Please make a selection</Card>
+  );
 
   return (
     <Container className={classes.root}>
       <Grid container spacing={2} justify="center">
-        {/* THUMBS */}
-        {thumbs}
+        {/* CONTENT */}
+        {content}
       </Grid>
     </Container>
   );

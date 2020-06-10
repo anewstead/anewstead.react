@@ -36,8 +36,7 @@ const withLayout = (PageComponent) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const headerNav = props.headerNav; // e.g. <Home headerNav='detail' />
-    console.log("headerNav", headerNav);
+    const headerNav = props.headerNav; // e.g. <Home headerNav='main' />
 
     const navBrand = useSelector((state) => {
       return state.app.nav.brand;

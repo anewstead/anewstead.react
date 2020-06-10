@@ -33,18 +33,18 @@ const slice = createSlice({
       brand: "BRAND",
       checkboxes: [
         {
-          id: "sites",
+          id: "site",
           label: "Websites",
           checked: true,
         },
         {
-          id: "apps",
+          id: "app",
           label: "Apps",
           checked: true,
         },
         {
-          id: "banners",
-          label: "Banners",
+          id: "banner",
+          label: "Adverts",
           checked: true,
         },
       ],
