@@ -19,8 +19,14 @@ const useStyles = makeStyles((theme) => {
       width: "100%",
       marginBottom: theme.spacing(4),
       "& .slick-dots": {
-        "& button:before": {
-          color: `${theme.palette.text.primary} !important`,
+        "& button": {
+          borderRadius: "10px",
+          "&:focus": {
+            backgroundColor: theme.palette.action.focus,
+          },
+          "&:before": {
+            color: `${theme.palette.text.primary} !important`,
+          },
         },
       },
       // slick adds display:inline-block to each slide
@@ -43,7 +49,7 @@ const useStyles = makeStyles((theme) => {
       padding: theme.spacing(2),
       color: theme.palette.text.primary,
       opacity: "0",
-      "&:hover": {
+      "&:hover, &:focus-within": {
         opacity: `${isMobile ? "0" : "1"}`,
       },
       "& div:first-child": {

@@ -6,6 +6,7 @@ import About from "../about/about";
 import Gallery from "../gallery/gallery";
 import Home from "../home/home";
 import NoMatch from "../no-match/no-match";
+import Video from "../video/video";
 
 const Routes = () => {
   const mainData = useSelector((state) => {
@@ -15,21 +16,43 @@ const Routes = () => {
   return (
     <Switch>
       <Route
-        path="/gallery/:id"
+        path="/project/:id"
         render={(props) => {
           const data = mainData.find((obj) => {
             return obj.id === props.match.params.id;
           });
-          const content = data ? (
-            <Gallery
-              titleText={data.client}
-              subtitleText={`${data.brand} - ${data.project}`}
-              data={data}
-              {...props}
-            />
-          ) : (
-            <NoMatch {...props} />
-          );
+          let content;
+          if (data) {
+            switch (data.view.type) {
+              case "gallery":
+                content = (
+                  <Gallery
+                    titleText={data.client}
+                    subtitleText={`${data.brand} - ${data.project}`}
+                    data={data}
+                    {...props}
+                  />
+                );
+                break;
+
+              case "video":
+                content = (
+                  <Video
+                    titleText={data.client}
+                    subtitleText={`${data.brand} - ${data.project}`}
+                    data={data}
+                    {...props}
+                  />
+                );
+                break;
+
+              default:
+                content = <NoMatch {...props} />;
+                break;
+            }
+          } else {
+            content = <NoMatch {...props} />;
+          }
           return content;
         }}
       />
