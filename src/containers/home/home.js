@@ -1,7 +1,7 @@
 import { Button, Card, Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 import Layout from "../app/withLayout";
 
@@ -76,13 +76,13 @@ const Home = (props) => {
       return (
         <Grid item key={i} className={classes.gridItem}>
           <Card elevation={6}>
-            <Link
-              component={Button}
+            <Button
+              component={RouterLink}
               to={`/project/${obj.id}`}
               className={classes.gridItemButton}
             >
               <img src={url} alt={alt} />
-            </Link>
+            </Button>
           </Card>
         </Grid>
       );
