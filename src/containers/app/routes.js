@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import About from "../about/about";
 import Gallery from "../gallery/gallery";
 import Home from "../home/home";
+import InFrame from "../inframe/inframe";
 import NoMatch from "../no-match/no-match";
 import Video from "../video/video";
 
@@ -23,27 +24,23 @@ const Routes = () => {
           });
           let content;
           if (data) {
+            const pageProps = {
+              titleText: data.client,
+              subtitleText: `${data.brand} - ${data.project}`,
+              data,
+              ...props,
+            };
             switch (data.view.type) {
               case "gallery":
-                content = (
-                  <Gallery
-                    titleText={data.client}
-                    subtitleText={`${data.brand} - ${data.project}`}
-                    data={data}
-                    {...props}
-                  />
-                );
+                content = <Gallery {...pageProps} />;
                 break;
 
               case "video":
-                content = (
-                  <Video
-                    titleText={data.client}
-                    subtitleText={`${data.brand} - ${data.project}`}
-                    data={data}
-                    {...props}
-                  />
-                );
+                content = <Video {...pageProps} />;
+                break;
+
+              case "iframe":
+                content = <InFrame {...pageProps} />;
                 break;
 
               default:
