@@ -30,7 +30,7 @@ const slice = createSlice({
     mainData: null,
     theme: detectColorTheme(),
     nav: {
-      brand: "BRAND",
+      brand: "Andrew Newstead",
       checkboxes: [
         {
           id: "site",
