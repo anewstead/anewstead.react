@@ -71,8 +71,7 @@ const InFrame = (props) => {
             gutterBottom
             component="div"
           >
-            Ad Blocker Detected
-            <br /> Pause it to view full content
+            Ad Blocker Detected, you will need to pause it to view full content
           </Typography>
         </Paper>
         <Paper
