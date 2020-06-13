@@ -1,11 +1,4 @@
-import {
-  Container,
-  Paper,
-  Typography,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
@@ -35,10 +28,6 @@ const Gallery = (props) => {
     return state.app.baseContentURL;
   });
 
-  const theme = useTheme();
-
-  const isXS = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
-
   const alt = `${data.brand} ${data.project}`;
 
   const slides = data.view.stills.map((obj, i) => {
@@ -54,9 +43,10 @@ const Gallery = (props) => {
       <Carousel slides={slides} />
       <Paper className={classes.info}>
         <Typography
-          variant={isXS ? "body2" : "body1"}
+          variant="body2"
           gutterBottom
           component="div"
+          align="justify"
         >
           {/* INFO */}
           {info}

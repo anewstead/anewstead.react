@@ -13,6 +13,9 @@ const Routes = () => {
   const mainData = useSelector((state) => {
     return state.app.mainData;
   });
+  const brand = useSelector((state) => {
+    return state.app.nav.brand;
+  });
 
   return (
     <Switch>
@@ -57,7 +60,7 @@ const Routes = () => {
       <Route
         path="/about"
         render={(props) => {
-          return <About {...props} />;
+          return <About titleText={brand} {...props} />;
         }}
       />
 

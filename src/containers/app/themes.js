@@ -1,5 +1,5 @@
 import { blueGrey, grey } from "@material-ui/core/colors";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 // remember preference for next time user visits
 const storeColorTheme = (themeName) => {
@@ -28,40 +28,57 @@ export const toggleColorTheme = () => {
   return theme;
 };
 
-const globalOverrides = {
-  MuiCssBaseline: {
-    "@global": {
-      html: {
-        fontSmoothing: "auto",
-      },
-      img: {
-        display: "block",
+const globalOverrides = (theme) => {
+  return {
+    MuiCssBaseline: {
+      "@global": {
+        html: {
+          fontSmoothing: "auto",
+
+          fontSize: 16,
+          [theme.breakpoints.up("sm")]: {
+            fontSize: 18,
+          },
+        },
+        img: {
+          display: "block",
+        },
+        a: {
+          color: "inherit",
+        },
       },
     },
-  },
+  };
 };
 
 const themes = {
-  light: createMuiTheme({
-    overrides: globalOverrides,
-    palette: {
-      type: "light",
-      background: {
-        paper: blueGrey[50],
-        default: grey[300],
+  light: responsiveFontSizes(
+    createMuiTheme({
+      palette: {
+        type: "light",
+        background: {
+          paper: blueGrey[50],
+          default: grey[300],
+        },
       },
-    },
-  }),
-  dark: createMuiTheme({
-    overrides: globalOverrides,
-    palette: {
-      type: "dark",
-      background: {
-        paper: blueGrey[800],
-        default: grey[800],
+    }),
+    { breakpoints: ["xs", "sm"] }
+  ),
+  dark: responsiveFontSizes(
+    createMuiTheme({
+      palette: {
+        type: "dark",
+        background: {
+          paper: blueGrey[800],
+          default: grey[800],
+        },
       },
-    },
-  }),
+    }),
+    { breakpoints: ["xs", "sm"], factor: 2 }
+  ),
 };
+
+themes.light.overrides = globalOverrides(themes.light);
+themes.dark.overrides = globalOverrides(themes.dark);
 
 export default themes;

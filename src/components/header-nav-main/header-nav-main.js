@@ -12,8 +12,9 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => {
     },
     menuButton: {
       marginRight: theme.spacing(2),
+    },
+    brandButton: {
+      // textAlign: "left",
     },
     gridBrand: {
       display: "flex",
@@ -42,7 +46,6 @@ const useStyles = makeStyles((theme) => {
     },
     gridCheckboxesOpen: {
       display: "flex",
-      flexGrow: 2,
       justifyContent: "center",
     },
     expansionPanel: {
@@ -68,10 +71,13 @@ const HeaderNavMain = ({
 }) => {
   const classes = useStyles();
 
+  const theme = useTheme();
+  const isSM = useMediaQuery(theme.breakpoints.down("sm"));
+
   const checkboxes = checkboxData.map((cb, i) => {
     return (
       <FormControlLabel
-        key={"cb" + i}
+        key={`cb${i}`}
         label={cb.label}
         control={
           <Checkbox
@@ -86,7 +92,11 @@ const HeaderNavMain = ({
   });
 
   const brand = (
-    <Button aria-label="about" onClick={onBrandClick}>
+    <Button
+      aria-label="about"
+      onClick={onBrandClick}
+      className={classes.brandButton}
+    >
       <Typography variant="h5" component="span">
         {brandName}
       </Typography>
@@ -115,7 +125,7 @@ const HeaderNavMain = ({
   return (
     <nav>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar variant={isSM ? "dense" : "regular"}>
           <Grid container justify="space-between" className={classes.gridRoot}>
             <Hidden smUp>
               <Grid item xs={10}>
@@ -161,11 +171,11 @@ const HeaderNavMain = ({
             </Hidden>
 
             <Hidden xsDown>
-              <Grid item sm className={classes.gridBrand}>
+              <Grid item sm={3} md className={classes.gridBrand}>
                 {/* BRAND */}
                 {brand}
               </Grid>
-              <Grid item sm className={classes.gridCheckboxesOpen}>
+              <Grid item sm md={5} className={classes.gridCheckboxesOpen}>
                 <FormGroup row>
                   {/* CHECKBOXES */}
                   {checkboxes}
@@ -176,7 +186,8 @@ const HeaderNavMain = ({
             <Grid
               item
               xs={2}
-              sm
+              sm={1}
+              md
               container
               justify="flex-start"
               className={classes.gridToggle}

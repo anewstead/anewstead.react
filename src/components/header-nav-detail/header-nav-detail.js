@@ -67,13 +67,13 @@ const HeaderNavDetail = (props) => {
   );
 
   const title = (
-    <Typography variant={isXS ? "subtitle1" : "h5"} component="h2">
+    <Typography variant={isXS ? "h6" : "h5"} component="h2">
       {titleText}
     </Typography>
   );
 
   const subtitle = (
-    <Typography variant={isXS ? "subtitle2" : "h5"} component="h3">
+    <Typography variant={isXS ? "h6" : "h5"} component="h3">
       {subtitleText}
     </Typography>
   );

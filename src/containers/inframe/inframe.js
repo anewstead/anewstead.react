@@ -1,11 +1,4 @@
-import {
-  Container,
-  Paper,
-  Typography,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import adBlocker from "just-detect-adblock";
@@ -49,10 +42,6 @@ const InFrame = (props) => {
   const stillURL = `${baseContentURL}${data.view.still}`;
   const alt = `${data.brand} ${data.project}`;
 
-  const theme = useTheme();
-
-  const isXS = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
-
   // safelySetInnerHTML :)
   const info = parse(DOMPurify.sanitize(data.info));
 
@@ -66,11 +55,7 @@ const InFrame = (props) => {
             width: `${data.view.width}px`,
           }}
         >
-          <Typography
-            variant={isXS ? "body2" : "body1"}
-            gutterBottom
-            component="div"
-          >
+          <Typography variant="body2" gutterBottom component="div">
             Ad Blocker Detected, you will need to pause it to view full content
           </Typography>
         </Paper>
@@ -88,6 +73,7 @@ const InFrame = (props) => {
   } else {
     banner = (
       <Iframe
+        title={alt}
         url={iframeURL}
         width={data.view.width}
         height={data.view.height}
@@ -107,9 +93,10 @@ const InFrame = (props) => {
         }}
       >
         <Typography
-          variant={isXS ? "body2" : "body1"}
+          variant="body2"
           gutterBottom
           component="div"
+          align="justify"
         >
           {/* INFO */}
           {info}

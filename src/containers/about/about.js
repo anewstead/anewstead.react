@@ -20,17 +20,37 @@ const About = (props) => {
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
-        <Typography variant="h2">About</Typography>
-        <Typography gutterBottom>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-          magna sem, imperdiet vel vestibulum id, pretium nec ante. Nulla
-          facilisi. Sed rhoncus commodo blandit. Vivamus hendrerit justo vitae
-          dictum aliquet. Nullam dictum efficitur libero id congue. Nulla
-          hendrerit tortor nec pharetra ornare. Sed interdum ligula vitae quam
-          lobortis, ut molestie sem pretium. Nunc lobortis mauris tristique
-          gravida sollicitudin. Aliquam tristique ullamcorper consequat. Vivamus
-          ac sollicitudin mi. Nunc ut tellus ac lacus ullamcorper ornare in at
-          ligula.
+        <Typography variant="h4" component="h2">
+          About
+        </Typography>
+
+        <Typography
+          variant="body2"
+          gutterBottom
+          component="div"
+          align="justify"
+        >
+          <p>Frontend/UI/UX developer with over 20 years experience.</p>
+          <p>
+            This portfolio shows some of the productions I have been involved
+            with over the years as sole or lead developer or with significant
+            hands-on input as a senior team member.
+          </p>
+          <p>
+            This site was written in React and Redux (hooks) as a single page
+            application using Create-React-App for a webpack setup and
+            Material-UI components for a quick start, in my commercial work
+            everything is typically created bespoke from scratch. <br />
+            You are welcome to view the source code at this{" "}
+            <a
+              href="https://github.com/anewstead/anewstead.cra-mui"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Git repository
+            </a>
+            .
+          </p>
         </Typography>
       </Paper>
     </Container>

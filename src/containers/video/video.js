@@ -1,11 +1,4 @@
-import {
-  Container,
-  Paper,
-  Typography,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
@@ -41,10 +34,6 @@ const Video = (props) => {
   const videoURL = `//drive.google.com/uc?export=download&id=${data.view.href}`;
   const posterURL = `${baseContentURL}img/poster/${data.view.poster}`;
 
-  const theme = useTheme();
-
-  const isXS = useMediaQuery(theme.breakpoints.down("xs"), { noSsr: true });
-
   // safelySetInnerHTML :)
   const info = parse(DOMPurify.sanitize(data.info));
 
@@ -69,9 +58,10 @@ const Video = (props) => {
       />
       <Paper className={classes.info}>
         <Typography
-          variant={isXS ? "body2" : "body1"}
+          variant="body2"
           gutterBottom
           component="div"
+          align="justify"
         >
           {/* INFO */}
           {info}
