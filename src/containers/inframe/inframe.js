@@ -3,7 +3,6 @@ import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import adBlocker from "just-detect-adblock";
 import React from "react";
-import Iframe from "react-iframe";
 import { useSelector } from "react-redux";
 
 import withLayout from "../app/withLayout";
@@ -72,9 +71,9 @@ const InFrame = (props) => {
     );
   } else {
     banner = (
-      <Iframe
+      <iframe
         title={alt}
-        url={iframeURL}
+        src={iframeURL}
         width={data.view.width}
         height={data.view.height}
         className={classes.iframe}

@@ -2,7 +2,6 @@ import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
-import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 
 import withLayout from "../app/withLayout";
@@ -39,22 +38,17 @@ const Video = (props) => {
 
   return (
     <Container className={classes.root} style={{ maxWidth: data.view.width }}>
-      <ReactPlayer
+      <video
         className={classes.reactPlayer}
-        url={videoURL}
+        src={videoURL}
+        type="video/mp4"
         width="100%"
         height="auto"
-        config={{
-          file: {
-            attributes: {
-              poster: posterURL,
-              controls: true,
-              preload: "none",
-              controlsList: "nodownload",
-              disablePictureInPicture: true,
-            },
-          },
-        }}
+        poster={posterURL}
+        controls
+        preload="none"
+        controlsList="nodownload"
+        disablePictureInPicture
       />
       <Paper className={classes.info}>
         <Typography
