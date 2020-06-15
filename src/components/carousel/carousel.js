@@ -1,5 +1,4 @@
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import { IconButton, makeStyles, useTheme } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -19,18 +18,55 @@ const useStyles = makeStyles((theme) => {
       width: "100%",
       marginBottom: theme.spacing(4),
       "& .slick-dots": {
+        position: "absolute",
+        width: "100%",
+        listStyle: "none",
+        padding: "0",
+        marginTop: theme.spacing(),
+        marginBottom: theme.spacing(),
+        textAlign: "center",
+        "& li": {
+          display: "inline-block",
+        },
         "& button": {
+          position: "relative",
+          display: "block",
+          backgroundColor: "transparent",
+          border: "0",
           borderRadius: "10px",
-          "&:focus": {
+          height: "20px",
+          width: "20px",
+          outline: "none",
+          lineHeight: "0px",
+          fontSize: "0px",
+          color: "transparent",
+          margin: "2px",
+          "&:hover, &:focus": {
+            outline: "none",
             backgroundColor: theme.palette.action.focus,
+            "&:before": {
+              opacity: "0.8",
+            },
           },
           "&:before": {
-            color: `${theme.palette.text.primary} !important`,
+            color: `${theme.palette.text.primary} `,
+            content: '"•"',
+            width: "20px",
+            height: "20px",
+            fontSize: "22px",
+            lineHeight: "20px",
+            opacity: "0.3",
+            position: "absolute",
+            top: "0",
+            left: "0",
           },
         },
+        "& .slick-active button:before": {
+          opacity: "0.8",
+        },
       },
-      // slick adds display:inline-block to each slide
-      // this creates an unwanted margin at the bottom of the slide
+      // slick js adds display:inline-block to each slide
+      // which creates an unwanted margin at the bottom of the slide
       // fix is to override with display: block !important
       "& .slick-slide": {
         "& > div > *": {
