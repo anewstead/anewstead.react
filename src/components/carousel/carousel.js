@@ -19,20 +19,20 @@ const useStyles = makeStyles((theme) => {
       marginBottom: theme.spacing(4),
       "& .slick-dots": {
         position: "absolute",
+        display: "flex !important", //because slick sets block via js
         width: "100%",
+        justifyContent: "center",
         listStyle: "none",
         padding: "0",
         marginTop: theme.spacing(),
         marginBottom: theme.spacing(),
-        textAlign: "center",
-        "& li": {
-          display: "inline-block",
-        },
+        "& li": {},
         "& button": {
-          position: "relative",
-          display: "block",
-          backgroundColor: "transparent",
           border: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "transparent",
           borderRadius: "10px",
           height: "20px",
           width: "20px",
@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme) => {
           lineHeight: "0px",
           fontSize: "0px",
           color: "transparent",
-          margin: "2px",
+          padding: "0px",
+          margin: "0px 2px",
           "&:hover, &:focus": {
             outline: "none",
             backgroundColor: theme.palette.action.focus,
@@ -49,28 +50,21 @@ const useStyles = makeStyles((theme) => {
             },
           },
           "&:before": {
-            color: `${theme.palette.text.primary} `,
-            content: '"•"',
-            width: "20px",
-            height: "20px",
-            fontSize: "22px",
-            lineHeight: "20px",
+            content: '""',
+            borderRadius: "3px",
+            height: "6px",
+            width: "6px",
+            backgroundColor: `${theme.palette.text.primary}`,
             opacity: "0.3",
-            position: "absolute",
-            top: "0",
-            left: "0",
           },
         },
         "& .slick-active button:before": {
           opacity: "0.8",
         },
       },
-      // slick js adds display:inline-block to each slide
-      // which creates an unwanted margin at the bottom of the slide
-      // fix is to override with display: block !important
       "& .slick-slide": {
         "& > div > *": {
-          display: "block !important",
+          display: "block !important", //because slick sets inline-block via js
         },
         "& img": {
           width: "100%", //make sure image scales to carousel width
