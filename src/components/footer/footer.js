@@ -13,8 +13,11 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Footer = ({ brand }) => {
+const Footer = (props) => {
+  const { brand } = props;
+
   const classes = useStyles();
+
   return (
     <footer className={classes.footer}>
       <Container>

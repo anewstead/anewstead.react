@@ -62,15 +62,16 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const HeaderNavMain = ({
-  brandName,
-  checkboxData,
-  onBrandClick,
-  onThemeClick,
-  onCheckboxChange,
-}) => {
-  const classes = useStyles();
+const HeaderNavMain = (props) => {
+  const {
+    brandName,
+    checkboxData,
+    onBrandClick,
+    onThemeClick,
+    onCheckboxChange,
+  } = props;
 
+  const classes = useStyles();
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("sm"));
 
