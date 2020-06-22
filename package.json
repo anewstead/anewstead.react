@@ -15,15 +15,6 @@
     "lint:style": "stylelint --fix $PWD/'/src/**/*.{js,jsx,ts,tsx}'",
     "lint": "npm run lint:js; npm run lint:style; npm run lint:html"
   },
-  "engines": {
-    "npm": ">=6",
-    "node": ">=12"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
@@ -55,6 +46,15 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1"
   },
+  "engines": {
+    "npm": ">=6",
+    "node": ">=12"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
       "style": "module",
