@@ -52,7 +52,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    const url = `${baseContentURL}.netlify/functions/alldata`;
+    const url = `${baseContentURL}.netlify/functions/projects`;
     dispatch(FETCH_MAIN_DATA(url));
   }, [dispatch, baseContentURL]);
 
