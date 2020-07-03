@@ -11,7 +11,9 @@ import { NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "./store";
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      height: "100vh",
+      minHeight: "100vh",
+      /* mobile viewport bug fix */
+      minHeight: "-webkit-fill-available",
       minWidth: "320px",
       overflow: "hidden",
       display: "flex",
