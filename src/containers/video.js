@@ -4,8 +4,6 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import withLayout from "../app/withLayout";
-
 const useStyles = makeStyles((theme) => {
   return {
     root: {
@@ -65,4 +63,4 @@ const Video = (props) => {
   );
 };
 
-export default withLayout(Video);
+export default Video;

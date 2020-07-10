@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import HomeIcon from "@material-ui/icons/Home";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React from "react";
 
@@ -56,7 +56,7 @@ const HeaderNavDetail = (props) => {
 
   const backButton = (
     <IconButton edge="end" aria-label="back" onClick={onBackClick}>
-      <ArrowBackIcon fontSize="large" />
+      <HomeIcon fontSize="large" />
     </IconButton>
   );
 

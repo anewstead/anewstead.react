@@ -2,12 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
-import About from "../about/about";
-import Gallery from "../gallery/gallery";
-import Home from "../home/home";
-import InFrame from "../inframe/inframe";
-import NoMatch from "../no-match/no-match";
-import Video from "../video/video";
+import About from "../pages/about";
+import Home from "../pages/home";
+import NoMatch from "../pages/no-match";
+import Project from "../pages/project";
 
 const Routes = () => {
   const mainData = useSelector((state) => {
@@ -27,29 +25,7 @@ const Routes = () => {
           });
           let content;
           if (data) {
-            const pageProps = {
-              titleText: data.client,
-              subtitleText: `${data.brand} - ${data.project}`,
-              data,
-              ...props,
-            };
-            switch (data.view.type) {
-              case "gallery":
-                content = <Gallery {...pageProps} />;
-                break;
-
-              case "video":
-                content = <Video {...pageProps} />;
-                break;
-
-              case "iframe":
-                content = <InFrame {...pageProps} />;
-                break;
-
-              default:
-                content = <NoMatch {...props} />;
-                break;
-            }
+            content = <Project projectData={data} />;
           } else {
             content = <NoMatch {...props} />;
           }

@@ -5,8 +5,6 @@ import adBlocker from "just-detect-adblock";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import withLayout from "../app/withLayout";
-
 const useStyles = makeStyles((theme) => {
   return {
     root: {
@@ -105,4 +103,4 @@ const InFrame = (props) => {
   );
 };
 
-export default withLayout(InFrame);
+export default InFrame;

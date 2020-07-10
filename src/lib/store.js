@@ -6,13 +6,39 @@ import {
 
 import { detectColorTheme, toggleColorTheme } from "./themes";
 
+const thumbHelper = (allThumbs, checkboxes) => {
+  const showSites = checkboxes.find((cb) => {
+    return cb.id === "site";
+  }).checked;
+
+  const showApps = checkboxes.find((cb) => {
+    return cb.id === "app";
+  }).checked;
+
+  const showAds = checkboxes.find((cb) => {
+    return cb.id === "banner";
+  }).checked;
+
+  return allThumbs
+    .filter((obj) => {
+      return (
+        (showSites && obj.type === "site") ||
+        (showApps && obj.type === "app") ||
+        (showAds && obj.type === "banner")
+      );
+    })
+    .sort((a, b) => {
+      return Number(b.id) - Number(a.id);
+    });
+};
+
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "fetchJsonData",
   async (url) => {
     // session cache to avoid lots of calls to API during dev
-    const lsData = sessionStorage.getItem("data");
-    if (lsData) {
-      return JSON.parse(lsData);
+    const ssData = sessionStorage.getItem("data");
+    if (ssData) {
+      return JSON.parse(ssData);
     }
     const response = await fetch(url);
     const data = await response.json();
@@ -28,6 +54,7 @@ const slice = createSlice({
   initialState: {
     baseContentURL: "https://anewstead-content.netlify.app/",
     mainData: null,
+    displayThumbs: null,
     theme: detectColorTheme(),
     nav: {
       brand: "Andrew Newstead",
@@ -63,11 +90,13 @@ const slice = createSlice({
         return obj.id === action.payload.id;
       });
       checkbox.checked = action.payload.checked;
+      state.displayThumbs = thumbHelper(state.mainData, state.nav.checkboxes);
     },
   },
   extraReducers: {
     [FETCH_MAIN_DATA.fulfilled]: (state, action) => {
       state.mainData = action.payload;
+      state.displayThumbs = thumbHelper(state.mainData, state.nav.checkboxes);
     },
     [FETCH_MAIN_DATA.rejected]: (state, action) => {
       state.mainData = "rejected";

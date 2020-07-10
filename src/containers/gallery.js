@@ -4,8 +4,7 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Carousel from "../../components/carousel/carousel";
-import withLayout from "../app/withLayout";
+import Carousel from "../components/carousel";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -56,4 +55,4 @@ const Gallery = (props) => {
   );
 };
 
-export default withLayout(Gallery);
+export default Gallery;

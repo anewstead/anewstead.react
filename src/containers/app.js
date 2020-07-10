@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import Routes from "./routes";
-import { FETCH_MAIN_DATA } from "./store";
-import themes from "./themes";
+import Routes from "../lib/routes";
+import { FETCH_MAIN_DATA } from "../lib/store";
+import themes from "../lib/themes";
 
 const App = () => {
   const dispatch = useDispatch();
