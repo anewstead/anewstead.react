@@ -8,10 +8,21 @@ import HeaderNav from "./header-nav";
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      minHeight: "100vh",
-      /* mobile viewport bug fix */
-      // eslint-disable-next-line no-dupe-keys
-      minHeight: "-webkit-fill-available",
+      /*
+      mobile height bug fix:
+      100vh on mobile pushes page bottom/footer too low
+      -webkit-fill-available doesn't work for short pages in chrome desktop
+      solution: all containing elements leading to our app must have height 100%
+      html > body > root (> app)
+      our app then uses min-height so is responsible for overflow scroll
+      on mobile we need to set min-height 100.1%
+      so any short pages can still be pulled-to-refresh in chrome mobile
+      */
+      minHeight: "100.1%",
+      [theme.breakpoints.up("sm")]: {
+        minHeight: "100%",
+      },
+
       minWidth: "320px",
       overflow: "hidden",
       display: "flex",
@@ -20,12 +31,6 @@ const useStyles = makeStyles((theme) => {
     main: {
       flexGrow: 1,
       display: "flex",
-    },
-    mainAndFooterWrapper: {
-      overflow: "auto",
-      flexGrow: 1,
-      display: "flex",
-      flexDirection: "column",
     },
   };
 });
@@ -46,13 +51,11 @@ const PageLayout = (props) => {
         titleText={headerNavTitle}
         subtitleText={headerNavSubtitle}
       />
-      <div className={classes.mainAndFooterWrapper}>
-        <main className={classes.main}>
-          {/* DISPLAY */}
-          {children}
-        </main>
-        <Footer brand={navBrand} />
-      </div>
+      <main className={classes.main}>
+        {/* DISPLAY */}
+        {children}
+      </main>
+      <Footer brand={navBrand} />
     </Box>
   );
 };
