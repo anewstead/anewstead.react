@@ -1,8 +1,8 @@
 import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
-import adBlocker from "just-detect-adblock";
-import React from "react";
+import { detectAnyAdblocker } from "just-detect-adblock";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => {
@@ -42,9 +42,28 @@ const InFrame = (props) => {
   // safelySetInnerHTML :)
   const info = parse(DOMPurify.sanitize(data.info));
 
-  let banner;
-  if (data.type === "banner" && adBlocker.detectAnyAdblocker()) {
-    banner = (
+  const [adBlocked, setAdBlocked] = useState(0);
+
+  useEffect(() => {
+    detectAnyAdblocker().then((detected) => {
+      setAdBlocked(detected);
+    });
+  }, []);
+
+  // actual content
+  let content = (
+    <iframe
+      title={alt}
+      src={iframeURL}
+      width={data.view.width}
+      height={data.view.height}
+      className={classes.iframe}
+    />
+  );
+
+  // failover content
+  if (data.type === "banner" && adBlocked) {
+    content = (
       <>
         <Paper
           className={classes.info}
@@ -67,22 +86,11 @@ const InFrame = (props) => {
         </Paper>
       </>
     );
-  } else {
-    banner = (
-      <iframe
-        title={alt}
-        src={iframeURL}
-        width={data.view.width}
-        height={data.view.height}
-        className={classes.iframe}
-      />
-    );
   }
 
   return (
     <Container className={classes.root} style={{ width: data.view.width }}>
-      {/* BANNER */}
-      {banner}
+      {content}
       <Paper
         className={classes.info}
         style={{
@@ -95,7 +103,6 @@ const InFrame = (props) => {
           component="div"
           align="justify"
         >
-          {/* INFO */}
           {info}
         </Typography>
       </Paper>
