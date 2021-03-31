@@ -43,7 +43,7 @@ const InFrame = (props) => {
   const info = parse(DOMPurify.sanitize(data.info));
 
   let banner;
-  if (data.type === "banner" && adBlocker.isDetected()) {
+  if (data.type === "banner" && adBlocker.detectAnyAdblocker()) {
     banner = (
       <>
         <Paper
