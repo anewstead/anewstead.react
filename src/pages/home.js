@@ -70,7 +70,7 @@ const Home = (props) => {
   return (
     <PageLayout headerNavType="thumbs">
       <Container className={classes.root}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={2} justifyContent="center">
           {/* CONTENT */}
           {content}
         </Grid>
