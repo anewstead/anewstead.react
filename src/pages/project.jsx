@@ -4,7 +4,7 @@ import Gallery from "../containers/gallery";
 import InFrame from "../containers/in-frame";
 import PageLayout from "../containers/page-layout";
 import Video from "../containers/video";
-import NoMatch from "../pages/no-match";
+import NoMatch from "./no-match";
 
 const Project = (props) => {
   const { projectData } = props;
