@@ -23,7 +23,7 @@ const Routes: React.FC = () => {
         path="/project/:id"
         render={(props) => {
           const data = mainData.find((obj) => {
-            return obj.id === Number(props.match.params.id);
+            return Number(obj.id) === Number(props.match.params.id);
           });
           let content;
           if (data) {
