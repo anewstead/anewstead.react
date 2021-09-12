@@ -3,9 +3,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
-import PageLayout from "../containers/page-layout";
-import { IRootState } from "../lib/store";
-import useStyles from "./home.style";
+import PageLayout from "../containers/PageLayout";
+import { IRootState } from "../lib/Store";
+import useStyles from "./Home.style";
 
 const Home: React.FC = () => {
   const classes = useStyles();

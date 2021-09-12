@@ -11,7 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React from "react";
 
-import useStyles from "./header-nav-detail.style";
+import useStyles from "./HeaderNavDetail.style";
 
 type IHeaderNavDetail = {
   onThemeClick: () => unknown;

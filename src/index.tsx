@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import App from "./containers/app";
-import store from "./lib/store";
+import App from "./containers/App";
+import store from "./lib/Store";
 import * as serviceWorker from "./serviceWorker";
 
 // note. cannot use React.StrictMode as material UI is yet to fully update

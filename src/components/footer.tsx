@@ -1,7 +1,7 @@
 import { Container } from "@material-ui/core";
 import React from "react";
 
-import useStyles from "./footer.style";
+import useStyles from "./Footer.style";
 
 type IFooter = {
   brand: string;

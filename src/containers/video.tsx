@@ -4,9 +4,9 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { IRootState } from "../lib/store";
-import { IMainData } from "../lib/store.types";
-import useStyles from "./video.style";
+import { IRootState } from "../lib/Store";
+import { IMainData } from "../lib/Store.types";
+import useStyles from "./Video.style";
 
 type IVideo = {
   data: IMainData;

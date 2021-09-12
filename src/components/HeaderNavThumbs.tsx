@@ -19,8 +19,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
 
-import { ICheckbox } from "../lib/store.types";
-import useStyles from "./header-nav-thumbs.style";
+import { ICheckbox } from "../lib/Store.types";
+import useStyles from "./HeaderNavThumbs.style";
 
 type IHeaderNavThumbs = {
   brandName: string;

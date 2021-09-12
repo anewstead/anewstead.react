@@ -2,11 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
-import About from "../pages/about";
+import About from "../pages/About";
 import Home from "../pages/home";
-import NoMatch from "../pages/no-match";
-import Project from "../pages/project";
-import { IRootState } from "./store";
+import NoMatch from "../pages/NoMatch";
+import Project from "../pages/Project";
+import { IRootState } from "./Store";
 
 const Routes: React.FC = () => {
   const mainData = useSelector((state: IRootState) => {

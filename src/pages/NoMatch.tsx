@@ -2,7 +2,7 @@ import { Button, Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { RouteComponentProps, Link as RouterLink } from "react-router-dom";
 
-import useStyles from "./no-match.style";
+import useStyles from "./NoMatch.style";
 
 type INoMatch = RouteComponentProps;
 

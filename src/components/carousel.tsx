@@ -5,7 +5,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React from "react";
 import Slider, { Settings as SlickSettings } from "react-slick";
 
-import useStyles from "./carousel.style";
+import useStyles from "./Carousel.style";
 
 type IPrevNextButton = {
   direction: string;

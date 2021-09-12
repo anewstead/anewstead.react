@@ -2,10 +2,10 @@ import { Box } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Footer from "../components/footer";
-import { IRootState } from "../lib/store";
-import HeaderNav from "./header-nav";
-import useStyles from "./page-layout.style";
+import Footer from "../components/Footer";
+import { IRootState } from "../lib/Store";
+import HeaderNav from "./HeaderNav";
+import useStyles from "./PageLayout.style";
 
 type IPageLayout = {
   headerNavType: "thumbs" | "detail";

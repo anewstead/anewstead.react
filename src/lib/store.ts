@@ -4,9 +4,9 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 
-import { thumbHelper } from "./store.helpers";
-import { IState } from "./store.types";
-import { detectColorTheme, toggleColorTheme } from "./themes";
+import { thumbHelper } from "./Store.helpers";
+import { IState } from "./Store.types";
+import { detectColorTheme, toggleColorTheme } from "./Themes";
 
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "fetchJsonData",

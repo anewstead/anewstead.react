@@ -4,10 +4,10 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Carousel from "../components/carousel";
-import { IRootState } from "../lib/store";
-import { IMainData } from "../lib/store.types";
-import useStyles from "./gallery.style";
+import Carousel from "../components/Carousel";
+import { IRootState } from "../lib/Store";
+import { IMainData } from "../lib/Store.types";
+import useStyles from "./Gallery.style";
 
 type IGallery = {
   data: IMainData;
