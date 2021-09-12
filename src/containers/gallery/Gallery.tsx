@@ -4,9 +4,8 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Carousel from "../components/Carousel";
-import { IRootState } from "../lib/Store";
-import { IMainData } from "../lib/Store.types";
+import { IMainData, IRootState } from "../../app/store/types";
+import Carousel from "../../components/carousel";
 import useStyles from "./Gallery.style";
 
 type IGallery = {

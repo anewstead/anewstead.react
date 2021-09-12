@@ -1,8 +1,8 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
-  "extends": [
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  extends: [
     "react-app",
     "airbnb-typescript",
     "airbnb/hooks",
@@ -12,28 +12,28 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
-  "env": {
-    "browser": true,
-    "jasmine": true,
-    "jest": true,
-    "node": true
+  env: {
+    browser: true,
+    jasmine: true,
+    jest: true,
+    node: true,
   },
-  "parserOptions": {
-    "project": ["./tsconfig.json"] // required by airbnb
+  parserOptions: {
+    project: "./tsconfig.json", // required by airbnb
   },
-  "rules": {
-    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+  rules: {
+    "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
-    "curly": "error",
-    "no-confusing-arrow": ["error", { "allowParens": true }],
+    curly: "error",
+    "no-confusing-arrow": ["error", { allowParens: true }],
     "no-mixed-operators": "error",
     "prefer-arrow-callback": "error",
     "prefer-template": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
-  }
-}
+    "react/prop-types": "off",
+  },
+};

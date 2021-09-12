@@ -1,3 +1,9 @@
+import store from ".";
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type IRootState = ReturnType<typeof store.getState>;
+export type IAppDispatch = typeof store.dispatch;
+
 export type IProjectType = "site" | "app" | "banner";
 export type IProjectLabel = "Websites" | "Apps" | "Adverts";
 export type IProjectTech = "flash" | "html";

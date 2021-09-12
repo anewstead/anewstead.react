@@ -4,9 +4,9 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 
-import { thumbHelper } from "./Store.helpers";
-import { IState } from "./Store.types";
-import { detectColorTheme, toggleColorTheme } from "./Themes";
+import { toggleColorTheme } from "../themes";
+import { thumbHelper } from "./helpers";
+import initialState from "./initialState";
 
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "fetchJsonData",
@@ -22,34 +22,6 @@ export const FETCH_MAIN_DATA = createAsyncThunk(
     return data;
   }
 );
-
-const initialState: IState = {
-  baseContentURL: "https://anewstead-content.netlify.app/",
-  mainData: [],
-  mainDataLoadFail: false,
-  displayThumbs: [],
-  theme: detectColorTheme(),
-  nav: {
-    brand: "Andrew Newstead",
-    checkboxes: [
-      {
-        id: "site",
-        label: "Websites",
-        checked: true,
-      },
-      {
-        id: "app",
-        label: "Apps",
-        checked: true,
-      },
-      {
-        id: "banner",
-        label: "Adverts",
-        checked: true,
-      },
-    ],
-  },
-};
 
 // ReduxToolKit createSlice() creates state, actions and reducers from one object
 // remember to export reducer functions as slice.actions
@@ -94,9 +66,6 @@ const store = configureStore({
   },
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type IRootState = ReturnType<typeof store.getState>;
-export type IAppDispatch = typeof store.dispatch;
-
 export const { TOGGLE_THEME, NAV_CHECKBOX_CHANGE } = slice.actions;
+
 export default store;

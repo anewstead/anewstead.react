@@ -3,8 +3,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
-import PageLayout from "../containers/PageLayout";
-import { IRootState } from "../lib/Store";
+import { IRootState } from "../../app/store/types";
+import PageLayout from "../../containers/page-layout";
 import useStyles from "./Home.style";
 
 const Home: React.FC = () => {

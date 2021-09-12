@@ -7,8 +7,7 @@ import { detectAnyAdblocker } from "just-detect-adblock";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { IRootState } from "../lib/Store";
-import { IMainData } from "../lib/Store.types";
+import { IMainData, IRootState } from "../../app/store/types";
 import useStyles from "./InFrame.style";
 
 type IInFrame = {

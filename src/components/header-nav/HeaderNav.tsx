@@ -2,9 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import HeaderNavDetail from "../components/HeaderNavDetail";
-import HeaderNavThumbs from "../components/HeaderNavThumbs";
-import { IRootState, NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "../lib/Store";
+import { NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "../../app/store";
+import { IRootState } from "../../app/store/types";
+import HeaderNavDetail from "./HeaderNavDetail";
+import HeaderNavThumbs from "./HeaderNavThumbs";
 
 export type IHeaderNav = {
   navType: "thumbs" | "detail";

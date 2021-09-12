@@ -2,9 +2,9 @@ import { Box } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Footer from "../components/Footer";
-import { IRootState } from "../lib/Store";
-import HeaderNav from "./HeaderNav";
+import { IRootState } from "../../app/store/types";
+import Footer from "../../components/footer";
+import HeaderNav from "../../components/header-nav";
 import useStyles from "./PageLayout.style";
 
 type IPageLayout = {

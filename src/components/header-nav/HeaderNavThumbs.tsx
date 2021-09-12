@@ -19,7 +19,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
 
-import { ICheckbox } from "../lib/Store.types";
+import { ICheckbox } from "../../app/store/types";
 import useStyles from "./HeaderNavThumbs.style";
 
 type IHeaderNavThumbs = {

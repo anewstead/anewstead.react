@@ -61,10 +61,8 @@ const HeaderNavDetail: React.FC<IHeaderNavDetail> = (props) => {
             </Grid>
             <Grid item xs={11} sm={10} className={classes.gridTitle}>
               {title}
-
               {subtitle}
             </Grid>
-
             {isXS ? (
               ""
             ) : (

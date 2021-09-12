@@ -1,12 +1,12 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import Gallery from "../containers/Gallery";
-import InFrame from "../containers/InFrame";
-import PageLayout from "../containers/PageLayout";
-import Video from "../containers/Video";
-import { IMainData } from "../lib/Store.types";
-import NoMatch from "./NoMatch";
+import { IMainData } from "../../app/store/types";
+import Gallery from "../../containers/gallery";
+import InFrame from "../../containers/in-frame";
+import PageLayout from "../../containers/page-layout";
+import Video from "../../containers/video";
+import NoMatch from "../no-match/NoMatch";
 
 type IProject = {
   projectData: IMainData;

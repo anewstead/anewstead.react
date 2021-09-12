@@ -1,7 +1,7 @@
 import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 
-import PageLayout from "../containers/PageLayout";
+import PageLayout from "../../containers/page-layout";
 import useStyles from "./About.style";
 
 const About: React.FC = () => {
