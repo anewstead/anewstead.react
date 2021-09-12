@@ -13,10 +13,6 @@ const Routes: React.FC = () => {
     return state.app.mainData;
   });
 
-  // const brand = useSelector((state: IRootState) => {
-  //   return state.app.nav.brand;
-  // });
-
   return (
     <Switch>
       <Route

@@ -1,4 +1,4 @@
-import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -9,27 +9,7 @@ import { useSelector } from "react-redux";
 
 import { IRootState } from "../lib/store";
 import { IMainData } from "../lib/store.types";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(3),
-    },
-    info: {
-      padding: theme.spacing(2),
-      marginBottom: theme.spacing(3),
-    },
-    still: {
-      marginBottom: theme.spacing(3),
-    },
-    iframe: {
-      marginBottom: theme.spacing(3),
-      border: "none",
-      backgroundColor: theme.palette.background.paper,
-    },
-  };
-});
+import useStyles from "./in-frame.style";
 
 type IInFrame = {
   data: IMainData;

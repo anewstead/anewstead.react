@@ -14,55 +14,13 @@ import {
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
 
 import { ICheckbox } from "../lib/store.types";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    appBar: {
-      backgroundColor: theme.palette.background.paper,
-      color: theme.palette.text.primary,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    brandButton: {
-      // textAlign: "left",
-    },
-    gridBrand: {
-      display: "flex",
-      alignItems: "center",
-    },
-    gridRoot: {
-      minHeight: "80px",
-    },
-    gridToggle: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-end",
-      maxHeight: "80px",
-    },
-    gridCheckboxesOpen: {
-      display: "flex",
-      justifyContent: "center",
-    },
-    expansionPanel: {
-      backgroundColor: "unset",
-      boxShadow: "unset",
-      width: "100%",
-    },
-    expansionPanelSummaryContent: {
-      margin: "0 !important",
-    },
-    expansionPanelSummaryRoot: {
-      minHeight: "80px !important",
-    },
-  };
-});
+import useStyles from "./header-nav-thumbs.style";
 
 type IHeaderNavThumbs = {
   brandName: string;
@@ -161,10 +119,7 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
                     aria-controls="panel1d-content"
                     id="panel1d-header"
                   >
-                    <Grid item>
-                      {/* MENU BUTTON */}
-                      {menuButton}
-                    </Grid>
+                    <Grid item>{menuButton}</Grid>
                     <Grid
                       item
                       xs
@@ -172,16 +127,12 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
                       justifyContent="center"
                       className={classes.gridBrand}
                     >
-                      {/* BRAND */}
                       {brand}
                     </Grid>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Grid item xs={12}>
-                      <FormGroup>
-                        {/* CHECKBOXES */}
-                        {checkboxes}
-                      </FormGroup>
+                      <FormGroup>{checkboxes}</FormGroup>
                     </Grid>
                   </AccordionDetails>
                 </Accordion>
@@ -190,14 +141,10 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
 
             <Hidden xsDown>
               <Grid item sm={3} md className={classes.gridBrand}>
-                {/* BRAND */}
                 {brand}
               </Grid>
               <Grid item sm md={5} className={classes.gridCheckboxesOpen}>
-                <FormGroup row>
-                  {/* CHECKBOXES */}
-                  {checkboxes}
-                </FormGroup>
+                <FormGroup row>{checkboxes}</FormGroup>
               </Grid>
             </Hidden>
 
@@ -210,7 +157,6 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
               justifyContent="flex-start"
               className={classes.gridToggle}
             >
-              {/* TOGGLE BUTTON */}
               {toggleButton}
             </Grid>
           </Grid>

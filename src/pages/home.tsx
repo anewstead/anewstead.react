@@ -1,35 +1,11 @@
-import { Button, Card, Container, Grid, makeStyles } from "@material-ui/core";
+import { Button, Card, Container, Grid } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import PageLayout from "../containers/page-layout";
 import { IRootState } from "../lib/store";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(3),
-    },
-    gridItem: {
-      "& img": {
-        width: 80,
-        height: 80,
-        [theme.breakpoints.up("sm")]: {
-          width: 128,
-          height: 128,
-        },
-      },
-    },
-    gridItemButton: {
-      padding: 0,
-    },
-    info: {
-      padding: theme.spacing(4),
-    },
-  };
-});
+import useStyles from "./home.style";
 
 const Home: React.FC = () => {
   const classes = useStyles();
@@ -73,7 +49,6 @@ const Home: React.FC = () => {
     <PageLayout headerNavType="thumbs">
       <Container className={classes.root}>
         <Grid container spacing={2} justifyContent="center">
-          {/* CONTENT */}
           {content}
         </Grid>
       </Container>

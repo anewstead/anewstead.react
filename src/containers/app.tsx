@@ -63,10 +63,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={themes[theme]}>
       <CssBaseline />
-      <BrowserRouter>
-        {/* DISPLAY */}
-        {display}
-      </BrowserRouter>
+      <BrowserRouter>{display}</BrowserRouter>
     </ThemeProvider>
   );
 };

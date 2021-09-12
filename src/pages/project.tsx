@@ -42,7 +42,6 @@ const Project: React.FC<IProject> = (props) => {
       break;
 
     default:
-      // const msg = `"unknown page template type: ${projectData.view.type}"`;
       return <NoMatch {...routeProps} />;
   }
 
@@ -52,7 +51,6 @@ const Project: React.FC<IProject> = (props) => {
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
     >
-      {/* CONTENT */}
       {content}
     </PageLayout>
   );

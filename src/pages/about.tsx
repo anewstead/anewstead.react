@@ -1,25 +1,11 @@
-import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 
 import PageLayout from "../containers/page-layout";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      marginTop: theme.spacing(4),
-    },
-    paper: {
-      padding: theme.spacing(4),
-    },
-  };
-});
+import useStyles from "./about.style";
 
 const About: React.FC = () => {
   const classes = useStyles();
-
-  // const data = {
-  //   brand: "Andrew Newstead",
-  // };
 
   return (
     <PageLayout headerNavType="detail">
@@ -42,10 +28,10 @@ const About: React.FC = () => {
               hands-on input as a senior team member.
             </p>
             <p>
-              This site was written in React and Redux (hooks) as a single page
-              application using Create-React-App for a webpack setup and
-              Material-UI components for a quick start, in my commercial work
-              everything is typically created bespoke from scratch. <br />
+              This site was written in TypeScript, React and Redux (hooks) as a
+              single page application. It also makes use of Material-UI
+              components although typically commercial work is hand-crafted and
+              bespoke built from scratch. <br />
               You are welcome to view the source code at this{" "}
               <a
                 href="https://github.com/anewstead/anewstead.cra-mui"

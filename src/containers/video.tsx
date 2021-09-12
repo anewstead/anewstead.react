@@ -1,4 +1,4 @@
-import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
@@ -6,21 +6,7 @@ import { useSelector } from "react-redux";
 
 import { IRootState } from "../lib/store";
 import { IMainData } from "../lib/store.types";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(3),
-    },
-    info: {
-      padding: theme.spacing(2),
-    },
-    reactPlayer: {
-      marginBottom: theme.spacing(3),
-    },
-  };
-});
+import useStyles from "./video.style";
 
 type IVideo = {
   data: IMainData;
@@ -62,7 +48,6 @@ const Video: React.FC<IVideo> = (props) => {
           component="div"
           align="justify"
         >
-          {/* INFO */}
           {info}
         </Typography>
       </Paper>

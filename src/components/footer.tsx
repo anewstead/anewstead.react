@@ -1,17 +1,7 @@
-import { Container, makeStyles } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import React from "react";
 
-const useStyles = makeStyles((theme) => {
-  return {
-    footer: {
-      backgroundColor: theme.palette.background.paper,
-      display: "flex",
-      alignItems: "center",
-      fontSize: "12px",
-      height: "48px",
-    },
-  };
-});
+import useStyles from "./footer.style";
 
 type IFooter = {
   brand: string;

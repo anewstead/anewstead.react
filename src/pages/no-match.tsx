@@ -1,27 +1,8 @@
-import {
-  Button,
-  Container,
-  Paper,
-  Typography,
-  makeStyles,
-} from "@material-ui/core";
+import { Button, Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { RouteComponentProps, Link as RouterLink } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      marginTop: theme.spacing(4),
-    },
-    paper: {
-      padding: theme.spacing(4),
-    },
-    button: {
-      marginTop: theme.spacing(4),
-      border: `solid 1px ${theme.palette.text.primary}`,
-    },
-  };
-});
+import useStyles from "./no-match.style";
 
 type INoMatch = RouteComponentProps;
 

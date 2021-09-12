@@ -1,4 +1,4 @@
-import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
+import { Container, Paper, Typography } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
@@ -7,18 +7,7 @@ import { useSelector } from "react-redux";
 import Carousel from "../components/carousel";
 import { IRootState } from "../lib/store";
 import { IMainData } from "../lib/store.types";
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(3),
-    },
-    info: {
-      padding: theme.spacing(2),
-    },
-  };
-});
+import useStyles from "./gallery.style";
 
 type IGallery = {
   data: IMainData;
@@ -52,7 +41,6 @@ const Gallery: React.FC<IGallery> = (props) => {
           component="div"
           align="justify"
         >
-          {/* INFO */}
           {info}
         </Typography>
       </Paper>
