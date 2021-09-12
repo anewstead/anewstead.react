@@ -6,7 +6,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { RouteComponentProps, Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -22,7 +22,10 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const NoMatch = (props) => {
+
+type INoMatch = RouteComponentProps;
+
+const NoMatch: React.FC<INoMatch> = (props) => {
   const classes = useStyles();
 
   return (

@@ -6,14 +6,16 @@ import About from "../pages/about";
 import Home from "../pages/home";
 import NoMatch from "../pages/no-match";
 import Project from "../pages/project";
+import { IRootState } from "./store";
 
-const Routes = () => {
-  const mainData = useSelector((state) => {
+const Routes: React.FC = () => {
+  const mainData = useSelector((state: IRootState) => {
     return state.app.mainData;
   });
-  const brand = useSelector((state) => {
-    return state.app.nav.brand;
-  });
+
+  // const brand = useSelector((state: IRootState) => {
+  //   return state.app.nav.brand;
+  // });
 
   return (
     <Switch>
@@ -21,11 +23,11 @@ const Routes = () => {
         path="/project/:id"
         render={(props) => {
           const data = mainData.find((obj) => {
-            return obj.id === props.match.params.id;
+            return obj.id === Number(props.match.params.id);
           });
           let content;
           if (data) {
-            content = <Project projectData={data} />;
+            content = <Project projectData={data} routeProps={props} />;
           } else {
             content = <NoMatch {...props} />;
           }
@@ -35,16 +37,16 @@ const Routes = () => {
 
       <Route
         path="/about"
-        render={(props) => {
-          return <About titleText={brand} {...props} />;
+        render={() => {
+          return <About />;
         }}
       />
 
       <Route
         path="/"
         exact
-        render={(props) => {
-          return <Home headerNav="main" {...props} />;
+        render={() => {
+          return <Home />;
         }}
       />
 

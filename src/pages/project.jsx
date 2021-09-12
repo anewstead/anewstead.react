@@ -1,13 +1,19 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 import Gallery from "../containers/gallery";
 import InFrame from "../containers/in-frame";
 import PageLayout from "../containers/page-layout";
 import Video from "../containers/video";
+import { IMainData } from "../lib/store.types";
 import NoMatch from "./no-match";
 
-const Project = (props) => {
-  const { projectData } = props;
+type IProject = {
+  projectData: IMainData;
+  routeProps: RouteComponentProps;
+};
+const Project: React.FC<IProject> = (props) => {
+  const { projectData, routeProps } = props;
 
   const titleText = projectData.client;
 
@@ -37,7 +43,7 @@ const Project = (props) => {
 
     default:
       // const msg = `"unknown page template type: ${projectData.view.type}"`;
-      return <NoMatch {...props} />;
+      return <NoMatch {...routeProps} />;
   }
 
   return (

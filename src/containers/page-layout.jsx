@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Footer from "../components/footer";
+import { IRootState } from "../lib/store";
 import HeaderNav from "./header-nav";
 
 const useStyles = makeStyles((theme) => {
@@ -35,12 +36,18 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const PageLayout = (props) => {
+type IPageLayout = {
+  headerNavType: "thumbs" | "detail";
+  headerNavTitle?: string;
+  headerNavSubtitle?: string;
+};
+
+const PageLayout: React.FC<IPageLayout> = (props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const classes = useStyles();
 
-  const navBrand = useSelector((state) => {
+  const navBrand = useSelector((state: IRootState) => {
     return state.app.nav.brand;
   });
 

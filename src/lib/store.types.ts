@@ -1,0 +1,51 @@
+export type IProjectType = "site" | "app" | "banner";
+export type IProjectLabel = "Websites" | "Apps" | "Adverts";
+export type IProjectTech = "flash" | "html";
+export type IProjectView = "gallery" | "video" | "iframe";
+
+export type IThumb = {
+  id: number;
+  type: IProjectType;
+  thumb: string;
+  client: string;
+  brand: string;
+  project: string;
+};
+
+export type ICheckbox = {
+  id: IProjectType;
+  label: IProjectLabel;
+  checked: boolean;
+};
+
+export type IMainData = {
+  id: number;
+  client: string;
+  brand: string;
+  project: string;
+  type: IProjectType;
+  tech: IProjectTech;
+  thumb: string;
+  view: {
+    type: IProjectView;
+    width: number;
+    height: number;
+    href: string;
+    poster: string;
+    still: string;
+    stills: Array<string>;
+  };
+  info: string;
+};
+
+export type IState = {
+  baseContentURL: string;
+  mainData: Array<IMainData>;
+  mainDataLoadFail: boolean;
+  displayThumbs: Array<IThumb>;
+  theme: string;
+  nav: {
+    brand: string;
+    checkboxes: Array<ICheckbox>;
+  };
+};

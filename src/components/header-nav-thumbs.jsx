@@ -19,6 +19,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
 import React, { useState } from "react";
 
+import { ICheckbox } from "../lib/store.types";
+
 const useStyles = makeStyles((theme) => {
   return {
     appBar: {
@@ -62,7 +64,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const HeaderNavThumbs = (props) => {
+type IHeaderNavThumbs = {
+  brandName: string;
+  checkboxData: Array<ICheckbox>;
+  onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onThemeClick: () => void;
+  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
   const {
     brandName,
     checkboxData,
@@ -116,10 +126,11 @@ const HeaderNavThumbs = (props) => {
     </IconButton>
   );
 
-  const [expanded, setExpanded] = useState(false);
-  const expansionPanelOnChange = (panel) => {
-    return (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
+  const [expanded, setExpanded] = useState("");
+
+  const expansionPanelOnChange = (panel: string) => {
+    return (newExpanded: string) => {
+      setExpanded(newExpanded ? panel : "");
     };
   };
 
@@ -137,7 +148,9 @@ const HeaderNavThumbs = (props) => {
                 <Accordion
                   square
                   expanded={expanded === "panel1"}
-                  onChange={expansionPanelOnChange("panel1")}
+                  onChange={() => {
+                    expansionPanelOnChange("panel1");
+                  }}
                   className={classes.expansionPanel}
                 >
                   <AccordionSummary

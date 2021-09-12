@@ -1,13 +1,19 @@
 import "slick-carousel/slick/slick.css";
 
-import { IconButton, makeStyles, useTheme } from "@material-ui/core";
+import {
+  IconButton,
+  Theme,
+  createStyles,
+  makeStyles,
+  useTheme,
+} from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React from "react";
 import { isMobile } from "react-device-detect";
-import Slider from "react-slick";
+import Slider, { Settings as SlickSettings } from "react-slick";
 
-const useStyles = makeStyles((theme) => {
-  return {
+const useStyles = makeStyles((theme: Theme) => {
+  return createStyles({
     root: {
       position: "relative",
       width: "100%",
@@ -73,7 +79,7 @@ const useStyles = makeStyles((theme) => {
     },
     prevNextButton: {
       position: "absolute",
-      zIndex: "1",
+      zindex: "1",
       top: "0",
       height: "100%",
       padding: theme.spacing(2),
@@ -107,10 +113,15 @@ const useStyles = makeStyles((theme) => {
         transform: "rotate(180deg)",
       },
     },
-  };
+  });
 });
 
-const PrevNextButton = (props) => {
+type IPrevNextButton = {
+  direction: string;
+  onClick?: () => unknown;
+};
+
+const PrevNextButton: React.FC<IPrevNextButton> = (props) => {
   const { direction, onClick } = props;
   const classes = useStyles();
   return (
@@ -128,22 +139,25 @@ const PrevNextButton = (props) => {
   );
 };
 
+type ICarousel = {
+  slides: Array<JSX.Element>;
+  settings?: SlickSettings;
+};
 // slides = array of display items e.g. img div
-const Carousel = (props) => {
+const Carousel: React.FC<ICarousel> = (props) => {
   const { slides, settings } = props;
   const theme = useTheme();
   const classes = useStyles();
 
-  const defaults = {
+  const defaults: SlickSettings = {
     dots: true,
     lazyLoad: "progressive",
     adaptiveHeight: true,
     prevArrow: <PrevNextButton direction="prev" />,
     nextArrow: <PrevNextButton direction="next" />,
-    mobileFirst: true,
   };
 
-  const config = {
+  const config: SlickSettings = {
     ...defaults,
     ...settings,
   };

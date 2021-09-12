@@ -14,15 +14,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const About = (props) => {
+const About: React.FC = () => {
   const classes = useStyles();
 
-  const data = {
-    brand: "Andrew Newstead",
-  };
+  // const data = {
+  //   brand: "Andrew Newstead",
+  // };
 
   return (
-    <PageLayout headerNav="detail" data={data}>
+    <PageLayout headerNavType="detail">
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">

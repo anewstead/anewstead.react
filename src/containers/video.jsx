@@ -4,6 +4,9 @@ import parse from "html-react-parser";
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { IRootState } from "../lib/store";
+import { IMainData } from "../lib/store.types";
+
 const useStyles = makeStyles((theme) => {
   return {
     root: {
@@ -19,12 +22,16 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Video = (props) => {
+type IVideo = {
+  data: IMainData;
+};
+
+const Video: React.FC<IVideo> = (props) => {
   const { data } = props;
 
   const classes = useStyles();
 
-  const baseContentURL = useSelector((state) => {
+  const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
@@ -38,8 +45,6 @@ const Video = (props) => {
     <Container className={classes.root} style={{ maxWidth: data.view.width }}>
       <video
         className={classes.reactPlayer}
-        src={videoURL}
-        type="video/mp4"
         width="100%"
         height="auto"
         poster={posterURL}
@@ -47,7 +52,9 @@ const Video = (props) => {
         preload="none"
         controlsList="nodownload"
         disablePictureInPicture
-      />
+      >
+        <source src={videoURL} type="video/mp4" />
+      </video>
       <Paper className={classes.info}>
         <Typography
           variant="body2"

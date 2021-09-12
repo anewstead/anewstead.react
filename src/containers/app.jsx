@@ -5,25 +5,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import Routes from "../lib/routes";
-import { FETCH_MAIN_DATA } from "../lib/store";
+import { FETCH_MAIN_DATA, IRootState } from "../lib/store";
 import themes from "../lib/themes";
 
-const App = () => {
+const App: React.FC = () => {
   const dispatch = useDispatch();
 
-  const theme = useSelector((state) => {
+  const theme = useSelector((state: IRootState) => {
     return state.app.theme;
   });
 
-  const baseContentURL = useSelector((state) => {
+  const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
-  const mainData = useSelector((state) => {
+  const mainData = useSelector((state: IRootState) => {
     return state.app.mainData;
   });
 
-  const feedback = (msg) => {
+  const mainDataLoadFail = useSelector((state: IRootState) => {
+    return state.app.mainDataLoadFail;
+  });
+
+  const feedback = (msg: JSX.Element) => {
     return (
       <Grid
         container
@@ -38,7 +42,7 @@ const App = () => {
 
   let display = feedback(<CircularProgress />);
 
-  if (mainData === "rejected") {
+  if (mainDataLoadFail) {
     display = feedback(
       <h3>
         Failed to load site data{" "}

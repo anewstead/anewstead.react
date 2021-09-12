@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import PageLayout from "../containers/page-layout";
+import { IRootState } from "../lib/store";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -30,14 +31,14 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Home = (props) => {
+const Home: React.FC = () => {
   const classes = useStyles();
 
-  const displayThumbs = useSelector((state) => {
+  const displayThumbs = useSelector((state: IRootState) => {
     return state.app.displayThumbs;
   });
 
-  const baseContentURL = useSelector((state) => {
+  const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
@@ -45,7 +46,7 @@ const Home = (props) => {
 
   if (displayThumbs) {
     if (displayThumbs.length) {
-      content = displayThumbs.map((obj, i) => {
+      const thumbs = displayThumbs.map((obj, i) => {
         const url = `${baseContentURL}/img/thumbs/${obj.thumb}`;
         const alt = `${obj.client} - ${obj.brand} - ${obj.project}`;
         return (
@@ -62,6 +63,7 @@ const Home = (props) => {
           </Grid>
         );
       });
+      content = <>{thumbs}</>;
     } else {
       content = <Card className={classes.info}>Please make a selection</Card>;
     }

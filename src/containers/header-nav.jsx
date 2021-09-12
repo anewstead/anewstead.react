@@ -4,19 +4,24 @@ import { useHistory } from "react-router-dom";
 
 import HeaderNavDetail from "../components/header-nav-detail";
 import HeaderNavThumbs from "../components/header-nav-thumbs";
-import { NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "../lib/store";
+import { IRootState, NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "../lib/store";
 
-const HeaderNav = (props) => {
+export type IHeaderNav = {
+  navType: "thumbs" | "detail";
+  titleText?: string;
+  subtitleText?: string;
+};
+const HeaderNav: React.FC<IHeaderNav> = (props) => {
   const { navType, titleText, subtitleText } = props;
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const navBrand = useSelector((state) => {
+  const navBrand = useSelector((state: IRootState) => {
     return state.app.nav.brand;
   });
 
-  const navCheckboxes = useSelector((state) => {
+  const navCheckboxes = useSelector((state: IRootState) => {
     return state.app.nav.checkboxes;
   });
 
@@ -24,7 +29,7 @@ const HeaderNav = (props) => {
     history.push("/");
   };
 
-  const brandClick = (e) => {
+  const brandClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     history.push("/about");
   };
@@ -33,8 +38,11 @@ const HeaderNav = (props) => {
     dispatch(TOGGLE_THEME());
   };
 
-  const checkboxChange = (e) => {
-    const payload = { id: e.target.id, checked: e.target.checked };
+  const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const payload = {
+      id: e.currentTarget.id,
+      checked: e.currentTarget.checked,
+    };
     dispatch(NAV_CHECKBOX_CHANGE(payload));
   };
 
@@ -55,7 +63,6 @@ const HeaderNav = (props) => {
     default:
       nav = (
         <HeaderNavDetail
-          brandName={navBrand}
           onBackClick={backClick}
           onThemeClick={themeClick}
           titleText={titleText}

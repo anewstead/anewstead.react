@@ -5,6 +5,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Carousel from "../components/carousel";
+import { IRootState } from "../lib/store";
+import { IMainData } from "../lib/store.types";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -18,12 +20,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Gallery = (props) => {
+type IGallery = {
+  data: IMainData;
+};
+const Gallery: React.FC<IGallery> = (props) => {
   const { data } = props;
 
   const classes = useStyles();
 
-  const baseContentURL = useSelector((state) => {
+  const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 

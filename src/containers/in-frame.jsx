@@ -1,9 +1,14 @@
 import { Container, Paper, Typography, makeStyles } from "@material-ui/core";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { detectAnyAdblocker } from "just-detect-adblock";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
+import { IRootState } from "../lib/store";
+import { IMainData } from "../lib/store.types";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -26,12 +31,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const InFrame = (props) => {
+type IInFrame = {
+  data: IMainData;
+};
+const InFrame: React.FC<IInFrame> = (props) => {
   const { data } = props;
 
   const classes = useStyles();
 
-  const baseContentURL = useSelector((state) => {
+  const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
@@ -42,10 +50,10 @@ const InFrame = (props) => {
   // safelySetInnerHTML :)
   const info = parse(DOMPurify.sanitize(data.info));
 
-  const [adBlocked, setAdBlocked] = useState(0);
+  const [adBlocked, setAdBlocked] = useState(false);
 
   useEffect(() => {
-    detectAnyAdblocker().then((detected) => {
+    detectAnyAdblocker().then((detected: boolean) => {
       setAdBlocked(detected);
     });
   }, []);
