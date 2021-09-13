@@ -24,7 +24,7 @@ import useStyles from "./HeaderNavThumbs.style";
 
 type IHeaderNavThumbs = {
   brandName: string;
-  checkboxData: Array<ICheckbox>;
+  checkboxData: ICheckbox[];
   onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onThemeClick: () => void;
   onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

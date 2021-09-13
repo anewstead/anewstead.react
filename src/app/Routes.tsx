@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
             return Number(obj.id) === Number(routeProps.match.params.id);
           });
           const content = data ? (
-            <Project projectData={data} routeProps={routeProps} />
+            <Project data={data} routeProps={routeProps} />
           ) : (
             <NoMatch {...routeProps} />
           );

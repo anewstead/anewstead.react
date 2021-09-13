@@ -31,7 +31,7 @@ const PrevNextButton: React.FC<IPrevNextButton> = (props) => {
 };
 
 type ICarousel = {
-  slides: Array<JSX.Element>;
+  slides: JSX.Element[];
   settings?: SlickSettings;
 };
 

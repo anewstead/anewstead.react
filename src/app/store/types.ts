@@ -39,19 +39,19 @@ export type IMainData = {
     href: string;
     poster: string;
     still: string;
-    stills: Array<string>;
+    stills: string[];
   };
   info: string;
 };
 
 export type IState = {
   baseContentURL: string;
-  mainData: Array<IMainData>;
+  mainData: IMainData[];
   mainDataLoadFail: boolean;
-  displayThumbs: Array<IThumb>;
+  displayThumbs: IThumb[];
   theme: string;
   nav: {
     brand: string;
-    checkboxes: Array<ICheckbox>;
+    checkboxes: ICheckbox[];
   };
 };

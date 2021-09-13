@@ -1,13 +1,13 @@
-import { Container, Paper, Typography } from "@material-ui/core";
-import DOMPurify from "dompurify";
-import parse from "html-react-parser";
+import { Paper } from "@material-ui/core";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { detectAnyAdblocker } from "just-detect-adblock";
+// end eslint-disable
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { IMainData, IRootState } from "../../app/store/types";
+import TextBlock from "../../components/text-block";
 import useStyles from "./InFrame.style";
 
 type IInFrame = {
@@ -26,9 +26,6 @@ const InFrame: React.FC<IInFrame> = (props) => {
   const stillURL = `${baseContentURL}${data.view.still}`;
   const alt = `${data.brand} ${data.project}`;
 
-  // safelySetInnerHTML :)
-  const info = parse(DOMPurify.sanitize(data.info));
-
   const [adBlocked, setAdBlocked] = useState(false);
 
   useEffect(() => {
@@ -37,8 +34,10 @@ const InFrame: React.FC<IInFrame> = (props) => {
     });
   }, []);
 
-  // actual content
-  let content = (
+  const adBlockMsg =
+    "Ad Blocker Detected, you will need to pause it to view full content";
+
+  const iframe = (
     <iframe
       title={alt}
       src={iframeURL}
@@ -48,53 +47,18 @@ const InFrame: React.FC<IInFrame> = (props) => {
     />
   );
 
-  // failover content
-  if (data.type === "banner" && adBlocked) {
-    content = (
-      <>
-        <Paper
-          className={classes.info}
-          style={{
-            width: `${data.view.width}px`,
-          }}
-        >
-          <Typography variant="body2" gutterBottom component="div">
-            Ad Blocker Detected, you will need to pause it to view full content
-          </Typography>
-        </Paper>
-        <Paper
-          style={{
-            width: `${data.view.width}px`,
-            height: `${data.view.height}px`,
-          }}
-          className={classes.still}
-        >
-          <img src={stillURL} alt={alt} />
-        </Paper>
-      </>
-    );
-  }
-
-  return (
-    <Container className={classes.root} style={{ width: data.view.width }}>
-      {content}
-      <Paper
-        className={classes.info}
-        style={{
-          width: `${data.view.width}px`,
-        }}
-      >
-        <Typography
-          variant="body2"
-          gutterBottom
-          component="div"
-          align="justify"
-        >
-          {info}
-        </Typography>
+  const failover = (
+    <>
+      <TextBlock htmlText={adBlockMsg} />
+      <Paper className={classes.still}>
+        <img src={stillURL} alt={alt} />
       </Paper>
-    </Container>
+    </>
   );
+
+  const content = data.type === "banner" && adBlocked ? failover : iframe;
+
+  return <>{content}</>;
 };
 
 export default InFrame;

@@ -1,14 +1,20 @@
 import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
+import { useSelector } from "react-redux";
 
+import { IRootState } from "../../app/store/types";
 import PageLayout from "../../containers/page-layout";
 import useStyles from "./About.style";
 
 const About: React.FC = () => {
   const classes = useStyles();
 
+  const brand = useSelector((state: IRootState) => {
+    return state.app.nav.brand;
+  });
+
   return (
-    <PageLayout headerNavType="detail">
+    <PageLayout headerNavType="detail" headerNavTitle={brand.toUpperCase()}>
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">
@@ -28,10 +34,9 @@ const About: React.FC = () => {
               hands-on input as a senior team member.
             </p>
             <p>
-              This site was written in TypeScript, React and Redux (hooks) as a
-              single page application. It also makes use of Material-UI
-              components although typically commercial work is hand-crafted and
-              bespoke built from scratch. <br />
+              This site was written in TypeScript (JavaScript), React and Redux
+              (hooks) as a single page application, using Material-UI
+              components. <br />
               You are welcome to view the source code at this{" "}
               <a
                 href="https://github.com/anewstead/anewstead.cra-mui"
