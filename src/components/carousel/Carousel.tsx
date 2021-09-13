@@ -9,7 +9,7 @@ import useStyles from "./Carousel.style";
 
 type IPrevNextButton = {
   direction: string;
-  onClick?: () => unknown;
+  onClick?: () => void;
 };
 
 const PrevNextButton: React.FC<IPrevNextButton> = (props) => {

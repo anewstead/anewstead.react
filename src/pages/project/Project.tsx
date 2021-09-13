@@ -5,9 +5,9 @@ import { RouteComponentProps } from "react-router-dom";
 
 import { IMainData, IRootState } from "../../app/store/types";
 import Carousel from "../../components/carousel";
+import InFrame from "../../components/in-frame";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import InFrame from "../../containers/in-frame";
 import PageLayout from "../../containers/page-layout";
 import NoMatch from "../no-match/NoMatch";
 import useStyles from "./Project.style";
@@ -56,9 +56,25 @@ const Project: React.FC<IProject> = (props) => {
       break;
     }
 
-    case "iframe":
-      content = <InFrame data={data} />;
+    case "iframe": {
+      const width = data.view.width;
+      const height = data.view.height;
+      const iframeURL = `${baseContentURL}${data.view.href}`;
+      const failOverImageURL = `${baseContentURL}${data.view.still}`;
+      const title = `${data.brand} ${data.project}`;
+      const checkAdBlock = data.type === "banner";
+      content = (
+        <InFrame
+          title={title}
+          width={width}
+          height={height}
+          iframeURL={iframeURL}
+          failOverImageURL={failOverImageURL}
+          checkAdBlock={checkAdBlock}
+        />
+      );
       break;
+    }
 
     default:
       return <NoMatch {...routeProps} />;
