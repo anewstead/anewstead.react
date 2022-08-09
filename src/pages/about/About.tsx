@@ -1,4 +1,4 @@
-import { Container, Paper, Typography } from "@material-ui/core";
+import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -7,7 +7,7 @@ import PageLayout from "../../containers/page-layout";
 import useStyles from "./About.style";
 
 const About: React.FC = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const brand = useSelector((state: IRootState) => {
     return state.app.nav.brand;

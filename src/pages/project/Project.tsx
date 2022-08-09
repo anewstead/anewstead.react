@@ -1,4 +1,4 @@
-import { Container } from "@material-ui/core";
+import { Container } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
@@ -19,7 +19,7 @@ type IProject = {
 const Project: React.FC<IProject> = (props) => {
   const { data, routeProps } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const baseContentURL = useSelector((state: IRootState) => {
     return state.app.baseContentURL;

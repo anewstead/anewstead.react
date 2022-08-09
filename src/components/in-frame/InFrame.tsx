@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { Paper } from "@mui/material";
 import { detectAnyAdblocker } from "just-detect-adblock";
 import React, { useEffect, useState } from "react";
 
@@ -18,7 +18,7 @@ const InFrame: React.FC<IInFrame> = (props) => {
   const { title, width, height, iframeURL, failOverImageURL, checkAdBlock } =
     props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [adBlocked, setAdBlocked] = useState(false);
 

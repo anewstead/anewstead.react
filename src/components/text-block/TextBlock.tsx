@@ -1,4 +1,4 @@
-import { Paper, Typography } from "@material-ui/core";
+import { Paper, Typography } from "@mui/material";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import React from "react";
@@ -11,7 +11,7 @@ type ITextBlock = {
 const TextBlock: React.FC<ITextBlock> = (props) => {
   const { htmlText } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   // safelySetInnerHTML :)
   const html = parse(DOMPurify.sanitize(htmlText));

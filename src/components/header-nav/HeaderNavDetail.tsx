@@ -1,3 +1,5 @@
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import {
   AppBar,
   Grid,
@@ -5,10 +7,8 @@ import {
   Toolbar,
   Typography,
   useMediaQuery,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
-import HomeIcon from "@material-ui/icons/Home";
-import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import React from "react";
 
 import useStyles from "./HeaderNavDetail.style";
@@ -23,18 +23,23 @@ type IHeaderNavDetail = {
 const HeaderNavDetail: React.FC<IHeaderNavDetail> = (props) => {
   const { onThemeClick, onBackClick, titleText, subtitleText } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
-  const isXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
   const backButton = (
-    <IconButton edge="end" aria-label="back" onClick={onBackClick}>
+    <IconButton edge="end" aria-label="back" onClick={onBackClick} size="large">
       <HomeIcon fontSize="large" />
     </IconButton>
   );
 
   const toggleButton = (
-    <IconButton edge="start" aria-label="theme" onClick={onThemeClick}>
+    <IconButton
+      edge="start"
+      aria-label="theme"
+      onClick={onThemeClick}
+      size="large"
+    >
       <SettingsBrightnessIcon fontSize="large" />
     </IconButton>
   );

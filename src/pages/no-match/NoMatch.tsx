@@ -1,4 +1,4 @@
-import { Button, Container, Paper, Typography } from "@material-ui/core";
+import { Button, Container, Paper, Typography } from "@mui/material";
 import React from "react";
 import { RouteComponentProps, Link as RouterLink } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import useStyles from "./NoMatch.style";
 type INoMatch = RouteComponentProps;
 
 const NoMatch: React.FC<INoMatch> = (props) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Container className={classes.root}>

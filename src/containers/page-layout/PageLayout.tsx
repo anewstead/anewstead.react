@@ -1,4 +1,4 @@
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -16,7 +16,7 @@ type IPageLayout = {
 const PageLayout: React.FC<IPageLayout> = (props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const navBrand = useSelector((state: IRootState) => {
     return state.app.nav.brand;

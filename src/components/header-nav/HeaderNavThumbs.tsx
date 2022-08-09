@@ -1,3 +1,5 @@
+import MenuIcon from "@mui/icons-material/Menu";
+import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import {
   Accordion,
   AccordionDetails,
@@ -13,10 +15,8 @@ import {
   Toolbar,
   Typography,
   useMediaQuery,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import SettingsBrightnessIcon from "@material-ui/icons/SettingsBrightness";
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import React, { useState } from "react";
 
 import { ICheckbox } from "../../app/store/types";
@@ -39,7 +39,7 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
     onCheckboxChange,
   } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -73,13 +73,23 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
   );
 
   const menuButton = (
-    <IconButton edge="start" className={classes.menuButton} aria-label="menu">
+    <IconButton
+      edge="start"
+      className={classes.menuButton}
+      aria-label="menu"
+      size="large"
+    >
       <MenuIcon fontSize="large" />
     </IconButton>
   );
 
   const toggleButton = (
-    <IconButton edge="start" aria-label="theme" onClick={onThemeClick}>
+    <IconButton
+      edge="start"
+      aria-label="theme"
+      onClick={onThemeClick}
+      size="large"
+    >
       <SettingsBrightnessIcon fontSize="large" />
     </IconButton>
   );
@@ -139,7 +149,7 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
               </Grid>
             </Hidden>
 
-            <Hidden xsDown>
+            <Hidden smDown>
               <Grid item sm={3} md className={classes.gridBrand}>
                 {brand}
               </Grid>
