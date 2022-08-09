@@ -1,5 +1,5 @@
-import { CircularProgress, CssBaseline, Grid } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { CircularProgress, CssBaseline, Grid } from "@mui/material";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -62,10 +62,12 @@ const App: React.FC = () => {
   }, [dispatch, baseContentURL]);
 
   return (
-    <ThemeProvider theme={themes[theme]}>
-      <CssBaseline />
-      <BrowserRouter>{display}</BrowserRouter>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themes[theme]}>
+        <CssBaseline />
+        <BrowserRouter>{display}</BrowserRouter>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

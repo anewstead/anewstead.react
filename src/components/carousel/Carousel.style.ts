@@ -1,10 +1,11 @@
 import "slick-carousel/slick/slick.css";
 
-import { Theme, createStyles, makeStyles } from "@material-ui/core";
+import { Theme } from "@mui/material";
 import { isMobile } from "react-device-detect";
+import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles((theme: Theme) => {
-  return createStyles({
+const useStyles = makeStyles()((theme: Theme) => {
+  return {
     root: {
       position: "relative",
       width: "100%",
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     prevNextButton: {
       position: "absolute",
-      zindex: "1",
+      zIndex: "1",
       top: "0",
       height: "100%",
       padding: theme.spacing(2),
@@ -79,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => {
       "&:hover, &:focus-within": {
         opacity: `${isMobile ? "0" : "1"}`,
       },
-      "& div:first-child": {
+      "& div:first-of-type": {
         position: "absolute",
         backgroundColor: theme.palette.background.default,
         top: "0",
@@ -104,7 +105,7 @@ const useStyles = makeStyles((theme: Theme) => {
         transform: "rotate(180deg)",
       },
     },
-  });
+  };
 });
 
 export default useStyles;

@@ -10,7 +10,7 @@ type IVideo = {
 const Video: React.FC<IVideo> = (props) => {
   const { videoURL, posterURL } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <>

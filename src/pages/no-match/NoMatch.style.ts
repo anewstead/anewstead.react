@@ -1,6 +1,7 @@
-import { makeStyles } from "@material-ui/core";
+import { Theme } from "@mui/material";
+import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles((theme) => {
+const useStyles = makeStyles()((theme: Theme) => {
   return {
     root: {
       marginTop: theme.spacing(4),

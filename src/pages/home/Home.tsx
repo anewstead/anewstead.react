@@ -1,4 +1,4 @@
-import { Button, Card, Container, Grid } from "@material-ui/core";
+import { Button, Card, Container, Grid } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
@@ -8,7 +8,7 @@ import PageLayout from "../../containers/page-layout";
 import useStyles from "./Home.style";
 
 const Home: React.FC = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const displayThumbs = useSelector((state: IRootState) => {
     return state.app.displayThumbs;

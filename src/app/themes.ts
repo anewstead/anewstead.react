@@ -1,9 +1,6 @@
-import { blueGrey, grey } from "@material-ui/core/colors";
-import {
-  Theme,
-  createTheme,
-  responsiveFontSizes,
-} from "@material-ui/core/styles";
+import { blueGrey, grey } from "@mui/material/colors";
+import { Theme, createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { deepmerge } from "@mui/utils";
 
 // remember preference for next time user visits
 const storeColorTheme = (themeName: string) => {
@@ -34,27 +31,28 @@ export const toggleColorTheme = (): string => {
 
 const globalOverrides = (theme: Theme) => {
   return {
-    MuiCssBaseline: {
-      "@global": {
-        html: {
-          height: "100%",
-          fontSmoothing: "auto",
-          fontSize: 16,
-          [theme.breakpoints.up("sm")]: {
-            fontSize: 18,
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          html: {
+            height: "100%",
+            fontSize: 16,
+            [theme.breakpoints.up("sm")]: {
+              fontSize: 18,
+            },
           },
-        },
-        body: {
-          height: "100%",
-        },
-        "#root": {
-          height: "100%",
-        },
-        img: {
-          display: "block",
-        },
-        a: {
-          color: "inherit",
+          body: {
+            height: "100%",
+          },
+          "#root": {
+            height: "100%",
+          },
+          img: {
+            display: "block",
+          },
+          a: {
+            color: "inherit",
+          },
         },
       },
     },
@@ -66,34 +64,34 @@ type IThemes = Record<string, Theme> & {
   dark: Theme;
 };
 
-const themes: IThemes = {
-  light: responsiveFontSizes(
-    createTheme({
-      palette: {
-        type: "light",
-        background: {
-          paper: blueGrey[50],
-          default: grey[300],
-        },
+const lightTheme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      mode: "light",
+      background: {
+        paper: blueGrey[50],
+        default: grey[300],
       },
-    }),
-    { breakpoints: ["xs", "sm"] }
-  ),
-  dark: responsiveFontSizes(
-    createTheme({
-      palette: {
-        type: "dark",
-        background: {
-          paper: blueGrey[800],
-          default: grey[800],
-        },
+    },
+  }),
+  { breakpoints: ["xs", "sm"] }
+);
+const darkTheme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      mode: "dark",
+      background: {
+        paper: blueGrey[800],
+        default: grey[800],
       },
-    }),
-    { breakpoints: ["xs", "sm"], factor: 2 }
-  ),
-};
+    },
+  }),
+  { breakpoints: ["xs", "sm"], factor: 2 }
+);
 
-themes.light.overrides = globalOverrides(themes.light);
-themes.dark.overrides = globalOverrides(themes.dark);
+const light = deepmerge(lightTheme, globalOverrides(lightTheme));
+const dark = deepmerge(darkTheme, globalOverrides(darkTheme));
+
+const themes: IThemes = { light, dark };
 
 export default themes;
