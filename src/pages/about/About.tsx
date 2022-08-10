@@ -1,7 +1,7 @@
 import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 
+import { useAppSelector } from "../../app/store";
 import { IRootState } from "../../app/store/types";
 import PageLayout from "../../containers/page-layout";
 import useStyles from "./About.style";
@@ -9,7 +9,7 @@ import useStyles from "./About.style";
 const About: React.FC = () => {
   const { classes } = useStyles();
 
-  const brand = useSelector((state: IRootState) => {
+  const brand = useAppSelector((state: IRootState) => {
     return state.app.nav.brand;
   });
 

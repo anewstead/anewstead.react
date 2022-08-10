@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { IMainData, IRootState } from "../../app/store/types";
+import { useAppSelector } from "../../app/store";
+import { IRootState } from "../../app/store/types";
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
 import TextBlock from "../../components/text-block";
@@ -12,18 +12,28 @@ import PageLayout from "../../containers/page-layout";
 import NoMatch from "../no-match/NoMatch";
 import useStyles from "./Project.style";
 
-type IProject = {
-  data: IMainData;
-  routeProps: RouteComponentProps;
-};
-const Project: React.FC<IProject> = (props) => {
-  const { data, routeProps } = props;
+const Project: React.FC = () => {
+  const { id } = useParams();
+
+  // const data: IMainData = params.data;
 
   const { classes } = useStyles();
 
-  const baseContentURL = useSelector((state: IRootState) => {
+  const baseContentURL = useAppSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
+
+  const mainData = useAppSelector((state: IRootState) => {
+    return state.app.mainData;
+  });
+
+  const data = mainData.find((obj) => {
+    return Number(obj.id) === Number(id);
+  });
+
+  if (!data) {
+    return <NoMatch />;
+  }
 
   const titleText = data.client;
 
@@ -77,7 +87,7 @@ const Project: React.FC<IProject> = (props) => {
     }
 
     default:
-      return <NoMatch {...routeProps} />;
+      return <NoMatch />;
   }
 
   return (

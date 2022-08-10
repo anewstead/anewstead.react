@@ -1,8 +1,8 @@
 import { Button, Card, Container, Grid } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
+import { useAppSelector } from "../../app/store";
 import { IRootState } from "../../app/store/types";
 import PageLayout from "../../containers/page-layout";
 import useStyles from "./Home.style";
@@ -10,11 +10,11 @@ import useStyles from "./Home.style";
 const Home: React.FC = () => {
   const { classes } = useStyles();
 
-  const displayThumbs = useSelector((state: IRootState) => {
+  const displayThumbs = useAppSelector((state: IRootState) => {
     return state.app.displayThumbs;
   });
 
-  const baseContentURL = useSelector((state: IRootState) => {
+  const baseContentURL = useAppSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
