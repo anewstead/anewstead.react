@@ -4,6 +4,7 @@ module.exports = {
   plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
   extends: [
     "react-app",
+    "react-app/jest",
     "airbnb-typescript",
     "airbnb/hooks",
     "eslint:recommended",
