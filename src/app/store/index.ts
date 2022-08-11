@@ -3,10 +3,16 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import { toggleColorTheme } from "../themes";
 import { thumbHelper } from "./helpers";
 import initialState from "./initialState";
+import type { IAppDispatch, IRootState } from "./types";
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch: () => IAppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector;
 
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "fetchJsonData",

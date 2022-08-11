@@ -1,8 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { NAV_CHECKBOX_CHANGE, TOGGLE_THEME } from "../../app/store";
+import {
+  NAV_CHECKBOX_CHANGE,
+  TOGGLE_THEME,
+  useAppDispatch,
+  useAppSelector,
+} from "../../app/store";
 import { IRootState } from "../../app/store/types";
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
@@ -15,24 +19,24 @@ export type IHeaderNav = {
 const HeaderNav: React.FC<IHeaderNav> = (props) => {
   const { navType, titleText, subtitleText } = props;
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const navBrand = useSelector((state: IRootState) => {
+  const navBrand = useAppSelector((state: IRootState) => {
     return state.app.nav.brand;
   });
 
-  const navCheckboxes = useSelector((state: IRootState) => {
+  const navCheckboxes = useAppSelector((state: IRootState) => {
     return state.app.nav.checkboxes;
   });
 
   const backClick = () => {
-    history.push("/");
+    navigate("/");
   };
 
   const brandClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    history.push("/about");
+    navigate("/about");
   };
 
   const themeClick = () => {

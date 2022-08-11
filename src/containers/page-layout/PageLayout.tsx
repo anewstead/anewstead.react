@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 
+import { useAppSelector } from "../../app/store";
 import { IRootState } from "../../app/store/types";
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
@@ -11,6 +11,7 @@ type IPageLayout = {
   headerNavType: "thumbs" | "detail";
   headerNavTitle?: string;
   headerNavSubtitle?: string;
+  children?: React.ReactNode;
 };
 
 const PageLayout: React.FC<IPageLayout> = (props) => {
@@ -18,7 +19,7 @@ const PageLayout: React.FC<IPageLayout> = (props) => {
 
   const { classes } = useStyles();
 
-  const navBrand = useSelector((state: IRootState) => {
+  const navBrand = useAppSelector((state: IRootState) => {
     return state.app.nav.brand;
   });
 

@@ -1,30 +1,29 @@
 import { CircularProgress, CssBaseline, Grid } from "@mui/material";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import Routes from "./Routes";
-import { FETCH_MAIN_DATA } from "./store";
+import AppRoutes from "./Routes";
+import { FETCH_MAIN_DATA, useAppDispatch, useAppSelector } from "./store";
 import { IRootState } from "./store/types";
 import themes from "./themes";
 
 const App: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const theme = useSelector((state: IRootState) => {
+  const theme = useAppSelector((state: IRootState) => {
     return state.app.theme;
   });
 
-  const baseContentURL = useSelector((state: IRootState) => {
+  const baseContentURL = useAppSelector((state: IRootState) => {
     return state.app.baseContentURL;
   });
 
-  const mainData = useSelector((state: IRootState) => {
+  const mainData = useAppSelector((state: IRootState) => {
     return state.app.mainData;
   });
 
-  const mainDataLoadFail = useSelector((state: IRootState) => {
+  const mainDataLoadFail = useAppSelector((state: IRootState) => {
     return state.app.mainDataLoadFail;
   });
 
@@ -53,7 +52,7 @@ const App: React.FC = () => {
       </h3>
     );
   } else if (mainData) {
-    display = <Routes />;
+    display = <AppRoutes />;
   }
 
   useEffect(() => {
