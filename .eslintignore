@@ -1,9 +1,10 @@
-node_modules
+**/node_modules
+**/vendor
+**/polyfils
 dist
 build
 storybook-static
 coverage
 package.json
 package-lock.json
-**/vendor
-**/polyfils
+
