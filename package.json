@@ -70,8 +70,8 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-    "npm": ">=6",
-    "node": ">=12"
+    "npm": ">=8",
+    "node": ">=16"
   },
   "browserslist": [
     ">0.2%",
