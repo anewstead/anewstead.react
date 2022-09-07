@@ -1,10 +1,10 @@
-import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
+import { Container, Paper, Typography } from "@mui/material";
 
-import { useAppSelector } from "../../app/store";
-import { IRootState } from "../../app/store/types";
 import PageLayout from "../../containers/page-layout";
 import useStyles from "./About.style";
+import { IRootState } from "../../app/store/types";
+import { useAppSelector } from "../../app/store";
 
 const About: React.FC = () => {
   const { classes } = useStyles();

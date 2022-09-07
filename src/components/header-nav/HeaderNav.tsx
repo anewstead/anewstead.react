@@ -1,15 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import HeaderNavDetail from "./HeaderNavDetail";
+import HeaderNavThumbs from "./HeaderNavThumbs";
+import { IRootState } from "../../app/store/types";
 import {
   NAV_CHECKBOX_CHANGE,
   TOGGLE_THEME,
   useAppDispatch,
   useAppSelector,
 } from "../../app/store";
-import { IRootState } from "../../app/store/types";
-import HeaderNavDetail from "./HeaderNavDetail";
-import HeaderNavThumbs from "./HeaderNavThumbs";
 
 export type IHeaderNav = {
   navType: "thumbs" | "detail";

@@ -1,5 +1,6 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+import React, { useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -17,10 +18,9 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { useState } from "react";
 
-import { ICheckbox } from "../../app/store/types";
 import useStyles from "./HeaderNavThumbs.style";
+import { ICheckbox } from "../../app/store/types";
 
 type IHeaderNavThumbs = {
   brandName: string;
@@ -43,10 +43,10 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const checkboxes = checkboxData.map((cb, i) => {
+  const checkboxes = checkboxData.map((cb) => {
     return (
       <FormControlLabel
-        key={`cb${i}`}
+        key={`cb${cb.id}`}
         label={cb.label}
         control={
           <Checkbox

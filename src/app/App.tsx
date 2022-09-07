@@ -1,12 +1,15 @@
-import { CircularProgress, CssBaseline, Grid } from "@mui/material";
-import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+// global css import
+import "slick-carousel/slick/slick.css";
+
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { CircularProgress, CssBaseline, Grid } from "@mui/material";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 
 import AppRoutes from "./Routes";
+import themes from "./themes";
 import { FETCH_MAIN_DATA, useAppDispatch, useAppSelector } from "./store";
 import { IRootState } from "./store/types";
-import themes from "./themes";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();

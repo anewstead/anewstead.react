@@ -1,11 +1,11 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
+import { createRoot } from "react-dom/client";
 
-import App from "./app";
-import store from "./app/store";
-import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
+import App from "./app";
+import reportWebVitals from "./reportWebVitals";
+import store from "./app/store";
 
 const container = document.getElementById("root");
 /* eslint-disable-next-line  @typescript-eslint/no-non-null-assertion */

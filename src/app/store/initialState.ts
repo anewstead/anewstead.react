@@ -1,5 +1,5 @@
+import type { IState } from "./types";
 import { detectColorTheme } from "../themes";
-import { IState } from "./types";
 
 const initialState: IState = {
   baseContentURL: "https://anewstead-content.netlify.app/",

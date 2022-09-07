@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
 import { detectAnyAdblocker } from "just-detect-adblock";
-import React, { useEffect, useState } from "react";
 
 import TextBlock from "../text-block";
 import useStyles from "./InFrame.style";

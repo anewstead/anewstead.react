@@ -26,6 +26,9 @@
     "@mui/material": "^5.10.4",
     "@mui/utils": "^5.10.3",
     "@reduxjs/toolkit": "^1.8.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/dompurify": "^2.3.4",
     "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.184",
@@ -53,9 +56,6 @@
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
@@ -95,7 +95,7 @@
   ],
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
-      "style": "module",
+      "style": "renke",
       "parser": "typescript"
     }
   }

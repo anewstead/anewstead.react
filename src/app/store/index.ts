@@ -1,14 +1,15 @@
+/* eslint-disable no-param-reassign */
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
   configureStore,
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-import { toggleColorTheme } from "../themes";
-import { thumbHelper } from "./helpers";
 import initialState from "./initialState";
 import type { IAppDispatch, IRootState } from "./types";
+import { thumbHelper } from "./helpers";
+import { toggleColorTheme } from "../themes";
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch: () => IAppDispatch = useDispatch;
@@ -49,7 +50,7 @@ const slice = createSlice({
       if (!checkbox) {
         throw new Error(`store: cannot find checkbox: ${action.payload.id}`);
       } else {
-        checkbox.checked = action.payload.checked; //2 way bind
+        checkbox.checked = action.payload.checked; // 2 way bind
       }
       state.displayThumbs = thumbHelper(state.mainData, state.nav.checkboxes);
     },

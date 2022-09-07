@@ -1,16 +1,16 @@
-import { Container } from "@mui/material";
 import React from "react";
+import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-import { useAppSelector } from "../../app/store";
-import { IRootState } from "../../app/store/types";
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
+import NoMatch from "../no-match/NoMatch";
+import PageLayout from "../../containers/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import PageLayout from "../../containers/page-layout";
-import NoMatch from "../no-match/NoMatch";
 import useStyles from "./Project.style";
+import { IRootState } from "../../app/store/types";
+import { useAppSelector } from "../../app/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();
@@ -67,8 +67,8 @@ const Project: React.FC = () => {
     }
 
     case "iframe": {
-      const width = data.view.width;
-      const height = data.view.height;
+      const { width } = data.view;
+      const { height } = data.view;
       const iframeURL = `${baseContentURL}${data.view.href}`;
       const failOverImageURL = `${baseContentURL}${data.view.still}`;
       const title = `${data.brand} ${data.project}`;

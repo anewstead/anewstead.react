@@ -1,5 +1,3 @@
-import "slick-carousel/slick/slick.css";
-
 import { Theme } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import { makeStyles } from "tss-react/mui";
@@ -17,7 +15,7 @@ const useStyles = makeStyles()((theme: Theme) => {
       marginBottom: theme.spacing(4),
       "& .slick-dots": {
         position: "absolute",
-        display: "flex !important", //because slick sets block via js
+        display: "flex !important", // because slick sets block via js
         width: "100%",
         justifyContent: "center",
         listStyle: "none",
@@ -62,10 +60,10 @@ const useStyles = makeStyles()((theme: Theme) => {
       },
       "& .slick-slide": {
         "& > div > *": {
-          display: "block !important", //because slick sets inline-block via js
+          display: "block !important", // because slick sets inline-block via js
         },
         "& img": {
-          width: "100%", //make sure image scales to carousel width
+          width: "100%", // make sure image scales to carousel width
         },
       },
     },

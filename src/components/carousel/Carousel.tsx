@@ -1,9 +1,7 @@
-import "slick-carousel/slick/slick.css";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { IconButton, useTheme } from "@mui/material";
+import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import React from "react";
 import Slider, { Settings as SlickSettings } from "react-slick";
+import { Box, Button, useTheme } from "@mui/material";
 
 import useStyles from "./Carousel.style";
 
@@ -16,17 +14,17 @@ const PrevNextButton: React.FC<IPrevNextButton> = (props) => {
   const { direction, onClick } = props;
   const { classes } = useStyles();
   return (
-    <div
+    <Button
       className={`${classes.prevNextButton} ${
         direction === "prev" ? classes.prevButton : classes.nextButton
       }`}
       onClick={onClick}
+      aria-label={`${direction}`}
     >
-      <div />
-      <IconButton aria-label={`${direction}`} size="large">
-        <ArrowBackIcon fontSize="large" />
-      </IconButton>
-    </div>
+      <Box className="carousel-slidebutton-icon-wrapper">
+        <ArrowBackIosNewRoundedIcon fontSize="large" />
+      </Box>
+    </Button>
   );
 };
 
