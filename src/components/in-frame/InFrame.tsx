@@ -3,7 +3,7 @@ import { Paper } from "@mui/material";
 import { detectAnyAdblocker } from "just-detect-adblock";
 
 import TextBlock from "../text-block";
-import useStyles from "./InFrame.style";
+import useStyles from "./inFrame.style";
 
 type IInFrame = {
   title: string;

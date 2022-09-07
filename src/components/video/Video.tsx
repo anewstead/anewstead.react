@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from "react";
 
-import useStyles from "./Video.style";
+import useStyles from "./video.style";
 
 type IVideo = {
   videoURL: string;

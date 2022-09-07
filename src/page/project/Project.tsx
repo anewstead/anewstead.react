@@ -2,15 +2,15 @@ import React from "react";
 import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
+import AppLayout from "../../containers/app-layout";
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
 import NoMatch from "../no-match/NoMatch";
-import PageLayout from "../../containers/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import useStyles from "./Project.style";
-import { IRootState } from "../../app/store/types";
-import { useAppSelector } from "../../app/store";
+import useStyles from "./project.style";
+import { IRootState } from "../../app/state/types";
+import { useAppSelector } from "../../app/state/redux";
 
 const Project: React.FC = () => {
   const { id } = useParams();
@@ -91,7 +91,7 @@ const Project: React.FC = () => {
   }
 
   return (
-    <PageLayout
+    <AppLayout
       headerNavType="detail"
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
@@ -100,7 +100,7 @@ const Project: React.FC = () => {
         {content}
         <TextBlock htmlText={data.info} />
       </Container>
-    </PageLayout>
+    </AppLayout>
   );
 };
 

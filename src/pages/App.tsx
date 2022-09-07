@@ -3,20 +3,21 @@ import "slick-carousel/slick/slick.css";
 
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { CircularProgress, CssBaseline, Grid } from "@mui/material";
-import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { CircularProgress, Grid } from "@mui/material";
+import { StyledEngineProvider } from "@mui/material/styles";
 
-import AppRoutes from "./Routes";
-import themes from "./themes";
-import { FETCH_MAIN_DATA, useAppDispatch, useAppSelector } from "./store";
-import { IRootState } from "./store/types";
+import AppRoutes from "./AppRoutes";
+import ThemeWrapper from "../containers/theme-wrapper";
+import {
+  FETCH_MAIN_DATA,
+  INIT_THEME,
+  useAppDispatch,
+  useAppSelector,
+} from "../app/state/redux";
+import { IRootState } from "../app/state/types";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
-
-  const theme = useAppSelector((state: IRootState) => {
-    return state.app.theme;
-  });
 
   const baseContentURL = useAppSelector((state: IRootState) => {
     return state.app.baseContentURL;
@@ -59,16 +60,19 @@ const App: React.FC = () => {
   }
 
   useEffect(() => {
+    dispatch(INIT_THEME());
+  }, [dispatch]);
+
+  useEffect(() => {
     const url = `${baseContentURL}.netlify/functions/projects`;
     dispatch(FETCH_MAIN_DATA(url));
   }, [dispatch, baseContentURL]);
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes[theme]}>
-        <CssBaseline />
+      <ThemeWrapper>
         <BrowserRouter>{display}</BrowserRouter>
-      </ThemeProvider>
+      </ThemeWrapper>
     </StyledEngineProvider>
   );
 };

@@ -2,15 +2,15 @@ import React from "react";
 import { Button, Container, Paper, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
-import PageLayout from "../../containers/page-layout";
-import useStyles from "./NoMatch.style";
+import AppLayout from "../../containers/app-layout";
+import useStyles from "./noMatch.style";
 
 const NoMatch: React.FC = () => {
   const { classes } = useStyles();
   const location = useLocation();
 
   return (
-    <PageLayout headerNavType="detail">
+    <AppLayout headerNavType="detail">
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h3">404 - Page Not Found</Typography>
@@ -27,7 +27,7 @@ const NoMatch: React.FC = () => {
           </Button>
         </Paper>
       </Container>
-    </PageLayout>
+    </AppLayout>
   );
 };
 

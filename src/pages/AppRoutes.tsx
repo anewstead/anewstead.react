@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import About from "../pages/about";
-import Home from "../pages/home";
-import NoMatch from "../pages/no-match/NoMatch";
-import Project from "../pages/project";
+import About from "../page/about";
+import Home from "../page/home";
+import NoMatch from "../page/no-match/NoMatch";
+import Project from "../page/project";
 
 const AppRoutes: React.FC = () => {
   return (

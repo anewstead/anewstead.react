@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 
-import PageLayout from "../../containers/page-layout";
-import useStyles from "./About.style";
-import { IRootState } from "../../app/store/types";
-import { useAppSelector } from "../../app/store";
+import AppLayout from "../../containers/app-layout";
+import useStyles from "./about.style";
+import { IRootState } from "../../app/state/types";
+import { useAppSelector } from "../../app/state/redux";
 
 const About: React.FC = () => {
   const { classes } = useStyles();
@@ -14,7 +14,7 @@ const About: React.FC = () => {
   });
 
   return (
-    <PageLayout headerNavType="detail" headerNavTitle={brand.toUpperCase()}>
+    <AppLayout headerNavType="detail" headerNavTitle={brand.toUpperCase()}>
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">
@@ -24,7 +24,7 @@ const About: React.FC = () => {
           <Typography
             variant="body2"
             gutterBottom
-            component="div"
+            component={Box}
             align="justify"
           >
             <p>Frontend/UI/UX developer with over 20 years experience.</p>
@@ -50,7 +50,7 @@ const About: React.FC = () => {
           </Typography>
         </Paper>
       </Container>
-    </PageLayout>
+    </AppLayout>
   );
 };
 

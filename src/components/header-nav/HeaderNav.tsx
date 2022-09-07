@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
-import { IRootState } from "../../app/store/types";
+import { IRootState } from "../../app/state/types";
 import {
   NAV_CHECKBOX_CHANGE,
   TOGGLE_THEME,
   useAppDispatch,
   useAppSelector,
-} from "../../app/store";
+} from "../../app/state/redux";
 
 export type IHeaderNav = {
   navType: "thumbs" | "detail";

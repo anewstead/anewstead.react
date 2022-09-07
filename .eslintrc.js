@@ -29,12 +29,9 @@ module.exports = {
       "error",
       {
         // camelCase
-        "src/!(pages)/**/*.{js,ts,css,scss}": "CAMEL_CASE",
+        "src/**/*.{js,ts,css,scss}": "CAMEL_CASE",
         // PascalCase
-        "src/!(pages)/**/*.{jsx,tsx}": "PASCAL_CASE",
-        // glob for nextjs pages: kebab-case and start with '_' or '[' and end with ']'
-        "src/pages/**/*.{js,ts,jsx,tsx}":
-          "?([|_|[a-z0-9])+([a-z0-9])*(-|[a-z0-9])?(])",
+        "src/(!index)/**/*.{jsx,tsx}": "PASCAL_CASE",
       },
       { ignoreMiddleExtensions: true },
     ],

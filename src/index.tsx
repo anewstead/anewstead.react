@@ -3,12 +3,12 @@ import { Provider as ReduxProvider } from "react-redux";
 import { createRoot } from "react-dom/client";
 
 import * as serviceWorker from "./serviceWorker";
-import App from "./app";
+import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
-import store from "./app/store";
+import store from "./app/state/redux";
 
 const container = document.getElementById("root");
-/* eslint-disable-next-line  @typescript-eslint/no-non-null-assertion */
+
 const root = createRoot(container!);
 
 root.render(

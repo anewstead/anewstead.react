@@ -1,40 +1,18 @@
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import React from "react";
 import Slider, { Settings as SlickSettings } from "react-slick";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 
-import useStyles from "./Carousel.style";
-
-type IPrevNextButton = {
-  direction: string;
-  onClick?: () => void;
-};
-
-const PrevNextButton: React.FC<IPrevNextButton> = (props) => {
-  const { direction, onClick } = props;
-  const { classes } = useStyles();
-  return (
-    <Button
-      className={`${classes.prevNextButton} ${
-        direction === "prev" ? classes.prevButton : classes.nextButton
-      }`}
-      onClick={onClick}
-      aria-label={`${direction}`}
-    >
-      <Box className="carousel-slidebutton-icon-wrapper">
-        <ArrowBackIosNewRoundedIcon fontSize="large" />
-      </Box>
-    </Button>
-  );
-};
+import PrevNextButton from "./PrevNextButton";
+import useStyles from "./carousel.style";
 
 type ICarousel = {
   slides: JSX.Element[];
   settings?: SlickSettings;
 };
 
-const Carousel: React.FC<ICarousel> = (props) => {
+const Carousel = (props: ICarousel) => {
   const { slides, settings } = props;
+
   const theme = useTheme();
   const { classes } = useStyles();
 
@@ -54,11 +32,11 @@ const Carousel: React.FC<ICarousel> = (props) => {
   const bmargin = config.dots ? theme.spacing(6) : theme.spacing(4);
 
   return (
-    <div className={classes.root} style={{ marginBottom: bmargin }}>
+    <Box className={classes.root} style={{ marginBottom: bmargin }}>
       <Slider {...config} className={classes.slider}>
         {slides}
       </Slider>
-    </div>
+    </Box>
   );
 };
 

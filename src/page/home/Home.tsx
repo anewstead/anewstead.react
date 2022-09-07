@@ -2,10 +2,10 @@ import React from "react";
 import { Button, Card, Container, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import PageLayout from "../../containers/page-layout";
-import useStyles from "./Home.style";
-import { IRootState } from "../../app/store/types";
-import { useAppSelector } from "../../app/store";
+import AppLayout from "../../containers/app-layout";
+import useStyles from "./home.style";
+import { IRootState } from "../../app/state/types";
+import { useAppSelector } from "../../app/state/redux";
 
 const Home: React.FC = () => {
   const { classes } = useStyles();
@@ -46,13 +46,13 @@ const Home: React.FC = () => {
   }
 
   return (
-    <PageLayout headerNavType="thumbs">
+    <AppLayout headerNavType="thumbs">
       <Container className={classes.root}>
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
       </Container>
-    </PageLayout>
+    </AppLayout>
   );
 };
 
