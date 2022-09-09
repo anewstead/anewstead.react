@@ -3,14 +3,14 @@ import { Box, Container, Paper, Typography } from "@mui/material";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./about.style";
-import { IRootState } from "../../app/state/types";
-import { useAppSelector } from "../../app/state/redux";
+import type { RootState } from "../../app/state/store";
+import { useAppSelector } from "../../app/state/store";
 
 const About: React.FC = () => {
   const { classes } = useStyles();
 
-  const brand = useAppSelector((state: IRootState) => {
-    return state.app.nav.brand;
+  const brand = useAppSelector((state: RootState) => {
+    return state.home.nav.brand;
   });
 
   return (

@@ -22,5 +22,13 @@
     "strictNullChecks": true,
     "incremental": true
   },
-  "include": [".eslintrc.js", "src/**/*", "react-app-env.d.ts"]
+  // tell parser to also check json and dot files in src
+  "include": [
+    "src/**/*",
+    "src/**/*.json",
+    "src/**/.*.js",
+    "src/**/.*.json",
+    "**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "package.json", "package-lock.json"]
 }

@@ -1,5 +1,20 @@
 import type { ICheckbox, IMainData } from "./types";
 
+/**
+ * Add Type definition to the action payload
+ * e.g.
+ * type MyType = { id: string; checked: boolean };
+ * const SOMETHING_CHANGED = createAction( "SOMETHING_CHANGED", withPayloadType<MyType>() );
+ */
+export function withPayloadType<T>() {
+  return (t: T) => {
+    return { payload: t };
+  };
+}
+
+/**
+ * filters which thumbs to show depending on which checkboxes are checked
+ */
 export const thumbHelper = (
   mainData: IMainData[],
   checkboxes: ICheckbox[]

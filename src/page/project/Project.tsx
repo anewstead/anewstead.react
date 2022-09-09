@@ -9,22 +9,17 @@ import NoMatch from "../no-match/NoMatch";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
-import { IRootState } from "../../app/state/types";
-import { useAppSelector } from "../../app/state/redux";
+import { BASE_CONTENT_URL } from "../../app/constants";
+import type { RootState } from "../../app/state/store";
+import { useAppSelector } from "../../app/state/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();
 
-  // const data: IMainData = params.data;
-
   const { classes } = useStyles();
 
-  const baseContentURL = useAppSelector((state: IRootState) => {
-    return state.app.baseContentURL;
-  });
-
-  const mainData = useAppSelector((state: IRootState) => {
-    return state.app.mainData;
+  const mainData = useAppSelector((state: RootState) => {
+    return state.mainData.data;
   });
 
   const data = mainData.find((obj) => {
@@ -51,7 +46,7 @@ const Project: React.FC = () => {
   switch (data.view.type) {
     case "gallery": {
       const slides = data.view.stills.map((obj, i) => {
-        const url = `${baseContentURL}img/gallery/${obj}`;
+        const url = `${BASE_CONTENT_URL}img/gallery/${obj}`;
         const alt = `${data.brand} ${data.project} image ${i}`;
         return <img src={url} alt={`${alt} ${i}`} key={obj} />;
       });
@@ -61,7 +56,7 @@ const Project: React.FC = () => {
 
     case "video": {
       const videoURL = `//drive.google.com/uc?export=download&id=${data.view.href}`;
-      const posterURL = `${baseContentURL}img/poster/${data.view.poster}`;
+      const posterURL = `${BASE_CONTENT_URL}img/poster/${data.view.poster}`;
       content = <Video videoURL={videoURL} posterURL={posterURL} />;
       break;
     }
@@ -69,8 +64,8 @@ const Project: React.FC = () => {
     case "iframe": {
       const { width } = data.view;
       const { height } = data.view;
-      const iframeURL = `${baseContentURL}${data.view.href}`;
-      const failOverImageURL = `${baseContentURL}${data.view.still}`;
+      const iframeURL = `${BASE_CONTENT_URL}${data.view.href}`;
+      const failOverImageURL = `${BASE_CONTENT_URL}${data.view.still}`;
       const title = `${data.brand} ${data.project}`;
       const checkAdBlock = data.type === "banner";
       content = (

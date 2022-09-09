@@ -9,9 +9,15 @@
 
 ## Structure
 
-- whilst this is not a nextjs app the folder structure is intentionally designed to closely follow that of a nextjs app
-- in nextjs 'Routes' are defined by the folder structure in 'pages' folder, so here we have Routes.jsx inside 'pages'
-- in nextjs '\_app.tsx' is a special class inside 'pages', so here we have App.jsx inside 'pages'
+the file structure is intentionally designed with nextjs in mind to allow for its reserved files and folder names.
+it doesn't hurt to follow this in a standard react/ non nextjs app, and should you ever need to refator to either it really helps.
+
+in nextjs Routes are defined by the folder structure within 'src/pages' folder
+here we retain 'src/pages' folder and add AppRoutes.jsx inside
+all page content is under 'src/page' folder
+
+in nextjs 'src/pages/\_app.tsx' is the top-most class, with 'src/pages/index.jsx' being the default/homepage
+here 'src/index.tsx' is our top-most class we have a 'src/pages/App.jsx/
 
 ## IDE/Editor
 

@@ -4,18 +4,15 @@ import { Link as RouterLink } from "react-router-dom";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./home.style";
-import { IRootState } from "../../app/state/types";
-import { useAppSelector } from "../../app/state/redux";
+import { BASE_CONTENT_URL } from "../../app/constants";
+import type { RootState } from "../../app/state/store";
+import { useAppSelector } from "../../app/state/store";
 
 const Home: React.FC = () => {
   const { classes } = useStyles();
 
-  const displayThumbs = useAppSelector((state: IRootState) => {
-    return state.app.displayThumbs;
-  });
-
-  const baseContentURL = useAppSelector((state: IRootState) => {
-    return state.app.baseContentURL;
+  const displayThumbs = useAppSelector((state: RootState) => {
+    return state.home.displayThumbs;
   });
 
   let content = <></>;
@@ -23,7 +20,7 @@ const Home: React.FC = () => {
   if (displayThumbs) {
     if (displayThumbs.length) {
       const thumbs = displayThumbs.map((obj) => {
-        const url = `${baseContentURL}/img/thumbs/${obj.thumb}`;
+        const url = `${BASE_CONTENT_URL}/img/thumbs/${obj.thumb}`;
         const alt = `${obj.client} - ${obj.brand} - ${obj.project}`;
         return (
           <Grid item key={obj.id} className={classes.gridItem}>

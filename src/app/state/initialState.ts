@@ -2,9 +2,7 @@ import { DEFAULT_THEME } from "../theme/theme";
 import type { IState } from "./types";
 
 const initialState: IState = {
-  baseContentURL: "https://anewstead-content.netlify.app/",
   mainData: [],
-  mainDataLoadFail: false,
   displayThumbs: [],
   themeName: DEFAULT_THEME,
   nav: {

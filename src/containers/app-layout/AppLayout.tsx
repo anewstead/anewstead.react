@@ -4,8 +4,8 @@ import { Box } from "@mui/material";
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
 import useStyles from "./appLayout.style";
-import { IRootState } from "../../app/state/types";
-import { useAppSelector } from "../../app/state/redux";
+import type { RootState } from "../../app/state/store";
+import { useAppSelector } from "../../app/state/store";
 
 type IPageLayout = {
   headerNavType: "thumbs" | "detail";
@@ -13,14 +13,14 @@ type IPageLayout = {
   headerNavSubtitle?: string;
   children?: React.ReactNode;
 };
-
+// TODO: this maybe better as a HOC
 const AppLayout: React.FC<IPageLayout> = (props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const { classes } = useStyles();
 
-  const navBrand = useAppSelector((state: IRootState) => {
-    return state.app.nav.brand;
+  const navBrand = useAppSelector((state: RootState) => {
+    return state.home.nav.brand;
   });
 
   return (
