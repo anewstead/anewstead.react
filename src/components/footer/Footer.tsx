@@ -11,7 +11,7 @@ const Footer: React.FC<IFooter> = (props) => {
   const { brand } = props;
 
   const { classes } = useStyles();
-  const text = `© ${brand || "Brand"} ${new Date().getFullYear()}`;
+  const text = `© ${brand} ${new Date().getFullYear()}`;
   return (
     <footer className={classes.footer}>
       <Container>

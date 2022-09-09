@@ -10,6 +10,11 @@ import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../app/const";
+import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
+import {
+  PROJECT_TYPE,
+  PROJECT_VIEW,
+} from "../../app/state/slice/mainDataState";
 import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
@@ -44,7 +49,7 @@ const Project: React.FC = () => {
   let content = <></>;
 
   switch (data.view.type) {
-    case "gallery": {
+    case PROJECT_VIEW.GALLERY: {
       const slides = data.view.stills.map((obj, i) => {
         const url = `${BASE_CONTENT_URL}img/gallery/${obj}`;
         const alt = `${data.brand} ${data.project} image ${i}`;
@@ -54,20 +59,20 @@ const Project: React.FC = () => {
       break;
     }
 
-    case "video": {
+    case PROJECT_VIEW.VIDEO: {
       const videoURL = `${BASE_VIDEO_URL}${data.view.href}`;
       const posterURL = `${BASE_CONTENT_URL}img/poster/${data.view.poster}`;
       content = <Video videoURL={videoURL} posterURL={posterURL} />;
       break;
     }
 
-    case "iframe": {
+    case PROJECT_VIEW.IFRAME: {
       const { width } = data.view;
       const { height } = data.view;
       const iframeURL = `${BASE_CONTENT_URL}${data.view.href}`;
       const failOverImageURL = `${BASE_CONTENT_URL}${data.view.still}`;
       const title = `${data.brand} ${data.project}`;
-      const checkAdBlock = data.type === "banner";
+      const checkAdBlock = data.type === PROJECT_TYPE.BANNER;
       content = (
         <InFrame
           title={title}
@@ -87,7 +92,7 @@ const Project: React.FC = () => {
 
   return (
     <AppLayout
-      headerNavType="detail"
+      headerNavType={NAV_TYPE.DETAILS}
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
     >

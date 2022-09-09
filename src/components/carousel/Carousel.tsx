@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import { Box, useTheme } from "@mui/material";
 import type { Settings as SlickSettings } from "react-slick";
 
-import PrevNextButton from "./PrevNextButton";
 import useStyles from "./carousel.style";
+import PrevNextButton, { DIRECTION } from "./PrevNextButton";
 
 type ICarousel = {
   slides: JSX.Element[];
@@ -21,8 +21,8 @@ const Carousel = (props: ICarousel) => {
     dots: true,
     lazyLoad: "progressive",
     adaptiveHeight: true,
-    prevArrow: <PrevNextButton direction="prev" />,
-    nextArrow: <PrevNextButton direction="next" />,
+    prevArrow: <PrevNextButton direction={DIRECTION.PREV} />,
+    nextArrow: <PrevNextButton direction={DIRECTION.NEXT} />,
   };
 
   const config: SlickSettings = {

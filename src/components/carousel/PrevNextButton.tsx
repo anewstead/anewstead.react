@@ -4,8 +4,13 @@ import { Box, Button } from "@mui/material";
 
 import useStyles from "./prevNextButton.style";
 
+export const DIRECTION = {
+  PREV: "prev",
+  NEXT: "next",
+};
+
 type Props = {
-  direction: string;
+  direction: typeof DIRECTION.PREV | typeof DIRECTION.NEXT;
   onClick?: () => void;
 };
 
@@ -17,7 +22,7 @@ const PrevNextButton = (props: Props) => {
   return (
     <Button
       className={`${classes.prevNextButton} ${
-        direction === "prev" ? classes.prevButton : classes.nextButton
+        direction === DIRECTION.PREV ? classes.prevButton : classes.nextButton
       }`}
       onClick={onClick}
       aria-label={`${direction}`}

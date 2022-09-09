@@ -8,8 +8,15 @@ import { NAV_CHECKBOX_CHANGE } from "../../app/state/slice/home";
 import { TOGGLE_THEME } from "../../app/state/slice/theme";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
+export const NAV_TYPE = {
+  THUMBS: "thumbs",
+  DETAILS: "details",
+};
+
+export type INavType = typeof NAV_TYPE.THUMBS | typeof NAV_TYPE.DETAILS;
+
 export type IHeaderNav = {
-  navType: "thumbs" | "detail";
+  navType: INavType;
   titleText?: string;
   subtitleText?: string;
 };
@@ -51,7 +58,7 @@ const HeaderNav: React.FC<IHeaderNav> = (props) => {
 
   let nav;
   switch (navType) {
-    case "thumbs":
+    case NAV_TYPE.THUMBS:
       nav = (
         <HeaderNavThumbs
           brandName={BRAND}

@@ -4,12 +4,13 @@ import { Box, Container, Paper, Typography } from "@mui/material";
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./about.style";
 import { BRAND } from "../../app/const";
+import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
 
 const About: React.FC = () => {
   const { classes } = useStyles();
 
   return (
-    <AppLayout headerNavType="detail" headerNavTitle={BRAND}>
+    <AppLayout headerNavType={NAV_TYPE.DETAILS} headerNavTitle={BRAND}>
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">

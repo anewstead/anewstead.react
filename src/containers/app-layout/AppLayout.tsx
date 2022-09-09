@@ -5,9 +5,10 @@ import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
 import useStyles from "./appLayout.style";
 import { BRAND } from "../../app/const";
+import type { INavType } from "../../components/header-nav/HeaderNav";
 
 type IPageLayout = {
-  headerNavType: "thumbs" | "detail";
+  headerNavType: INavType;
   headerNavTitle?: string;
   headerNavSubtitle?: string;
   children?: React.ReactNode;
