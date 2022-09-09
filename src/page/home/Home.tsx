@@ -9,7 +9,7 @@ import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
 import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
-const Home: React.FC = () => {
+const Home = () => {
   const { classes } = useStyles();
 
   const displayThumbs = useAppSelector((state: RootState) => {

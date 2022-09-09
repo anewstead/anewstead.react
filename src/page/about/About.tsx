@@ -6,7 +6,7 @@ import useStyles from "./about.style";
 import { BRAND } from "../../app/const";
 import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
 
-const About: React.FC = () => {
+const About = () => {
   const { classes } = useStyles();
 
   return (

@@ -6,7 +6,7 @@ import AppLayout from "../../containers/app-layout";
 import useStyles from "./noMatch.style";
 import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
 
-const NoMatch: React.FC = () => {
+const NoMatch = () => {
   const { classes } = useStyles();
   const location = useLocation();
 

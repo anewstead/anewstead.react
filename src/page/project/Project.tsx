@@ -18,7 +18,7 @@ import {
 import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
-const Project: React.FC = () => {
+const Project = () => {
   const { id } = useParams();
 
   const { classes } = useStyles();

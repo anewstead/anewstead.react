@@ -20,7 +20,7 @@ export type IHeaderNav = {
   titleText?: string;
   subtitleText?: string;
 };
-const HeaderNav: React.FC<IHeaderNav> = (props) => {
+const HeaderNav = (props: IHeaderNav) => {
   const { navType, titleText, subtitleText } = props;
 
   const dispatch = useAppDispatch();

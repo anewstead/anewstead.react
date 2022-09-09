@@ -6,7 +6,7 @@ import Home from "../page/home";
 import NoMatch from "../page/no-match/NoMatch";
 import Project from "../page/project";
 
-const AppRoutes: React.FC = () => {
+const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>

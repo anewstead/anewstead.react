@@ -8,7 +8,7 @@ type IVideo = {
   posterURL: string;
 };
 
-const Video: React.FC<IVideo> = (props) => {
+const Video = (props: IVideo) => {
   const { videoURL, posterURL } = props;
 
   const { classes } = useStyles();

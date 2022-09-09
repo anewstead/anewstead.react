@@ -14,7 +14,7 @@ type IInFrame = {
   checkAdBlock: boolean;
 };
 
-const InFrame: React.FC<IInFrame> = (props) => {
+const InFrame = (props: IInFrame) => {
   const { title, width, height, iframeURL, failOverImageURL, checkAdBlock } =
     props;
 

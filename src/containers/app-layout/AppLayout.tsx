@@ -13,8 +13,8 @@ type IPageLayout = {
   headerNavSubtitle?: string;
   children?: React.ReactNode;
 };
-// TODO: this maybe better as a HOC
-const AppLayout: React.FC<IPageLayout> = (props) => {
+
+const AppLayout = (props: IPageLayout) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const { classes } = useStyles();
