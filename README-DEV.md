@@ -2,14 +2,15 @@
 
 ## Code
 
-- react (hooks), Progressive Web App ready
+- React (hooks),
 - Redux
 - materialUI
 - @emotion with tss-react
+- Progressive Web App ready
 
 ## Structure
 
-the file structure is intentionally designed with nextjs in mind to allow for its reserved files and folder names.
+The file structure is intentionally designed with nextjs in mind to allow for its reserved files and folder names.
 it doesn't hurt to follow this in a standard react/ non nextjs app, and should you ever need to refator to either it really helps.
 
 in nextjs Routes are defined by the folder structure within 'src/pages' folder

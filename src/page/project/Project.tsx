@@ -9,7 +9,7 @@ import NoMatch from "../no-match/NoMatch";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
-import { BASE_CONTENT_URL } from "../../app/constants";
+import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../app/const";
 import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
@@ -55,7 +55,7 @@ const Project: React.FC = () => {
     }
 
     case "video": {
-      const videoURL = `//drive.google.com/uc?export=download&id=${data.view.href}`;
+      const videoURL = `${BASE_VIDEO_URL}${data.view.href}`;
       const posterURL = `${BASE_CONTENT_URL}img/poster/${data.view.poster}`;
       content = <Video videoURL={videoURL} posterURL={posterURL} />;
       break;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
+import { BRAND } from "../../app/const";
 import { NAV_CHECKBOX_CHANGE } from "../../app/state/slice/home";
 import { TOGGLE_THEME } from "../../app/state/slice/theme";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
@@ -17,10 +18,6 @@ const HeaderNav: React.FC<IHeaderNav> = (props) => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const navBrand = useAppSelector((state) => {
-    return state.home.nav.brand;
-  });
 
   const navCheckboxes = useAppSelector((state) => {
     return state.home.nav.checkboxes;
@@ -47,7 +44,7 @@ const HeaderNav: React.FC<IHeaderNav> = (props) => {
     const { id, checked } = e.currentTarget;
     const payload = {
       checkbox: { id, checked },
-      mainData,
+      allThumbs: mainData,
     };
     dispatch(NAV_CHECKBOX_CHANGE(payload));
   };
@@ -57,7 +54,7 @@ const HeaderNav: React.FC<IHeaderNav> = (props) => {
     case "thumbs":
       nav = (
         <HeaderNavThumbs
-          brandName={navBrand}
+          brandName={BRAND}
           checkboxData={navCheckboxes}
           onBrandClick={brandClick}
           onThemeClick={themeClick}

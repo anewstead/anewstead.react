@@ -11,7 +11,6 @@ export type ICheckbox = {
 type IHomePageState = {
   displayThumbs: IMainData[];
   nav: {
-    brand: string;
     checkboxes: ICheckbox[];
   };
 };
@@ -19,7 +18,6 @@ type IHomePageState = {
 export const initialState: IHomePageState = {
   displayThumbs: [],
   nav: {
-    brand: "Andrew Newstead",
     checkboxes: [
       {
         id: "site",

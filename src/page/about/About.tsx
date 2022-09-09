@@ -3,18 +3,13 @@ import { Box, Container, Paper, Typography } from "@mui/material";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./about.style";
-import type { RootState } from "../../app/state/store";
-import { useAppSelector } from "../../app/state/store";
+import { BRAND } from "../../app/const";
 
 const About: React.FC = () => {
   const { classes } = useStyles();
 
-  const brand = useAppSelector((state: RootState) => {
-    return state.home.nav.brand;
-  });
-
   return (
-    <AppLayout headerNavType="detail" headerNavTitle={brand.toUpperCase()}>
+    <AppLayout headerNavType="detail" headerNavTitle={BRAND}>
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">
@@ -27,25 +22,39 @@ const About: React.FC = () => {
             component={Box}
             align="justify"
           >
-            <p>Frontend/UI/UX developer with over 20 years experience.</p>
+            <p>Frontend/UI/UX developer</p>
             <p>
-              This portfolio shows some of the productions I have been involved
-              with over the years as sole or lead developer or with significant
-              hands-on input as a senior team member.
+              This site shows some of the productions I have been involved with
+              over the years.
             </p>
             <p>
-              This site was written in TypeScript (JavaScript), React and Redux
-              (hooks) as a single page application, using Material-UI
-              components. <br />
-              You are welcome to view the source code at this{" "}
+              It also serves to show some non-client code, which in brief is
+              React and Typescript. <br />
+            </p>
+            <p>
+              It uses Material-UI components basically becasue I wanted to try
+              it out.
+              <br />
+              In client work all components and CSS were almost entirely created
+              bespoke from scratch.
+            </p>
+            <p>You can get all your tech insights here:</p>
+            <p>
               <a
                 href="https://github.com/anewstead/anewstead.cra-mui"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Git repository
+                Git: SPA React
               </a>
-              .
+              <br />
+              <a
+                href="https://github.com/anewstead/anewstead.nextjs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Git: SSR NextJS
+              </a>
             </p>
           </Typography>
         </Paper>

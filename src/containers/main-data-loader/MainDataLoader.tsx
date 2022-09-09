@@ -3,7 +3,7 @@ import { CircularProgress, Grid } from "@mui/material";
 
 import { FETCH_MAIN_DATA } from "../../app/state/slice/mainData";
 import { INIT_DISPLAY_THUMBS } from "../../app/state/slice/home";
-import { MAIN_DATA_URL } from "../../app/constants";
+import { MAIN_DATA_URL } from "../../app/const";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 type Props = {
@@ -34,7 +34,7 @@ const MainDataLoader = (props: Props) => {
 
   useEffect(() => {
     dispatch(FETCH_MAIN_DATA(MAIN_DATA_URL)).then((res) => {
-      const payload = { mainData: res.payload };
+      const payload = { allThumbs: res.payload };
       dispatch(INIT_DISPLAY_THUMBS(payload));
     });
   }, [dispatch]);

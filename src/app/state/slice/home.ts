@@ -6,12 +6,12 @@ import { initialState } from "./homeState";
 import { thumbHelper } from "./homeHelpers";
 
 type IDTPayload = {
-  mainData: IMainData[];
+  allThumbs: IMainData[];
 };
 
 type NCCPayload = {
   checkbox: { id: string; checked: boolean };
-  mainData: IMainData[];
+  allThumbs: IMainData[];
 };
 
 const slice = createSlice({
@@ -20,7 +20,7 @@ const slice = createSlice({
   reducers: {
     INIT_DISPLAY_THUMBS: (state, action: PayloadAction<IDTPayload>) => {
       state.displayThumbs = thumbHelper(
-        action.payload.mainData,
+        action.payload.allThumbs,
         state.nav.checkboxes
       );
     },
@@ -36,7 +36,7 @@ const slice = createSlice({
         stateCheckbox.checked = checked; // creates 2 way bind
       }
       state.displayThumbs = thumbHelper(
-        action.payload.mainData,
+        action.payload.allThumbs,
         state.nav.checkboxes
       );
     },

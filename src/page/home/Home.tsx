@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./home.style";
-import { BASE_CONTENT_URL } from "../../app/constants";
+import { BASE_CONTENT_URL } from "../../app/const";
 import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
