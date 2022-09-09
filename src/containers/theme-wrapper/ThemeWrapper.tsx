@@ -5,8 +5,11 @@
  */
 
 import React, { useEffect } from "react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { StyledEngineProvider } from "@mui/material/styles";
+import {
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material";
 
 import theme from "../../app/theme/theme";
 import { INIT_THEME } from "../../app/state/slices/theme";

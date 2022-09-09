@@ -1,16 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import {
-  DEFAULT_THEME,
-  initThemeName,
-  toggleThemeName,
-} from "../../theme/theme";
-
-type IThemeState = {
-  themeName: string;
-};
-
-const initialState: IThemeState = { themeName: DEFAULT_THEME };
+import { initThemeName, toggleThemeName } from "../../theme/theme";
+import { initialState } from "./themeState";
 
 const slice = createSlice({
   name: "theme",

@@ -1,40 +1,9 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { ICheckbox, IMainData } from "../types";
-import { thumbHelper } from "../helpers";
-
-type IHomePageState = {
-  displayThumbs: IMainData[];
-  nav: {
-    brand: string;
-    checkboxes: ICheckbox[];
-  };
-};
-
-const initialState: IHomePageState = {
-  displayThumbs: [],
-  nav: {
-    brand: "Andrew Newstead",
-    checkboxes: [
-      {
-        id: "site",
-        label: "Websites",
-        checked: true,
-      },
-      {
-        id: "app",
-        label: "Apps",
-        checked: true,
-      },
-      {
-        id: "banner",
-        label: "Adverts",
-        checked: true,
-      },
-    ],
-  },
-};
+import type { IMainData } from "./mainDataState";
+import { initialState } from "./homeState";
+import { thumbHelper } from "./homeHelpers";
 
 type IDTPayload = {
   mainData: IMainData[];
@@ -46,7 +15,7 @@ type NCCPayload = {
 };
 
 const slice = createSlice({
-  name: "homePage",
+  name: "home",
   initialState,
   reducers: {
     INIT_DISPLAY_THUMBS: (state, action: PayloadAction<IDTPayload>) => {
@@ -62,7 +31,7 @@ const slice = createSlice({
         return cb.id === id;
       });
       if (!stateCheckbox) {
-        throw new Error(`store: cannot find checkbox: ${id}`);
+        throw new Error(`state does not contain checkbox with id: ${id}`);
       } else {
         stateCheckbox.checked = checked; // creates 2 way bind
       }

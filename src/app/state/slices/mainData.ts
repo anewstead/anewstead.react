@@ -1,6 +1,6 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 
-import type { IMainData } from "../types";
+import { initialState } from "./mainDataState";
 
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "FETCH_MAIN_DATA",
@@ -16,20 +16,6 @@ export const FETCH_MAIN_DATA = createAsyncThunk(
     return data;
   }
 );
-
-type IFetchMainDataState = {
-  loading: Boolean;
-  loaded: Boolean;
-  error: Boolean;
-  data: IMainData[];
-};
-
-const initialState: IFetchMainDataState = {
-  loading: false,
-  loaded: false,
-  error: false,
-  data: [],
-};
 
 const reducer = createReducer(initialState, (builder) => {
   builder
