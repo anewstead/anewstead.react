@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
-import { NAV_CHECKBOX_CHANGE } from "../../app/state/slices/home";
-import { TOGGLE_THEME } from "../../app/state/slices/theme";
+import { NAV_CHECKBOX_CHANGE } from "../../app/state/slice/home";
+import { TOGGLE_THEME } from "../../app/state/slice/theme";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 export type IHeaderNav = {

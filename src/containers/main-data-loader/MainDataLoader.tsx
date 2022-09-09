@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { CircularProgress, Grid } from "@mui/material";
 
-import { FETCH_MAIN_DATA } from "../../app/state/slices/mainData";
-import { INIT_DISPLAY_THUMBS } from "../../app/state/slices/home";
+import { FETCH_MAIN_DATA } from "../../app/state/slice/mainData";
+import { INIT_DISPLAY_THUMBS } from "../../app/state/slice/home";
 import { MAIN_DATA_URL } from "../../app/constants";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 

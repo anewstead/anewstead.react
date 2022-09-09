@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 import theme from "../../app/theme/theme";
-import { INIT_THEME } from "../../app/state/slices/theme";
+import { INIT_THEME } from "../../app/state/slice/theme";
 import type { RootState } from "../../app/state/store";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
