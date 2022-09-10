@@ -13,7 +13,7 @@ export const DEFAULT_THEME = LIGHT;
 
 export type IThemeName = typeof DARK | typeof LIGHT;
 
-// these variable must === the const string used as theme mode
+// these variable must == the const string used as theme mode
 const light = deepmerge(lightTheme, globalOverrides(lightTheme));
 const dark = deepmerge(darkTheme, globalOverrides(darkTheme));
 

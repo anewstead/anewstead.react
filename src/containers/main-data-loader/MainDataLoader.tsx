@@ -49,7 +49,7 @@ const MainDataLoader = (props: Props) => {
 
       {loaded &&
         !data.length &&
-        feedback(<h3>Server returned an empty data 😢</h3>)}
+        feedback(<h3>Server returned empty data 😢</h3>)}
     </>
   );
 };

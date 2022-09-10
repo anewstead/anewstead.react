@@ -1,7 +1,6 @@
 // import type { ICheckbox } from "../types";
 import type { ICheckbox } from "./homeState";
 import type { IMainData } from "./mainDataState";
-import { PROJECT_TYPE } from "./mainDataState";
 
 /**
  * filters which thumbs to show depending on which checkboxes are checked
@@ -11,23 +10,23 @@ export const thumbHelper = (
   checkboxes: ICheckbox[]
 ): IMainData[] => {
   const showSites = checkboxes.find((cb) => {
-    return cb.id === PROJECT_TYPE.SITE;
+    return cb.id === "site";
   })?.checked;
 
   const showApps = checkboxes.find((cb) => {
-    return cb.id === PROJECT_TYPE.APP;
+    return cb.id === "app";
   })?.checked;
 
   const showAds = checkboxes.find((cb) => {
-    return cb.id === PROJECT_TYPE.BANNER;
+    return cb.id === "banner";
   })?.checked;
 
   return allThumbs
     .filter((obj) => {
       return (
-        (showSites && obj.type === PROJECT_TYPE.SITE) ||
-        (showApps && obj.type === PROJECT_TYPE.APP) ||
-        (showAds && obj.type === PROJECT_TYPE.BANNER)
+        (showSites && obj.type === "site") ||
+        (showApps && obj.type === "app") ||
+        (showAds && obj.type === "banner")
       );
     })
     .sort((a, b) => {

@@ -4,13 +4,12 @@ import { Box, Container, Paper, Typography } from "@mui/material";
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./about.style";
 import { BRAND } from "../../app/const";
-import { NAV_TYPE } from "../../components/header-nav/HeaderNav";
 
 const About = () => {
   const { classes } = useStyles();
 
   return (
-    <AppLayout headerNavType={NAV_TYPE.DETAILS} headerNavTitle={BRAND}>
+    <AppLayout headerNavType="detail" headerNavTitle={BRAND}>
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">

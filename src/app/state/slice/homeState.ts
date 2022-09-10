@@ -1,16 +1,6 @@
 import type { IMainData, IProjectType } from "./mainDataState";
-import { PROJECT_TYPE } from "./mainDataState";
 
-export const PROJECT_LABEL = {
-  WEBSITES: "Websites",
-  APPS: "Apps",
-  ADVERTS: "Adverts",
-};
-
-export type IProjectLabel =
-  | typeof PROJECT_LABEL.WEBSITES
-  | typeof PROJECT_LABEL.APPS
-  | typeof PROJECT_LABEL.ADVERTS;
+export type IProjectLabel = "Websites" | "Apps" | "Adverts";
 
 export type ICheckbox = {
   id: IProjectType;
@@ -30,18 +20,18 @@ export const initialState: IHomePageState = {
   nav: {
     checkboxes: [
       {
-        id: PROJECT_TYPE.SITE,
-        label: PROJECT_LABEL.WEBSITES,
+        id: "site",
+        label: "Websites",
         checked: true,
       },
       {
-        id: PROJECT_TYPE.APP,
-        label: PROJECT_LABEL.APPS,
+        id: "app",
+        label: "Apps",
         checked: true,
       },
       {
-        id: PROJECT_TYPE.BANNER,
-        label: PROJECT_LABEL.ADVERTS,
+        id: "banner",
+        label: "Adverts",
         checked: true,
       },
     ],

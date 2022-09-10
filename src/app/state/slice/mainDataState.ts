@@ -1,31 +1,6 @@
-export const PROJECT_TYPE = {
-  SITE: "site",
-  APP: "app",
-  BANNER: "banner",
-};
-
-export type IProjectType =
-  | typeof PROJECT_TYPE.SITE
-  | typeof PROJECT_TYPE.APP
-  | typeof PROJECT_TYPE.BANNER;
-
-export const PROJECT_TECH = {
-  FLASH: "flash",
-  HTML: "html",
-};
-
-export type IProjectTech = typeof PROJECT_TECH.FLASH | typeof PROJECT_TECH.HTML;
-
-export const PROJECT_VIEW = {
-  GALLERY: "gallery",
-  VIDEO: "video",
-  IFRAME: "iframe",
-};
-
-export type IProjectView =
-  | typeof PROJECT_VIEW.GALLERY
-  | typeof PROJECT_VIEW.VIDEO
-  | typeof PROJECT_VIEW.IFRAME;
+export type IProjectType = "site" | "app" | "banner";
+export type IProjectTech = "flash" | "html";
+export type IProjectView = "gallery" | "video" | "iframe";
 
 export type IMainData = {
   id: number;
