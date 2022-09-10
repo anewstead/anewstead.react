@@ -1,5 +1,6 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+import React, { useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -17,20 +18,19 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { useState } from "react";
 
-import { ICheckbox } from "../../app/store/types";
-import useStyles from "./HeaderNavThumbs.style";
+import useStyles from "./headerNavThumbs.style";
+import type { ICheckbox } from "../../app/state/slice/homeState";
 
 type IHeaderNavThumbs = {
-  brandName: string;
+  brandName?: string;
   checkboxData: ICheckbox[];
   onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onThemeClick: () => void;
   onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
+const HeaderNavThumbs = (props: IHeaderNavThumbs) => {
   const {
     brandName,
     checkboxData,
@@ -41,12 +41,12 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
 
   const { classes } = useStyles();
   const theme = useTheme();
-  const isSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSM = useMediaQuery(theme.breakpoints.down("md"));
 
-  const checkboxes = checkboxData.map((cb, i) => {
+  const checkboxes = checkboxData.map((cb) => {
     return (
       <FormControlLabel
-        key={`cb${i}`}
+        key={cb.id}
         label={cb.label}
         control={
           <Checkbox
@@ -94,11 +94,11 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
     </IconButton>
   );
 
-  const [expanded, setExpanded] = useState("");
+  const [expanded, setExpanded] = useState<string | false>(false);
 
   const expansionPanelOnChange = (panel: string) => {
-    return (newExpanded: string) => {
-      setExpanded(newExpanded ? panel : "");
+    return (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
     };
   };
 
@@ -116,9 +116,7 @@ const HeaderNavThumbs: React.FC<IHeaderNavThumbs> = (props) => {
                 <Accordion
                   square
                   expanded={expanded === "panel1"}
-                  onChange={() => {
-                    expansionPanelOnChange("panel1");
-                  }}
+                  onChange={expansionPanelOnChange("panel1")}
                   className={classes.expansionPanel}
                 >
                   <AccordionSummary

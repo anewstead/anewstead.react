@@ -14,11 +14,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "incremental": true
   },
-  "include": [".eslintrc.js", "src/**/*"]
+  // tell parser to also check json and dot files in src
+  "include": [
+    "src/**/*",
+    "src/**/*.json",
+    "src/**/.*.js",
+    "src/**/.*.json",
+    "**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "package.json", "package-lock.json"]
 }

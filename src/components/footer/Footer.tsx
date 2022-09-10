@@ -1,21 +1,21 @@
-import { Container } from "@mui/material";
 import React from "react";
+import { Container } from "@mui/material";
 
-import useStyles from "./Footer.style";
+import useStyles from "./footer.style";
 
 type IFooter = {
   brand: string;
 };
 
-const Footer: React.FC<IFooter> = (props) => {
+const Footer = (props: IFooter) => {
   const { brand } = props;
 
   const { classes } = useStyles();
-
+  const text = `© ${brand} ${new Date().getFullYear()}`;
   return (
     <footer className={classes.footer}>
       <Container>
-        <p>© {brand || "Brand"}</p>
+        <p>{text}</p>
       </Container>
     </footer>
   );

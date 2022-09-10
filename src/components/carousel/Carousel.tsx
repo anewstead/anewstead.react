@@ -1,42 +1,19 @@
-import "slick-carousel/slick/slick.css";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { IconButton, useTheme } from "@mui/material";
 import React from "react";
-import Slider, { Settings as SlickSettings } from "react-slick";
+import Slider from "react-slick";
+import { Box, useTheme } from "@mui/material";
+import type { Settings as SlickSettings } from "react-slick";
 
-import useStyles from "./Carousel.style";
-
-type IPrevNextButton = {
-  direction: string;
-  onClick?: () => void;
-};
-
-const PrevNextButton: React.FC<IPrevNextButton> = (props) => {
-  const { direction, onClick } = props;
-  const { classes } = useStyles();
-  return (
-    <div
-      className={`${classes.prevNextButton} ${
-        direction === "prev" ? classes.prevButton : classes.nextButton
-      }`}
-      onClick={onClick}
-    >
-      <div />
-      <IconButton aria-label={`${direction}`} size="large">
-        <ArrowBackIcon fontSize="large" />
-      </IconButton>
-    </div>
-  );
-};
+import PrevNextButton from "./PrevNextButton";
+import useStyles from "./carousel.style";
 
 type ICarousel = {
   slides: JSX.Element[];
   settings?: SlickSettings;
 };
 
-const Carousel: React.FC<ICarousel> = (props) => {
+const Carousel = (props: ICarousel) => {
   const { slides, settings } = props;
+
   const theme = useTheme();
   const { classes } = useStyles();
 
@@ -56,11 +33,11 @@ const Carousel: React.FC<ICarousel> = (props) => {
   const bmargin = config.dots ? theme.spacing(6) : theme.spacing(4);
 
   return (
-    <div className={classes.root} style={{ marginBottom: bmargin }}>
+    <Box className={classes.root} style={{ marginBottom: bmargin }}>
       <Slider {...config} className={classes.slider}>
         {slides}
       </Slider>
-    </div>
+    </Box>
   );
 };
 
