@@ -3,12 +3,12 @@ import React from "react";
 
 import useStyles from "./video.style";
 
-type IVideo = {
+type Props = {
   videoURL: string;
   posterURL: string;
 };
 
-const Video = (props: IVideo) => {
+const Video = (props: Props) => {
   const { videoURL, posterURL } = props;
 
   const { classes } = useStyles();

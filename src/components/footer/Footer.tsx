@@ -3,11 +3,11 @@ import { Container } from "@mui/material";
 
 import useStyles from "./footer.style";
 
-type IFooter = {
+type Props = {
   brand: string;
 };
 
-const Footer = (props: IFooter) => {
+const Footer = (props: Props) => {
   const { brand } = props;
 
   const { classes } = useStyles();

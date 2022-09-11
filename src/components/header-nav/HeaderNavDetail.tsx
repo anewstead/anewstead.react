@@ -13,14 +13,14 @@ import { useTheme } from "@mui/material/styles";
 
 import useStyles from "./headerNavDetail.style";
 
-type IHeaderNavDetail = {
+type Props = {
   onThemeClick: () => unknown;
   onBackClick: () => unknown;
   titleText?: string;
   subtitleText?: string;
 };
 
-const HeaderNavDetail = (props: IHeaderNavDetail) => {
+const HeaderNavDetail = (props: Props) => {
   const { onThemeClick, onBackClick, titleText, subtitleText } = props;
 
   const { classes } = useStyles();

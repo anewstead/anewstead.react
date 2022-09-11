@@ -6,14 +6,14 @@ import HeaderNav from "../../components/header-nav";
 import useStyles from "./appLayout.style";
 import { BRAND } from "../../app/const";
 
-type IPageLayout = {
+type Props = {
   headerNavType: "thumbs" | "detail";
   headerNavTitle?: string;
   headerNavSubtitle?: string;
   children?: React.ReactNode;
 };
 
-const AppLayout = (props: IPageLayout) => {
+const AppLayout = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const { classes } = useStyles();

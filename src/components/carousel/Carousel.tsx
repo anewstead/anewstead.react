@@ -6,12 +6,12 @@ import type { Settings as SlickSettings } from "react-slick";
 import PrevNextButton from "./PrevNextButton";
 import useStyles from "./carousel.style";
 
-type ICarousel = {
+type Props = {
   slides: JSX.Element[];
   settings?: SlickSettings;
 };
 
-const Carousel = (props: ICarousel) => {
+const Carousel = (props: Props) => {
   const { slides, settings } = props;
 
   const theme = useTheme();

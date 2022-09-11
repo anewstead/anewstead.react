@@ -5,7 +5,7 @@ import { detectAnyAdblocker } from "just-detect-adblock";
 import TextBlock from "../text-block";
 import useStyles from "./inFrame.style";
 
-type IInFrame = {
+type Props = {
   title: string;
   width: number;
   height: number;
@@ -14,7 +14,7 @@ type IInFrame = {
   checkAdBlock: boolean;
 };
 
-const InFrame = (props: IInFrame) => {
+const InFrame = (props: Props) => {
   const { title, width, height, iframeURL, failOverImageURL, checkAdBlock } =
     props;
 
