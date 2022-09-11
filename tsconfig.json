@@ -22,7 +22,7 @@
     "strictNullChecks": true,
     "incremental": true
   },
-  // tell parser to also check json and dot files in src
+  // tell parser to also check json in src and dot files
   "include": [
     "src/**/*",
     "src/**/*.json",
@@ -30,5 +30,5 @@
     "src/**/.*.json",
     "**/*.d.ts"
   ],
-  "exclude": ["node_modules", "package.json", "package-lock.json"]
+  "exclude": ["node_modules"]
 }
