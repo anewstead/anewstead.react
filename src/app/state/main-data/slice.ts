@@ -1,6 +1,6 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 
-import { initialState } from "./mainDataState";
+import { initialState } from "./state";
 
 export const FETCH_MAIN_DATA = createAsyncThunk(
   "FETCH_MAIN_DATA",

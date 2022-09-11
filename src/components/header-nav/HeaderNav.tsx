@@ -4,16 +4,17 @@ import { useNavigate } from "react-router-dom";
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
 import { BRAND } from "../../app/const";
-import { NAV_CHECKBOX_CHANGE } from "../../app/state/slice/home";
-import { TOGGLE_THEME } from "../../app/state/slice/theme";
+import { NAV_CHECKBOX_CHANGE } from "../../app/state/home/slice";
+import type { NCCPayload } from "../../app/state/home/slice";
+import { TOGGLE_THEME } from "../../app/state/theme/slice";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
-export type IHeaderNav = {
+type Props = {
   navType: "thumbs" | "detail";
   titleText?: string;
   subtitleText?: string;
 };
-const HeaderNav = (props: IHeaderNav) => {
+const HeaderNav = (props: Props) => {
   const { navType, titleText, subtitleText } = props;
 
   const dispatch = useAppDispatch();
@@ -42,7 +43,7 @@ const HeaderNav = (props: IHeaderNav) => {
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.currentTarget;
-    const payload = {
+    const payload: NCCPayload = {
       checkbox: { id, checked },
       allThumbs: mainData,
     };

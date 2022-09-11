@@ -1,15 +1,15 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { IMainData } from "./mainDataState";
-import { initialState } from "./homeState";
-import { thumbHelper } from "./homeHelpers";
+import type { IMainData } from "../main-data/state";
+import { initialState } from "./state";
+import { thumbHelper } from "./helpers";
 
-type IDTPayload = {
+export type IDTPayload = {
   allThumbs: IMainData[];
 };
 
-type NCCPayload = {
+export type NCCPayload = {
   checkbox: { id: string; checked: boolean };
   allThumbs: IMainData[];
 };

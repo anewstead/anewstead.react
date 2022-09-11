@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { CircularProgress, Grid } from "@mui/material";
 
-import { FETCH_MAIN_DATA } from "../../app/state/slice/mainData";
-import { INIT_DISPLAY_THUMBS } from "../../app/state/slice/home";
+import { FETCH_MAIN_DATA } from "../../app/state/main-data/slice";
+import type { IDTPayload } from "../../app/state/home/slice";
+import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
 import { MAIN_DATA_URL } from "../../app/const";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
@@ -34,7 +35,7 @@ const MainDataLoader = (props: Props) => {
 
   useEffect(() => {
     dispatch(FETCH_MAIN_DATA(MAIN_DATA_URL)).then((res) => {
-      const payload = { allThumbs: res.payload };
+      const payload: IDTPayload = { allThumbs: res.payload };
       dispatch(INIT_DISPLAY_THUMBS(payload));
     });
   }, [dispatch]);
