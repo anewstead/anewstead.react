@@ -9,6 +9,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:nowatch": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "analyze": "npm run build; source-map-explorer 'build/static/js/*.js'",
     "pretty": "prettier --write $PWD/'/src/**/*.{js,jsx,ts,tsx,json}' --loglevel warn --cache",

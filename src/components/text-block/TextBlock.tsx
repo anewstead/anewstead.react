@@ -16,10 +16,13 @@ const TextBlock = (props: Props) => {
   // safelySetInnerHTML :)
   const html = parse(DOMPurify.sanitize(htmlText));
 
+  const foo = "";
+
   return (
     <Paper className={classes.root}>
       <Typography variant="body2" gutterBottom component={Box} align="justify">
         {html}
+        {foo}
       </Typography>
     </Paper>
   );
