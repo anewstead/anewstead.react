@@ -31,7 +31,7 @@ const slice = createSlice({
         return cb.id === id;
       });
       if (!stateCheckbox) {
-        throw new Error(`state does not contain checkbox with id: ${id}`);
+        throw new Error(`home state does not contain checkbox with id: ${id}`);
       } else {
         stateCheckbox.checked = checked; // creates 2 way bind
       }
@@ -45,4 +45,4 @@ const slice = createSlice({
 
 export const { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE } = slice.actions;
 
-export default slice.reducer;
+export const homeReducer = slice.reducer;

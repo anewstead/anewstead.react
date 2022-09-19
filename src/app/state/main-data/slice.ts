@@ -13,7 +13,7 @@ export const FETCH_MAIN_DATA = createAsyncThunk("FETCH_MAIN_DATA", async () => {
   return getSessionMainData() || loadMainData();
 });
 
-const reducer = createReducer(initialState, (builder) => {
+export const mainDataReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(FETCH_MAIN_DATA.pending, (state) => {
       removeSessionMainData();
@@ -34,5 +34,3 @@ const reducer = createReducer(initialState, (builder) => {
       state.loading = false;
     });
 });
-
-export default reducer;

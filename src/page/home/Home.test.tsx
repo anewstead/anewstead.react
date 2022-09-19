@@ -6,6 +6,8 @@ import mainDataMock from "../../app/api/mock/mainDataMock.json";
 import renderWithReduxAndRouter from "../../test-utils/renderWithReduxAndRouter";
 import { initialState as homeInitialState } from "../../app/state/home/state";
 
+const MAIN_DATA = JSON.parse(JSON.stringify(mainDataMock));
+
 test("renders unset (data 'undefined')", async () => {
   renderWithReduxAndRouter(<Home />);
   const unset = screen.queryByTestId("home-unset");
@@ -28,7 +30,7 @@ test("renders thumbs (data has items)", async () => {
         loading: false,
         loaded: true,
         error: false,
-        data: JSON.parse(JSON.stringify(mainDataMock)),
+        data: MAIN_DATA,
       },
     },
   });

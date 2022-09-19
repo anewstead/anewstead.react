@@ -1,4 +1,4 @@
-import mainData, { FETCH_MAIN_DATA } from "./slice";
+import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 import type { RootState } from "../store";
 import { getSessionMainData, removeSessionMainData } from "./helpers";
 import { server } from "../../api/mock/server";
@@ -11,7 +11,7 @@ afterEach(() => {
 });
 
 test("FETCH_MAIN_DATA fulfilled", async () => {
-  const store = setupStore({ mainData });
+  const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as RootState;
   expect(state.mainData.loaded).toBeTruthy();
@@ -21,7 +21,7 @@ test("FETCH_MAIN_DATA fulfilled", async () => {
 
 test("FETCH_MAIN_DATA rejected", async () => {
   server.setStatus(400);
-  const store = setupStore({ mainData });
+  const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as RootState;
   expect(state.mainData.error).toBeTruthy();

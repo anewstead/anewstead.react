@@ -10,14 +10,14 @@ import type { TypedUseSelectorHook } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
-import home from "./home/slice";
-import mainData from "./main-data/slice";
-import theme from "./theme/slice";
+import { homeReducer } from "./home/slice";
+import { mainDataReducer } from "./main-data/slice";
+import { themeReducer } from "./theme/slice";
 
 const rootReducer = combineReducers({
-  home,
-  mainData,
-  theme,
+  home: homeReducer,
+  mainData: mainDataReducer,
+  theme: themeReducer,
 });
 
 // creates and return a store.
