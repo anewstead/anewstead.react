@@ -9,14 +9,14 @@ export type ICheckbox = {
 };
 
 type IHomePageState = {
-  displayThumbs: IMainData[];
+  displayThumbs: IMainData[] | undefined;
   nav: {
     checkboxes: ICheckbox[];
   };
 };
 
 export const initialState: IHomePageState = {
-  displayThumbs: [],
+  displayThumbs: undefined,
   nav: {
     checkboxes: [
       {

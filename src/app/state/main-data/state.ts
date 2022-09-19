@@ -22,7 +22,7 @@ export type IMainData = {
   info: string;
 };
 
-type IFetchMainDataState = {
+export type IFetchMainDataState = {
   loading: Boolean;
   loaded: Boolean;
   error: Boolean;

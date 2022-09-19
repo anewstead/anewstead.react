@@ -40,7 +40,7 @@
     ],
     "check-file/folder-naming-convention": [
       "error",
-      { "src/**/": "KEBAB_CASE" } // kebab-case
+      { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" } // kebab-case
     ],
 
     "curly": "error",

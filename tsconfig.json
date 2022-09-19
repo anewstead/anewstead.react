@@ -22,7 +22,6 @@
     "strictNullChecks": true,
     "incremental": true
   },
-  // tell parser to also check json in src and dot files
   "include": [
     "src/**/*",
     "src/**/*.json",

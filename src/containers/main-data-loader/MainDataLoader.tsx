@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { CircularProgress, Grid } from "@mui/material";
+import type { ReactNode } from "react";
 
 import { FETCH_MAIN_DATA } from "../../app/state/main-data/slice";
-import type { IDTPayload } from "../../app/state/home/slice";
-import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
-import { MAIN_DATA_URL } from "../../app/const";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const MainDataLoader = (props: Props) => {
@@ -34,23 +32,27 @@ const MainDataLoader = (props: Props) => {
   };
 
   useEffect(() => {
-    dispatch(FETCH_MAIN_DATA(MAIN_DATA_URL)).then((res) => {
-      const payload: IDTPayload = { allThumbs: res.payload };
-      dispatch(INIT_DISPLAY_THUMBS(payload));
-    });
-  }, [dispatch]);
+    if (!loading && !loaded && !error) {
+      dispatch(FETCH_MAIN_DATA());
+    }
+  }, [dispatch, error, loaded, loading]);
 
   return (
     <>
-      {loading && feedback(<CircularProgress />)}
+      {loading && feedback(<CircularProgress data-testid="maindata-spinner" />)}
 
-      {error && feedback(<h3>Failed to load site data 😢</h3>)}
+      {error &&
+        feedback(
+          <h3 data-testid="maindata-failed">Failed to load site data 😢</h3>
+        )}
 
-      {data.length && children}
+      {data.length > 0 && children}
 
       {loaded &&
-        !data.length &&
-        feedback(<h3>Server returned empty data 😢</h3>)}
+        data.length <= 0 &&
+        feedback(
+          <h3 data-testid="maindata-empty">Server returned empty data 😢</h3>
+        )}
     </>
   );
 };
