@@ -2,6 +2,7 @@
 import "slick-carousel/slick/slick.css";
 
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 
 import AppRoutes from "./AppRoutes";
@@ -20,7 +21,9 @@ const App = () => {
       <ReduxProvider store={store}>
         <ThemeWrapper>
           <MainDataLoader>
-            <AppRoutes />
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
           </MainDataLoader>
         </ThemeWrapper>
       </ReduxProvider>
