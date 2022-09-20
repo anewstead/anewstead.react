@@ -6,7 +6,7 @@ import {
   setSessionMainData,
 } from "./helpers";
 import { initialState } from "./state";
-import { loadMainData } from "../../api";
+import { loadMainData } from "../../api/handlers";
 
 // if session cache return it otherwise load
 export const FETCH_MAIN_DATA = createAsyncThunk("FETCH_MAIN_DATA", async () => {
