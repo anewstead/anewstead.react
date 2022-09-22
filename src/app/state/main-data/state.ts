@@ -1,6 +1,6 @@
 export type IProjectType = "site" | "app" | "banner";
 export type IProjectTech = "flash" | "html";
-export type IProjectView = "gallery" | "video" | "iframe";
+export type IProjectView = "gallery" | "video" | "iframe" | "testNoMatch";
 
 export type IMainData = {
   id: number;
