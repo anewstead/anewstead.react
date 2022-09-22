@@ -28,12 +28,11 @@ const HeaderNav = (props: Props) => {
     return state.mainData.data;
   });
 
-  const backClick = () => {
+  const homeClick = () => {
     navigate("/");
   };
 
-  const brandClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const brandClick = () => {
     navigate("/about");
   };
 
@@ -67,7 +66,7 @@ const HeaderNav = (props: Props) => {
     default:
       nav = (
         <HeaderNavDetail
-          onBackClick={backClick}
+          onHomeClick={homeClick}
           onThemeClick={themeClick}
           titleText={titleText}
           subtitleText={subtitleText}

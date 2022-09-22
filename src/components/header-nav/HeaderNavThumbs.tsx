@@ -11,7 +11,6 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
-  Hidden,
   IconButton,
   Toolbar,
   Typography,
@@ -42,6 +41,7 @@ const HeaderNavThumbs = (props: Props) => {
   const { classes } = useStyles();
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("md"));
+  const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
   const checkboxes = checkboxData.map((cb) => {
     return (
@@ -60,11 +60,12 @@ const HeaderNavThumbs = (props: Props) => {
     );
   });
 
-  const brand = (
+  const brandButton = (
     <Button
       aria-label="about"
       onClick={onBrandClick}
       className={classes.brandButton}
+      data-testid="nav-thumbs-about-button"
     >
       <Typography variant="h5" component="span">
         {brandName}
@@ -78,6 +79,7 @@ const HeaderNavThumbs = (props: Props) => {
       className={classes.menuButton}
       aria-label="menu"
       size="large"
+      data-testid="nav-thumbs-menu-button"
     >
       <MenuIcon fontSize="large" />
     </IconButton>
@@ -89,6 +91,7 @@ const HeaderNavThumbs = (props: Props) => {
       aria-label="theme"
       onClick={onThemeClick}
       size="large"
+      data-testid="nav-thumbs-theme-button"
     >
       <SettingsBrightnessIcon fontSize="large" />
     </IconButton>
@@ -102,8 +105,60 @@ const HeaderNavThumbs = (props: Props) => {
     };
   };
 
+  const mobileView = (
+    <Grid item xs={10}>
+      <Accordion
+        square
+        expanded={expanded === "panel1"}
+        onChange={expansionPanelOnChange("panel1")}
+        className={classes.expansionPanel}
+      >
+        <AccordionSummary
+          classes={{
+            root: classes.expansionPanelSummaryRoot,
+            content: classes.expansionPanelSummaryContent,
+          }}
+          aria-controls="panel1d-content"
+          id="panel1d-header"
+          data-testid="nav-thumbs-accordion-summary"
+        >
+          <Grid item>{menuButton}</Grid>
+          <Grid
+            item
+            xs
+            container
+            justifyContent="center"
+            className={classes.gridBrand}
+          >
+            {brandButton}
+          </Grid>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Grid item xs={12}>
+            <FormGroup data-testid="nav-thumbs-mobile-checkbox">
+              {checkboxes}
+            </FormGroup>
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
+    </Grid>
+  );
+
+  const desktopView = (
+    <>
+      <Grid item sm={4} md={5} className={classes.gridBrand}>
+        {brandButton}
+      </Grid>
+      <Grid item flexGrow={1} sm className={classes.gridCheckboxesOpen}>
+        <FormGroup row data-testid="nav-thumbs-desktop-checkbox">
+          {checkboxes}
+        </FormGroup>
+      </Grid>
+    </>
+  );
+
   return (
-    <nav>
+    <nav data-testid="nav-thumbs">
       <AppBar position="static" className={classes.appBar}>
         <Toolbar variant={isSM ? "dense" : "regular"}>
           <Grid
@@ -111,60 +166,8 @@ const HeaderNavThumbs = (props: Props) => {
             justifyContent="space-between"
             className={classes.gridRoot}
           >
-            <Hidden smUp>
-              <Grid item xs={10}>
-                <Accordion
-                  square
-                  expanded={expanded === "panel1"}
-                  onChange={expansionPanelOnChange("panel1")}
-                  className={classes.expansionPanel}
-                >
-                  <AccordionSummary
-                    classes={{
-                      root: classes.expansionPanelSummaryRoot,
-                      content: classes.expansionPanelSummaryContent,
-                    }}
-                    aria-controls="panel1d-content"
-                    id="panel1d-header"
-                  >
-                    <Grid item>{menuButton}</Grid>
-                    <Grid
-                      item
-                      xs
-                      container
-                      justifyContent="center"
-                      className={classes.gridBrand}
-                    >
-                      {brand}
-                    </Grid>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Grid item xs={12}>
-                      <FormGroup>{checkboxes}</FormGroup>
-                    </Grid>
-                  </AccordionDetails>
-                </Accordion>
-              </Grid>
-            </Hidden>
-
-            <Hidden smDown>
-              <Grid item sm={3} md className={classes.gridBrand}>
-                {brand}
-              </Grid>
-              <Grid item sm md={5} className={classes.gridCheckboxesOpen}>
-                <FormGroup row>{checkboxes}</FormGroup>
-              </Grid>
-            </Hidden>
-
-            <Grid
-              item
-              xs={2}
-              sm={1}
-              md
-              container
-              justifyContent="flex-start"
-              className={classes.gridToggle}
-            >
+            {isXS ? mobileView : desktopView}
+            <Grid item xs={2} sm={1} className={classes.gridToggle}>
               {toggleButton}
             </Grid>
           </Grid>
