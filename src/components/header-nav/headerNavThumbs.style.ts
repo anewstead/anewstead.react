@@ -11,7 +11,7 @@ const useStyles = makeStyles()((theme: Theme) => {
       marginRight: theme.spacing(2),
     },
     brandButton: {
-      // textAlign: "left",
+      textAlign: "left",
     },
     gridBrand: {
       display: "flex",
@@ -28,7 +28,6 @@ const useStyles = makeStyles()((theme: Theme) => {
     },
     gridCheckboxesOpen: {
       display: "flex",
-      justifyContent: "center",
     },
     expansionPanel: {
       backgroundColor: "unset",
