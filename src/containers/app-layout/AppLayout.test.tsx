@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import AppLayout from "./AppLayout";
-import renderWithReduxAndRouter from "../../test-utils/renderWithReduxAndRouter";
+import renderWithProviders from "../../test-utils/renderWithProviders";
 
 const component = (
   <AppLayout headerNavType="detail">
@@ -11,9 +11,9 @@ const component = (
 );
 
 test("renders child-content", async () => {
-  renderWithReduxAndRouter(component);
-  const appLayout = screen.queryByTestId("app-layout");
+  renderWithProviders(component);
+  const appLayout = screen.getByTestId("app-layout");
   expect(appLayout).toBeInTheDocument();
-  const content = screen.queryByTestId("child-content");
+  const content = screen.getByTestId("child-content");
   expect(content).toBeInTheDocument();
 });

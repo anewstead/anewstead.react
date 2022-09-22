@@ -15,27 +15,27 @@ const component = (
 // https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning
 test("renders spinner, removes it and renders child-content", async () => {
   renderWithRedux(component);
-  const spinner = screen.queryByTestId("maindata-spinner");
+  const spinner = screen.getByTestId("maindata-spinner");
   expect(spinner).toBeInTheDocument();
   await waitForElementToBeRemoved(spinner);
-  const content = screen.queryByTestId("child-content");
+  const content = screen.getByTestId("child-content");
   expect(content).toBeInTheDocument();
 });
 
 test("renders load failed", async () => {
   server.setStatus(400);
   renderWithRedux(component);
-  const spinner = screen.queryByTestId("maindata-spinner");
+  const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);
-  const content = screen.queryByTestId("maindata-failed");
+  const content = screen.getByTestId("maindata-failed");
   expect(content).toBeInTheDocument();
 });
 
 test("renders loaded empty data", async () => {
   server.setStatus(204);
   renderWithRedux(component);
-  const spinner = screen.queryByTestId("maindata-spinner");
+  const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);
-  const content = screen.queryByTestId("maindata-empty");
+  const content = screen.getByTestId("maindata-empty");
   expect(content).toBeInTheDocument();
 });

@@ -9,6 +9,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import type { RenderOptions } from "@testing-library/react";
 import { render } from "@testing-library/react";
 
+import ThemeWrapper from "../containers/theme-wrapper";
 import type { AppStore, RootState } from "../app/state/store";
 import { setupStore } from "../app/state/store";
 
@@ -19,7 +20,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   store?: AppStore;
 }
 
-const renderWithReduxAndRouter = (
+const renderWithProviders = (
   ui: React.ReactElement,
   {
     preloadedState = {},
@@ -33,7 +34,9 @@ const renderWithReduxAndRouter = (
   const Wrapper = ({ children }: PropsWithChildren<{}>) => {
     return (
       <ReduxProvider store={store}>
-        <BrowserRouter>{children}</BrowserRouter>
+        <ThemeWrapper>
+          <BrowserRouter>{children}</BrowserRouter>
+        </ThemeWrapper>
       </ReduxProvider>
     );
   };
@@ -44,4 +47,4 @@ const renderWithReduxAndRouter = (
   };
 };
 
-export default renderWithReduxAndRouter;
+export default renderWithProviders;
