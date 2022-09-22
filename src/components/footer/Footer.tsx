@@ -11,7 +11,11 @@ const Footer = (props: Props) => {
   const { brand } = props;
 
   const { classes } = useStyles();
-  const text = `© ${brand} ${new Date().getFullYear()}`;
+
+  const date = new Date().getFullYear();
+
+  const text = `© ${brand} ${date}`;
+
   return (
     <footer className={classes.footer}>
       <Container>
