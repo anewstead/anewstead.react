@@ -20,14 +20,18 @@ const InFrame = (props: Props) => {
 
   const { classes } = useStyles();
 
-  const [adBlocked, setAdBlocked] = useState(false);
+  const [hasAdBlocker, setHasAdBloacker] = useState(false);
+  const [adBlockedHasRun, setAdBlockedHasRun] = useState(false);
 
   useEffect(() => {
-    detectAnyAdblocker().then((detected: boolean) => {
-      if (checkAdBlock) {
-        setAdBlocked(detected);
-      }
-    });
+    if (checkAdBlock) {
+      detectAnyAdblocker().then((detected: boolean) => {
+        if (detected) {
+          setHasAdBloacker(true);
+        }
+        setAdBlockedHasRun(true);
+      });
+    }
   }, [checkAdBlock]);
 
   const adBlockMsg =
@@ -40,19 +44,30 @@ const InFrame = (props: Props) => {
       width={width}
       height={height}
       className={classes.iframe}
+      data-testid="inframe-iframe"
     />
   );
 
   const failover = (
-    <>
+    <div data-testid="inframe-failover">
       <TextBlock htmlText={adBlockMsg} />
       <Paper className={classes.still}>
         <img src={failOverImageURL} alt={title} />
       </Paper>
-    </>
+    </div>
   );
 
-  const content = checkAdBlock && adBlocked ? failover : iframe;
+  const unset = <div data-testid="inframe-unset" />;
+  let content = unset;
+
+  // ensure only override once
+  if (checkAdBlock) {
+    if (adBlockedHasRun) {
+      content = hasAdBlocker ? failover : iframe;
+    }
+  } else {
+    content = iframe;
+  }
 
   return content;
 };
