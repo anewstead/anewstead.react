@@ -64,7 +64,7 @@ const Home = () => {
 
   return (
     <AppLayout headerNavType="thumbs">
-      <Container className={classes.root}>
+      <Container className={classes.root} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
