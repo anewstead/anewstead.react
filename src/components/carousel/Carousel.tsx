@@ -33,7 +33,11 @@ const Carousel = (props: Props) => {
   const bmargin = config.dots ? theme.spacing(6) : theme.spacing(4);
 
   return (
-    <Box className={classes.root} style={{ marginBottom: bmargin }}>
+    <Box
+      className={classes.root}
+      style={{ marginBottom: bmargin }}
+      data-testid="carousel"
+    >
       <Slider {...config} className={classes.slider}>
         {slides}
       </Slider>
