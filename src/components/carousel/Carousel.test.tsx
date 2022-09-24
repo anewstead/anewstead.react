@@ -20,7 +20,7 @@ const gallery = data.map((item) => {
 });
 
 test("renders Carousel", async () => {
-  const settings: SlickSettings = { lazyLoad: undefined }; // no lazyload else only first exists
+  const settings: SlickSettings = { lazyLoad: undefined }; // no lazyload else only first slide accessible
   render(<Carousel slides={gallery} settings={settings} />);
   const carousel = screen.getByTestId("carousel");
   expect(carousel).toBeInTheDocument();
@@ -37,22 +37,16 @@ test("renders Carousel without dots", async () => {
 
 test("handles prev and next", async () => {
   const user = userEvent.setup();
-  const settings: SlickSettings = { speed: 0 }; // speed must be 0 to remove animation
+  const settings: SlickSettings = { speed: 0 }; // speed 0 to remove animation
 
   render(<Carousel slides={gallery} settings={settings} />);
   const carousel = await screen.findByTestId("carousel");
   expect(carousel).toBeInTheDocument();
 
-  const buttons = screen.getAllByRole("button").filter((btn) => {
-    return btn.hasAttribute("aria-label");
-  });
-  const prev = buttons.find((btn) => {
-    return btn.getAttribute("aria-label") === "prev";
-  });
-  const next = buttons.find((btn) => {
-    return btn.getAttribute("aria-label") === "next";
-  });
+  const prev = screen.getByLabelText("prev");
   expect(prev).toBeInTheDocument();
+
+  const next = screen.getByLabelText("next");
   expect(next).toBeInTheDocument();
 
   const current1 = carousel.querySelector(".slick-current");
