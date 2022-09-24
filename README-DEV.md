@@ -7,6 +7,7 @@
 - materialUI
 - @emotion with tss-react
 - Progressive Web App ready
+- testing with Jest and React Testing Library
 
 ## Structure
 
