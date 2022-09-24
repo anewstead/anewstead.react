@@ -32,14 +32,8 @@ const Project: React.FC = () => {
 
   const titleText = data.client;
 
-  let subtitleText = "";
-  if (data.brand && data.project) {
-    subtitleText = `${data.brand} - ${data.project}`;
-  } else if (data.brand) {
-    subtitleText = data.brand;
-  } else if (data.project) {
-    subtitleText = data.project;
-  }
+  const hyphen = data.brand && data.project ? " - " : "";
+  const subtitleText = `${data.brand}${hyphen}${data.project}`;
 
   let content = <></>;
 
@@ -91,7 +85,11 @@ const Project: React.FC = () => {
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
     >
-      <Container className={classes.root} style={{ maxWidth: data.view.width }}>
+      <Container
+        className={classes.root}
+        style={{ maxWidth: data.view.width }}
+        data-testid="project-page"
+      >
         {content}
         <TextBlock htmlText={data.info} />
       </Container>

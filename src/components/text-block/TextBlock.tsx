@@ -5,10 +5,10 @@ import { Box, Paper, Typography } from "@mui/material";
 
 import useStyles from "./textBlock.style";
 
-type ITextBlock = {
+type Props = {
   htmlText: string;
 };
-const TextBlock = (props: ITextBlock) => {
+const TextBlock = (props: Props) => {
   const { htmlText } = props;
 
   const { classes } = useStyles();

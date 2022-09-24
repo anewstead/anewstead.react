@@ -10,14 +10,15 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
+import type { ReactNode } from "react";
 
 import theme from "../../app/theme/theme";
-import { INIT_THEME } from "../../app/state/slice/theme";
+import { INIT_THEME } from "../../app/state/theme/slice";
 import type { RootState } from "../../app/state/store";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const ThemeWrapper = (props: Props) => {

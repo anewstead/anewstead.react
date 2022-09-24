@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <AppLayout headerNavType="detail" headerNavTitle={BRAND}>
-      <Container className={classes.root}>
+      <Container className={classes.root} data-testid="about-page">
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">
             About

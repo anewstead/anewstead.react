@@ -7,19 +7,19 @@
 - materialUI
 - @emotion with tss-react
 - Progressive Web App ready
+- testing with Jest and React Testing Library
 
 ## Structure
 
-The file structure is intentionally designed with nextjs in mind to allow for its reserved files and folder names.
-it doesn't hurt to follow this in a standard react/ non nextjs app, and should you ever need to refator to either it really helps.
+Whilst this is not a NextJs App, the file structure intentionally follows that with regard to pages folder.  
+Nextjs Routes are defined by the contents of 'src/pages' folder.  
+So here 'src/pages' is used only for our 'App' and 'AppRoutes' components,  
+the actual page content is in 'src/page' folder  
 
-in nextjs Routes are defined by the folder structure within 'src/pages' folder
-here we retain 'src/pages' folder and add AppRoutes.jsx inside
-all page content is under 'src/page' folder
-
-in nextjs 'src/pages/\_app.tsx' is the top-most class, with 'src/pages/index.jsx' being the default/homepage
-here 'src/index.tsx' is our top-most class we have a 'src/pages/App.jsx/
-
+Note.  
+In a nextJs app we separate the concerns of SSR specific code into 'src/pages',  
+these then instanciate namesake page content/layout from 'src/page' passing through any SSR realted data.  
+src/pages/home (gets SSR data) > instanciates src/page/home (layout)  
 ## IDE/Editor
 
 - VSCode was used to create so is preferd.

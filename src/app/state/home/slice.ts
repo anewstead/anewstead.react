@@ -1,15 +1,15 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { IMainData } from "./mainDataState";
-import { initialState } from "./homeState";
-import { thumbHelper } from "./homeHelpers";
+import type { IMainData } from "../main-data/state";
+import { initialState } from "./state";
+import { thumbHelper } from "./helpers";
 
-type IDTPayload = {
+export type IDTPayload = {
   allThumbs: IMainData[];
 };
 
-type NCCPayload = {
+export type NCCPayload = {
   checkbox: { id: string; checked: boolean };
   allThumbs: IMainData[];
 };
@@ -31,7 +31,7 @@ const slice = createSlice({
         return cb.id === id;
       });
       if (!stateCheckbox) {
-        throw new Error(`state does not contain checkbox with id: ${id}`);
+        throw new Error(`home state does not contain checkbox with id: ${id}`);
       } else {
         stateCheckbox.checked = checked; // creates 2 way bind
       }
@@ -45,4 +45,4 @@ const slice = createSlice({
 
 export const { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE } = slice.actions;
 
-export default slice.reducer;
+export const homeReducer = slice.reducer;

@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Container, Grid } from "@mui/material";
+import type { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./home.style";
 import { BASE_CONTENT_URL } from "../../app/const";
+import type { IDTPayload } from "../../app/state/home/slice";
+import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
 import type { RootState } from "../../app/state/store";
-import { useAppSelector } from "../../app/state/store";
+import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 const Home = () => {
   const { classes } = useStyles();
+
+  const dispatch = useAppDispatch();
+
+  const allThumbs = useAppSelector((state: RootState) => {
+    return state.mainData.data;
+  });
 
   const displayThumbs = useAppSelector((state: RootState) => {
     return state.home.displayThumbs;
   });
 
-  let content = <></>;
+  useEffect(() => {
+    if (!displayThumbs && allThumbs.length > 0) {
+      const payload: IDTPayload = { allThumbs };
+      dispatch(INIT_DISPLAY_THUMBS(payload));
+    }
+  }, [allThumbs, displayThumbs, dispatch]);
+
+  let content: ReactNode | ReactNode[] = <div data-testid="home-unset" />;
 
   if (displayThumbs) {
     if (displayThumbs.length) {
@@ -36,15 +52,19 @@ const Home = () => {
           </Grid>
         );
       });
-      content = <>{thumbs}</>;
+      content = thumbs;
     } else {
-      content = <Card className={classes.info}>Please make a selection</Card>;
+      content = (
+        <Card className={classes.info} data-testid="home-nothumbs">
+          Please make a selection
+        </Card>
+      );
     }
   }
 
   return (
     <AppLayout headerNavType="thumbs">
-      <Container className={classes.root}>
+      <Container className={classes.root} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>

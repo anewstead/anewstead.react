@@ -11,7 +11,7 @@ const NoMatch = () => {
 
   return (
     <AppLayout headerNavType="detail">
-      <Container className={classes.root}>
+      <Container className={classes.root} data-testid="nomatch-page">
         <Paper className={classes.paper}>
           <Typography variant="h3">404 - Page Not Found</Typography>
           <Typography variant="h4">

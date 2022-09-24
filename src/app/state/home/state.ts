@@ -1,4 +1,4 @@
-import type { IMainData, IProjectType } from "./mainDataState";
+import type { IMainData, IProjectType } from "../main-data/state";
 
 export type IProjectLabel = "Websites" | "Apps" | "Adverts";
 
@@ -9,14 +9,14 @@ export type ICheckbox = {
 };
 
 type IHomePageState = {
-  displayThumbs: IMainData[];
+  displayThumbs: IMainData[] | undefined;
   nav: {
     checkboxes: ICheckbox[];
   };
 };
 
 export const initialState: IHomePageState = {
-  displayThumbs: [],
+  displayThumbs: undefined,
   nav: {
     checkboxes: [
       {
