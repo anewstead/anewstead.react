@@ -11,15 +11,16 @@
 
 ## Structure
 
-Whilst this is not a NextJs App, the file structure intentionally follows that with regard to pages folder.  
-Nextjs Routes are defined by the contents of 'src/pages' folder.  
-So here 'src/pages' is used only for our 'App' and 'AppRoutes' components,  
+Whilst this is not a NextJs App, the file structure intentionally follows that with regard to 'pages' folder.  
+Nextjs Routes are defined by the contents of the resevered folder 'src/pages'.  
+So here 'src/pages' is used only for our top level 'App' and 'AppRoutes' components,  
 the actual page content is in 'src/page' folder  
 
-Note.  
-In a nextJs app we separate the concerns of SSR specific code into 'src/pages',  
-these then instanciate namesake page content/layout from 'src/page' passing through any SSR realted data.  
-src/pages/home (gets SSR data) > instanciates src/page/home (layout)  
+Side note.  
+In a nextJs app we use the same pages/page folder split to separate concerns,  
+'pages' files define routes, handle SSR realted code only, instanciate namesake layout from 'page' passing through SSR data.  
+E.G. src/pages/about (gets SSR data) > instanciates src/page/about (layout)  
+
 ## IDE/Editor
 
 - VSCode was used to create so is preferd.
