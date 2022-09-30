@@ -13,8 +13,8 @@ import {
 import type { ReactNode } from "react";
 
 import theme from "../../app/theme/theme";
+import type { AppState } from "../../app/state/store";
 import { INIT_THEME } from "../../app/state/theme/slice";
-import type { RootState } from "../../app/state/store";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 type Props = {
@@ -26,7 +26,7 @@ const ThemeWrapper = (props: Props) => {
 
   const dispatch = useAppDispatch();
 
-  const themeName = useAppSelector((state: RootState) => {
+  const themeName = useAppSelector((state: AppState) => {
     return state.theme.themeName;
   });
 

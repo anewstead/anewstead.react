@@ -9,8 +9,8 @@ import NoMatch from "../no-match/NoMatch";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
+import type { AppState } from "../../app/state/store";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../app/const";
-import type { RootState } from "../../app/state/store";
 import { useAppSelector } from "../../app/state/store";
 
 const Project: React.FC = () => {
@@ -18,7 +18,7 @@ const Project: React.FC = () => {
 
   const { classes } = useStyles();
 
-  const mainData = useAppSelector((state: RootState) => {
+  const mainData = useAppSelector((state: AppState) => {
     return state.mainData.data;
   });
 

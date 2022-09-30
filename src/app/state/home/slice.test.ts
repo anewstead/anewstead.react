@@ -1,8 +1,8 @@
 import mainDataMock from "../../api/mock/mainDataMock.json";
+import type { AppState } from "../store";
 import type { IMainData } from "../main-data/state";
 import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
 import type { NCCPayload } from "./slice";
-import type { RootState } from "../store";
 import { setupStore } from "../store";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
@@ -13,9 +13,9 @@ test("changes displayThumbs", async () => {
     allThumbs: MAIN_DATA,
   };
   const store = setupStore({ home: homeReducer });
-  const thumbs = (store.getState() as RootState).home.displayThumbs;
+  const thumbs = (store.getState() as AppState).home.displayThumbs;
   await store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const newThumbs = (store.getState() as RootState).home.displayThumbs;
+  const newThumbs = (store.getState() as AppState).home.displayThumbs;
   expect(newThumbs).not.toStrictEqual(thumbs);
 });
 

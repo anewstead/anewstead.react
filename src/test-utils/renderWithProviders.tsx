@@ -10,13 +10,13 @@ import type { RenderOptions } from "@testing-library/react";
 import { render } from "@testing-library/react";
 
 import ThemeWrapper from "../containers/theme-wrapper";
-import type { AppStore, RootState } from "../app/state/store";
+import type { AppState, AppStore } from "../app/state/store";
 import { setupStore } from "../app/state/store";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
-  preloadedState?: PreloadedState<RootState>;
+  preloadedState?: PreloadedState<AppState>;
   store?: AppStore;
 }
 

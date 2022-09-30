@@ -5,10 +5,10 @@ import { Link as RouterLink } from "react-router-dom";
 
 import AppLayout from "../../containers/app-layout";
 import useStyles from "./home.style";
+import type { AppState } from "../../app/state/store";
 import { BASE_CONTENT_URL } from "../../app/const";
 import type { IDTPayload } from "../../app/state/home/slice";
 import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
-import type { RootState } from "../../app/state/store";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 const Home = () => {
@@ -16,11 +16,11 @@ const Home = () => {
 
   const dispatch = useAppDispatch();
 
-  const allThumbs = useAppSelector((state: RootState) => {
+  const allThumbs = useAppSelector((state: AppState) => {
     return state.mainData.data;
   });
 
-  const displayThumbs = useAppSelector((state: RootState) => {
+  const displayThumbs = useAppSelector((state: AppState) => {
     return state.home.displayThumbs;
   });
 

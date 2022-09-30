@@ -14,7 +14,7 @@ import { homeReducer } from "./home/slice";
 import { mainDataReducer } from "./main-data/slice";
 import { themeReducer } from "./theme/slice";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   home: homeReducer,
   mainData: mainDataReducer,
   theme: themeReducer,
@@ -22,32 +22,31 @@ const rootReducer = combineReducers({
 
 // creates and return a store.
 // exported for use in testing so we can create targetted locally scoped store,
-// if a reducer is not passed or intentionally set undefined, default rootReducer is used,
+// if a reducer is not passed or intentionally set undefined, default appReducer is used,
 // this is so tests can override default to just the reducer(s) that are being tested
 // setupStore() = defaults
 // setupStore(myreducer) = reducer as rootreducer
 // setupStore({myreducer}) = reducer as named slice
-// setupStore(undefined, {}) = default rootReducer, empty preloadedState
+// setupStore(undefined, {}) = default appReducer, empty preloadedState
 export const setupStore = (
   reducer?: Reducer | ReducersMapObject,
-  preloadedState?: PreloadedState<RootState>
+  preloadedState?: PreloadedState<AppState>
 ) => {
   return configureStore({
-    reducer: reducer || rootReducer,
+    reducer: reducer || appReducer,
     preloadedState,
   });
 };
 
 // this is THE store at runtime
 const store = setupStore();
+export default store;
 
-// Infer types `Appstore` `RootState` and `AppDispatch`
-export type RootState = ReturnType<typeof rootReducer>;
+// Infer types `Appstore` `AppState` and `AppDispatch`
+export type AppState = ReturnType<typeof appReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = typeof store.dispatch;
 
 // Typed hooks. Use throughout app instead of `useDispatch` and `useSelector`
 export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
-export default store;
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
