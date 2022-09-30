@@ -35,8 +35,8 @@ const About = () => {
               It uses Material-UI components, basically because I wanted to try
               it out.
               <br />
-              In client work all components and CSS have almost always been created
-              bespoke from scratch.
+              In client work all components and CSS have almost always been
+              created bespoke from scratch.
             </p>
             <p>You can get all your tech insights here:</p>
             <p>

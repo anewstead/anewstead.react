@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import ThemeWrapper from "./ThemeWrapper";
-import renderWithRedux from "../../test-utils/renderWithRedux";
+import renderWithProviders from "../../test-utils/renderWithProviders";
 
 const component = (
   <ThemeWrapper>
@@ -11,7 +11,7 @@ const component = (
 );
 
 test("renders child-content", async () => {
-  renderWithRedux(component);
+  renderWithProviders(component);
   const child = screen.getByTestId("child-content");
   expect(child).toBeInTheDocument();
 });
