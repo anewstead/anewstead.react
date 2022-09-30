@@ -18,18 +18,13 @@ the actual page content is in 'src/page' folder
 
 Side note.  
 In a nextJs app we use the same pages/page folder split to separate concerns,  
-'pages' files define routes, handle SSR realted code only, instanciate namesake layout from 'page' passing through SSR data.  
-E.G. src/pages/about (gets SSR data) > instanciates src/page/about (layout)  
+'pages' files define routes, handle SSR related code only, instantiate namesake layout from 'page' passing through SSR data.  
+E.G. src/pages/about (gets SSR data) > instantiates src/page/about (layout)  
 
 ## IDE/Editor
 
 - VSCode was used to create so is preferd.
 - Important; see /.vscode/README.md
-
-## npm/packages
-
-- Dependencies: production code
-- DevDependencies: dev environment e.g. compiler, linting
 
 ## git:
 
