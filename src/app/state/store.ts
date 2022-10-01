@@ -12,12 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { homeReducer } from "./home/slice";
 import { mainDataReducer } from "./main-data/slice";
-import { themeReducer } from "./theme/slice";
 
 const rootReducer = combineReducers({
   home: homeReducer,
   mainData: mainDataReducer,
-  theme: themeReducer,
 });
 
 // creates and return a store.
