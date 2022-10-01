@@ -21,11 +21,9 @@ describe("headernav (detail)", () => {
   });
 
   test("navigates to home", async () => {
-    const { user } = renderWithProviders(
-      <HeaderNav navType="detail" />,
-      {},
-      { route: "/project" }
-    );
+    const { user } = renderWithProviders(<HeaderNav navType="detail" />, {
+      route: "/project",
+    });
     expect(window.location.href).toEqual("http://localhost/project");
     const homeBtn = screen.getByTestId("nav-detail-home-button");
     await user.click(homeBtn!);

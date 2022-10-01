@@ -18,6 +18,7 @@ import { setupStore } from "../app/state/store";
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<AppState>;
   store?: AppStore;
+  route?: string;
 }
 
 const renderWithProviders = (
@@ -26,9 +27,9 @@ const renderWithProviders = (
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
     store = setupStore(undefined, preloadedState),
+    route = "/",
     ...renderOptions
-  }: ExtendedRenderOptions = {},
-  { route = "/" } = {}
+  }: ExtendedRenderOptions = {}
 ) => {
   window.history.pushState({}, "Test page", route);
   const Wrapper = ({ children }: PropsWithChildren<{}>) => {
