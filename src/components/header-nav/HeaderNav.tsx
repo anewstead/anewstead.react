@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
@@ -6,7 +6,7 @@ import HeaderNavThumbs from "./HeaderNavThumbs";
 import { BRAND } from "../../app/const";
 import { NAV_CHECKBOX_CHANGE } from "../../app/state/home/slice";
 import type { NCCPayload } from "../../app/state/home/slice";
-import { TOGGLE_THEME } from "../../app/state/theme/slice";
+import { ThemeWrapperContext } from "../../containers/theme-wrapper/ThemeWrapper";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 type Props = {
@@ -19,6 +19,8 @@ const HeaderNav = (props: Props) => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const themeWrapperContext = useContext(ThemeWrapperContext);
 
   const navCheckboxes = useAppSelector((state) => {
     return state.home.nav.checkboxes;
@@ -37,7 +39,7 @@ const HeaderNav = (props: Props) => {
   };
 
   const themeClick = () => {
-    dispatch(TOGGLE_THEME());
+    themeWrapperContext.toggleTheme();
   };
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

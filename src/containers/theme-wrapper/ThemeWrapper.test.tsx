@@ -1,17 +1,37 @@
-import React from "react";
-import { screen } from "@testing-library/react";
+import React, { useContext } from "react";
+import { Button, useTheme } from "@mui/material";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-import ThemeWrapper from "./ThemeWrapper";
-import renderWithProviders from "../../test-utils/renderWithProviders";
+import theme from "./theme.style";
+import ThemeWrapper, { ThemeWrapperContext } from "./ThemeWrapper";
 
-const component = (
+const TestComp = () => {
+  const themeWrapperContext = useContext(ThemeWrapperContext);
+  const utheme = useTheme();
+  const themeClick = () => {
+    themeWrapperContext.toggleTheme();
+  };
+  return (
+    <Button
+      onClick={themeClick}
+      style={{ backgroundColor: utheme.palette.background.paper }}
+    />
+  );
+};
+
+const ThemedTestComp = (
   <ThemeWrapper>
-    <div data-testid="child-content" />
+    <TestComp />
   </ThemeWrapper>
 );
 
-test("renders child-content", async () => {
-  renderWithProviders(component);
-  const child = screen.getByTestId("child-content");
-  expect(child).toBeInTheDocument();
+test("renders content with theme background colour and toggles theme", async () => {
+  render(ThemedTestComp);
+  const btn = screen.getByRole("button");
+  expect(btn).toBeInTheDocument();
+  const bgLight = theme.light.palette.background.paper;
+  const bgDark = theme.dark.palette.background.paper;
+  expect(btn).toHaveStyle({ "background-color": bgLight });
+  fireEvent.click(btn);
+  expect(btn).toHaveStyle({ "background-color": bgDark });
 });

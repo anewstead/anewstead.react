@@ -1,13 +1,9 @@
 import type { Theme } from "@mui/material/styles";
 import { blueGrey, grey } from "@mui/material/colors";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { deepmerge } from "@mui/utils";
 
-export type IThemeName = "light" | "dark";
-
-export const LIGHT: IThemeName = "light";
-export const DARK: IThemeName = "dark";
-
-export const globalOverrides = (theme: Theme) => {
+const globalOverrides = (theme: Theme) => {
   return {
     components: {
       MuiCssBaseline: {
@@ -37,10 +33,10 @@ export const globalOverrides = (theme: Theme) => {
   };
 };
 
-export const lightTheme = responsiveFontSizes(
+const lightTheme = responsiveFontSizes(
   createTheme({
     palette: {
-      mode: LIGHT,
+      mode: "light",
       background: {
         paper: blueGrey[50],
         default: grey[300],
@@ -50,15 +46,30 @@ export const lightTheme = responsiveFontSizes(
   { breakpoints: ["xs", "sm"] }
 );
 
-export const darkTheme = responsiveFontSizes(
+const darkTheme = responsiveFontSizes(
   createTheme({
     palette: {
-      mode: DARK,
+      mode: "dark",
       background: {
         paper: blueGrey[800],
         default: grey[800],
       },
     },
   }),
-  { breakpoints: ["xs", "sm"], factor: 2 }
+  { breakpoints: ["xs", "sm"] }
 );
+
+// match mui palette mode
+export type IThemeName = "light" | "dark";
+
+type ITheme = Record<IThemeName, Theme> & {
+  light: Theme;
+  dark: Theme;
+};
+
+// match mui palette mode/IThemeName
+const light = deepmerge(lightTheme, globalOverrides(lightTheme));
+const dark = deepmerge(darkTheme, globalOverrides(darkTheme));
+
+const theme: ITheme = { light, dark };
+export default theme;

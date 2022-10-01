@@ -1,10 +1,7 @@
-/**
- * ThemeProvider cannot go at _app level as requires a value from redux
- * i.e can only consume redux below the class that sets the redux provider
- * note however that the EmotionCacheProvider must still be at _app level
- */
+// theme toggle based on:
+// https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode
 
-import React, { useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import {
   CssBaseline,
   StyledEngineProvider,
@@ -12,10 +9,12 @@ import {
 } from "@mui/material";
 import type { ReactNode } from "react";
 
-import theme from "../../app/theme/theme";
-import type { AppState } from "../../app/state/store";
-import { INIT_THEME } from "../../app/state/theme/slice";
-import { useAppDispatch, useAppSelector } from "../../app/state/store";
+import theme from "./theme.style";
+import { initThemeName, toggleThemeName } from "./helpers";
+
+export const ThemeWrapperContext = React.createContext({
+  toggleTheme: () => {},
+});
 
 type Props = {
   children: ReactNode;
@@ -24,23 +23,25 @@ type Props = {
 const ThemeWrapper = (props: Props) => {
   const { children } = props;
 
-  const dispatch = useAppDispatch();
+  const [themeName, setThemeName] = useState(initThemeName());
 
-  const themeName = useAppSelector((state: AppState) => {
-    return state.theme.themeName;
-  });
-
-  useEffect(() => {
-    dispatch(INIT_THEME());
-  }, [dispatch]);
+  const toggleThemeMemo = useMemo(() => {
+    return {
+      toggleTheme: () => {
+        setThemeName(toggleThemeName(themeName));
+      },
+    };
+  }, [themeName]);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme[themeName]}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <ThemeWrapperContext.Provider value={toggleThemeMemo}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme[themeName]}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </ThemeWrapperContext.Provider>
   );
 };
 
