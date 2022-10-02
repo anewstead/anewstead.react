@@ -6,6 +6,7 @@
     "build": true,
     "dist": true,
     "storybook-static": true,
+    "coverage": true,
     ".next": true,
     ".eslintcache": true,
     ".stylelintcache": true,
