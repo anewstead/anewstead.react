@@ -7,8 +7,8 @@ import AppLayout from "../../containers/app-layout";
 import useStyles from "./home.style";
 import type { AppState } from "../../app/state/store";
 import { BASE_CONTENT_URL } from "../../app/const";
-import type { IDTPayload } from "../../app/state/home/slice";
 import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
+import type { InitDisplayThumbsPayload } from "../../app/state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!displayThumbs && allThumbs.length > 0) {
-      const payload: IDTPayload = { allThumbs };
+      const payload: InitDisplayThumbsPayload = { allThumbs };
       dispatch(INIT_DISPLAY_THUMBS(payload));
     }
   }, [allThumbs, displayThumbs, dispatch]);

@@ -5,11 +5,11 @@ import type { IMainData } from "../main-data/state";
 import { initialState } from "./state";
 import { thumbHelper } from "./helpers";
 
-export type IDTPayload = {
+export type InitDisplayThumbsPayload = {
   allThumbs: IMainData[];
 };
 
-export type NCCPayload = {
+export type NavCheckboxChangePayload = {
   checkbox: { id: string; checked: boolean };
   allThumbs: IMainData[];
 };
@@ -18,14 +18,20 @@ const slice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    INIT_DISPLAY_THUMBS: (state, action: PayloadAction<IDTPayload>) => {
+    INIT_DISPLAY_THUMBS: (
+      state,
+      action: PayloadAction<InitDisplayThumbsPayload>
+    ) => {
       state.displayThumbs = thumbHelper(
         action.payload.allThumbs,
         state.nav.checkboxes
       );
     },
 
-    NAV_CHECKBOX_CHANGE: (state, action: PayloadAction<NCCPayload>) => {
+    NAV_CHECKBOX_CHANGE: (
+      state,
+      action: PayloadAction<NavCheckboxChangePayload>
+    ) => {
       const { id, checked } = action.payload.checkbox;
       const stateCheckbox = state.nav.checkboxes.find((cb) => {
         return cb.id === id;

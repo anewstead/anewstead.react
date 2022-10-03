@@ -2,13 +2,13 @@ import mainDataMock from "../../api/mock/mainDataMock.json";
 import type { AppState } from "../store";
 import type { IMainData } from "../main-data/state";
 import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
-import type { NCCPayload } from "./slice";
+import type { NavCheckboxChangePayload } from "./slice";
 import { setupStore } from "../store";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 
 test("changes displayThumbs", async () => {
-  const payload: NCCPayload = {
+  const payload: NavCheckboxChangePayload = {
     checkbox: { id: "site", checked: false },
     allThumbs: MAIN_DATA,
   };
@@ -20,7 +20,7 @@ test("changes displayThumbs", async () => {
 });
 
 test("throws an Error for unknown checkbox", async () => {
-  const payload: NCCPayload = {
+  const payload: NavCheckboxChangePayload = {
     checkbox: { id: "unknown", checked: false },
     allThumbs: MAIN_DATA,
   };
