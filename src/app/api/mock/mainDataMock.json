@@ -1,15 +1,14 @@
 [
   {
-    "id": "9",
-    "client": "Haygarth",
     "brand": "Paramount",
+    "client": "Haygarth",
+    "id": "9",
+    "info": "Website promoting the DVD releases of all the Star trek franchise as they were released over several years.<br/>The site also included competitions, video clips, quizzes, interactive features, news, and cast interviews.",
     "project": "Star Trek UK",
-    "type": "site",
     "tech": "html",
     "thumb": "paramount_startrek.jpg",
+    "type": "site",
     "view": {
-      "type": "gallery",
-      "width": 780,
       "height": 480,
       "href": "",
       "stills": [
@@ -20,94 +19,94 @@
         "paramount_startrek_05.jpg",
         "paramount_startrek_06.jpg",
         "paramount_startrek_07.jpg"
-      ]
-    },
-    "info": "Website promoting the DVD releases of all the Star trek franchise as they were released over several years.<br/>The site also included competitions, video clips, quizzes, interactive features, news, and cast interviews."
+      ],
+      "type": "gallery",
+      "width": 780
+    }
   },
 
   {
-    "id": "21",
-    "client": "Ogilvy Healthworld",
     "brand": "G.S.K.",
+    "client": "Ogilvy Healthworld",
+    "id": "21",
+    "info": "Mobile app and online version for medical professionals to quickly work out optimal dose and dilution of the drug.<br/>The weight sliders are of particular technical interest as they required some pretty trick scripting to create the effect moving around the point of the indicator. ",
     "project": "Benlysta",
-    "type": "app",
     "tech": "flash",
     "thumb": "benlysta.jpg",
+    "type": "app",
     "view": {
-      "type": "video",
-      "width": 702,
       "height": 738,
       "href": "154m-zNEE15UHmSlZrDem77Ppk9Tt0MbZ",
-      "poster": "gsk_benlysta.jpg"
-    },
-    "info": "Mobile app and online version for medical professionals to quickly work out optimal dose and dilution of the drug.<br/>The weight sliders are of particular technical interest as they required some pretty trick scripting to create the effect moving around the point of the indicator. "
+      "poster": "gsk_benlysta.jpg",
+      "type": "video",
+      "width": 702
+    }
   },
 
   {
-    "id": "22",
-    "client": "Global Beach",
     "brand": "ITN",
+    "client": "Global Beach",
+    "id": "22",
+    "info": "Web based app to show how broadcasters can choose to render a news story different ways.<br/>Users can flip between clips of reporters presenting the same story, over a choice of green screen background locations.",
     "project": "Your News",
-    "type": "app",
     "tech": "flash",
     "thumb": "itn.jpg",
+    "type": "app",
     "view": {
-      "type": "video",
-      "width": 696,
       "height": 222,
       "href": "1IvYsBf6e-5YC7QZvGs8C3zILHkP43gRT",
-      "poster": "itn.jpg"
-    },
-    "info": "Web based app to show how broadcasters can choose to render a news story different ways.<br/>Users can flip between clips of reporters presenting the same story, over a choice of green screen background locations."
+      "poster": "itn.jpg",
+      "type": "video",
+      "width": 696
+    }
   },
 
   {
-    "id": "26",
-    "client": "TSL Digital",
     "brand": "Halifax",
+    "client": "TSL Digital",
+    "id": "26",
+    "info": "I have worked on approx. 20 Halifax campaigns.<br/>After the initial build of each campaign the setup would be part automated using node and grunt to help manage the number of variations.<br/>The Hanna Barbara cartoon character were created as sprite sheets per size variation and animated via javascript.",
     "project": "Banners",
-    "type": "banner",
     "tech": "html",
     "thumb": "halifax.jpg",
+    "type": "banner",
     "view": {
-      "type": "iframe",
-      "width": 300,
       "height": 250,
       "href": "sites/halifax/index.html",
-      "still": "sites/_stills/halifax.gif"
-    },
-    "info": "I have worked on approx. 20 Halifax campaigns.<br/>After the initial build of each campaign the setup would be part automated using node and grunt to help manage the number of variations.<br/>The Hanna Barbara cartoon character were created as sprite sheets per size variation and animated via javascript."
+      "still": "sites/_stills/halifax.gif",
+      "type": "iframe",
+      "width": 300
+    }
   },
 
   {
-    "id": "33",
-    "client": "Possible Worldwide",
     "brand": "Seat",
+    "client": "Possible Worldwide",
+    "id": "33",
+    "info": "Promotional site for the launch of SEAT SC<br/>Interior and exterior 3D views of the SEAT Leon SC pointing out key features.<br/>Each feature leads to page for more information, of which 5 are bespoke interactive pages.",
     "project": "Leon SC",
-    "type": "site",
     "tech": "flash",
     "thumb": "seat_leonsc.jpg",
+    "type": "site",
     "view": {
-      "type": "video",
-      "width": 1178,
       "height": 718,
       "href": "1GMvNvQmYZI1AM8GRXR452LFvsebsz0JC",
-      "poster": "seat_leon.jpg"
-    },
-    "info": "Promotional site for the launch of SEAT SC<br/>Interior and exterior 3D views of the SEAT Leon SC pointing out key features.<br/>Each feature leads to page for more information, of which 5 are bespoke interactive pages."
+      "poster": "seat_leon.jpg",
+      "type": "video",
+      "width": 1178
+    }
   },
 
   {
-    "id": "34",
-    "client": "Like Digital",
     "brand": "The Macallan",
+    "client": "Like Digital",
+    "id": "34",
+    "info": "Frontend development of the brand experience with e-commerce web site. Responsive build using a modular template setup with animated and interactive effects.",
     "project": "Brand website",
-    "type": "site",
     "tech": "html",
     "thumb": "themacallan.jpg",
+    "type": "site",
     "view": {
-      "type": "gallery",
-      "width": 780,
       "height": 480,
       "href": "",
       "stills": [
@@ -115,26 +114,27 @@
         "themacallan_02.jpg",
         "themacallan_03.jpg",
         "themacallan_04.jpg"
-      ]
-    },
-    "info": "Frontend development of the brand experience with e-commerce web site. Responsive build using a modular template setup with animated and interactive effects."
+      ],
+      "type": "gallery",
+      "width": 780
+    }
   },
 
   {
-    "id": "37",
-    "client": "Foolproof",
     "brand": "AXA XL",
+    "client": "Foolproof",
+    "id": "37",
+    "info": "Atomic design pattern library of UI components, form page layouts and React demo",
     "project": "UI development",
-    "type": "site",
     "tech": "html",
     "thumb": "axa.jpg",
+    "type": "site",
     "view": {
-      "type": "gallery",
-      "width": 780,
       "height": 480,
       "href": "",
-      "stills": ["axa1.jpg", "axa2.jpg"]
-    },
-    "info": "Atomic design pattern library of UI components, form page layouts and React demo"
+      "stills": ["axa1.jpg", "axa2.jpg"],
+      "type": "gallery",
+      "width": 780
+    }
   }
 ]

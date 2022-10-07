@@ -82,6 +82,7 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.7.1",
     "prettier-plugin-import-sort": "^0.0.7",
+    "prettier-plugin-sort-json": "^0.0.3",
     "source-map-explorer": "^2.5.3",
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",

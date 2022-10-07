@@ -1,33 +1,33 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "incremental": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
     "strictNullChecks": true,
-    "incremental": true
+    "target": "es5"
   },
+  "exclude": ["node_modules"],
   "include": [
     "src/**/*",
     "src/**/*.json",
     "src/**/.*.js",
     "src/**/.*.json",
     "**/*.d.ts"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }

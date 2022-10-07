@@ -10,9 +10,12 @@
  * - @typescript-eslint/parser
  */
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint", "check-file", "json"],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "jest": true,
+    "node": true
+  },
   "extends": [
     "react-app",
     "react-app/jest",
@@ -22,58 +25,51 @@
     "plugin:json/recommended",
     "prettier"
   ],
-  "env": {
-    "browser": true,
-    "jasmine": true,
-    "jest": true,
-    "node": true
-  },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "extraFileExtensions": [".json"]
+    "extraFileExtensions": [".json"],
+    "project": "./tsconfig.json"
   },
+  "plugins": ["react", "@typescript-eslint", "check-file", "json"],
+  "root": true,
   "rules": {
-    "@typescript-eslint/naming-convention": "warn",
     "@typescript-eslint/consistent-type-imports": "warn",
-
+    "@typescript-eslint/naming-convention": "warn",
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
 
     "check-file/filename-naming-convention": [
       "error",
       {
-        // camelCase
-        "src/**/*.{js,ts,css,scss}": "CAMEL_CASE",
-        // PascalCase
-        "src/(!index)/**/*.{jsx,tsx}": "PASCAL_CASE"
+        "src/(!index)/**/*.{jsx,tsx}": "PASCAL_CASE",
+        "src/**/*.{js,ts,css,scss}": "CAMEL_CASE"
       },
       { "ignoreMiddleExtensions": true }
     ],
+
     "check-file/folder-naming-convention": [
       "error",
-      { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" } // kebab-case
+      { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
     ],
 
     "curly": "error",
     "import/prefer-default-export": "off",
-
     "json/*": ["error", { "allowComments": true }],
-
     "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-mixed-operators": "error",
     "prefer-arrow-callback": "error",
     "prefer-template": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
 
     "react/function-component-definition": [
       "warn",
       { "namedComponents": "arrow-function" }
     ],
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-no-useless-fragment": "off",
-    "react/prop-types": "off",
-    "react/require-default-props": "off",
 
-    "react-hooks/exhaustive-deps": "warn",
-    "react-hooks/rules-of-hooks": "error"
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off"
   }
 }
