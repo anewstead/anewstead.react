@@ -28,7 +28,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "extraFileExtensions": [".json"],
-    "project": "./tsconfig.json"
+    "project": ["./tsconfig.json"]
   },
   "plugins": ["react", "@typescript-eslint", "check-file", "json"],
   "root": true,
@@ -37,7 +37,6 @@
     "@typescript-eslint/naming-convention": "warn",
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
-
     "check-file/filename-naming-convention": [
       "error",
       {
@@ -46,12 +45,10 @@
       },
       { "ignoreMiddleExtensions": true }
     ],
-
     "check-file/folder-naming-convention": [
       "error",
       { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
     ],
-
     "curly": "error",
     "import/prefer-default-export": "off",
     "json/*": ["error", { "allowComments": true }],
@@ -61,12 +58,10 @@
     "prefer-template": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
-
     "react/function-component-definition": [
       "warn",
       { "namedComponents": "arrow-function" }
     ],
-
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",

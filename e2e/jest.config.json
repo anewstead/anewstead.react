@@ -1,0 +1,5 @@
+{
+  "maxWorkers": 2,
+  "preset": "jest-puppeteer",
+  "testEnvironment": "jest-environment-puppeteer"
+}
