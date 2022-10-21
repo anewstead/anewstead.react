@@ -13,7 +13,7 @@ module.exports = {
   },
   launch: {
     headless: false,
-    slowMo: 250,
+    slowMo: 100,
     timeout: 10000,
     executablePath: chromePath,
   },
