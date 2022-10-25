@@ -27,8 +27,7 @@ test("toggle home thumbs", async () => {
     "[data-testid=nav-thumbs-desktop-checkbox] input[type=checkbox]";
   const THUMB_ITEMS = "[data-testid=home-page] > div > div";
   const MAKE_SELECTION = "[data-testid=home-nothumbs]";
-  const makeSelection1 = await page.$(MAKE_SELECTION);
-  expect(makeSelection1).toBeFalsy();
+  await expect(page).not.toMatchElement(MAKE_SELECTION);
   const checkboxes = await page.$$(NAV_CHECKBOXES);
   const thumbs1 = await page.$$(THUMB_ITEMS);
   expect(thumbs1.length).toBeGreaterThan(0);
@@ -39,6 +38,25 @@ test("toggle home thumbs", async () => {
   const thumbs3 = await page.$$(THUMB_ITEMS);
   expect(thumbs3.length).toBeLessThan(thumbs2.length);
   await checkboxes[2].click();
-  const makeSelection2 = await page.$(MAKE_SELECTION);
-  expect(makeSelection2).toBeTruthy();
+  await expect(page).toMatchElement(MAKE_SELECTION);
+});
+
+test("navigate to about and back home", async () => {
+  const ABOUT_BUTTON = "[data-testid=nav-thumbs-about-button]";
+  const HOME_BUTTON = "[data-testid=nav-detail-home-button]";
+  await expect(page).toMatchElement(ABOUT_BUTTON);
+  await Promise.all([page.waitForNavigation(), page.click(ABOUT_BUTTON)]);
+  await expect(page).not.toMatchElement(ABOUT_BUTTON);
+  await expect(page).toMatchElement(HOME_BUTTON);
+  await Promise.all([page.waitForNavigation(), page.click(HOME_BUTTON)]);
+  await expect(page).toMatchElement(ABOUT_BUTTON);
+  await expect(page).not.toMatchElement(HOME_BUTTON);
+});
+
+test("navigate to project", async () => {
+  const PROJECT_THUMB = "[data-testid=home-page] > div > div:first-of-type";
+  const HOME_BUTTON = "[data-testid=nav-detail-home-button]";
+  await Promise.all([page.waitForNavigation(), page.click(PROJECT_THUMB)]);
+  await expect(page).not.toMatchElement(PROJECT_THUMB);
+  await expect(page).toMatchElement(HOME_BUTTON);
 });
