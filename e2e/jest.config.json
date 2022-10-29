@@ -3,7 +3,7 @@
   "preset": "jest-puppeteer",
   "setupFilesAfterEnv": ["expect-puppeteer"],
   "testEnvironment": "jest-environment-puppeteer",
-  "testTimeout": 9999,
+  "testTimeout": 20000,
   "transform": {
     "\\.js|jsx|ts|tsx$": "react-scripts/config/jest/babelTransform"
   }

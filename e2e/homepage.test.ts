@@ -1,8 +1,12 @@
-const SITE_ROOT = "http://localhost:3003";
+import { waitForTransitionEnd } from "./helpers";
 
 beforeEach(async () => {
+  const PAGE_URL = "http://localhost:3000";
+  const LAYOUT = "[data-testid=app-layout]";
   await jestPuppeteer.resetPage();
-  await page.goto(SITE_ROOT);
+  await page.setViewport({ width: 800, height: 600 });
+  await page.goto(PAGE_URL);
+  await expect(page).toMatchElement(LAYOUT);
 });
 
 test("toggle the theme", async () => {
@@ -22,13 +26,11 @@ test("toggle the theme", async () => {
   expect(bg1).toMatch(bg3);
 });
 
-test("toggle home thumbs", async () => {
-  const NAV_CHECKBOXES =
-    "[data-testid=nav-thumbs-desktop-checkbox] input[type=checkbox]";
+const toggleThumbs = async (checkboxSelector: string) => {
   const THUMB_ITEMS = "[data-testid=home-page] > div > div";
   const MAKE_SELECTION = "[data-testid=home-nothumbs]";
   await expect(page).not.toMatchElement(MAKE_SELECTION);
-  const checkboxes = await page.$$(NAV_CHECKBOXES);
+  const checkboxes = await page.$$(checkboxSelector);
   const thumbs1 = await page.$$(THUMB_ITEMS);
   expect(thumbs1.length).toBeGreaterThan(0);
   await checkboxes[0].click();
@@ -39,6 +41,32 @@ test("toggle home thumbs", async () => {
   expect(thumbs3.length).toBeLessThan(thumbs2.length);
   await checkboxes[2].click();
   await expect(page).toMatchElement(MAKE_SELECTION);
+};
+
+test("toggle home thumbs", async () => {
+  const DESK_CHECKBOXES =
+    "[data-testid=nav-thumbs-desktop-checkbox] input[type=checkbox]";
+  await toggleThumbs(DESK_CHECKBOXES);
+});
+
+test("mobile: open nav, toggle thumbs, close nav", async () => {
+  const MOB_CHECKBOXES =
+    "[data-testid=nav-thumbs-mobile-checkbox] input[type=checkbox]";
+  const MENU_BUTTON = "[data-testid=nav-thumbs-menu-button]";
+  const ACCORDIAN_SUMMARY = "[data-testid=nav-thumbs-accordion-summary]";
+  const ACCORDIAN_DETAIL = `${ACCORDIAN_SUMMARY} + div`; // sibling div
+  await page.setViewport({ width: 480, height: 640 });
+  const accordionDetail = await page.$(ACCORDIAN_DETAIL);
+  const height1 = await (await accordionDetail.boundingBox()).height;
+  await page.click(MENU_BUTTON);
+  await waitForTransitionEnd(ACCORDIAN_DETAIL);
+  const height2 = await (await accordionDetail.boundingBox()).height;
+  expect(height2).toBeGreaterThan(height1);
+  await toggleThumbs(MOB_CHECKBOXES);
+  await page.click(MENU_BUTTON);
+  await waitForTransitionEnd(ACCORDIAN_DETAIL);
+  const height3 = await (await accordionDetail.boundingBox()).height;
+  expect(height3).toEqual(height1);
 });
 
 test("navigate to about and back home", async () => {
