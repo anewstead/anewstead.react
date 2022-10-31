@@ -58,13 +58,17 @@ test("mobile: open nav, toggle thumbs, close nav", async () => {
   await page.setViewport({ width: 480, height: 640 });
   const accordionDetail = await page.$(ACCORDIAN_DETAIL);
   const height1 = await (await accordionDetail.boundingBox()).height;
-  await page.click(MENU_BUTTON);
-  await waitForTransitionEnd(ACCORDIAN_DETAIL);
+  await Promise.all([
+    waitForTransitionEnd(ACCORDIAN_DETAIL),
+    page.click(MENU_BUTTON),
+  ]);
   const height2 = await (await accordionDetail.boundingBox()).height;
   expect(height2).toBeGreaterThan(height1);
   await toggleThumbs(MOB_CHECKBOXES);
-  await page.click(MENU_BUTTON);
-  await waitForTransitionEnd(ACCORDIAN_DETAIL);
+  await Promise.all([
+    waitForTransitionEnd(ACCORDIAN_DETAIL),
+    page.click(MENU_BUTTON),
+  ]);
   const height3 = await (await accordionDetail.boundingBox()).height;
   expect(height3).toEqual(height1);
 });
