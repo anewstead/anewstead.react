@@ -1,3 +1,9 @@
+export const waitFor = async (ms) => {
+  return new Promise<void>((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
 export const waitForTransitionEnd = async (selector: string) => {
   await page.evaluate((sel) => {
     const transition = document.querySelector(sel);

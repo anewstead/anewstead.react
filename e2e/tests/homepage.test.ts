@@ -5,7 +5,7 @@ beforeEach(async () => {
   const LAYOUT = "[data-testid=app-layout]";
   await jestPuppeteer.resetPage();
   await page.setViewport({ width: 800, height: 600 });
-  await page.goto(PAGE_URL);
+  await page.goto(PAGE_URL, { waitUntil: "networkidle0" });
   await expect(page).toMatchElement(LAYOUT);
 });
 
