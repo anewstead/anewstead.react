@@ -4,7 +4,7 @@ import { screen, within } from "@testing-library/react";
 import HeaderNav from "./HeaderNav";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import theme from "../../containers/theme-wrapper/theme.style";
-import type { RootState } from "../../app/state/store";
+import type { AppState } from "../../app/state/store";
 
 describe("headernav (detail)", () => {
   test("toggles theme", async () => {
@@ -21,11 +21,9 @@ describe("headernav (detail)", () => {
   });
 
   test("navigates to home", async () => {
-    const { user } = renderWithProviders(
-      <HeaderNav navType="detail" />,
-      {},
-      { route: "/project" }
-    );
+    const { user } = renderWithProviders(<HeaderNav navType="detail" />, {
+      route: "/project",
+    });
     expect(window.location.href).toEqual("http://localhost/project");
     const homeBtn = screen.getByTestId("nav-detail-home-button");
     await user.click(homeBtn!);
@@ -69,9 +67,9 @@ describe("headernav (thumbs)", () => {
     const group = screen.getByTestId("nav-thumbs-mobile-checkbox");
     const checkbox = within(group!).getAllByRole("checkbox");
     expect(checkbox.length).toBeGreaterThan(0);
-    const cbState1 = (store.getState() as RootState).home.nav.checkboxes;
+    const cbState1 = (store.getState() as AppState).home.nav.checkboxes;
     await user.click(checkbox[0]);
-    const cbState2 = (store.getState() as RootState).home.nav.checkboxes;
+    const cbState2 = (store.getState() as AppState).home.nav.checkboxes;
     expect(cbState2).not.toEqual(cbState1);
     // toggle close
     await user.click(menuBtn!);
@@ -84,9 +82,9 @@ describe("headernav (thumbs)", () => {
     const group = screen.getByTestId("nav-thumbs-desktop-checkbox");
     const checkbox = within(group!).getAllByRole("checkbox");
     expect(checkbox.length).toBeGreaterThan(0);
-    const navState = (store.getState() as RootState).home.nav.checkboxes;
+    const navState = (store.getState() as AppState).home.nav.checkboxes;
     await user.click(checkbox[0]);
-    const newNavState = (store.getState() as RootState).home.nav.checkboxes;
+    const newNavState = (store.getState() as AppState).home.nav.checkboxes;
     expect(newNavState).not.toEqual(navState);
   });
 });

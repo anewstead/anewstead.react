@@ -1,10 +1,10 @@
 {
-  "extends": "./tsconfig",
   "exclude": [
     "**/__mocks__/*",
     "**/__tests__/*",
     "**/*.test.*",
     "**/*.spec.*",
     "**/*.e2e.*"
-  ]
+  ],
+  "extends": "./tsconfig"
 }

@@ -10,11 +10,8 @@ import {
 import type { ReactNode } from "react";
 
 import theme from "./theme.style";
+import { ThemeWrapperContext } from "./ThemeWrapperContext";
 import { initThemeName, toggleThemeName } from "./helpers";
-
-export const ThemeWrapperContext = React.createContext({
-  toggleTheme: () => {},
-});
 
 type Props = {
   children: ReactNode;

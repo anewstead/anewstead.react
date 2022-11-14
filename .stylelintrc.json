@@ -1,15 +1,14 @@
 {
+  "customSyntax": "postcss-jsx",
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-styled-components",
     "stylelint-config-prettier"
   ],
-  "customSyntax": "postcss-jsx",
   "rules": {
     "at-rule-no-unknown": [
       true,
       {
-        "severity": "error",
         "ignoreAtRules": [
           "include",
           "mixin",
@@ -25,7 +24,8 @@
           "use",
           "forward",
           "extend"
-        ]
+        ],
+        "severity": "error"
       }
     ],
     "declaration-empty-line-before": "never",

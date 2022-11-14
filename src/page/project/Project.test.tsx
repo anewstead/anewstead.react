@@ -79,11 +79,10 @@ test("renders VIDEO with brand and project text", async () => {
       data: [dataVideo],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
   const projectPage = screen.getByTestId("project-page");
   expect(projectPage).toBeInTheDocument();
   const subtitle = screen.getByTestId("nav-detail-subtitle");
@@ -100,11 +99,10 @@ test("renders with only brand text", async () => {
       data: [{ ...dataVideo, project: "" }],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
   const subtitle = screen.getByTestId("nav-detail-subtitle");
   expect(subtitle.textContent).toEqual(`${uState.mainData.data[0].brand}`);
 });
@@ -116,11 +114,10 @@ test("renders with only project text", async () => {
       data: [{ ...dataVideo, brand: "" }],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
   const subtitle = screen.getByTestId("nav-detail-subtitle");
   expect(subtitle.textContent).toEqual(`${uState.mainData.data[0].project}`);
 });
@@ -132,11 +129,10 @@ test("renders GALLERY", async () => {
       data: [dataGallery],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
 });
 
 test("renders IFRAME (without adblock test)", async () => {
@@ -146,11 +142,10 @@ test("renders IFRAME (without adblock test)", async () => {
       data: [dataIframe],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
 });
 
 test("renders nomatch with noMatch view type", async () => {
@@ -160,11 +155,10 @@ test("renders nomatch with noMatch view type", async () => {
       data: [dataNoMatch],
     },
   };
-  renderWithProviders(
-    CompWithRoute,
-    { preloadedState: uState },
-    { route: `/project/${uState.mainData.data[0].id}` }
-  );
+  renderWithProviders(CompWithRoute, {
+    preloadedState: uState,
+    route: `/project/${uState.mainData.data[0].id}`,
+  });
   const noMatch = screen.getByTestId("nomatch-page");
   expect(noMatch).toBeInTheDocument();
 });

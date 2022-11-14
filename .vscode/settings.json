@@ -1,42 +1,40 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-
-  "files.exclude": {
-    "node_modules": true,
-    "build": true,
-    "dist": true,
-    "storybook-static": true,
-    ".next": true,
-    ".eslintcache": true,
-    ".stylelintcache": true,
-    ".husky": true
-  },
-
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": true,
-  "editor.renderWhitespace": "all",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
-  },
-
   "[markdown]": {
     "editor.formatOnPaste": false,
     "editor.formatOnSave": false
   },
 
   "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "javascript.validate.enable": false,
-  "typescript.validate.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+
+  "files.exclude": {
+    ".eslintcache": true,
+    ".next": true,
+    ".stylelintcache": true,
+    "build": true,
+    "coverage": true,
+    "dist": true,
+    "node_modules": true,
+    "storybook-static": true
+  },
 
   "html.format.enable": false,
-  "json.format.enable": false,
   "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "json.format.enable": false,
+  "less.validate": false,
+  "scss.validate": false,
   "typescript.format.enable": false,
-
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.validate.enable": true
 }

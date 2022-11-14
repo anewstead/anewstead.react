@@ -2,7 +2,7 @@ import React from "react";
 import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import MainDataLoader from "./MainDataLoader";
-import renderWithRedux from "../../test-utils/renderWithRedux";
+import renderWithProviders from "../../test-utils/renderWithProviders";
 import { server } from "../../app/api/mock/server";
 
 const component = (
@@ -14,7 +14,7 @@ const component = (
 // Note: React/Jest throws an error if we do not test against visual state change
 // https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning
 test("renders spinner, removes it and renders child-content", async () => {
-  renderWithRedux(component);
+  renderWithProviders(component);
   const spinner = screen.getByTestId("maindata-spinner");
   expect(spinner).toBeInTheDocument();
   await waitForElementToBeRemoved(spinner);
@@ -24,7 +24,7 @@ test("renders spinner, removes it and renders child-content", async () => {
 
 test("renders load failed", async () => {
   server.setStatus(400);
-  renderWithRedux(component);
+  renderWithProviders(component);
   const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);
   const content = screen.getByTestId("maindata-failed");
@@ -33,7 +33,7 @@ test("renders load failed", async () => {
 
 test("renders loaded empty data", async () => {
   server.setStatus(204);
-  renderWithRedux(component);
+  renderWithProviders(component);
   const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);
   const content = screen.getByTestId("maindata-empty");

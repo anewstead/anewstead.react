@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
 import { BRAND } from "../../app/const";
 import { NAV_CHECKBOX_CHANGE } from "../../app/state/home/slice";
-import type { NCCPayload } from "../../app/state/home/slice";
-import { ThemeWrapperContext } from "../../containers/theme-wrapper/ThemeWrapper";
+import type { NavCheckboxChangePayload } from "../../app/state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
+import { useThemeWrapperContext } from "../../containers/theme-wrapper/ThemeWrapperContext";
 
 type Props = {
   navType: "thumbs" | "detail";
@@ -20,7 +20,7 @@ const HeaderNav = (props: Props) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const themeWrapperContext = useContext(ThemeWrapperContext);
+  const { toggleTheme } = useThemeWrapperContext();
 
   const navCheckboxes = useAppSelector((state) => {
     return state.home.nav.checkboxes;
@@ -39,12 +39,12 @@ const HeaderNav = (props: Props) => {
   };
 
   const themeClick = () => {
-    themeWrapperContext.toggleTheme();
+    toggleTheme();
   };
 
   const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.currentTarget;
-    const payload: NCCPayload = {
+    const payload: NavCheckboxChangePayload = {
       checkbox: { id, checked },
       allThumbs: mainData,
     };

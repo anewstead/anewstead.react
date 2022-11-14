@@ -1,36 +1,41 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, useTheme } from "@mui/material";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import ThemeWrapper from "./ThemeWrapper";
+import renderWithExpectedError from "../../test-utils/renderWithExpectedError";
 import theme from "./theme.style";
-import ThemeWrapper, { ThemeWrapperContext } from "./ThemeWrapper";
+import { useThemeWrapperContext } from "./ThemeWrapperContext";
 
-const TestComp = () => {
-  const themeWrapperContext = useContext(ThemeWrapperContext);
+const TestComponent = () => {
+  const { toggleTheme } = useThemeWrapperContext();
   const utheme = useTheme();
-  const themeClick = () => {
-    themeWrapperContext.toggleTheme();
-  };
   return (
     <Button
-      onClick={themeClick}
+      onClick={() => {
+        toggleTheme();
+      }}
       style={{ backgroundColor: utheme.palette.background.paper }}
     />
   );
 };
 
-const ThemedTestComp = (
+const ThemedTestComponent = (
   <ThemeWrapper>
-    <TestComp />
+    <TestComponent />
   </ThemeWrapper>
 );
 
+test("throws error if useContext not within Provider scope", async () => {
+  expect(renderWithExpectedError(<TestComponent />)).toBeTruthy();
+});
+
 test("renders content with theme background colour and toggles theme", async () => {
-  render(ThemedTestComp);
-  const btn = screen.getByRole("button");
-  expect(btn).toBeInTheDocument();
   const bgLight = theme.light.palette.background.paper;
   const bgDark = theme.dark.palette.background.paper;
+  render(ThemedTestComponent);
+  const btn = screen.getByRole("button");
+  expect(btn).toBeInTheDocument();
   expect(btn).toHaveStyle({ "background-color": bgLight });
   fireEvent.click(btn);
   expect(btn).toHaveStyle({ "background-color": bgDark });

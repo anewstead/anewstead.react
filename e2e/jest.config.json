@@ -1,0 +1,10 @@
+{
+  "maxWorkers": 2,
+  "preset": "jest-puppeteer",
+  "setupFilesAfterEnv": ["expect-puppeteer"],
+  "testEnvironment": "jest-environment-puppeteer",
+  "testTimeout": 20000,
+  "transform": {
+    "\\.js|jsx|ts|tsx$": "react-scripts/config/jest/babelTransform"
+  }
+}

@@ -1,5 +1,4 @@
 import type { Theme } from "@mui/material";
-import { isMobile } from "react-device-detect";
 import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()((theme: Theme) => {
@@ -13,7 +12,10 @@ const useStyles = makeStyles()((theme: Theme) => {
       color: theme.palette.text.primary,
       opacity: "0",
       "&:hover, &:focus-visible": {
-        opacity: `${isMobile ? "0" : "1"}`,
+        opacity: 0,
+        [theme.breakpoints.up("sm")]: {
+          opacity: 1,
+        },
       },
       "& div:first-of-type": {
         padding: "12px",
