@@ -1,19 +1,19 @@
 import React from "react";
 import { screen } from "@testing-library/react";
 
-import AppLayout from "./AppLayout";
+import AppWrapper from "./AppWrapper";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 
 const component = (
-  <AppLayout headerNavType="detail">
+  <AppWrapper headerNavType="detail">
     <div data-testid="child-content" />
-  </AppLayout>
+  </AppWrapper>
 );
 
 test("renders child-content", async () => {
   renderWithProviders(component);
-  const appLayout = screen.getByTestId("app-layout");
-  expect(appLayout).toBeInTheDocument();
+  const appWrapper = screen.getByTestId("app-layout");
+  expect(appWrapper).toBeInTheDocument();
   const content = screen.getByTestId("child-content");
   expect(content).toBeInTheDocument();
 });

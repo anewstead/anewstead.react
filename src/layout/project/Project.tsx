@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-import AppLayout from "../../containers/app-layout";
+import AppWrapper from "../../wrappers/app-wrapper";
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
 import NoMatch from "../no-match/NoMatch";
@@ -80,7 +80,7 @@ const Project: React.FC = () => {
   }
 
   return (
-    <AppLayout
+    <AppWrapper
       headerNavType="detail"
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
@@ -93,7 +93,7 @@ const Project: React.FC = () => {
         {content}
         <TextBlock htmlText={data.info} />
       </Container>
-    </AppLayout>
+    </AppWrapper>
   );
 };
 

@@ -9,7 +9,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import type { RenderOptions } from "@testing-library/react";
 import { render } from "@testing-library/react";
 
-import ThemeWrapper from "../containers/theme-wrapper";
+import ThemeWrapper from "../wrappers/theme-wrapper";
 import type { AppState, AppStore } from "../app/state/store";
 import { setupStore } from "../app/state/store";
 

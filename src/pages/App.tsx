@@ -6,8 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 
 import AppRoutes from "./AppRoutes";
-import MainDataLoader from "../containers/main-data-loader";
-import ThemeWrapper from "../containers/theme-wrapper";
+import MainDataLoader from "../wrappers/main-data-loader";
+import ThemeWrapper from "../wrappers/theme-wrapper";
 import store from "../app/state/store";
 
 /**

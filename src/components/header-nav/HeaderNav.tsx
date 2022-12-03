@@ -7,7 +7,7 @@ import { BRAND } from "../../app/const";
 import { NAV_CHECKBOX_CHANGE } from "../../app/state/home/slice";
 import type { NavCheckboxChangePayload } from "../../app/state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../app/state/store";
-import { useThemeWrapperContext } from "../../containers/theme-wrapper/ThemeWrapperContext";
+import { useThemeWrapperContext } from "../../wrappers/theme-wrapper/ThemeWrapperContext";
 
 type Props = {
   navType: "thumbs" | "detail";

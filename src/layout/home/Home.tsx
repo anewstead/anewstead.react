@@ -3,7 +3,7 @@ import { Button, Card, Container, Grid } from "@mui/material";
 import type { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-import AppLayout from "../../containers/app-layout";
+import AppWrapper from "../../wrappers/app-wrapper";
 import useStyles from "./home.style";
 import type { AppState } from "../../app/state/store";
 import { BASE_CONTENT_URL } from "../../app/const";
@@ -63,13 +63,13 @@ const Home = () => {
   }
 
   return (
-    <AppLayout headerNavType="thumbs">
+    <AppWrapper headerNavType="thumbs">
       <Container className={classes.root} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
       </Container>
-    </AppLayout>
+    </AppWrapper>
   );
 };
 

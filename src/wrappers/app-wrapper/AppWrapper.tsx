@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
-import useStyles from "./appLayout.style";
+import useStyles from "./appWrapper.style";
 import { BRAND } from "../../app/const";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
   children?: ReactNode;
 };
 
-const AppLayout = (props: Props) => {
+const AppWrapper = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const { classes } = useStyles();
@@ -32,4 +32,4 @@ const AppLayout = (props: Props) => {
   );
 };
 
-export default AppLayout;
+export default AppWrapper;

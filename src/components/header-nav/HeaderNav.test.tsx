@@ -3,7 +3,7 @@ import { screen, within } from "@testing-library/react";
 
 import HeaderNav from "./HeaderNav";
 import renderWithProviders from "../../test-utils/renderWithProviders";
-import theme from "../../containers/theme-wrapper/theme.style";
+import theme from "../../wrappers/theme-wrapper/theme.style";
 import type { AppState } from "../../app/state/store";
 
 describe("headernav (detail)", () => {
