@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 
 import Video from "./Video";
-import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../app/const";
+import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../core/const";
 
 const videoURL = `${BASE_VIDEO_URL}1GMvNvQmYZI1AM8GRXR452LFvsebsz0JC`;
 const posterURL = `${BASE_CONTENT_URL}seat_leon.jpg`;

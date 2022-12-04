@@ -4,8 +4,8 @@ import type { ReactNode } from "react";
 
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
-import useStyles from "./appWrapper.style";
-import { BRAND } from "../../app/const";
+import useStyles from "./pageLayout.style";
+import { BRAND } from "../../core/const";
 
 type Props = {
   headerNavType: "thumbs" | "detail";
@@ -14,7 +14,7 @@ type Props = {
   children?: ReactNode;
 };
 
-const AppWrapper = (props: Props) => {
+const PageLayout = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const { classes } = useStyles();
@@ -32,4 +32,4 @@ const AppWrapper = (props: Props) => {
   );
 };
 
-export default AppWrapper;
+export default PageLayout;

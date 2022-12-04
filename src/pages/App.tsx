@@ -8,7 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import AppRoutes from "./AppRoutes";
 import MainDataLoader from "../wrappers/main-data-loader";
 import ThemeWrapper from "../wrappers/theme-wrapper";
-import store from "../app/state/store";
+import store from "../core/state/store";
 
 /**
  * React.StrictMode intentionally double-invokes some functions in dev mode to help detect issues

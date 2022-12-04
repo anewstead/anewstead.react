@@ -2,10 +2,10 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import Home from "./Home";
-import mainDataMock from "../../app/api/mock/mainDataMock.json";
+import mainDataMock from "../../core/services/mock/mainDataMock.json";
 import renderWithProviders from "../../test-utils/renderWithProviders";
-import type { IMainData } from "../../app/state/main-data/state";
-import { initialState as homeInitialState } from "../../app/state/home/state";
+import type { IMainData } from "../../core/state/main-data/state";
+import { initialState as homeInitialState } from "../../core/state/home/state";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 

@@ -5,7 +5,7 @@ import type { Settings as SlickSettings } from "react-slick";
 import { render, screen } from "@testing-library/react";
 
 import Carousel from "./Carousel";
-import { BASE_CONTENT_URL } from "../../app/const";
+import { BASE_CONTENT_URL } from "../../core/const";
 
 const base = `${BASE_CONTENT_URL}img/gallery`;
 

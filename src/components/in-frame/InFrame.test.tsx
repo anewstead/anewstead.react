@@ -4,7 +4,7 @@ import { screen, waitFor } from "@testing-library/react";
 
 import InFrame from "./InFrame";
 import renderWithProviders from "../../test-utils/renderWithProviders";
-import type { IMainData } from "../../app/state/main-data/state";
+import type { IMainData } from "../../core/state/main-data/state";
 
 jest.mock("just-detect-adblock");
 

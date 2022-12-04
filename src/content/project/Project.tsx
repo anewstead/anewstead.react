@@ -2,16 +2,16 @@ import React from "react";
 import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-import AppWrapper from "../../wrappers/app-wrapper";
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
 import NoMatch from "../no-match/NoMatch";
+import PageLayout from "../../layout/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
-import type { AppState } from "../../app/state/store";
-import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../app/const";
-import { useAppSelector } from "../../app/state/store";
+import type { AppState } from "../../core/state/store";
+import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../core/const";
+import { useAppSelector } from "../../core/state/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();
@@ -80,7 +80,7 @@ const Project: React.FC = () => {
   }
 
   return (
-    <AppWrapper
+    <PageLayout
       headerNavType="detail"
       headerNavTitle={titleText}
       headerNavSubtitle={subtitleText}
@@ -93,7 +93,7 @@ const Project: React.FC = () => {
         {content}
         <TextBlock htmlText={data.info} />
       </Container>
-    </AppWrapper>
+    </PageLayout>
   );
 };
 
