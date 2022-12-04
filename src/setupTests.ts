@@ -5,7 +5,7 @@ import "jest-localstorage-mock";
 
 import "./test-utils/jestWindowExtended";
 
-import { server } from "./app/api/mock/server";
+import { server } from "./core/services/mock/server";
 
 // msw server: https://mswjs.io/docs/getting-started/mocks
 beforeAll(() => {

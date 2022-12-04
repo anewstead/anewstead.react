@@ -1,4 +1,4 @@
-import mainDataMock from "../../api/mock/mainDataMock.json";
+import mainDataMock from "../../services/mock/mainDataMock.json";
 import type { AppState } from "../store";
 import type { IMainData } from "../main-data/state";
 import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";

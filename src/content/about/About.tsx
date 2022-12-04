@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Container, Paper, Typography } from "@mui/material";
 
-import AppLayout from "../../containers/app-layout";
+import PageLayout from "../../layout/page-layout";
 import useStyles from "./about.style";
-import { BRAND } from "../../app/const";
+import { BRAND } from "../../core/const";
 
 const About = () => {
   const { classes } = useStyles();
 
   return (
-    <AppLayout headerNavType="detail" headerNavTitle={BRAND}>
+    <PageLayout headerNavType="detail" headerNavTitle={BRAND}>
       <Container className={classes.root} data-testid="about-page">
         <Paper className={classes.paper}>
           <Typography variant="h4" component="h2">
@@ -59,7 +59,7 @@ const About = () => {
           </Typography>
         </Paper>
       </Container>
-    </AppLayout>
+    </PageLayout>
   );
 };
 

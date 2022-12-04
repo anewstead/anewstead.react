@@ -3,13 +3,13 @@ import { Button, Card, Container, Grid } from "@mui/material";
 import type { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-import AppLayout from "../../containers/app-layout";
+import PageLayout from "../../layout/page-layout";
 import useStyles from "./home.style";
-import type { AppState } from "../../app/state/store";
-import { BASE_CONTENT_URL } from "../../app/const";
-import { INIT_DISPLAY_THUMBS } from "../../app/state/home/slice";
-import type { InitDisplayThumbsPayload } from "../../app/state/home/slice";
-import { useAppDispatch, useAppSelector } from "../../app/state/store";
+import type { AppState } from "../../core/state/store";
+import { BASE_CONTENT_URL } from "../../core/const";
+import { INIT_DISPLAY_THUMBS } from "../../core/state/home/slice";
+import type { InitDisplayThumbsPayload } from "../../core/state/home/slice";
+import { useAppDispatch, useAppSelector } from "../../core/state/store";
 
 const Home = () => {
   const { classes } = useStyles();
@@ -63,13 +63,13 @@ const Home = () => {
   }
 
   return (
-    <AppLayout headerNavType="thumbs">
+    <PageLayout headerNavType="thumbs">
       <Container className={classes.root} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
       </Container>
-    </AppLayout>
+    </PageLayout>
   );
 };
 

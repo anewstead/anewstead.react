@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Paper, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
-import AppLayout from "../../containers/app-layout";
+import PageLayout from "../../layout/page-layout";
 import useStyles from "./noMatch.style";
 
 const NoMatch = () => {
@@ -10,7 +10,7 @@ const NoMatch = () => {
   const location = useLocation();
 
   return (
-    <AppLayout headerNavType="detail">
+    <PageLayout headerNavType="detail">
       <Container className={classes.root} data-testid="nomatch-page">
         <Paper className={classes.paper}>
           <Typography variant="h3">404 - Page Not Found</Typography>
@@ -27,7 +27,7 @@ const NoMatch = () => {
           </Button>
         </Paper>
       </Container>
-    </AppLayout>
+    </PageLayout>
   );
 };
 
