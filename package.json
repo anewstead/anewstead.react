@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.10.0",
+    "@storybook/addon-a11y": "^6.5.14",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
@@ -109,6 +110,7 @@
     "prop-types": "^15.8.1",
     "puppeteer-core": "^17.1.3",
     "source-map-explorer": "^2.5.3",
+    "storybook-dark-mode": "^2.0.3",
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^28.0.0",
@@ -130,6 +132,7 @@
     }
   },
   "jest": {
-    "resetMocks": false
+    "resetMocks": false,
+    "collectCoverageFrom": ["src/**/{!(*.stories),}.*"]
   }
 }
