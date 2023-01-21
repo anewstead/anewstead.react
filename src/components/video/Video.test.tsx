@@ -5,7 +5,7 @@ import Video from "./Video";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../core/const";
 
 const videoURL = `${BASE_VIDEO_URL}1GMvNvQmYZI1AM8GRXR452LFvsebsz0JC`;
-const posterURL = `${BASE_CONTENT_URL}seat_leon.jpg`;
+const posterURL = `${BASE_CONTENT_URL}img/poster/seat_leon.jpg`;
 
 test("renders TextBlock with good HMTL", async () => {
   const { baseElement } = render(
