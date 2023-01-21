@@ -1,3 +1,5 @@
+import "slick-carousel/slick/slick.css";
+
 import React from "react";
 import Slider from "react-slick";
 import { Box, useTheme } from "@mui/material";
