@@ -1,22 +1,20 @@
-import React from "react";
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import TextBlock from "./TextBlock";
 
-export default {
+type Story = StoryObj<typeof TextBlock>;
+const meta: Meta<typeof TextBlock> = {
   component: TextBlock,
-} as ComponentMeta<typeof TextBlock>;
-
-const Template: ComponentStory<typeof TextBlock> = (args) => {
-  return <TextBlock {...args} />;
 };
+export default meta;
 
-export const WithPlainText = Template.bind({});
-WithPlainText.args = {
-  htmlText: `html text`,
+export const WithPlainText: Story = {
+  args: {
+    htmlText: `html text`,
+  },
 };
-
-export const WithHtmlText = Template.bind({});
-WithHtmlText.args = {
-  htmlText: `<p>html <b>text</b> <a href="">link</a> </p>`,
+export const WithHtmlText: Story = {
+  args: {
+    htmlText: `<p>html <b>text</b> <a href="">link</a> </p>`,
+  },
 };

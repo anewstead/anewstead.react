@@ -1,25 +1,23 @@
-import React from "react";
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import HeaderNavThumbs from "./HeaderNavThumbs";
 import { initialState } from "../../core/state/home/state";
 
-export default {
+type Story = StoryObj<typeof HeaderNavThumbs>;
+const meta: Meta<typeof HeaderNavThumbs> = {
   component: HeaderNavThumbs,
-} as ComponentMeta<typeof HeaderNavThumbs>;
-
-const Template: ComponentStory<typeof HeaderNavThumbs> = (args) => {
-  return <HeaderNavThumbs {...args} />;
 };
+export default meta;
 
 const BRAND = "test brand 123";
 const DUMMY = () => {};
 
-export const Default = Template.bind({});
-Default.args = {
-  brandName: BRAND,
-  checkboxData: initialState.nav.checkboxes,
-  onBrandClick: DUMMY,
-  onThemeClick: DUMMY,
-  onCheckboxChange: DUMMY,
+export const Default: Story = {
+  args: {
+    brandName: BRAND,
+    checkboxData: initialState.nav.checkboxes,
+    onBrandClick: DUMMY,
+    onThemeClick: DUMMY,
+    onCheckboxChange: DUMMY,
+  },
 };

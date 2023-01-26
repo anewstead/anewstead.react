@@ -1,17 +1,15 @@
 import React from "react";
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { Settings as SlickSettings } from "react-slick";
 
 import Carousel from "./Carousel";
 import { BASE_CONTENT_URL } from "../../core/const";
 
-export default {
+type Story = StoryObj<typeof Carousel>;
+const meta: Meta<typeof Carousel> = {
   component: Carousel,
-} as ComponentMeta<typeof Carousel>;
-
-const Template: ComponentStory<typeof Carousel> = (args) => {
-  return <Carousel {...args} />;
 };
+export default meta;
 
 const base = `${BASE_CONTENT_URL}img/gallery`;
 
@@ -27,8 +25,9 @@ const gallery = data.map((item) => {
 
 const settings: SlickSettings = { speed: 250, dots: true };
 
-export const Default = Template.bind({});
-Default.args = {
-  slides: gallery,
-  settings,
+export const Default: Story = {
+  args: {
+    slides: gallery,
+    settings,
+  },
 };
