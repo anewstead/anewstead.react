@@ -8,9 +8,14 @@ module.exports = {
     "@storybook/addon-a11y",
     "storybook-dark-mode",
   ],
-  framework: "@storybook/react",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: { fastRefresh: true },
+  },
   core: {
-    builder: "@storybook/builder-webpack5",
     disableTelemetry: true,
+  },
+  docs: {
+    autodocs: true,
   },
 };
