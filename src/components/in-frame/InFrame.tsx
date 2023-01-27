@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Paper } from "@mui/material";
-import { detectAnyAdblocker } from "just-detect-adblock";
 
 import TextBlock from "../text-block";
 import useStyles from "./inFrame.style";
+import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
 
 type Props = {
   title: string;
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   iframeURL: string;
   failOverImageURL: string;
   checkAdBlock: boolean;
@@ -20,22 +20,7 @@ const InFrame = (props: Props) => {
 
   const { classes } = useStyles();
 
-  const [hasAdBlocker, setHasAdBloacker] = useState(false);
-  const [adBlockedHasRun, setAdBlockedHasRun] = useState(false);
-
-  useEffect(() => {
-    if (checkAdBlock) {
-      detectAnyAdblocker().then((detected: boolean) => {
-        if (detected) {
-          setHasAdBloacker(true);
-        }
-        setAdBlockedHasRun(true);
-      });
-    }
-  }, [checkAdBlock]);
-
-  const adBlockMsg =
-    "Ad Blocker Detected, you will need to pause it to view full content";
+  const { adblockChecked, adBlockDetected } = useDetectAdBlock();
 
   const iframe = (
     <iframe
@@ -48,6 +33,12 @@ const InFrame = (props: Props) => {
     />
   );
 
+  if (!checkAdBlock) {
+    return iframe;
+  }
+
+  const adBlockMsg = `Ad Blocker Detected, you will need to pause it to view full content`;
+
   const failover = (
     <div data-testid="inframe-failover">
       <TextBlock htmlText={adBlockMsg} />
@@ -57,19 +48,12 @@ const InFrame = (props: Props) => {
     </div>
   );
 
-  const unset = <div data-testid="inframe-unset" />;
-  let content = unset;
-
-  // ensure only override once
-  if (checkAdBlock) {
-    if (adBlockedHasRun) {
-      content = hasAdBlocker ? failover : iframe;
-    }
-  } else {
-    content = iframe;
+  if (adblockChecked) {
+    return adBlockDetected ? failover : iframe;
   }
 
-  return content;
+  const unset = <div data-testid="inframe-unset" />;
+  return unset;
 };
 
 export default InFrame;

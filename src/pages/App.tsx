@@ -1,6 +1,3 @@
-// global css import
-import "slick-carousel/slick/slick.css";
-
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";

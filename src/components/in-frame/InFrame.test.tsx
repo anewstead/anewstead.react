@@ -1,12 +1,12 @@
 import React from "react";
-import { detectAnyAdblocker } from "just-detect-adblock";
 import { screen, waitFor } from "@testing-library/react";
 
 import InFrame from "./InFrame";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
+import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
 
-jest.mock("just-detect-adblock");
+jest.mock("../../hooks/useDetectAdBlock");
 
 const dataIframe = {
   id: 21,
@@ -55,46 +55,41 @@ const CompAsBanner = (
 );
 
 test("renders as website", async () => {
+  (useDetectAdBlock as jest.Mock).mockReturnValue({
+    adblockChecked: false,
+    adBlockDetected: false,
+  });
   renderWithProviders(CompAsSite, { preloadedState });
   const iframe = screen.getByTestId("inframe-iframe");
   expect(iframe).toBeInTheDocument();
 });
 
-test("renders as banner (has adblock)", async () => {
-  detectAnyAdblocker.mockResolvedValue(true);
+test("renders as banner (pre adblock test)", async () => {
+  (useDetectAdBlock as jest.Mock).mockReturnValue({
+    adblockChecked: false,
+    adBlockDetected: false,
+  });
   renderWithProviders(CompAsBanner, { preloadedState });
   const unset = screen.getByTestId("inframe-unset");
   expect(unset).toBeInTheDocument();
+});
 
-  // waitForElementToBeRemoved > Error: Timed out in waitForElementToBeRemoved.
-  // seems maybe have error related to speed of execution: @testing-library/react@13.4.0
-  // see. https://github.com/testing-library/react-testing-library/issues/865#issuecomment-999033243
-
-  // waitForElementToBeRemoved > test:
-  // await waitForElementToBeRemoved(unset)
-  //   .then(() => {
-  //     console.log("item removed");
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
-  // waitForElementToBeRemoved > solution:
-  await waitFor(() => {
-    return expect(
-      screen.queryByTestId("inframe-unset")
-    ).not.toBeInTheDocument();
+test("renders as banner (has adblock)", async () => {
+  (useDetectAdBlock as jest.Mock).mockReturnValue({
+    adblockChecked: true,
+    adBlockDetected: true,
   });
-
+  renderWithProviders(CompAsBanner, { preloadedState });
   const failover = screen.getByTestId("inframe-failover");
   expect(failover).toBeInTheDocument();
 });
 
 test("renders as banner (no adblock)", async () => {
-  detectAnyAdblocker.mockResolvedValue(false);
-  renderWithProviders(CompAsBanner, {
-    preloadedState,
+  (useDetectAdBlock as jest.Mock).mockReturnValue({
+    adblockChecked: true,
+    adBlockDetected: false,
   });
+  renderWithProviders(CompAsBanner, { preloadedState });
   await waitFor(() => {
     return expect(
       screen.queryByTestId("inframe-unset")

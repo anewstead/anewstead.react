@@ -23,7 +23,16 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "plugin:json/recommended",
+    "plugin:storybook/recommended",
     "prettier"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

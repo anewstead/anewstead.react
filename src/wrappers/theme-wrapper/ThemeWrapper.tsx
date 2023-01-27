@@ -2,14 +2,9 @@
 // https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode
 
 import React, { useMemo, useState } from "react";
-import {
-  CssBaseline,
-  StyledEngineProvider,
-  ThemeProvider,
-} from "@mui/material";
 import type { ReactNode } from "react";
 
-import theme from "./theme.style";
+import Theme from "./Theme";
 import { ThemeWrapperContext } from "./ThemeWrapperContext";
 import { initThemeName, toggleThemeName } from "./helpers";
 
@@ -17,9 +12,7 @@ type Props = {
   children: ReactNode;
 };
 
-const ThemeWrapper = (props: Props) => {
-  const { children } = props;
-
+const ThemeWrapper = ({ children }: Props) => {
   const [themeName, setThemeName] = useState(initThemeName());
 
   const toggleThemeMemo = useMemo(() => {
@@ -32,12 +25,7 @@ const ThemeWrapper = (props: Props) => {
 
   return (
     <ThemeWrapperContext.Provider value={toggleThemeMemo}>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme[themeName]}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      </StyledEngineProvider>
+      <Theme themeName={themeName}>{children}</Theme>
     </ThemeWrapperContext.Provider>
   );
 };
