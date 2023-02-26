@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ["../src/**/*.stories.@(mdx|js|jsx|ts|tsx)"],
+  stories: ["../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -10,7 +10,9 @@ module.exports = {
   ],
   framework: {
     name: "@storybook/react-webpack5",
-    options: { fastRefresh: true },
+    options: {
+      fastRefresh: true,
+    },
   },
   core: {
     disableTelemetry: true,

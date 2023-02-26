@@ -2,8 +2,7 @@
   "customSyntax": "postcss-jsx",
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-styled-components",
-    "stylelint-config-prettier"
+    "stylelint-config-styled-components"
   ],
   "rules": {
     "at-rule-no-unknown": [
@@ -29,7 +28,6 @@
       }
     ],
     "declaration-empty-line-before": "never",
-    "no-empty-source": null,
-    "no-missing-end-of-source-newline": null
+    "no-empty-source": null
   }
 }

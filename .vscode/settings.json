@@ -14,18 +14,11 @@
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.renderWhitespace": "all",
-  "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
 
   "files.exclude": {
     ".eslintcache": true,
-    ".next": true,
-    ".stylelintcache": true,
-    "build": true,
-    "coverage": true,
-    "dist": true,
-    "node_modules": true,
-    "storybook-static": true
+    ".stylelintcache": true
   },
 
   "html.format.enable": false,

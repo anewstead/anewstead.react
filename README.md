@@ -8,59 +8,45 @@ Portfolio web app:
 2. Have some non-client code others can review
 
 -----  
-# About this workspace
+# Setup
+nvm - https://github.com/nvm-sh/nvm  
+use NVM to manage which version of node is used  
+Ensure ~/.zshrc is correct as per NVM install instructions  
+(~ = root user folder on mac)  
+
+pnpm - https://pnpm.io/  
+use pnpm! npm and yarn probably work but are not tested here  
+pnpm is (IMO) best installed by `npm i -g pnpm`  
+ensure pnpm has updated ~/.zshrc with its PATH  
+https://github.com/pnpm/pnpm/issues/4027
+
+note. pnpm can manage node version installs instead of nvm, however we use nvm because it can be used across multiple projects that may require npm or yarn.
+
+huskyrc - https://typicode.github.io/husky/#/?id=command-not-found  
+you need a ~/.huskyrc file so husky knows where to find node installed by nvm
+
+vscode is the preferred IDE  
+see .vscode/README.md for more information
 
 ## Code
 
 - Typescript
 - React (hooks),
-- Redux
-- materialUI
+- Redux (toolkit)
+- MaterialUI
 - @emotion with tss-react
-- Progressive Web App ready
-- testing with Jest and React Testing Library
+- Testing with Jest and React Testing Library
+- Storybook
 
 ## Structure
 #### "pages" & "content" folders
-In Nextjs the 'src/pages' folder is reserved to define routes and handle SSR related code.  
-Separating concerns of actual content & layout from this keeps code much cleaner.  
-So files in 'pages' instansiate namesake 'content' passing through SSR data.  
-E.G. mysite.com/about = src/pages/about (SSR data) > instantiates src/content/about  
+In nextjs the `pages` folder is reserved to define routes.  
+It is also the only location where you handle SSR related code I.E. load page data to be static rendered.  
+Building on this convention we can implicitly separate concerns of page data from page layout.  
+Meaning each `page` acts as the data layer with absolute minimum markup essentially it should instantiate `content` or `layout` component passing through the data.  
+E.G. website.com/about = src/pages/about > instantiates > src/content/about  
 
-In a non-NextJs App (React with Router), we simply retain this folder setup.  
-If nothing else it makes things easier if we ever need to repurpose from one to the other,   
-E.G. pages/routes.js > instansiates content/(home, about etc)  
+In a non-NextJs App we simply follow the same folder setup to separate data and layout the same way.
 
-## IDE/Editor
 
-- VSCode was used to setup
-- Important: see /.vscode/README.md
-
-## git:
-
-- folder and filesnames are case sensitve and further enforced by eslint
-
-## git hooks (husky):
-
-- pre-commit: lint src code, run tests
-- post-merge: prompt to run npm install if packages-lock.json has changed
-
-## prettier:
-
-- default config, why mess with their years of working out what works
-
-## eslint:
-
-- extends airbnb (extensive and well regarded)
-- minimal rules added to reinforce prettier and react
-- enforce folder/file name conventions
-
-## stylelint:
-
-- almost default, minimal rules added to reinforce prettier
-- allow @rules and css-in-js/styled components
-
-## typescript
-
-- jsxImportSource: @emotion for extra default class attributes
 
