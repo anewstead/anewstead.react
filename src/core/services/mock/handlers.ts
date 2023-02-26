@@ -2,10 +2,10 @@ import { rest } from "msw";
 
 import mainDataMock from "./mainDataMock.json";
 import { MAIN_DATA_URL } from "../../const";
-import { getStatus } from "./status";
+import { serverResponseStatus } from "./status";
 
 const loadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
-  switch (getStatus()) {
+  switch (serverResponseStatus.get()) {
     case 400:
       return res(
         ctx.status(400),
@@ -22,7 +22,7 @@ const loadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
 const adBlockTest = rest.head(
   "https://ad-emea.doubleclick.net/",
   (req, res, ctx) => {
-    switch (getStatus()) {
+    switch (serverResponseStatus.get()) {
       case 403:
         return res.networkError("blocked by client");
       case 200:

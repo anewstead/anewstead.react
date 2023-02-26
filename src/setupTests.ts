@@ -6,6 +6,7 @@ import "jest-localstorage-mock";
 import "./test-utils/jestWindowExtended";
 
 import { server } from "./core/services/mock/server";
+import { serverResponseStatus } from "./core/services/mock/status";
 
 // msw server: https://mswjs.io/docs/getting-started/mocks
 beforeAll(() => {
@@ -13,7 +14,7 @@ beforeAll(() => {
 });
 
 afterEach(() => {
-  server.resetStatus();
+  serverResponseStatus.reset();
   server.resetHandlers();
   jest.clearAllMocks(); // 'clearAllMocks' not 'resetAllMocks' as will break jest-localstorage-mock
   localStorage.clear();

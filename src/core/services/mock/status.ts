@@ -66,23 +66,18 @@ export const statusCodes = {
   511: "Network Authentication Required",
 };
 
-type StatusType = keyof typeof statusCodes;
+export type StatusType = keyof typeof statusCodes;
 
 let status: StatusType = 200;
 
-// use in handlers to return your required response:
-// switch (getStatus()) {case 200: ...}
-// Remember to reset:
-// afterEach(() => { resetMockApiResponse(); });
-// which you could set globally in setupTests.js
-export const getStatus = () => {
-  return status;
-};
-
-export const setStatus = (num: StatusType) => {
-  status = num;
-};
-
-export const resetStatus = () => {
-  status = 200;
+export const serverResponseStatus = {
+  get: () => {
+    return status;
+  },
+  set: (num: StatusType) => {
+    status = num;
+  },
+  reset: () => {
+    status = 200;
+  },
 };

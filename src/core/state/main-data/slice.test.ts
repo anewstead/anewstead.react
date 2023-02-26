@@ -1,12 +1,12 @@
 import type { AppState } from "../store";
 import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 import { getSessionMainData, removeSessionMainData } from "./helpers";
-import { server } from "../../services/mock/server";
+import { serverResponseStatus } from "../../services/mock/status";
 import { setupStore } from "../store";
 
 afterEach(() => {
   // FETCH_MAIN_DATA caches loaded data
-  // must clear it before runnig next test
+  // must clear it before running next test
   removeSessionMainData();
 });
 
@@ -20,7 +20,7 @@ test("FETCH_MAIN_DATA fulfilled", async () => {
 });
 
 test("FETCH_MAIN_DATA rejected", async () => {
-  server.setStatus(400);
+  serverResponseStatus.set(400);
   const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as AppState;
