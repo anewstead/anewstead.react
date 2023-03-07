@@ -33,10 +33,6 @@ const InFrame = (props: Props) => {
     />
   );
 
-  if (!checkAdBlock) {
-    return iframe;
-  }
-
   const adBlockMsg = `Ad Blocker Detected, you will need to pause it to view full content`;
 
   const failover = (
@@ -49,6 +45,9 @@ const InFrame = (props: Props) => {
   );
 
   if (adblockChecked) {
+    if (!checkAdBlock) {
+      return iframe;
+    }
     return adBlockDetected ? failover : iframe;
   }
 

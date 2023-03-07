@@ -17,8 +17,6 @@
     "node": true
   },
   "extends": [
-    "react-app",
-    "react-app/jest",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
@@ -37,7 +35,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "extraFileExtensions": [".json"],
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.eslint.json"]
   },
   "plugins": ["react", "@typescript-eslint", "check-file", "json"],
   "root": true,
@@ -59,6 +57,20 @@
       { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
     ],
     "curly": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "*",
+          "**/*.test.{js,jsx,ts,tsx}",
+          "**/*.stories.{js,jsx,ts,tsx}",
+          ".storybook/*",
+          "**/setupTests.{js,ts}",
+          "src/test-utils/*",
+          "src/core/services/mock/*"
+        ]
+      }
+    ],
     "import/prefer-default-export": "off",
     "json/*": ["error", { "allowComments": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],

@@ -10,7 +10,6 @@ describe("headernav (detail)", () => {
   test("toggles theme", async () => {
     const { user } = renderWithProviders(<HeaderNav navType="detail" />);
     const nav = screen.getByTestId("nav-detail");
-    // eslint-disable-next-line testing-library/no-node-access
     const elemWithBG = nav.firstChild;
     const bgLight = theme.light.palette.background.paper;
     const bgDark = theme.dark.palette.background.paper;
@@ -35,7 +34,6 @@ describe("headernav (thumbs)", () => {
   test("toggles theme", async () => {
     const { user } = renderWithProviders(<HeaderNav navType="thumbs" />);
     const nav = screen.getByTestId("nav-thumbs");
-    // eslint-disable-next-line testing-library/no-node-access
     const elemWithBG = nav.firstChild;
     const bgLight = theme.light.palette.background.paper;
     const bgDark = theme.dark.palette.background.paper;

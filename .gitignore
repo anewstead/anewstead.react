@@ -16,6 +16,7 @@
 /build
 /dist
 /storybook-static
+tsconfig.tsbuildinfo
 
 # misc
 .DS_Store

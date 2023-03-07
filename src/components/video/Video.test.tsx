@@ -11,7 +11,6 @@ test("renders TextBlock with good HMTL", async () => {
   const { baseElement } = render(
     <Video videoURL={videoURL} posterURL={posterURL} />
   );
-  // eslint-disable-next-line testing-library/no-node-access
   const video = baseElement.querySelector("video");
   expect(video).toBeInTheDocument();
 });

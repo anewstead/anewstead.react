@@ -1,12 +1,10 @@
 import React from "react";
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import InFrame from "./InFrame";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
-import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
-
-jest.mock("../../hooks/useDetectAdBlock");
+import { serverResponseStatus } from "../../core/services/mock/status";
 
 const dataIframe = {
   id: 21,
@@ -54,47 +52,33 @@ const CompAsBanner = (
   />
 );
 
-test("renders as website", async () => {
-  (useDetectAdBlock as jest.Mock).mockReturnValue({
-    adblockChecked: false,
-    adBlockDetected: false,
+export const unSetDivTest = async () => {
+  const unSet = screen.getByTestId("inframe-unset");
+  expect(unSet).toBeInTheDocument();
+  // note. must be waitForElementToBeRemoved(callback())
+  await waitForElementToBeRemoved(() => {
+    return screen.getByTestId("inframe-unset");
   });
+};
+
+test("renders as website", async () => {
   renderWithProviders(CompAsSite, { preloadedState });
+  await unSetDivTest();
   const iframe = screen.getByTestId("inframe-iframe");
   expect(iframe).toBeInTheDocument();
 });
 
-test("renders as banner (pre adblock test)", async () => {
-  (useDetectAdBlock as jest.Mock).mockReturnValue({
-    adblockChecked: false,
-    adBlockDetected: false,
-  });
-  renderWithProviders(CompAsBanner, { preloadedState });
-  const unset = screen.getByTestId("inframe-unset");
-  expect(unset).toBeInTheDocument();
-});
-
 test("renders as banner (has adblock)", async () => {
-  (useDetectAdBlock as jest.Mock).mockReturnValue({
-    adblockChecked: true,
-    adBlockDetected: true,
-  });
+  serverResponseStatus.set(403);
   renderWithProviders(CompAsBanner, { preloadedState });
-  const failover = screen.getByTestId("inframe-failover");
+  await unSetDivTest();
+  const failover = await screen.getByTestId("inframe-failover");
   expect(failover).toBeInTheDocument();
 });
 
 test("renders as banner (no adblock)", async () => {
-  (useDetectAdBlock as jest.Mock).mockReturnValue({
-    adblockChecked: true,
-    adBlockDetected: false,
-  });
   renderWithProviders(CompAsBanner, { preloadedState });
-  await waitFor(() => {
-    return expect(
-      screen.queryByTestId("inframe-unset")
-    ).not.toBeInTheDocument();
-  });
+  await unSetDivTest();
   const iframe = screen.getByTestId("inframe-iframe");
   expect(iframe).toBeInTheDocument();
 });

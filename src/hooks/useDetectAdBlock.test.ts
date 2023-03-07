@@ -3,7 +3,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { serverResponseStatus } from "../core/services/mock/status";
 import { useDetectAdBlock } from "./useDetectAdBlock";
 
-test("returns false", async () => {
+test("adBlock NOT Detected", async () => {
   const { result } = renderHook(() => {
     return useDetectAdBlock();
   });
@@ -20,7 +20,7 @@ test("returns false", async () => {
   });
 });
 
-test("returns true", async () => {
+test("adBlock IS Detected", async () => {
   serverResponseStatus.set(403);
   const { result } = renderHook(() => {
     return useDetectAdBlock();

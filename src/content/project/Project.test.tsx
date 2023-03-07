@@ -5,6 +5,7 @@ import { screen } from "@testing-library/react";
 import Project from "./Project";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
+import { unSetDivTest } from "../../components/in-frame/InFrame.test";
 
 const baseData = {
   id: 21,
@@ -146,6 +147,7 @@ test("renders IFRAME (without adblock test)", async () => {
     preloadedState: uState,
     route: `/project/${uState.mainData.data[0].id}`,
   });
+  await unSetDivTest();
 });
 
 test("renders nomatch with noMatch view type", async () => {

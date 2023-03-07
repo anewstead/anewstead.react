@@ -1,5 +1,4 @@
-/* eslint-disable check-file/filename-naming-convention */
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 const findChrome = require("chrome-finder");
 
 const chromePath = findChrome();

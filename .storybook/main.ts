@@ -1,18 +1,16 @@
-module.exports = {
+import type { StorybookConfig } from "@storybook/react-vite";
+
+const config: StorybookConfig = {
   stories: ["../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-a11y",
     "storybook-dark-mode",
   ],
   framework: {
-    name: "@storybook/react-webpack5",
-    options: {
-      fastRefresh: true,
-    },
+    name: "@storybook/react-vite",
+    options: {},
   },
   core: {
     disableTelemetry: true,
@@ -21,3 +19,5 @@ module.exports = {
     autodocs: true,
   },
 };
+
+export default config;
