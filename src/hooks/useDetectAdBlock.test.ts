@@ -22,13 +22,6 @@ test("adBlock NOT Detected", async () => {
 
 test("adBlock IS Detected", async () => {
   serverResponseStatus.set(403);
-  // msw@1.1.0 creates a console error log when using res.networkError()
-  // despite this being the intended exception as per their docs
-  // to avoid confussion we mock/spyOn the error to hide it
-  // if this test ever fails, start debug by removing ths mock
-  const consoleErrorFn = jest.spyOn(console, "error").mockImplementation(() => {
-    return jest.fn();
-  });
   const { result } = renderHook(() => {
     return useDetectAdBlock();
   });
@@ -39,5 +32,4 @@ test("adBlock IS Detected", async () => {
     adblockChecked: true,
     adBlockDetected: true,
   });
-  consoleErrorFn.mockClear();
 });
