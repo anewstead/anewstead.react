@@ -1,6 +1,14 @@
 import React from "react";
+import { initialize as mswInitialize, mswDecorator } from "msw-storybook-addon";
 
 import { ThemeDocsContainer, ThemeWrapper } from "./theme";
+import { mswConfig } from "./msw";
+
+// https://github.com/mswjs/msw-storybook-addon#configuring-msw
+mswInitialize({
+  onUnhandledRequest: "bypass",
+  quiet: true,
+});
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -22,10 +30,13 @@ export const parameters = {
       );
     },
   },
+
+  msw: mswConfig,
 };
 
 export const decorators = [
   (Story, context) => {
     return <ThemeWrapper>{Story(context)}</ThemeWrapper>;
   },
+  mswDecorator,
 ];

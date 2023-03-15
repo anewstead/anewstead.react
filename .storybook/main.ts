@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
+    "@storybook/addon-coverage",
     "storybook-dark-mode",
   ],
   framework: {
@@ -19,7 +20,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
-  staticDirs: ["../public"],
+  staticDirs: ["./public", "../public"],
 };
 
 export default config;

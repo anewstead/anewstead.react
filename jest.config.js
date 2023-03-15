@@ -1,9 +1,11 @@
+// /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  collectCoverageFrom: ["src/**/{!(*.stories),}.(js|jsx|mjs|cjs|ts|tsx)"],
+  // preset: "ts-jest",
+  // collectCoverageFrom: ["src/**/{!(*.stories),}.(js|mjs|cjs|ts)"],
 
-  coverageDirectory: "coverage",
+  // coverageDirectory: "coverage",
 
-  coverageProvider: "v8",
+  // coverageProvider: "v8",
 
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/src/styleMock.js",
@@ -17,12 +19,14 @@ module.exports = {
 
   testEnvironment: "jsdom",
 
-  transform: {
-    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)?$": "jest-esbuild",
-  },
+  testMatch: ["**/__tests__/**/*.[jt]s", "**/?(*.)+(spec|test|stories).[jt]s"],
+
+  // transform: {
+  //   "^.+\\.(js|mjs|cjs|ts)?$": "jest-esbuild",
+  // },
 
   transformIgnorePatterns: [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "[/\\\\]node_modules[/\\\\].+\\.(js|mjs|cjs|ts)$",
     "^.+\\.module\\.(css|sass|scss)$",
   ],
 };
