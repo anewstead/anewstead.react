@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/addon-coverage",
-    "storybook-dark-mode",
+    "storybook-dark-mode-v7",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -20,7 +20,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
-  staticDirs: ["./public", "../public"],
+  staticDirs: ["./static"],
 };
 
 export default config;
