@@ -1,11 +1,7 @@
-// /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  // preset: "ts-jest",
-  // collectCoverageFrom: ["src/**/{!(*.stories),}.(js|mjs|cjs|ts)"],
+  coverageDirectory: "coverage/storybook",
 
-  // coverageDirectory: "coverage",
-
-  // coverageProvider: "v8",
+  coverageReporters: ["text", ["json", { file: "coverage-jest.json" }]],
 
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/src/styleMock.js",
@@ -19,11 +15,7 @@ module.exports = {
 
   testEnvironment: "jsdom",
 
-  testMatch: ["**/__tests__/**/*.[jt]s", "**/?(*.)+(spec|test|stories).[jt]s"],
-
-  // transform: {
-  //   "^.+\\.(js|mjs|cjs|ts)?$": "jest-esbuild",
-  // },
+  testMatch: ["**/__tests__/**/*.[jt]s", "**/*.test.[jt]s"],
 
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|mjs|cjs|ts)$",
