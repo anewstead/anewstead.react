@@ -16,6 +16,7 @@
     "jest": true,
     "node": true
   },
+
   "extends": [
     "airbnb",
     "airbnb/hooks",
@@ -24,6 +25,7 @@
     "plugin:storybook/recommended",
     "prettier"
   ],
+
   "overrides": [
     {
       "files": ["**/*.stories.*"],
@@ -32,16 +34,25 @@
       }
     }
   ],
+
   "parser": "@typescript-eslint/parser",
+
   "parserOptions": {
     "extraFileExtensions": [".json"],
     "project": ["./tsconfig.eslint.json"]
   },
+
   "plugins": ["react", "@typescript-eslint", "check-file", "json"],
+
   "root": true,
+
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/naming-convention": "warn",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false }
+    ],
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
     "check-file/filename-naming-convention": [
@@ -63,10 +74,11 @@
         "devDependencies": [
           "*",
           "**/*.@(test|spec|stories).{js,jsx,ts,tsx}",
-          ".storybook/*",
+          ".storybook/**",
+          "e2e/**",
           "**/setupTests.{js,ts}",
           "src/test-utils/*",
-          "src/core/services/mock/*"
+          "src/core/services/mock/**"
         ]
       }
     ],

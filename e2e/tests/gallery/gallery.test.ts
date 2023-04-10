@@ -1,22 +1,21 @@
+import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
 import { waitFor } from "../helpers";
 
-beforeEach(async () => {
-  const PAGE_URL = "http://localhost:3000/project/0"; // known gallery
-  const LAYOUT = "[data-testid=app-layout]";
-  await jestPuppeteer.resetPage();
-  await page.setViewport({ width: 800, height: 600 });
-  await page.goto(PAGE_URL, { waitUntil: "networkidle0" });
-  await expect(page).toMatchElement(LAYOUT);
+test.beforeEach(async ({ page }) => {
+  const PAGE_URL = "http://localhost:3003/project/0";
+  await page.setViewportSize({ width: 800, height: 600 });
+  await page.goto(PAGE_URL, { waitUntil: "networkidle" });
+  const elem = await page.getByTestId("app-layout");
+  await expect(elem).toBeVisible();
 });
 
-test("gallery next prev", async () => {
+test("gallery next prev", async ({ page }) => {
   const PREV_BUTTON = "button[aria-label=prev]";
   const NEXT_BUTTON = "button[aria-label=next]";
-
   const SLICK_LIST = ".slick-list";
-  const path = "./tests/gallery";
+  const path = "./tests/gallery/tmp";
   const img1 = `${path}/1.png`;
   const img2 = `${path}/2.png`;
   const img3 = `${path}/3.png`;

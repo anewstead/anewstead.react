@@ -112,6 +112,7 @@ const HeaderNavThumbs = (props: Props) => {
         expanded={expanded === "panel1"}
         onChange={expansionPanelOnChange("panel1")}
         className={classes.expansionPanel}
+        TransitionProps={{ timeout: 300 }}
       >
         <AccordionSummary
           classes={{

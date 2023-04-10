@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/e2e/test-results
+/playwright-report
+/playwright/.cache
 
 # next.js
 /.next/
@@ -20,6 +23,8 @@ tsconfig.tsbuildinfo
 
 # misc
 .DS_Store
+*_tmp
+*tmp
 
 # debug
 npm-debug.log*
