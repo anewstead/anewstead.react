@@ -1,6 +1,8 @@
 module.exports = {
   coverageDirectory: "./coverage/jest",
 
+  coverageProvider: "babel",
+
   coverageReporters: ["text", ["json", { file: "coverage-jest.json" }]],
 
   moduleNameMapper: {
