@@ -1,5 +1,5 @@
 module.exports = {
-  coverageDirectory: "coverage/storybook",
+  coverageDirectory: "./coverage/jest",
 
   coverageReporters: ["text", ["json", { file: "coverage-jest.json" }]],
 
