@@ -1,10 +1,9 @@
+/**
+ * base to extend for multiple jest configs,
+ * not to be used directly by jest
+ */
+
 module.exports = {
-  coverageDirectory: "./coverage/jest",
-
-  coverageProvider: "babel",
-
-  coverageReporters: ["text", ["json", { file: "coverage-jest.json" }]],
-
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/src/styleMock.js",
   },
@@ -16,8 +15,6 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 
   testEnvironment: "jsdom",
-
-  testMatch: ["**/__tests__/**/*.[jt]s", "**/*.test.[jt]s"],
 
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|mjs|cjs|ts)$",
