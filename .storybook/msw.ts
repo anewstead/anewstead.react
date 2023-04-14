@@ -1,16 +1,16 @@
 import { rest } from "msw";
 
-import mainDataMock from "../src/core/services/mock/mainDataMock.json";
+import mainDataMock from "../src/core/services/__mocks__/mainDataMock.json";
 import { MAIN_DATA_URL } from "../src/core/const";
 import { adBlockTestURL } from "../src/hooks/useDetectAdBlock";
-import { serverResponseStatus } from "../src/core/services/mock/status";
+import { serverResponseStatus } from "../src/core/services/__mocks__/status";
 
 const loadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
   switch (serverResponseStatus.get()) {
     case 400:
       return res(
         ctx.status(400),
-        ctx.json({ message: "mock handler intended reject" })
+        ctx.json({ message: "__mocks__ handler intended reject" })
       );
     case 204:
       return res(ctx.status(204), ctx.json([]));
