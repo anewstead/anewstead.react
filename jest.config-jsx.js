@@ -1,20 +1,7 @@
 /*
-where jsx imports functions from local js files those will also be included for coverage.
-
-this is different from the test coverage for the js file itself (test is abstract, i.e. unit test).
-here the function is tested in context (not abstract, i.e. integration test).
-
-this ensures correct use, particularly where an imported function has switching logic (if/else),
-then your jsx must handle those variations and therefore so too your jsx test cases
-
-e.g.
-from the same function the test is different.
-the unit test might expect boolean (success | fail)
-the integration test might expect display (image | errorMsg)
-
-component.test.jsx is therefore a unit test for itself and an integration test for consumed.js
-this concept iterates up the chain
-function > simpleComponent > complexComponent > page > app
+where jsx imports functions from local js files those will also be included in this coverage.
+coverage output may highlight different case from the coverage for the js file by itself.
+this is unit vs. integration testing and ensures correct use of the unit
 
 note.
 do not write script in an index.js file, they are not included for coverage
