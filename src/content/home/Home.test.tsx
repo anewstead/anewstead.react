@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import Home from "./Home";
-import mainDataMock from "../../core/services/mock/mainDataMock.json";
+import mainDataMock from "../../core/services/__mocks__/mainDataMock.json";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
 import { initialState as homeInitialState } from "../../core/state/home/state";

@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 
-import { serverResponseStatus } from "../core/services/mock/status";
+import { serverResponseStatus } from "../core/services/__mocks__/status";
 import { useDetectAdBlock } from "./useDetectAdBlock";
 
 test("adBlock NOT Detected", async () => {

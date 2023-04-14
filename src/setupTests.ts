@@ -7,8 +7,8 @@ import "cross-fetch/polyfill";
 
 import "./test-utils/jestWindowExtended";
 
-import { server } from "./core/services/mock/server";
-import { serverResponseStatus } from "./core/services/mock/status";
+import { server } from "./core/services/__mocks__/server";
+import { serverResponseStatus } from "./core/services/__mocks__/status";
 
 //-----
 // msw@1.1.0 creates a console error log when using res.networkError()

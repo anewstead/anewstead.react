@@ -78,7 +78,8 @@
           "e2e/**",
           "**/setupTests.{js,ts}",
           "src/test-utils/*",
-          "src/core/services/mock/**"
+          "**/__mocks__/*",
+          "**/__tests__/*"
         ]
       }
     ],

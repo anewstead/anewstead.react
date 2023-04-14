@@ -1,22 +1,38 @@
-import mainDataMock from "../../services/mock/mainDataMock.json";
+import mainDataMock from "../../services/__mocks__/mainDataMock.json";
 import type { AppState } from "../store";
 import type { IMainData } from "../main-data/state";
-import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
-import type { NavCheckboxChangePayload } from "./slice";
+import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
+import type {
+  InitDisplayThumbsPayload,
+  NavCheckboxChangePayload,
+} from "./slice";
 import { setupStore } from "../store";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 
-test("changes displayThumbs", async () => {
+test("init displayThumbs", async () => {
+  const payload: InitDisplayThumbsPayload = {
+    allThumbs: MAIN_DATA,
+  };
+  const store = setupStore({ home: homeReducer });
+  const preThumbs = (store.getState() as AppState).home.displayThumbs;
+  expect(preThumbs).not.toBeDefined();
+  await store.dispatch(INIT_DISPLAY_THUMBS(payload));
+  const postThumbs = (store.getState() as AppState).home.displayThumbs;
+  expect(postThumbs?.length).toEqual(MAIN_DATA.length);
+});
+
+test("checkbox changes displayThumbs", async () => {
   const payload: NavCheckboxChangePayload = {
     checkbox: { id: "site", checked: false },
     allThumbs: MAIN_DATA,
   };
   const store = setupStore({ home: homeReducer });
-  const thumbs = (store.getState() as AppState).home.displayThumbs;
   await store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const newThumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(newThumbs).not.toStrictEqual(thumbs);
+  const preThumbs = (store.getState() as AppState).home.nav;
+  await store.dispatch(NAV_CHECKBOX_CHANGE(payload));
+  const posthumbs = (store.getState() as AppState).home.displayThumbs;
+  expect(posthumbs).not.toStrictEqual(preThumbs);
 });
 
 test("throws an Error for unknown checkbox", async () => {

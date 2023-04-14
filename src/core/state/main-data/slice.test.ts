@@ -1,7 +1,7 @@
 import type { AppState } from "../store";
 import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 import { getSessionMainData, removeSessionMainData } from "./helpers";
-import { serverResponseStatus } from "../../services/mock/status";
+import { serverResponseStatus } from "../../services/__mocks__/status";
 import { setupStore } from "../store";
 
 afterEach(() => {

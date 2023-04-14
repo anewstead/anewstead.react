@@ -1,4 +1,4 @@
-const { getJestConfig } = require('@storybook/test-runner');
+const { getJestConfig } = require("@storybook/test-runner");
 
 module.exports = {
   // The default configuration comes from @storybook/test-runner

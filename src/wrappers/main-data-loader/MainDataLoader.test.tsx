@@ -3,7 +3,7 @@ import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import MainDataLoader from "./MainDataLoader";
 import renderWithProviders from "../../test-utils/renderWithProviders";
-import { serverResponseStatus } from "../../core/services/mock/status";
+import { serverResponseStatus } from "../../core/services/__mocks__/status";
 
 const component = (
   <MainDataLoader>

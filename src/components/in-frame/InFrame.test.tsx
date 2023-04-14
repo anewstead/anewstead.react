@@ -4,7 +4,7 @@ import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 import InFrame from "./InFrame";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
-import { serverResponseStatus } from "../../core/services/mock/status";
+import { serverResponseStatus } from "../../core/services/__mocks__/status";
 
 const dataIframe = {
   id: 21,
