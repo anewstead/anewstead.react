@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { waitFor } from "../helpers";
+import { waitForTimeout } from "../../../test-utils/waitFor";
 
 test.beforeEach(async ({ page }) => {
   const PAGE_URL = "http://localhost:3003/project/0";
@@ -21,15 +21,21 @@ test("gallery next prev", async ({ page }) => {
   const img3 = `${path}/3.png`;
   const imgD1 = `${path}/diff1-2.png`;
   const imgD2 = `${path}/diff1-3.png`;
-  await page.screenshot({ path: img1 });
+  await page.screenshot({ path: img1, animations: "disabled" });
 
-  await Promise.all([page.click(NEXT_BUTTON), waitFor(1000)]);
+  await page.click(NEXT_BUTTON);
+  await page.waitForLoadState("networkidle"); // image loaded
+  await waitForTimeout(100); // race condition
+
   await page.click(SLICK_LIST); // to hide prev-next button rollover
-  await page.screenshot({ path: img2 });
+  await page.screenshot({ path: img2, animations: "disabled" });
 
-  await Promise.all([page.click(PREV_BUTTON), waitFor(1000)]);
+  await page.click(PREV_BUTTON);
+  await page.waitForLoadState("networkidle");
+  await waitForTimeout(100);
+
   await page.click(SLICK_LIST);
-  await page.screenshot({ path: img3 });
+  await page.screenshot({ path: img3, animations: "disabled" });
 
   const diff1 = await imgDiff({
     actualFilename: img2,

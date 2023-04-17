@@ -54,7 +54,7 @@ In a standard React/ non-NextJs App we simply follow the same concept and folder
 
 we unit test a *function* in abstract by itself  
 we then use that *function* in a *component*, and integration test  
-but that *component* is itself a unit from the perspective of *consumingComponent*  
+but that *component* should itself be a unit, from the perspective of *consumingComponent*  
 ie. it can and should be unit tested in abstract by itself  
 this should flow upward as *component* is to *consumingComponent* is to *page* is to *app*  
 so we are both unit testing and integration testing based on perspective  
@@ -63,10 +63,11 @@ At the top (the app) we run end-to-end tests on specific user journeys
 In practice write code to meet 2 levels of test based on:  
 **Does it display?**  
 
-Principally means *always* separate **logic** from **display**  
+Principally this means *always* separate **logic** from **display**  
 so regardless of display the logic remains pure and reusable.  
 And by extention always separate **content** from **layout**  
-because content is variable data in a template
+because content is variable data in a template, any display component without content is reusable  
+once we introduce logic or content directly into a component it is then bespoke and tied to its current use  
 #### Functional - file.test.{js,ts} 
 **Not for display** (by itself), logic, geting, setting, manipulating.  
 Output is a value e.g. Bool, String, Array, Object etc.  

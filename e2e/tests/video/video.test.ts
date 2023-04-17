@@ -13,8 +13,7 @@ test.beforeEach(async ({ page }) => {
  * its generally advised to test in chromium/firefox-nightly/playwright-webkit
  * but these may not support full media playback.
  *
- * during testing we probably only need check if a working media object exists
- * and not all the playback features.
+ * during testing we probably only need check if a working media object not all the playback features.
  * so we just listen for the "waiting" event
  * a media element fires this as soon as it tries to initiate playback e.g. video.play()
  * so regardless of what happens next we know we have a working media element

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { waitForTransitionEnd } from "./helpers";
+import { waitForTransitionPW } from "../../test-utils/waitFor";
 
 test.beforeEach(async ({ page }) => {
   const PAGE_URL = "http://localhost:3003";
@@ -56,23 +56,18 @@ test("mobile: open nav, toggle thumbs, close nav", async ({ page }) => {
   const MOB_CHECKBOXES =
     "[data-testid=nav-thumbs-mobile-checkbox] input[type=checkbox]";
   const MENU_BUTTON = "[data-testid=nav-thumbs-menu-button]";
-  const ACCORDIAN_SUMMARY = "[data-testid=nav-thumbs-accordion-summary]";
-  const ACCORDIAN_DETAIL = `${ACCORDIAN_SUMMARY} + div`; // sibling div
+  const ACCORDIAN_DETAIL = "[data-testid=nav-thumbs-accordion-summary] + div";
   await page.setViewportSize({ width: 480, height: 640 });
   const accordionDetail = await page.locator(ACCORDIAN_DETAIL);
+  expect(accordionDetail).toHaveCount(1);
   const bb1 = await accordionDetail.boundingBox();
-  await Promise.all([
-    page.click(MENU_BUTTON),
-    accordionDetail.waitFor(),
-    waitForTransitionEnd(page, ACCORDIAN_DETAIL),
-  ]);
+  page.click(MENU_BUTTON);
+  await waitForTransitionPW(page, ACCORDIAN_DETAIL);
   const bb2 = await accordionDetail.boundingBox();
-  expect(bb2?.height).toBeGreaterThan(bb1?.height as number);
+  expect(bb2!.height).toBeGreaterThan(bb1!.height);
   await toggleThumbs(page, MOB_CHECKBOXES);
-  await Promise.all([
-    waitForTransitionEnd(page, ACCORDIAN_DETAIL),
-    page.click(MENU_BUTTON),
-  ]);
+  page.click(MENU_BUTTON);
+  await waitForTransitionPW(page, ACCORDIAN_DETAIL);
   const bb3 = await accordionDetail.boundingBox();
   expect(bb3).toEqual(bb1);
 });
