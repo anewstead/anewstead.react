@@ -1,6 +1,7 @@
 import React from "react";
 import { initialize as mswInitialize, mswDecorator } from "msw-storybook-addon";
 
+import customViewports from "./customViewports";
 import { ThemeDocsContainer, ThemeWrapper } from "./theme";
 import { mswConfig } from "./msw";
 
@@ -32,6 +33,7 @@ export const parameters = {
   },
 
   msw: mswConfig,
+  viewport: { viewports: customViewports },
 };
 
 export const decorators = [

@@ -31,7 +31,7 @@ const useCurrentTheme = () => {
       // not ideal but preferable to hard coding values
       setTimeout(() => {
         setBgColor(getBgColor());
-      }, 25);
+      }, 100);
     };
     channel.on(DARK_MODE_EVENT_NAME, updateTheme);
     return () => {

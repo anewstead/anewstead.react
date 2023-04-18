@@ -55,19 +55,17 @@ In a standard React/ non-NextJs App we simply follow the same concept and folder
 we unit test a *function* in abstract by itself  
 we then use that *function* in a *component*, and integration test  
 but that *component* should itself be a unit, from the perspective of *consumingComponent*  
-ie. it can and should be unit tested in abstract by itself  
-this should flow upward as *component* is to *consumingComponent* is to *page* is to *app*  
-so we are both unit testing and integration testing based on perspective  
-At the top (the app) we run end-to-end tests on specific user journeys
+ie. could be unit tested in abstract by itself  
+this should flow upward as *component* is to *consumingComponent* is to *page* is to *app*   
+At the top (the app) we run end-to-end tests on specific user journeys  
 
-In practice write code to meet 2 levels of test based on:  
-**Does it display?**  
-
-Principally this means *always* separate **logic** from **display**  
+  
+#### Does it display?
+In practice write/spearate code based on this point.  
+Principally *always* look to separate **logic** from **display**  
 so regardless of display the logic remains pure and reusable.  
-And by extention always separate **content** from **layout**  
-because content is variable data in a template, any display component without content is reusable  
-once we introduce logic or content directly into a component it is then bespoke and tied to its current use  
+By extention always separate **content** from **layout**  
+because content is just variable data in a template  
 #### Functional - file.test.{js,ts} 
 **Not for display** (by itself), logic, geting, setting, manipulating.  
 Output is a value e.g. Bool, String, Array, Object etc.  
@@ -75,40 +73,33 @@ Jest & React testing library (RTL), JSDOM inc. mocked window and localstorage
 RTL purely for testing react hooks.  
 
 #### Components - file.stories.{jsx,tsx}  
-**For display** inseparable display based logic, interaction and animation,   
+**For display**, inseparable display based logic, interaction and animation,  
 Output is valid display markup.  
 Jest & Playwright via Storybook test-runner  
 (inc. React testing library under the hood)
 
 note.  
-We could just use the same setup as our Functional test (js)  
-if all we need is pure testing jsx output against JSDOM, it would run way faster.  
-But, in most cases it's not enough, we need to test actual display.  
+Its possible to use the Functional test setup to test jsx output against JSDOM.  
+But, in most cases it's not enough and we likely duplicate effort at another level of testing.  
+Testing in browser(s) with storybook gives more options.  
+At scale consider integrating this with cloud based automation  
+e.g. chromatic, browserstack, lambdatest   
 
-By running code in a browser we have more options available,  
-such as the option of seeing whats going on and taking screenshots.  
-We also reduce and avoid unnesessary duplication of tests later on.  
-
-Maybe just run against 1 browser at this stage (faster), although you can do many variations.  
-Maybe setup separate cross-browser test run with tests specific to that requirement.  
-This could be part of a larger E2E stratergy.  
-If speed and scale become an issue consider cloud based automation  
-e.g. chromatic, browserstack, lambdatest
 
 #### Code Coverage
 
 Because we run 2 test suites we have 2 coverage outputs,  
 one for pure functions (js) one for display components (jsx).  
 
-Where jsx imports functions from (local) js files those will also be included in the jsx coverage.  
+Where jsx imports functions from js those will also be in the jsx coverage.  
 *This is not duplication!*  
-The jsx coverage may indicate different metrics for a js file vs. the js file's own coverage.  
-This is unit vs. integration testing and ensures correct use,  
+The jsx coverage may show different metrics for the js vs. its own coverage.  
+This is unit vs. integration testing and ensures correct use of a unit,  
 particularly this highlights where an imported unit has switching logic (if/else),  
-and your consumer is expected to handle those variations (and test against them). 
+and the consuming code is expected to handle those variations (and have tests against them). 
 
 e.g.
-against the same function the test is different.  
+against the same function:  
 the unit test might expect boolean (success | fail)  
 the integration test might expect display (image | errorMsg)  
 
@@ -118,7 +109,4 @@ the integration test might expect display (image | errorMsg)
 - `test` - runs `test-sb` > `test-js` > `cover`, requires storybook running on localhost:6006
 - `e2e` - requires app running on localhost:3003
 
-#### Coverage
-We keep initial coverage reports separate in their own folders  
-this avoids any auto-merge issues and allows us to see each report individually  
-we then **merge** and create a final **report** 
+
