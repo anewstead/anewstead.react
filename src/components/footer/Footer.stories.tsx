@@ -4,11 +4,13 @@ import { within } from "@storybook/testing-library";
 
 import Footer from "./Footer";
 
-type Story = StoryObj<typeof Footer>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof Footer> = {
   component: Footer,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   args: {

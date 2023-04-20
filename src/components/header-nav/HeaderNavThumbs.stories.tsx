@@ -6,13 +6,17 @@ import HeaderNavThumbs from "./HeaderNavThumbs";
 import { initialState } from "../../core/state/home/state";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
-type Story = StoryObj<typeof HeaderNavThumbs>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof HeaderNavThumbs> = {
   component: HeaderNavThumbs,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
 
 const BRAND = "test brand 123";
+
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   args: {
@@ -23,6 +27,8 @@ export const Default: Story = {
     onCheckboxChange: jest.fn(),
   },
 };
+
+// -----------------------------------------------------------------------------
 
 export const Mobile: Story = {
   ...Default,

@@ -15,14 +15,18 @@ import {
 } from "../../wrappers/theme-wrapper/helpers";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
-const TITLE = "test title 123";
-const SUB_TITLE = "test subtitle 456";
-
-type Story = StoryObj<typeof HeaderNav>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof HeaderNav> = {
   component: HeaderNav,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
+
+const TITLE = "test title 123";
+const SUB_TITLE = "test subtitle 456";
+
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   decorators: [
@@ -77,6 +81,8 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
 
 export const DetailPage: Story = {
   ...Default,

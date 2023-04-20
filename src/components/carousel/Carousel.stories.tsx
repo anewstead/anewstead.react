@@ -8,27 +8,29 @@ import Carousel from "./Carousel";
 import { BASE_CONTENT_URL } from "../../core/const";
 import { waitForTransition } from "../../../test-utils/waitFor";
 
-type Story = StoryObj<typeof Carousel>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof Carousel> = {
   component: Carousel,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
 
-const base = `${BASE_CONTENT_URL}img/gallery`;
-
-const data = [
-  { url: `${base}/gx_01.jpg`, alt: "mac1" },
-  { url: `${base}/gx_02.jpg`, alt: "mac2" },
-  { url: `${base}/gx_03.jpg`, alt: "mac3" },
+const imageData = [
+  { url: `${BASE_CONTENT_URL}img/gallery/gx_01.jpg`, alt: "mac1" },
+  { url: `${BASE_CONTENT_URL}img/gallery/gx_02.jpg`, alt: "mac2" },
+  { url: `${BASE_CONTENT_URL}img/gallery/gx_03.jpg`, alt: "mac3" },
 ];
 
-const gallery = data.map((item) => {
+const slideImages = imageData.map((item) => {
   return <img src={item.url} alt={item.alt} key={item.alt} />;
 });
 
+// -----------------------------------------------------------------------------
+
 export const Default: Story = {
   args: {
-    slides: gallery,
+    slides: slideImages,
     settings: {
       speed: 0,
       lazyLoad: undefined,
@@ -66,9 +68,11 @@ export const Default: Story = {
   },
 };
 
+// -----------------------------------------------------------------------------
+
 export const WithoutDotNavigation: Story = {
   args: {
-    slides: gallery,
+    slides: slideImages,
     settings: {
       speed: 1500,
       dots: false,

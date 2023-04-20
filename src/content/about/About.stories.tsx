@@ -8,11 +8,13 @@ import { within } from "@storybook/testing-library";
 import About from "./About";
 import store from "../../core/state/store";
 
-type Story = StoryObj<typeof About>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof About> = {
   component: About,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   decorators: [

@@ -5,15 +5,18 @@ import { userEvent, within } from "@storybook/testing-library";
 import HeaderNavDetail from "./HeaderNavDetail";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
-const TITLE = "test title 123";
-
-const SUB_TITLE = "test subtitle 456";
-
-type Story = StoryObj<typeof HeaderNavDetail>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof HeaderNavDetail> = {
   component: HeaderNavDetail,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
+
+const TITLE = "test title 123";
+const SUB_TITLE = "test subtitle 456";
+
+// -----------------------------------------------------------------------------
 
 export const Default: Story = {
   args: {
@@ -38,6 +41,8 @@ export const Default: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------
 
 export const Mobile: Story = {
   args: {

@@ -2,11 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import InFrame from "./InFrame";
 
-type Story = StoryObj<typeof InFrame>;
+// -----------------------------------------------------------------------------
 const meta: Meta<typeof InFrame> = {
   component: InFrame,
 };
 export default meta;
+type Story = StoryObj<typeof meta>;
+// -----------------------------------------------------------------------------
 
 export const AsSite: Story = {
   args: {
@@ -18,6 +20,8 @@ export const AsSite: Story = {
     checkAdBlock: false,
   },
 };
+
+// -----------------------------------------------------------------------------
 
 export const AsBanner: Story = {
   args: {
