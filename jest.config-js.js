@@ -15,7 +15,7 @@ module.exports = {
 
   coverageDirectory: "./coverage/jest-js",
 
-  coverageReporters: ["text", "lcov", ["json", { file: "coverage-js.json" }]],
+  coverageReporters: ["text", ["json", { file: "coverage-js.json" }]],
 
   testMatch: ["**/*.test.[jt]s"],
 };
