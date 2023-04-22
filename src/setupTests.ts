@@ -8,7 +8,6 @@ import "cross-fetch/polyfill";
 import "./test-utils/jestWindowExtended";
 
 import { server } from "./core/services/__mocks__/server";
-import { serverResponseStatus } from "./core/services/__mocks__/status";
 
 //-----
 // msw@1.1.0 creates a console error log when using res.networkError()
@@ -32,7 +31,6 @@ beforeAll(() => {
 });
 
 afterEach(() => {
-  serverResponseStatus.reset();
   server.resetHandlers();
   jest.clearAllMocks(); // 'clearAllMocks' not 'resetAllMocks' as will break jest-localstorage-mock
   localStorage.clear();

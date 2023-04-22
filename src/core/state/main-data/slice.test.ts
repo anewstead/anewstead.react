@@ -1,7 +1,8 @@
 import type { AppState } from "../store";
 import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 import { getSessionMainData, removeSessionMainData } from "./helpers";
-import { serverResponseStatus } from "../../services/__mocks__/status";
+import { mswLoadMainDataReject } from "../../services/__mocks__/loadMainDataHandlers";
+import { server } from "../../services/__mocks__/server";
 import { setupStore } from "../store";
 
 afterEach(() => {
@@ -20,7 +21,7 @@ test("FETCH_MAIN_DATA fulfilled", async () => {
 });
 
 test("FETCH_MAIN_DATA rejected", async () => {
-  serverResponseStatus.set(400);
+  server.use(mswLoadMainDataReject);
   const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as AppState;

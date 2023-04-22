@@ -3,7 +3,11 @@ import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import MainDataLoader from "./MainDataLoader";
 import renderWithProviders from "../../test-utils/renderWithProviders";
-import { serverResponseStatus } from "../../core/services/__mocks__/status";
+import {
+  mswLoadMainDataNoContent,
+  mswLoadMainDataReject,
+} from "../../core/services/__mocks__/loadMainDataHandlers";
+import { server } from "../../core/services/__mocks__/server";
 
 const component = (
   <MainDataLoader>
@@ -23,7 +27,7 @@ test("renders spinner, removes it and renders child-content", async () => {
 });
 
 test("renders load failed", async () => {
-  serverResponseStatus.set(400);
+  server.use(mswLoadMainDataReject);
   renderWithProviders(component);
   const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);
@@ -32,7 +36,7 @@ test("renders load failed", async () => {
 });
 
 test("renders loaded empty data", async () => {
-  serverResponseStatus.set(204);
+  server.use(mswLoadMainDataNoContent);
   renderWithProviders(component);
   const spinner = screen.getByTestId("maindata-spinner");
   await waitForElementToBeRemoved(spinner);

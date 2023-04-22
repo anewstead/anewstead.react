@@ -4,7 +4,8 @@ import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 import InFrame from "./InFrame";
 import renderWithProviders from "../../test-utils/renderWithProviders";
 import type { IMainData } from "../../core/state/main-data/state";
-import { serverResponseStatus } from "../../core/services/__mocks__/status";
+import { mswDetectAdBlockBlocked } from "../../core/services/__mocks__/detectAdBlockHandlers";
+import { server } from "../../core/services/__mocks__/server";
 
 const dataIframe = {
   id: 21,
@@ -69,7 +70,7 @@ test("renders as website", async () => {
 });
 
 test("renders as banner (has adblock)", async () => {
-  serverResponseStatus.set(403);
+  server.use(mswDetectAdBlockBlocked);
   renderWithProviders(CompAsBanner, { preloadedState });
   await unSetDivTest();
   const failover = await screen.getByTestId("inframe-failover");

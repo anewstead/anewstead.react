@@ -1,7 +1,18 @@
 import path from "path";
+import type { AddonOptionsVite } from "@storybook/addon-coverage";
 import type { StorybookConfig } from "@storybook/react-vite";
 import type { UserConfig } from "vite";
 import { mergeConfig } from "vite";
+
+const addonCoverage = {
+  name: "@storybook/addon-coverage",
+  options: {
+    istanbul: {
+      cwd: "./src",
+      include: ["**/*.@(jsx|tsx)"],
+    },
+  } satisfies AddonOptionsVite,
+};
 
 const sbConfig: StorybookConfig = {
   async viteFinal(config) {
@@ -32,18 +43,12 @@ const sbConfig: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
-    "@storybook/addon-coverage",
+    addonCoverage,
     "storybook-dark-mode-v7",
   ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  typescript: {
-    // Overrides the default Typescript configuration to allow multi-package components to be documented via Autodocs.
-    reactDocgen: "react-docgen",
-    skipBabel: true,
-    check: false,
   },
   core: {
     disableTelemetry: true,
