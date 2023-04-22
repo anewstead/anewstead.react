@@ -1,8 +1,7 @@
 import { rest } from "msw";
 
-import { adBlockTestURL } from "../../hooks/useDetectAdBlock";
+import { adBlockTestURL } from "../../../src/hooks/useDetectAdBlock";
 
-// default
 export const mswDetectAdBlock = rest.head(adBlockTestURL, (req, res, ctx) => {
   return res(ctx.status(200));
 });

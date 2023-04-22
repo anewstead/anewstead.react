@@ -3,7 +3,7 @@ import { rest } from "msw";
 
 import InFrame from "./InFrame";
 import { adBlockTestURL } from "../../hooks/useDetectAdBlock";
-import { mswDetectAdBlockBlocked } from "../../services/__mocks__/detectAdBlockHandlers";
+import { mswDetectAdBlockBlocked } from "../../../test-utils/msw/handlers/mswDetectAdBlock";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof InFrame> = {

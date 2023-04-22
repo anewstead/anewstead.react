@@ -1,9 +1,8 @@
 import { rest } from "msw";
 
-import mainDataMock from "./mainDataMock.json";
-import { MAIN_DATA_URL } from "../../const";
+import { MAIN_DATA_URL } from "../../../src/const";
+import { mainDataMock } from "../mockJson";
 
-// default
 export const mswLoadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
   return res(ctx.status(200), ctx.json(mainDataMock));
 });

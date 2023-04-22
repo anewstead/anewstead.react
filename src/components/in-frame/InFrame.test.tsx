@@ -4,8 +4,8 @@ import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 import InFrame from "./InFrame";
 import renderWithProviders from "../../../test-utils/renderWithProviders";
 import type { IMainData } from "../../state/main-data/state";
-import { mswDetectAdBlockBlocked } from "../../services/__mocks__/detectAdBlockHandlers";
-import { server } from "../../services/__mocks__/server";
+import { mswDetectAdBlockBlocked } from "../../../test-utils/msw/handlers/mswDetectAdBlock";
+import { server } from "../../../test-utils/msw/server";
 
 const dataIframe = {
   id: 21,

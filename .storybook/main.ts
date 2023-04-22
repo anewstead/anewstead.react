@@ -19,11 +19,9 @@ const sbConfig: StorybookConfig = {
     return mergeConfig(config, {
       server: {
         watch: {
-          // cannot set cwd to ./src as we also need to watch public folder and possibly others
-          // so leave the CWD as '.' but then need to specify what not to watch
-          // (.git and node_modules default ignored)
-          // we can glob but must begin as absolute path or be fully recursive
-          // e.g.
+          // cannot set cwd to ./src as also need to watch public folder and others
+          // specify what not to watch (.git and node_modules default ignored)
+          // glob but must begin as absolute path or be fully recursive
           // path.resolve("./dist") = dist folder in project root
           // **/dist = all dist folders
           ignored: [

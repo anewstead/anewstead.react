@@ -2,8 +2,8 @@ import React from "react";
 import { initialize as mswInitialize, mswDecorator } from "msw-storybook-addon";
 
 import customViewports from "./customViewports";
+import handlers from "../test-utils/msw/handlers";
 import { ThemeDocsContainer, ThemeWrapper } from "./theme";
-import { mswConfig } from "./msw";
 
 // https://github.com/mswjs/msw-storybook-addon#configuring-msw
 mswInitialize({
@@ -22,7 +22,6 @@ export const parameters = {
   darkMode: {
     stylePreview: true,
   },
-
   docs: {
     container: ({ children, context }) => {
       return (
@@ -30,8 +29,7 @@ export const parameters = {
       );
     },
   },
-
-  msw: mswConfig,
+  msw: { handlers },
   viewport: { viewports: customViewports },
 };
 

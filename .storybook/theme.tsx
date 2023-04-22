@@ -14,16 +14,23 @@ import {
   toggleThemeName,
 } from "../src/wrappers/theme-wrapper/helpers";
 
+/*
+configure ./src theme for use as storybook decorator in preview and docs pages
+sync ./src theme (dark|light) with storybook-dark-mode addon
+so components (dark|light) matches storybook layout (dark|light) 
+*/
+
 const getBgColor = () => {
   return global.getComputedStyle(document.body).backgroundColor;
 };
 
 const channel = addons.getChannel();
 
+// listens for storybook-dark-mode changeEvent
+// stores (dark|light) in hook for use in components
 const useCurrentTheme = () => {
   const [themeName, setThemeName] = useState(initThemeName());
   const [bgColor, setBgColor] = useState(getBgColor());
-
   useEffect(() => {
     const updateTheme = (isDark) => {
       setThemeName(toggleThemeName(isDark ? "light" : "dark"));
@@ -38,13 +45,12 @@ const useCurrentTheme = () => {
       return channel.removeListener(DARK_MODE_EVENT_NAME, updateTheme);
     };
   }, []);
-
   return { themeName, bgColor };
 };
 
+// theme preview page decorator
 export const ThemeWrapper = ({ children }) => {
   const { themeName } = useCurrentTheme();
-
   const toggleThemeMemo = useMemo(() => {
     return {
       toggleTheme: () => {
@@ -52,7 +58,6 @@ export const ThemeWrapper = ({ children }) => {
       },
     };
   }, []);
-
   return (
     <ThemeWrapperContext.Provider value={toggleThemeMemo}>
       <Theme themeName={themeName}>{children}</Theme>
@@ -60,7 +65,7 @@ export const ThemeWrapper = ({ children }) => {
   );
 };
 
-// theme docs pages
+// theme docs pages decorator
 export const ThemeDocsContainer = ({ children, context }) => {
   const { themeName, bgColor } = useCurrentTheme();
   // correct bg in each component iframe

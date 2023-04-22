@@ -6,8 +6,8 @@ import renderWithProviders from "../../../test-utils/renderWithProviders";
 import {
   mswLoadMainDataNoContent,
   mswLoadMainDataReject,
-} from "../../services/__mocks__/loadMainDataHandlers";
-import { server } from "../../services/__mocks__/server";
+} from "../../../test-utils/msw/handlers/mswLoadMainData";
+import { server } from "../../../test-utils/msw/server";
 
 const component = (
   <MainDataLoader>

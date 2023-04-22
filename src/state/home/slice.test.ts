@@ -1,4 +1,3 @@
-import mainDataMock from "../../services/__mocks__/mainDataMock.json";
 import type { AppState } from "../store";
 import type { IMainData } from "../main-data/state";
 import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
@@ -6,6 +5,7 @@ import type {
   InitDisplayThumbsPayload,
   NavCheckboxChangePayload,
 } from "./slice";
+import { mainDataMock } from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../store";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));

@@ -17,5 +17,12 @@ module.exports = {
 
   coverageReporters: ["text", ["json", { file: "coverage-js.json" }]],
 
+  collectCoverageFrom: [
+    "src/**/*.[jt]s",
+    "!src/**/.*.[jt]s",
+    "!src/**/index.[jt]s",
+    "!src/**/*.style?(s).[jt]s",
+  ],
+
   testMatch: ["**/*.test.[jt]s"],
 };

@@ -1,8 +1,8 @@
 import type { AppState } from "../store";
 import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 import { getSessionMainData, removeSessionMainData } from "./helpers";
-import { mswLoadMainDataReject } from "../../services/__mocks__/loadMainDataHandlers";
-import { server } from "../../services/__mocks__/server";
+import { mswLoadMainDataReject } from "../../../test-utils/msw/handlers/mswLoadMainData";
+import { server } from "../../../test-utils/msw/server";
 import { setupStore } from "../store";
 
 afterEach(() => {
