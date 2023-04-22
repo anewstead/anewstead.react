@@ -9,9 +9,9 @@ import { Provider as ReduxProvider } from "react-redux";
 import type { RenderOptions } from "@testing-library/react";
 import { render } from "@testing-library/react";
 
-import ThemeWrapper from "../wrappers/theme-wrapper";
-import type { AppState, AppStore } from "../core/state/store";
-import { setupStore } from "../core/state/store";
+import ThemeWrapper from "../src/wrappers/theme-wrapper";
+import type { AppState, AppStore } from "../src/state/store";
+import { setupStore } from "../src/state/store";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.

@@ -5,14 +5,14 @@ import "@testing-library/jest-dom/extend-expect";
 import "jest-localstorage-mock";
 import "cross-fetch/polyfill";
 
-import "./test-utils/jestWindowExtended";
+import "./jestWindowExtended";
 
-import { server } from "./core/services/__mocks__/server";
+import { server } from "../src/services/__mocks__/server";
 
 //-----
 // msw@1.1.0 creates a console error log when using res.networkError()
 // despite working as expected and being the intended exception as per their docs.
-// to avoid confussion the following code disables errors that contain "net::ERR_FAILED'
+// to avoid confusion the following code disables errors that contain "net::ERR_FAILED'
 // which is the string output from @mswjs+interceptors
 // if your test arent working and you suspect network error you can comment this out,
 // it wont change functionality, but adds back the console error which might help you debug

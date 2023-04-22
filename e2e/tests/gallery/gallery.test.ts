@@ -25,14 +25,14 @@ test("gallery next prev", async ({ page }) => {
 
   await page.click(NEXT_BUTTON);
   await page.waitForLoadState("networkidle"); // image loaded
-  await waitForTimeout(100); // race condition
+  await waitForTimeout(250); // race condition
 
   await page.click(SLICK_LIST); // to hide prev-next button rollover
   await page.screenshot({ path: img2, animations: "disabled" });
 
   await page.click(PREV_BUTTON);
   await page.waitForLoadState("networkidle");
-  await waitForTimeout(100);
+  await waitForTimeout(250);
 
   await page.click(SLICK_LIST);
   await page.screenshot({ path: img3, animations: "disabled" });

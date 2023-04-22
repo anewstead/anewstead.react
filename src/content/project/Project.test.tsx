@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { screen } from "@testing-library/react";
 
 import Project from "./Project";
-import renderWithProviders from "../../test-utils/renderWithProviders";
-import type { IMainData } from "../../core/state/main-data/state";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
+import type { IMainData } from "../../state/main-data/state";
 import { unSetDivTest } from "../../components/in-frame/InFrame.test";
 
 const baseData = {

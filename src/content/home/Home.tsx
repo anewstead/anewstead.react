@@ -5,11 +5,11 @@ import { Link as RouterLink } from "react-router-dom";
 
 import PageLayout from "../../layout/page-layout";
 import useStyles from "./home.style";
-import type { AppState } from "../../core/state/store";
-import { BASE_CONTENT_URL } from "../../core/const";
-import { INIT_DISPLAY_THUMBS } from "../../core/state/home/slice";
-import type { InitDisplayThumbsPayload } from "../../core/state/home/slice";
-import { useAppDispatch, useAppSelector } from "../../core/state/store";
+import type { AppState } from "../../state/store";
+import { BASE_CONTENT_URL } from "../../const";
+import { INIT_DISPLAY_THUMBS } from "../../state/home/slice";
+import type { InitDisplayThumbsPayload } from "../../state/home/slice";
+import { useAppDispatch, useAppSelector } from "../../state/store";
 
 const Home = () => {
   const { classes } = useStyles();

@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import HeaderNavDetail from "./HeaderNavDetail";
-import renderWithProviders from "../../test-utils/renderWithProviders";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
 
 const TITLE = "test title 123";
 const SUB_TITLE = "test subtitle 456";

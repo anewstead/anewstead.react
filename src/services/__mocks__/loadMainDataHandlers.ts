@@ -18,9 +18,6 @@ export const mswLoadMainDataNoContent = rest.get(
 export const mswLoadMainDataReject = rest.get(
   MAIN_DATA_URL,
   (req, res, ctx) => {
-    return res(
-      ctx.status(400),
-      ctx.json({ message: "mock handler intended reject" })
-    );
+    return res(ctx.status(400), ctx.json({ message: "msw intended reject" }));
   }
 );

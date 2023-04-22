@@ -3,7 +3,7 @@ import { expect, jest } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
 import HeaderNavThumbs from "./HeaderNavThumbs";
-import { initialState } from "../../core/state/home/state";
+import { initialState } from "../../state/home/state";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------

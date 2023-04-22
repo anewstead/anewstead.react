@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import NoMatch from "./NoMatch";
-import renderWithProviders from "../../test-utils/renderWithProviders";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
 
 test("renders NoMatch page with detail nav", async () => {
   renderWithProviders(<NoMatch />);

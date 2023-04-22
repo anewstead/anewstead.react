@@ -2,10 +2,10 @@ import React from "react";
 import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import InFrame from "./InFrame";
-import renderWithProviders from "../../test-utils/renderWithProviders";
-import type { IMainData } from "../../core/state/main-data/state";
-import { mswDetectAdBlockBlocked } from "../../core/services/__mocks__/detectAdBlockHandlers";
-import { server } from "../../core/services/__mocks__/server";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
+import type { IMainData } from "../../state/main-data/state";
+import { mswDetectAdBlockBlocked } from "../../services/__mocks__/detectAdBlockHandlers";
+import { server } from "../../services/__mocks__/server";
 
 const dataIframe = {
   id: 21,

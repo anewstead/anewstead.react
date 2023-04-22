@@ -5,14 +5,14 @@
 
 module.exports = {
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/src/styleMock.js",
+    ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/test-utils/styleMock.js",
   },
 
   resetMocks: false,
 
   roots: ["<rootDir>/src"],
 
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
 
   testEnvironment: "jsdom",
 

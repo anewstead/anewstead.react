@@ -6,9 +6,9 @@ import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
 import HeaderNav from "./HeaderNav";
-import store from "../../core/state/store";
+import store from "../../state/store";
 import theme from "../../wrappers/theme-wrapper/theme.style";
-import type { AppState } from "../../core/state/store";
+import type { AppState } from "../../state/store";
 import {
   initThemeName,
   retreiveThemeName,

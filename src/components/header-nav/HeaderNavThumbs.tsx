@@ -19,7 +19,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 
 import useStyles from "./headerNavThumbs.style";
-import type { ICheckbox } from "../../core/state/home/state";
+import type { ICheckbox } from "../../state/home/state";
 
 type Props = {
   brandName?: string;

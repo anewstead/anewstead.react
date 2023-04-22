@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Video from "./Video";
-import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../core/const";
+import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Video> = {

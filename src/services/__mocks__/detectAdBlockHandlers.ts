@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-import { adBlockTestURL } from "../../../hooks/useDetectAdBlock";
+import { adBlockTestURL } from "../../hooks/useDetectAdBlock";
 
 // default
 export const mswDetectAdBlock = rest.head(adBlockTestURL, (req, res, ctx) => {
@@ -8,5 +8,5 @@ export const mswDetectAdBlock = rest.head(adBlockTestURL, (req, res, ctx) => {
 });
 
 export const mswDetectAdBlockBlocked = rest.head(adBlockTestURL, (req, res) => {
-  return res.networkError("mock handler intended blocked by client");
+  return res.networkError("msw intended reject");
 });

@@ -5,7 +5,7 @@ import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
 import Carousel from "./Carousel";
-import { BASE_CONTENT_URL } from "../../core/const";
+import { BASE_CONTENT_URL } from "../../const";
 import { waitForTransition } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------

@@ -2,8 +2,8 @@ import React from "react";
 import { screen } from "@testing-library/react";
 
 import HeaderNavThumbs from "./HeaderNavThumbs";
-import renderWithProviders from "../../test-utils/renderWithProviders";
-import { initialState } from "../../core/state/home/state";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
+import { initialState } from "../../state/home/state";
 
 const BRAND = "test brand 123";
 const DUMMY = () => {};

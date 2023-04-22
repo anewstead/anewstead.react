@@ -3,7 +3,7 @@ import { Button, useTheme } from "@mui/material";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import ThemeWrapper from "./ThemeWrapper";
-import renderWithExpectedError from "../../test-utils/renderWithExpectedError";
+import renderWithExpectedError from "../../../test-utils/renderWithExpectedError";
 import theme from "./theme.style";
 import { useThemeWrapperContext } from "./ThemeWrapperContext";
 

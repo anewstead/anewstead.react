@@ -32,6 +32,23 @@
       "rules": {
         "import/no-anonymous-default-export": "off"
       }
+    },
+    {
+      "files": [
+        "*",
+        "e2e/**",
+        ".storybook/**",
+        "test-utils/**",
+        "**/__mocks__/**",
+        "**/__tests__/**",
+        "**/*.@(test|spec|stories).{js,jsx,ts,tsx}"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "devDependencies": true }
+        ]
+      }
     }
   ],
 
@@ -68,21 +85,6 @@
       { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
     ],
     "curly": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "*",
-          "**/*.@(test|spec|stories).{js,jsx,ts,tsx}",
-          ".storybook/**",
-          "e2e/**",
-          "**/setupTests.{js,ts}",
-          "src/test-utils/*",
-          "**/__mocks__/*",
-          "**/__tests__/*"
-        ]
-      }
-    ],
     "import/prefer-default-export": "off",
     "json/*": ["error", { "allowComments": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],

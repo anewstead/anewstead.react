@@ -6,7 +6,7 @@ import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
 
 import About from "./About";
-import store from "../../core/state/store";
+import store from "../../state/store";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof About> = {

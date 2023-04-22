@@ -2,12 +2,12 @@ import React from "react";
 import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 
 import MainDataLoader from "./MainDataLoader";
-import renderWithProviders from "../../test-utils/renderWithProviders";
+import renderWithProviders from "../../../test-utils/renderWithProviders";
 import {
   mswLoadMainDataNoContent,
   mswLoadMainDataReject,
-} from "../../core/services/__mocks__/loadMainDataHandlers";
-import { server } from "../../core/services/__mocks__/server";
+} from "../../services/__mocks__/loadMainDataHandlers";
+import { server } from "../../services/__mocks__/server";
 
 const component = (
   <MainDataLoader>

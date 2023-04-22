@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { CircularProgress, Grid } from "@mui/material";
 import type { ReactNode } from "react";
 
-import { FETCH_MAIN_DATA } from "../../core/state/main-data/slice";
-import { useAppDispatch, useAppSelector } from "../../core/state/store";
+import { FETCH_MAIN_DATA } from "../../state/main-data/slice";
+import { useAppDispatch, useAppSelector } from "../../state/store";
 
 type Props = {
   children: ReactNode;

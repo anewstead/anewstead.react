@@ -9,9 +9,9 @@ import PageLayout from "../../layout/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import useStyles from "./project.style";
-import type { AppState } from "../../core/state/store";
-import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../core/const";
-import { useAppSelector } from "../../core/state/store";
+import type { AppState } from "../../state/store";
+import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
+import { useAppSelector } from "../../state/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();
