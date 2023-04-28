@@ -8,8 +8,8 @@ therefore only add the primary use-case handler from each handler file
 any alternatives therein are for use per test
 E.G.
 primary > here: myMockRequestHandler (200 OK)
-expect load error > override in test: server.use(myMockRequestHandlerReject) (400 bad);
+expect load error > use override in test(): server.use(myMockRequestHandlerReject) (400 bad);
 */
 
-// Handler[]
-export default [mswLoadMainData, mswDetectAdBlock];
+const handlers = [mswLoadMainData, mswDetectAdBlock];
+export default handlers;

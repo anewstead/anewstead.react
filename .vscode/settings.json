@@ -22,12 +22,26 @@
     "tsconfig.tsbuildinfo": true
   },
 
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/node_modules/*/**": true
+  },
+
   "html.format.enable": false,
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
   "json.format.enable": false,
   "less.validate": false,
   "scss.validate": false,
+
+  "search.exclude": {
+    "**/*.code-search": true,
+    "**/bower_components": true,
+    "**/node_modules": true
+  },
+
   "typescript.format.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.validate.enable": true

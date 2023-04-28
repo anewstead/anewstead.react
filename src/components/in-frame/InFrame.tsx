@@ -22,6 +22,10 @@ const InFrame = (props: Props) => {
 
   const { adblockChecked, adBlockDetected } = useDetectAdBlock();
 
+  if (!adblockChecked) {
+    return <></>;
+  }
+
   const iframe = (
     <iframe
       title={title}
@@ -32,6 +36,10 @@ const InFrame = (props: Props) => {
       data-testid="inframe-iframe"
     />
   );
+
+  if (!checkAdBlock) {
+    return iframe;
+  }
 
   const adBlockMsg = `Ad Blocker Detected, you will need to pause it to view full content`;
 
@@ -44,15 +52,7 @@ const InFrame = (props: Props) => {
     </div>
   );
 
-  if (adblockChecked) {
-    if (!checkAdBlock) {
-      return iframe;
-    }
-    return adBlockDetected ? failover : iframe;
-  }
-
-  const unset = <div data-testid="inframe-unset" />;
-  return unset;
+  return adBlockDetected ? failover : iframe;
 };
 
 export default InFrame;

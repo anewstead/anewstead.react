@@ -44,7 +44,9 @@ export const Default: Story = {
     const prev = canvas.getByLabelText("prev");
     const next = canvas.getByLabelText("next");
 
-    await expect(slick).toHaveClass("slick-initialized");
+    await step("it initialized", async () => {
+      await expect(slick).toHaveClass("slick-initialized");
+    });
 
     await step("it has more than 1 image", async () => {
       const images = carousel.querySelectorAll(

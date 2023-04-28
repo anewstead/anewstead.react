@@ -16,12 +16,15 @@ export const Default: Story = {
   args: {
     brand: "brand",
   },
-  play: async ({ args, canvasElement }) => {
+  play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
     const TEXT = args.brand;
     const DATE = new Date().getFullYear();
     const footer = canvas.getByRole("contentinfo");
-    expect(footer).toBeInTheDocument();
-    expect(footer).toHaveTextContent(`© ${TEXT} ${DATE}`);
+
+    await step("it render expected content", async () => {
+      expect(footer).toBeInTheDocument();
+      expect(footer).toHaveTextContent(`© ${TEXT} ${DATE}`);
+    });
   },
 };

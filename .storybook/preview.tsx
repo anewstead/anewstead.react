@@ -8,7 +8,6 @@ import { ThemeDocsContainer, ThemeWrapper } from "./theme";
 // https://github.com/mswjs/msw-storybook-addon#configuring-msw
 mswInitialize({
   onUnhandledRequest: "bypass",
-  quiet: true,
 });
 
 export const parameters = {

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { rest } from "msw";
+import { expect } from "@storybook/jest";
+import { waitFor, within } from "@storybook/testing-library";
 
 import InFrame from "./InFrame";
-import { adBlockTestURL } from "../../hooks/useDetectAdBlock";
 import { mswDetectAdBlockBlocked } from "../../../test-utils/msw/handlers/mswDetectAdBlock";
 
 // -----------------------------------------------------------------------------
@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
-export const AsSite: Story = {
+export const Default: Story = {
   args: {
     title: "as site",
     width: "600px",
@@ -21,6 +21,15 @@ export const AsSite: Story = {
     iframeURL: "logo512.png",
     failOverImageURL: "",
     checkAdBlock: false,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step("it renders an iframe", async () => {
+      await waitFor(() => {
+        const iframe = canvas.getByTestId("inframe-iframe");
+        expect(iframe).toBeInTheDocument();
+      });
+    });
   },
 };
 
@@ -40,26 +49,35 @@ export const AdBannerBlocked: Story = {
       handlers: [mswDetectAdBlockBlocked],
     },
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step("it renders a failover", async () => {
+      await waitFor(() => {
+        const failover = canvas.getByTestId("inframe-failover");
+        expect(failover).toBeInTheDocument();
+      });
+    });
+  },
 };
 
 // -----------------------------------------------------------------------------
 
-export const AsBannerNotBlocked: Story = {
+export const AdBannerNotBlocked: Story = {
   args: {
     title: "as banner",
     width: "600px",
     height: "200px",
-    iframeURL: "logo512.png",
-    failOverImageURL: "logo192.png",
+    iframeURL: "logo192.png",
+    failOverImageURL: "logo512.png",
     checkAdBlock: true,
   },
-  parameters: {
-    msw: {
-      handlers: [
-        rest.head(adBlockTestURL, (req, res, ctx) => {
-          return res(ctx.status(200));
-        }),
-      ],
-    },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step("it renders an iframe", async () => {
+      await waitFor(() => {
+        const iframe = canvas.getByTestId("inframe-iframe");
+        expect(iframe).toBeInTheDocument();
+      });
+    });
   },
 };

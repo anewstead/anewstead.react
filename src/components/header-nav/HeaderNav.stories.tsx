@@ -84,7 +84,7 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-export const DetailPage: Story = {
+export const DetailPageNav: Story = {
   ...Default,
   args: {
     titleText: TITLE,
