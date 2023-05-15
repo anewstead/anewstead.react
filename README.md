@@ -13,16 +13,22 @@ it serves to ensure I recreate the same thing with different technologies.
 # Setup
 nvm - https://github.com/nvm-sh/nvm  
 manages which version of node is used  
-Ensure //.zshrc is correct as per NVM install instructions  
-(// = root of user folder on mac)  
+Ensure $HOME/.zshrc is correct as per NVM install instructions  
+($HOME a.k.a user's root folder on mac)  
 
 pnpm - https://pnpm.io/  
-install by `npm i -g pnpm` as easier to apply future updates vs `iwr/curl/wget`  
-ensure pnpm has updated //.zshrc with its PATH  
+install by `npm i -g pnpm` easier to update later on vs. `iwr/curl/wget`  
+because we use nvm you need to ensure $HOME/.zshrc has the correct pnpm path  
 https://github.com/pnpm/pnpm/issues/4027
+```
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+alias pn=pnpm
+```
 
 huskyrc - https://typicode.github.io/husky/#/?id=command-not-found  
-you need a //.huskyrc file so husky knows where to find node installed by nvm
+because we use nvm you need to you need a $HOME/.huskyrc file  
+this lets husky knows where to find the current node install
 
 vscode is preferred IDE  
 see .vscode/README.md for more information
