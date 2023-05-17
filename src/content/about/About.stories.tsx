@@ -26,11 +26,13 @@ export const Default: Story = {
       );
     },
   ],
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const aboutPage = canvas.getByTestId("about-page");
-    expect(aboutPage).toBeInTheDocument();
-    const navDetail = canvas.getByTestId("nav-detail");
-    expect(navDetail).toBeInTheDocument();
+    await step("renders about page with nav-detail", async () => {
+      const page = canvas.getByTestId("about-page");
+      expect(page).toBeInTheDocument();
+      const navDetail = canvas.getByTestId("nav-detail");
+      expect(navDetail).toBeInTheDocument();
+    });
   },
 };

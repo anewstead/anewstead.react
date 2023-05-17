@@ -6,9 +6,12 @@ import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
 
 import Home from "./Home";
-// import { homeReducer } from "../../state/home/slice";
-import { initialState } from "../../state/home/state";
+import type { IMainData } from "../../state/main-data/state";
+import { initialState as homeInitialState } from "../../state/home/state";
+import { mainDataMock } from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../../state/store";
+
+const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Home> = {
@@ -23,14 +26,12 @@ const defaultState = {
     loading: false,
     loaded: true,
     error: false,
-    data: [],
+    data: MAIN_DATA,
   },
   home: {
-    ...initialState,
-    displayThumbs: [],
+    ...homeInitialState,
   },
 };
-// const store = setupStore(undefined, defaultState);
 
 export const Default: Story = {
   decorators: [
@@ -44,16 +45,23 @@ export const Default: Story = {
   ],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step("renders nothumbs (data has no items)", async () => {
+    await step("renders thumbs (data has items)", async () => {
       const page = canvas.getByTestId("home-page");
       expect(page).toBeInTheDocument();
       const nav = canvas.getByTestId("nav-thumbs");
       expect(nav).toBeInTheDocument();
+      const links = await canvas.findAllByRole("link");
+      const thumbs = links.filter((item) => {
+        return item.getAttribute("href")?.includes("/project/");
+      });
+      expect(thumbs.length).toBeGreaterThan(0);
     });
   },
 };
 
-const thumbState = {
+// -----------------------------------------------------------------------------
+
+const makeSelectionState = {
   mainData: {
     loading: false,
     loaded: true,
@@ -61,16 +69,16 @@ const thumbState = {
     data: [],
   },
   home: {
-    ...initialState,
+    ...homeInitialState,
     displayThumbs: [],
   },
 };
 
-export const WithThumb: Story = {
+export const MakeSelection: Story = {
   decorators: [
     (Story) => {
       return (
-        <Provider store={setupStore(undefined, thumbState)}>
+        <Provider store={setupStore(undefined, makeSelectionState)}>
           <BrowserRouter>{Story()}</BrowserRouter>
         </Provider>
       );
@@ -78,15 +86,11 @@ export const WithThumb: Story = {
   ],
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step("renders nothumbs (data has no items)", async () => {
-      const page = canvas.getByTestId("home-page");
-      expect(page).toBeInTheDocument();
-      const nav = canvas.getByTestId("nav-thumbs");
-      expect(nav).toBeInTheDocument();
+    await step("renders make a selection", async () => {
+      const makeSelection = canvas.getByTestId("home-nothumbs");
+      expect(makeSelection).toBeInTheDocument();
     });
   },
 };
 
-// "renders unset (data 'undefined')"
-// "renders nothumbs (data has no items)"
-// "renders thumbs (data has items)"
+// -----------------------------------------------------------------------------

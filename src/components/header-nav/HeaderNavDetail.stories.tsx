@@ -27,8 +27,8 @@ export const Default: Story = {
   },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const homeBtn = canvas.getByTestId("nav-detail-home-button");
-    const themeBtn = canvas.getByTestId("nav-detail-theme-button");
+    const homeBtn = await canvas.findByTestId("nav-detail-home-button");
+    const themeBtn = await canvas.findByTestId("nav-detail-theme-button");
 
     await step("it handles home click", async () => {
       await userEvent.click(homeBtn);

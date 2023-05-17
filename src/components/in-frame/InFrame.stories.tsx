@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect } from "@storybook/jest";
-import { waitFor, within } from "@storybook/testing-library";
+import { within } from "@storybook/testing-library";
 
 import InFrame from "./InFrame";
 import { mswDetectAdBlockBlocked } from "../../../test-utils/msw/handlers/mswDetectAdBlock";
@@ -24,18 +24,16 @@ export const Default: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step("it renders an iframe", async () => {
-      await waitFor(() => {
-        const iframe = canvas.getByTestId("inframe-iframe");
-        expect(iframe).toBeInTheDocument();
-      });
+    await step("it ignores adblock and renders an iframe", async () => {
+      const iframe = await canvas.findByTestId("inframe-iframe");
+      expect(iframe).toBeInTheDocument();
     });
   },
 };
 
 // -----------------------------------------------------------------------------
 
-export const AdBannerBlocked: Story = {
+export const BannerBlocked: Story = {
   args: {
     title: "as banner",
     width: "600px",
@@ -51,18 +49,16 @@ export const AdBannerBlocked: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step("it renders a failover", async () => {
-      await waitFor(() => {
-        const failover = canvas.getByTestId("inframe-failover");
-        expect(failover).toBeInTheDocument();
-      });
+    await step("it checks adblock and renders a failover", async () => {
+      const failover = await canvas.findByTestId("inframe-failover");
+      expect(failover).toBeInTheDocument();
     });
   },
 };
 
 // -----------------------------------------------------------------------------
 
-export const AdBannerNotBlocked: Story = {
+export const BannerNotBlocked: Story = {
   args: {
     title: "as banner",
     width: "600px",
@@ -73,11 +69,9 @@ export const AdBannerNotBlocked: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step("it renders an iframe", async () => {
-      await waitFor(() => {
-        const iframe = canvas.getByTestId("inframe-iframe");
-        expect(iframe).toBeInTheDocument();
-      });
+    await step("it checks adblock and renders an iframe", async () => {
+      const iframe = await canvas.findByTestId("inframe-iframe");
+      expect(iframe).toBeInTheDocument();
     });
   },
 };
