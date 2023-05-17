@@ -27,7 +27,7 @@ alias pn=pnpm
 ```
 
 huskyrc - https://typicode.github.io/husky/#/?id=command-not-found  
-because we use nvm you need to you need a $HOME/.huskyrc file  
+because we use nvm you need a $HOME/.huskyrc file  
 this lets husky knows where to find the current node install
 
 vscode is preferred IDE  

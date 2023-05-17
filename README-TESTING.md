@@ -55,23 +55,23 @@ There are 2 unit test suites and 2 coverage outputs,
 - Functional (js)
 - Display (jsx)  
 
-Explicitly jsx coverage has been set not include js files  
+Explicitly jsx coverage has been set to not cover js files  
 **Aim for 100% coverage from both suites**
  
 #### Not by Integration  
-Code coverage should **not** come from integration tests.  
-Default jsx test-runner behaviour was to include any executed files for coverage  
-E.G. where a display component imports js *function* that functions js *file* is included for coverage,  
-technically an integration test, but annoyingly to be clear its the  
+Code coverage should come from unit tests **not** from integration tests.  
+Default storybook test-runner behaviour includes any touched file for coverage  
+E.G. where a display component imports a js *function* that functions js *file* is included for coverage,  
+technically that is an integration test of the function, more annoyingly to be clear its the  
 entire imported file's code that is covered not just the imported bit.  
 
 **This is not what we want, hence the 2 levels of testing**  
 
-If we tired to get 100% coverage using only default test-runner output,  
+If we tired to get 100% coverage using only default storybook test-runner output,  
 we would have to integration test the whole of any imported js file.  
-I.E. create integration test for functions we're not using,  
+I.E. create integration test for functions we may not be not using,  
 like if the js file is a wider utility class we just use a bit of.  
-(build setup should tree-shake unused code in compilation)  
+(the build setup should tree-shake those unused code in compilation)  
 Further, because it's an integration test of a function  
 instead of being pure e.g. check it returns (success | fail)  
 it becomes secondary via display e.g. does it render (image | errorMsg)

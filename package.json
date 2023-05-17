@@ -125,6 +125,7 @@
     "rollup-plugin-bundle-analyzer": "^1.6.6",
     "start-server-and-test": "^2.0.0",
     "storybook": "^7.0.12",
+    "storybook-addon-react-router-v6": "^1.0.0",
     "storybook-dark-mode-v7": "^3.0.0-alpha.0",
     "stylelint": "^15.6.1",
     "stylelint-config-standard": "^33.0.0",
