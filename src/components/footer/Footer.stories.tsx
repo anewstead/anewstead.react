@@ -20,9 +20,9 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const TEXT = args.brand;
     const DATE = new Date().getFullYear();
-    const footer = canvas.getByRole("contentinfo");
 
     await step("it render expected content", async () => {
+      const footer = canvas.getByRole("contentinfo");
       expect(footer).toBeInTheDocument();
       expect(footer).toHaveTextContent(`© ${TEXT} ${DATE}`);
     });
