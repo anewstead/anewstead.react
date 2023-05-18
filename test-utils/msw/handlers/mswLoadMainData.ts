@@ -10,7 +10,7 @@ export const mswLoadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
 export const mswLoadMainDataNoContent = rest.get(
   MAIN_DATA_URL,
   (req, res, ctx) => {
-    return res(ctx.status(204), ctx.json([]));
+    return res(ctx.status(200), ctx.json([]));
   }
 );
 
