@@ -20,13 +20,13 @@ type Story = StoryObj<typeof meta>;
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 
-const dataVideo = MAIN_DATA[1];
-
 const dataGallery = MAIN_DATA[0];
+
+const dataVideo = MAIN_DATA[1];
 
 const dataIframe = MAIN_DATA[4];
 
-const dataNoMatch = {
+const dataBadViewType = {
   ...MAIN_DATA[0],
   view: {
     type: "testNoMatch",
@@ -41,10 +41,10 @@ const loadedData = {
 
 // -----------------------------------------------------------------------------
 
-const noMatchState = {
+const BadViewTypeState = {
   mainData: {
     ...loadedData,
-    data: [dataNoMatch],
+    data: [dataBadViewType],
   },
 };
 
@@ -52,14 +52,14 @@ export const Default: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: noMatchState.mainData.data[0].id },
+      routeParams: { id: BadViewTypeState.mainData.data[0].id },
     },
   },
   decorators: [
     withRouter,
     (Story) => {
       return (
-        <Provider store={setupStore(undefined, noMatchState)}>
+        <Provider store={setupStore(undefined, BadViewTypeState)}>
           {Story()}
         </Provider>
       );
@@ -70,6 +70,43 @@ export const Default: Story = {
     await step("renders no-match with nav-detail", async () => {
       const page = canvas.getByTestId("nomatch-page");
       expect(page).toBeInTheDocument();
+      const navDetail = canvas.getByTestId("nav-detail");
+      expect(navDetail).toBeInTheDocument();
+    });
+  },
+};
+
+// -----------------------------------------------------------------------------
+
+const galleryState = {
+  mainData: {
+    ...loadedData,
+    data: [dataGallery],
+  },
+};
+
+export const GalleryPage: Story = {
+  parameters: {
+    reactRouter: {
+      routePath: "/project/:id",
+      routeParams: { id: galleryState.mainData.data[0].id },
+    },
+  },
+  decorators: [
+    withRouter,
+    (Story) => {
+      return (
+        <Provider store={setupStore(undefined, galleryState)}>
+          {Story()}
+        </Provider>
+      );
+    },
+  ],
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step("renders carousel with nav-detail", async () => {
+      const carousel = await canvas.getByTestId("carousel");
+      expect(carousel).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
       expect(navDetail).toBeInTheDocument();
     });
@@ -110,42 +147,6 @@ export const VideoPage: Story = {
     });
   },
 };
-// -----------------------------------------------------------------------------
-
-const galleryState = {
-  mainData: {
-    ...loadedData,
-    data: [dataGallery],
-  },
-};
-
-export const GalleryPage: Story = {
-  parameters: {
-    reactRouter: {
-      routePath: "/project/:id",
-      routeParams: { id: galleryState.mainData.data[0].id },
-    },
-  },
-  decorators: [
-    withRouter,
-    (Story) => {
-      return (
-        <Provider store={setupStore(undefined, galleryState)}>
-          {Story()}
-        </Provider>
-      );
-    },
-  ],
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    await step("renders carousel with nav-detail", async () => {
-      const carousel = await canvas.getByTestId("carousel");
-      expect(carousel).toBeInTheDocument();
-      const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
-    });
-  },
-};
 
 // -----------------------------------------------------------------------------
 
@@ -178,6 +179,36 @@ export const InFramePage: Story = {
     await step("it ignores adblock and renders an iframe", async () => {
       const iframe = await canvas.findByTestId("inframe-iframe");
       expect(iframe).toBeInTheDocument();
+    });
+  },
+};
+
+// -----------------------------------------------------------------------------
+
+export const UnknownProject: Story = {
+  parameters: {
+    reactRouter: {
+      routePath: "/project/:id",
+      routeParams: { id: "unknown_id" },
+    },
+  },
+  decorators: [
+    withRouter,
+    (Story) => {
+      return (
+        <Provider store={setupStore(undefined, galleryState)}>
+          {Story()}
+        </Provider>
+      );
+    },
+  ],
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step("renders no-match with nav-detail", async () => {
+      const page = canvas.getByTestId("nomatch-page");
+      expect(page).toBeInTheDocument();
+      const navDetail = canvas.getByTestId("nav-detail");
+      expect(navDetail).toBeInTheDocument();
     });
   },
 };
