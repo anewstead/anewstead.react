@@ -2,6 +2,13 @@ import bundleAnalyzer from "rollup-plugin-bundle-analyzer";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+function chunkPolicy(id) {
+  if (id.includes("node_modules")) {
+    return "vendor";
+  }
+  return "index";
+}
+
 const dev = () => {
   return {
     plugins: [react()],
@@ -11,12 +18,23 @@ const dev = () => {
 const buildProd = () => {
   return {
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            return chunkPolicy(id);
+          },
+        },
+      },
+    },
   };
 };
 
 const buildDev = () => {
+  const bp = buildProd();
   return {
-    plugins: [react(), bundleAnalyzer({})],
+    ...bp,
+    plugins: [...bp.plugins, bundleAnalyzer({})],
   };
 };
 
