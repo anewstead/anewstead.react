@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
 import useStyles from "./pageLayout.style";
-import { BRAND } from "../../core/const";
+import { BRAND } from "../../const";
 
 type Props = {
   headerNavType: "thumbs" | "detail";

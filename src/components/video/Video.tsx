@@ -14,20 +14,18 @@ const Video = (props: Props) => {
   const { classes } = useStyles();
 
   return (
-    <>
-      <video
-        className={classes.root}
-        width="100%"
-        height="auto"
-        poster={posterURL}
-        controls
-        preload="none"
-        controlsList="nodownload"
-        disablePictureInPicture
-      >
-        <source src={videoURL} type="video/mp4" />
-      </video>
-    </>
+    <video
+      className={classes.root}
+      width="100%"
+      height="auto"
+      poster={posterURL}
+      controls
+      preload="none"
+      controlsList="nodownload"
+      disablePictureInPicture
+    >
+      <source src={videoURL} type="video/mp4" />
+    </video>
   );
 };
 

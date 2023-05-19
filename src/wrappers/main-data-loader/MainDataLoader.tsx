@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { CircularProgress, Grid } from "@mui/material";
 import type { ReactNode } from "react";
 
-import { FETCH_MAIN_DATA } from "../../core/state/main-data/slice";
-import { useAppDispatch, useAppSelector } from "../../core/state/store";
+import { FETCH_MAIN_DATA } from "../../state/main-data/slice";
+import { useAppDispatch, useAppSelector } from "../../state/store";
 
 type Props = {
   children: ReactNode;
@@ -32,29 +32,28 @@ const MainDataLoader = (props: Props) => {
   };
 
   useEffect(() => {
-    if (!loading && !loaded && !error) {
+    if (!loaded && !error && !loading) {
       dispatch(FETCH_MAIN_DATA());
     }
   }, [dispatch, error, loaded, loading]);
 
-  return (
-    <>
-      {loading && feedback(<CircularProgress data-testid="maindata-spinner" />)}
+  if (!loaded && !error) {
+    return feedback(<CircularProgress data-testid="maindata-spinner" />);
+  }
 
-      {error &&
-        feedback(
-          <h3 data-testid="maindata-failed">Failed to load site data 😢</h3>
-        )}
+  if (error) {
+    return feedback(
+      <h3 data-testid="maindata-failed">Failed to load site data 😢</h3>
+    );
+  }
 
-      {data.length > 0 && children}
+  if (loaded && data.length <= 0) {
+    return feedback(
+      <h3 data-testid="maindata-empty">Server returned empty data 😢</h3>
+    );
+  }
 
-      {loaded &&
-        data.length <= 0 &&
-        feedback(
-          <h3 data-testid="maindata-empty">Server returned empty data 😢</h3>
-        )}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default MainDataLoader;

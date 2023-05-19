@@ -1,17 +1,18 @@
-import { waitForTransitionEnd } from "./helpers";
+import { expect, test } from "@playwright/test";
 
-beforeEach(async () => {
-  const PAGE_URL = "http://localhost:3000";
-  const LAYOUT = "[data-testid=app-layout]";
-  await jestPuppeteer.resetPage();
-  await page.setViewport({ width: 800, height: 600 });
-  await page.goto(PAGE_URL, { waitUntil: "networkidle0" });
-  await expect(page).toMatchElement(LAYOUT);
+import { waitForTransitionPW } from "../../test-utils/waitFor";
+
+test.beforeEach(async ({ page }) => {
+  const PAGE_URL = "http://localhost:3003";
+  await page.setViewportSize({ width: 800, height: 600 });
+  await page.goto(PAGE_URL, { waitUntil: "networkidle" });
+  const elem = await page.getByTestId("app-layout");
+  await expect(elem).toBeVisible();
 });
 
-test("toggle the theme", async () => {
-  const getBodyBGColor = async (page) => {
-    const bg = await page.evaluate(() => {
+test("toggle the theme", async ({ page }) => {
+  const getBodyBGColor = async (pg) => {
+    const bg = await pg.evaluate(() => {
       return window.getComputedStyle(document.body).backgroundColor;
     });
     return bg;
@@ -26,69 +27,67 @@ test("toggle the theme", async () => {
   expect(bg1).toMatch(bg3);
 });
 
-const toggleThumbs = async (checkboxSelector: string) => {
+const toggleThumbs = async (page, checkboxSelector) => {
   const THUMB_ITEMS = "[data-testid=home-page] > div > div";
-  const MAKE_SELECTION = "[data-testid=home-nothumbs]";
-  await expect(page).not.toMatchElement(MAKE_SELECTION);
-  const checkboxes = await page.$$(checkboxSelector);
-  const thumbs1 = await page.$$(THUMB_ITEMS);
+  const MAKE_SELECTION = "home-nothumbs";
+  const ms = await page.getByTestId(MAKE_SELECTION);
+  await expect(ms).not.toBeVisible();
+  const checkboxes = await page.locator(checkboxSelector).all();
+  const thumbs1 = await page.locator(THUMB_ITEMS).all();
   expect(thumbs1.length).toBeGreaterThan(0);
   await checkboxes[0].click();
-  const thumbs2 = await page.$$(THUMB_ITEMS);
+  const thumbs2 = await page.locator(THUMB_ITEMS).all();
   expect(thumbs2.length).toBeLessThan(thumbs1.length);
   await checkboxes[1].click();
-  const thumbs3 = await page.$$(THUMB_ITEMS);
+  const thumbs3 = await page.locator(THUMB_ITEMS).all();
   expect(thumbs3.length).toBeLessThan(thumbs2.length);
   await checkboxes[2].click();
-  await expect(page).toMatchElement(MAKE_SELECTION);
+  const ms2 = await page.getByTestId(MAKE_SELECTION);
+  await expect(ms2).toBeVisible();
 };
 
-test("toggle home thumbs", async () => {
+test("toggle home thumbs", async ({ page }) => {
   const DESK_CHECKBOXES =
     "[data-testid=nav-thumbs-desktop-checkbox] input[type=checkbox]";
-  await toggleThumbs(DESK_CHECKBOXES);
+  await toggleThumbs(page, DESK_CHECKBOXES);
 });
 
-test("mobile: open nav, toggle thumbs, close nav", async () => {
+test("mobile: open nav, toggle thumbs, close nav", async ({ page }) => {
   const MOB_CHECKBOXES =
     "[data-testid=nav-thumbs-mobile-checkbox] input[type=checkbox]";
   const MENU_BUTTON = "[data-testid=nav-thumbs-menu-button]";
-  const ACCORDIAN_SUMMARY = "[data-testid=nav-thumbs-accordion-summary]";
-  const ACCORDIAN_DETAIL = `${ACCORDIAN_SUMMARY} + div`; // sibling div
-  await page.setViewport({ width: 480, height: 640 });
-  const accordionDetail = await page.$(ACCORDIAN_DETAIL);
-  const height1 = await (await accordionDetail.boundingBox()).height;
-  await Promise.all([
-    waitForTransitionEnd(ACCORDIAN_DETAIL),
-    page.click(MENU_BUTTON),
-  ]);
-  const height2 = await (await accordionDetail.boundingBox()).height;
-  expect(height2).toBeGreaterThan(height1);
-  await toggleThumbs(MOB_CHECKBOXES);
-  await Promise.all([
-    waitForTransitionEnd(ACCORDIAN_DETAIL),
-    page.click(MENU_BUTTON),
-  ]);
-  const height3 = await (await accordionDetail.boundingBox()).height;
-  expect(height3).toEqual(height1);
+  const ACCORDIAN_DETAIL = "[data-testid=nav-thumbs-accordion-summary] + div";
+  await page.setViewportSize({ width: 480, height: 640 });
+  const accordionDetail = await page.locator(ACCORDIAN_DETAIL);
+  expect(accordionDetail).toHaveCount(1);
+  const bb1 = await accordionDetail.boundingBox();
+  page.click(MENU_BUTTON);
+  await waitForTransitionPW(page, ACCORDIAN_DETAIL);
+  const bb2 = await accordionDetail.boundingBox();
+  expect(bb2!.height).toBeGreaterThan(bb1!.height);
+  await toggleThumbs(page, MOB_CHECKBOXES);
+  page.click(MENU_BUTTON);
+  await waitForTransitionPW(page, ACCORDIAN_DETAIL);
+  const bb3 = await accordionDetail.boundingBox();
+  expect(bb3).toEqual(bb1);
 });
 
-test("navigate to about and back home", async () => {
+test("navigate to about and back home", async ({ page }) => {
   const ABOUT_BUTTON = "[data-testid=nav-thumbs-about-button]";
   const HOME_BUTTON = "[data-testid=nav-detail-home-button]";
-  await expect(page).toMatchElement(ABOUT_BUTTON);
-  await Promise.all([page.waitForNavigation(), page.click(ABOUT_BUTTON)]);
-  await expect(page).not.toMatchElement(ABOUT_BUTTON);
-  await expect(page).toMatchElement(HOME_BUTTON);
-  await Promise.all([page.waitForNavigation(), page.click(HOME_BUTTON)]);
-  await expect(page).toMatchElement(ABOUT_BUTTON);
-  await expect(page).not.toMatchElement(HOME_BUTTON);
+  await expect(page.locator(ABOUT_BUTTON)).toBeVisible();
+  await page.click(ABOUT_BUTTON);
+  await expect(page.locator(ABOUT_BUTTON)).not.toBeVisible();
+  await expect(page.locator(HOME_BUTTON)).toBeVisible();
+  await page.click(HOME_BUTTON);
+  await expect(page.locator(ABOUT_BUTTON)).toBeVisible();
+  await expect(page.locator(HOME_BUTTON)).not.toBeVisible();
 });
 
-test("navigate to project", async () => {
+test("navigate to project", async ({ page }) => {
   const PROJECT_THUMB = "[data-testid=home-page] > div > div:first-of-type";
   const HOME_BUTTON = "[data-testid=nav-detail-home-button]";
-  await Promise.all([page.waitForNavigation(), page.click(PROJECT_THUMB)]);
-  await expect(page).not.toMatchElement(PROJECT_THUMB);
-  await expect(page).toMatchElement(HOME_BUTTON);
+  await page.click(PROJECT_THUMB);
+  await expect(page.locator(PROJECT_THUMB)).not.toBeVisible();
+  await expect(page.locator(HOME_BUTTON)).toBeVisible();
 });

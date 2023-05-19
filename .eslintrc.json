@@ -16,9 +16,8 @@
     "jest": true,
     "node": true
   },
+
   "extends": [
-    "react-app",
-    "react-app/jest",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
@@ -26,24 +25,51 @@
     "plugin:storybook/recommended",
     "prettier"
   ],
+
   "overrides": [
     {
       "files": ["**/*.stories.*"],
       "rules": {
         "import/no-anonymous-default-export": "off"
       }
+    },
+    {
+      "files": [
+        "*",
+        "e2e/**",
+        ".storybook/**",
+        "test-utils/**",
+        "**/__mocks__/**",
+        "**/__tests__/**",
+        "**/*.@(test|spec|stories).{js,jsx,ts,tsx}"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "devDependencies": true }
+        ]
+      }
     }
   ],
+
   "parser": "@typescript-eslint/parser",
+
   "parserOptions": {
     "extraFileExtensions": [".json"],
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.eslint.json"]
   },
+
   "plugins": ["react", "@typescript-eslint", "check-file", "json"],
+
   "root": true,
+
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/naming-convention": "warn",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false }
+    ],
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
     "check-file/filename-naming-convention": [

@@ -6,7 +6,11 @@
 .pnp.js
 
 # testing
+.nyc_output
 /coverage
+/e2e/test-results
+/playwright-report
+/playwright/.cache
 
 # next.js
 /.next/
@@ -16,9 +20,12 @@
 /build
 /dist
 /storybook-static
+tsconfig.tsbuildinfo
 
 # misc
 .DS_Store
+*_tmp
+*tmp
 
 # debug
 npm-debug.log*

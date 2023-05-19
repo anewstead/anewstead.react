@@ -5,7 +5,7 @@ import {
   storeThemeName,
   toggleThemeName,
 } from "./helpers";
-import { createMatchMedia } from "../../test-utils/jestWindowExtended";
+import { createMatchMedia } from "../../../test-utils/jestWindowExtended";
 
 test("should init the theme, save to localStorage and toggle", async () => {
   const theme = initThemeName();

@@ -1,9 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 
-import { server } from "../core/services/mock/server";
+import { mswDetectAdBlockBlocked } from "../../test-utils/msw/handlers/mswDetectAdBlock";
+import { server } from "../../test-utils/msw/server";
 import { useDetectAdBlock } from "./useDetectAdBlock";
 
-test("returns false", async () => {
+test("adBlock NOT Detected", async () => {
   const { result } = renderHook(() => {
     return useDetectAdBlock();
   });
@@ -20,8 +21,8 @@ test("returns false", async () => {
   });
 });
 
-test("returns true", async () => {
-  server.setStatus(403);
+test("adBlock IS Detected", async () => {
+  server.use(mswDetectAdBlockBlocked);
   const { result } = renderHook(() => {
     return useDetectAdBlock();
   });

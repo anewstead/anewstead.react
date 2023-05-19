@@ -23,16 +23,6 @@
     "target": "es5"
   },
   "exclude": ["node_modules"],
-  "include": [
-    "react-app-env.d.ts",
-    "e2e/**/*",
-    "e2e/**/*.json",
-    "e2e/**/.*.js",
-    "e2e/**/.*.json",
-    "src/**/*",
-    "src/**/*.json",
-    "src/**/.*.js",
-    "src/**/.*.json",
-    ".storybook/**/*"
-  ]
+  "include": ["vite-env.d.ts", "src/**/*", "test-utils/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

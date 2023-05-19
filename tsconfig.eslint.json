@@ -1,0 +1,5 @@
+{
+  "exclude": ["node_modules", "coverage", "build", "dist", "storybook-static"],
+  "extends": "./tsconfig",
+  "include": ["**/*", ".*/**/*", "**/.*", "**/*.json", "**/.*.json"]
+}

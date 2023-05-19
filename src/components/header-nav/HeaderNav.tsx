@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
 import HeaderNavThumbs from "./HeaderNavThumbs";
-import { BRAND } from "../../core/const";
-import { NAV_CHECKBOX_CHANGE } from "../../core/state/home/slice";
-import type { NavCheckboxChangePayload } from "../../core/state/home/slice";
-import { useAppDispatch, useAppSelector } from "../../core/state/store";
+import { BRAND } from "../../const";
+import { NAV_CHECKBOX_CHANGE } from "../../state/home/slice";
+import type { NavCheckboxChangePayload } from "../../state/home/slice";
+import { useAppDispatch, useAppSelector } from "../../state/store";
 import { useThemeWrapperContext } from "../../wrappers/theme-wrapper/ThemeWrapperContext";
 
 type Props = {
