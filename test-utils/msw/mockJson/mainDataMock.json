@@ -82,18 +82,18 @@
   {
     "brand": "company",
     "client": "in iframe",
-    "id": "26",
+    "id": "15",
     "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "project": "portal",
     "tech": "html",
-    "thumb": "halifax.jpg",
-    "type": "website",
+    "thumb": "standardlife_sipps.jpg",
+    "type": "site",
     "view": {
-      "height": 251,
-      "href": "sites/halifax/index.html",
-      "still": "sites/_stills/halifax.gif",
+      "height": 568,
+      "href": "img/poster/standardlife.jpg",
+      "still": "img/poster/standardlife.jpg",
       "type": "iframe",
-      "width": 301
+      "width": 976
     }
   },
 
