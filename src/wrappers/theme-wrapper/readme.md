@@ -1,23 +1,26 @@
- # Theme wrapper
-
-seemingly a lot of files but it separates concerns and hopefully make it easier to understand.
+seemingly a lot of files but it separates concerns 
+and hopefully make it easier to understand.
 
 ### helpers
 
-init, get, set and toggle theme name in browser local storage
+browser local storage:
+theme name - init, get, set and toggle(light/dark)
 
 ### theme.styles
 
-light and dark theme styles/settings
+the actual theme styles and settings
 
 ### Theme
 
-component wraps children to provide specified theme
-(allows for theme to be used simply without state and context)
+wraps children to provide specified theme
+this is the base setup, style providers e.g. styled components
+allows the theme to be used simply without state and context
+(useful for creating a storybook decorator variation)
 
 ### ThemeWrapper
 
-wraps the theme adding theme name state and toggle function to theme context provider
+wraps the theme adding state context provider
+(theme name and toggle function)
 
 ### ThemeWrapperContext
 

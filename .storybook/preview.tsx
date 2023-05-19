@@ -38,7 +38,10 @@ export const parameters = {
 
 export const decorators = [
   (Story, context) => {
-    return <ThemeWrapper>{Story(context)}</ThemeWrapper>;
+    if (!context.parameters.removeGlobalThemeDecorator) {
+      return <ThemeWrapper>{Story(context)}</ThemeWrapper>;
+    }
+    return <>{Story(context)}</>;
   },
   mswDecorator,
 ];
