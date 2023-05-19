@@ -42,7 +42,7 @@ const sbConfig: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     addonCoverage,
-    "storybook-dark-mode-v7",
+    "storybook-dark-mode",
   ],
   framework: {
     name: "@storybook/react-vite",

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import {
   DARK_MODE_EVENT_NAME,
   UPDATE_DARK_MODE_EVENT_NAME,
-} from "storybook-dark-mode-v7";
+} from "storybook-dark-mode";
 import { DocsContainer } from "@storybook/addon-docs";
 import { addons } from "@storybook/addons";
 import { themes as sbThemes } from "@storybook/theming";
