@@ -5,6 +5,7 @@ import customViewports from "./customViewports";
 import handlers from "../test-utils/msw/handlers";
 import { AutoDocsTemplate } from "./AutoDocsTemplate";
 import { ThemeDocsContainer, ThemeWrapper } from "./theme";
+import { initThemeName } from "../src/wrappers/theme-wrapper/helpers";
 
 // https://github.com/mswjs/msw-storybook-addon#configuring-msw
 mswInitialize({
@@ -20,6 +21,7 @@ export const parameters = {
     },
   },
   darkMode: {
+    current: initThemeName(),
     stylePreview: true,
   },
   docs: {

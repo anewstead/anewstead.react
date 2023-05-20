@@ -1,11 +1,12 @@
-# anewstead-cra-mui
+# anewstead-react
 
-[https://anewstead-cra-mui.netlify.app/](https://anewstead-cra-mui.netlify.app/)
+[https://anewstead-react.netlify.app/](https://anewstead-react.netlify.app/)
 
-Portfolio site that shows a few of the projects I've worked on.  
-The underlaying code is just as important, maybe more so as its a great way to see how i write.  
-I often use this space to try out different coding methods.  
-It has gone through many iterations but the design delibratly changes very little as  
+[https://anewstead-react-sb.netlify.app/](https://anewstead-react-sb.netlify.app/)
+
+Portfolio site to show some of the projects I've worked on.  
+I often use this space to try out different coding methods/libraries.  
+It has gone through many iterations with the design delibratly changing very little as  
 it serves to ensure I recreate the same thing with different technologies.  
 
 
@@ -47,8 +48,8 @@ see .vscode/README.md for more information
 In NextJs the **pages** folder is reserved to define routes.  
 It's also where you load server side content/data to be static rendered.  
 Building on this we implicitly separate page data from page display.  
-Meaning each **page** acts as a data layer with absolute minimum JSX markup,  
-I.E. it should pass through data to other component.  
+Meaning each **page** file acts as a data layer with absolute minimum JSX markup,  
+I.E. it passes data to other display component.  
 E.G. website.com/about = src/pages/about > instantiates > src/layout/about ...and so on  
 
 In a standard React/ non-NextJs App we simply follow the same concept and folder names.
