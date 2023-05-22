@@ -1,12 +1,14 @@
 # anewstead-react
 
+**Website**:  
 [https://anewstead-react.netlify.app/](https://anewstead-react.netlify.app/)
 
+**Storybook**:  
 [https://anewstead-react-sb.netlify.app/](https://anewstead-react-sb.netlify.app/)
 
 Portfolio site to show some of the projects I've worked on.  
-I often use this space to try out different coding methods/libraries.  
-It has gone through many iterations with the design delibratly changing very little as  
+It has gone through many iterations using different coding methods/libraries  
+with the design delibratly changing very little as  
 it serves to ensure I recreate the same thing with different technologies.  
 
 
