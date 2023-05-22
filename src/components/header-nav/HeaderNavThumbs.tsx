@@ -1,14 +1,12 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AppBar,
   Button,
-  Checkbox,
-  FormControlLabel,
   FormGroup,
   Grid,
   IconButton,
@@ -18,6 +16,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
+import HeaderNavCheckBox from "./HeaderNavCheckBox";
 import useStyles from "./headerNavThumbs.style";
 import type { ICheckbox } from "../../state/home/state";
 
@@ -45,57 +44,58 @@ const HeaderNavThumbs = (props: Props) => {
 
   const checkboxes = checkboxData.map((cb) => {
     return (
-      <FormControlLabel
+      <HeaderNavCheckBox
         key={cb.id}
-        label={cb.label}
-        control={
-          <Checkbox
-            id={cb.id}
-            color="default"
-            checked={cb.checked}
-            onChange={onCheckboxChange}
-          />
-        }
+        id={cb.id as string}
+        label={cb.label as string}
+        checked={cb.checked as boolean}
+        onChange={onCheckboxChange}
       />
     );
   });
 
-  const brandButton = (
-    <Button
-      aria-label="about"
-      onClick={onBrandClick}
-      className={classes.brandButton}
-      data-testid="nav-thumbs-about-button"
-    >
-      <Typography variant="h5" component="span">
-        {brandName}
-      </Typography>
-    </Button>
-  );
+  const brandButton = useMemo(() => {
+    return (
+      <Button
+        aria-label="about"
+        onClick={onBrandClick}
+        className={classes.brandButton}
+        data-testid="nav-thumbs-about-button"
+      >
+        <Typography variant="h5" component="span">
+          {brandName}
+        </Typography>
+      </Button>
+    );
+  }, [brandName, classes.brandButton, onBrandClick]);
 
-  const menuButton = (
-    <IconButton
-      edge="start"
-      className={classes.menuButton}
-      aria-label="menu"
-      size="large"
-      data-testid="nav-thumbs-menu-button"
-    >
-      <MenuIcon fontSize="large" />
-    </IconButton>
-  );
+  const menuButton = useMemo(() => {
+    return (
+      <IconButton
+        edge="start"
+        className={classes.menuButton}
+        aria-label="menu"
+        size="large"
+        data-testid="nav-thumbs-menu-button"
+      >
+        <MenuIcon fontSize="large" />
+      </IconButton>
+    );
+  }, [classes.menuButton]);
 
-  const toggleButton = (
-    <IconButton
-      edge="start"
-      aria-label="theme"
-      onClick={onThemeClick}
-      size="large"
-      data-testid="nav-thumbs-theme-button"
-    >
-      <SettingsBrightnessIcon fontSize="large" />
-    </IconButton>
-  );
+  const toggleButton = useMemo(() => {
+    return (
+      <IconButton
+        edge="start"
+        aria-label="theme"
+        onClick={onThemeClick}
+        size="large"
+        data-testid="nav-thumbs-theme-button"
+      >
+        <SettingsBrightnessIcon fontSize="large" />
+      </IconButton>
+    );
+  }, [onThemeClick]);
 
   const [expanded, setExpanded] = useState<string | false>(false);
 

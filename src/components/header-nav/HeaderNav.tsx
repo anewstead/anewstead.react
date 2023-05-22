@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import HeaderNavDetail from "./HeaderNavDetail";
@@ -30,54 +30,46 @@ const HeaderNav = (props: Props) => {
     return state.mainData.data;
   });
 
-  const homeClick = () => {
+  const homeClick = useCallback(() => {
     navigate("/");
-  };
+  }, [navigate]);
 
-  const brandClick = () => {
+  const brandClick = useCallback(() => {
     navigate("/about");
-  };
+  }, [navigate]);
 
-  const themeClick = () => {
-    toggleTheme();
-  };
+  const checkboxChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { id, checked } = e.currentTarget;
+      const payload: NavCheckboxChangePayload = {
+        checkbox: { id, checked },
+        allThumbs: mainData,
+      };
+      dispatch(NAV_CHECKBOX_CHANGE(payload));
+    },
+    [dispatch, mainData]
+  );
 
-  const checkboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, checked } = e.currentTarget;
-    const payload: NavCheckboxChangePayload = {
-      checkbox: { id, checked },
-      allThumbs: mainData,
-    };
-    dispatch(NAV_CHECKBOX_CHANGE(payload));
-  };
+  const navThumbs = (
+    <HeaderNavThumbs
+      brandName={BRAND}
+      checkboxData={navCheckboxes}
+      onBrandClick={brandClick}
+      onThemeClick={toggleTheme}
+      onCheckboxChange={checkboxChange}
+    />
+  );
 
-  let nav;
-  switch (navType) {
-    case "thumbs":
-      nav = (
-        <HeaderNavThumbs
-          brandName={BRAND}
-          checkboxData={navCheckboxes}
-          onBrandClick={brandClick}
-          onThemeClick={themeClick}
-          onCheckboxChange={checkboxChange}
-        />
-      );
-      break;
+  const navDetail = (
+    <HeaderNavDetail
+      onHomeClick={homeClick}
+      onThemeClick={toggleTheme}
+      titleText={titleText}
+      subtitleText={subtitleText}
+    />
+  );
 
-    default:
-      nav = (
-        <HeaderNavDetail
-          onHomeClick={homeClick}
-          onThemeClick={themeClick}
-          titleText={titleText}
-          subtitleText={subtitleText}
-        />
-      );
-      break;
-  }
-
-  return nav;
+  return navType === "thumbs" ? navThumbs : navDetail;
 };
 
-export default HeaderNav;
+export default memo(HeaderNav);
