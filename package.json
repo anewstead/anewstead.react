@@ -132,6 +132,7 @@
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "typescript": "^5.0.4",
+    "usehooks-ts": "^2.9.1",
     "vite": "^4.3.8"
   },
   "msw": {

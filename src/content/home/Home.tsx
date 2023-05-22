@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Button, Card, Container, Grid } from "@mui/material";
+import { Card, Container, Grid } from "@mui/material";
 import type { ReactNode } from "react";
-import { Link as RouterLink } from "react-router-dom";
 
+import HomeThumb from "./HomeThumb";
 import PageLayout from "../../layout/page-layout";
 import useStyles from "./home.style";
 import type { AppState } from "../../state/store";
@@ -38,19 +38,7 @@ const Home = () => {
       const thumbs = displayThumbs.map((obj) => {
         const url = `${BASE_CONTENT_URL}/img/thumbs/${obj.thumb}`;
         const alt = `${obj.client} - ${obj.brand} - ${obj.project}`;
-        return (
-          <Grid item key={obj.id} className={classes.gridItem}>
-            <Card elevation={6}>
-              <Button
-                component={RouterLink}
-                to={`/project/${obj.id}`}
-                className={classes.gridItemButton}
-              >
-                <img src={url} alt={alt} />
-              </Button>
-            </Card>
-          </Grid>
-        );
+        return <HomeThumb key={obj.id} id={obj.id} url={url} alt={alt} />;
       });
       content = thumbs;
     } else {

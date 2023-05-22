@@ -1,5 +1,7 @@
 import type { IThemeName } from "./theme.style";
 
+export const DEFAULT_THEME: IThemeName = "dark";
+
 const LS_KEY_THEME = "theme";
 
 export const storeThemeName = (themeName: IThemeName) => {
@@ -10,18 +12,21 @@ export const retreiveThemeName = (): IThemeName | null => {
   return localStorage.getItem(LS_KEY_THEME) as IThemeName;
 };
 
-// default dark
-// no longer checks user matchMedia prefers-color-scheme
 export const initThemeName = (): IThemeName => {
   if (typeof window === "undefined") {
-    return "dark"; // SSR
+    return DEFAULT_THEME; // SSR
   }
   const lsTheme = retreiveThemeName();
   if (lsTheme) {
     return lsTheme; // returning user
   }
-  storeThemeName("dark");
-  return "dark";
+  let themeName: IThemeName = DEFAULT_THEME;
+  // matchMedia is only relevent is the DEFAULT_THEME is not dark
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    themeName = "dark"; // firsttime user system pref is dark
+  }
+  storeThemeName(themeName);
+  return themeName;
 };
 
 export const toggleThemeName = (currentTheme: IThemeName): IThemeName => {
