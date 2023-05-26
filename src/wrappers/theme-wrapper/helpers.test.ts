@@ -1,46 +1,41 @@
-import {
-  DEFAULT_THEME,
-  initThemeName,
-  retreiveThemeName,
-  storeThemeName,
-  toggleThemeName,
-} from "./helpers";
+import { DEFAULT_THEME } from "./theme.style";
 import { createMatchMedia } from "../../../test-utils/jestWindowExtended";
+import { retrieveThemeName, storeThemeName, toggleThemeName } from "./helpers";
 
 test("should init the theme, save to localStorage and toggle", async () => {
-  const theme = initThemeName();
+  const theme = retrieveThemeName();
+  // will always DEFAULT because test browser cannot set prefers-color-scheme
   expect(theme).toEqual(DEFAULT_THEME);
-  expect(retreiveThemeName()).toStrictEqual(theme);
+  expect(retrieveThemeName()).toStrictEqual(theme);
 
-  const toggleTheme = toggleThemeName(theme);
+  const toggleTheme = toggleThemeName();
   expect(toggleTheme).not.toEqual(DEFAULT_THEME);
-  expect(retreiveThemeName()).toStrictEqual(toggleTheme);
+  expect(retrieveThemeName()).toStrictEqual(toggleTheme);
 
-  const unToggleTheme = toggleThemeName(toggleTheme);
+  const unToggleTheme = toggleThemeName();
   expect(unToggleTheme).toEqual(DEFAULT_THEME);
-  expect(retreiveThemeName()).toStrictEqual(theme);
+  expect(retrieveThemeName()).toStrictEqual(theme);
 });
 
 test("init uses previous localstorage value", async () => {
   storeThemeName("dark");
-  const theme = initThemeName();
+  const theme = retrieveThemeName();
   expect(theme).toEqual("dark");
 });
 
 // note. jest 28+ should allow to use @jest-environment node
 // instead of having to delete and put back window object
-// (CRA 5.0.1 uses jest 27)
 test("works when window is undefined (SSR)", async () => {
   const w = global.window;
   // @ts-ignore: 2790
   delete global.window;
-  const theme = initThemeName();
+  const theme = retrieveThemeName();
   expect(theme).toEqual(DEFAULT_THEME);
   global.window = w; // put it back so any afterEach() doesnt fail
 });
 
 test("returns dark if user preferred", async () => {
   window.matchMedia = createMatchMedia({ "prefers-color-scheme": "dark" });
-  const theme = initThemeName();
+  const theme = retrieveThemeName();
   expect(theme).toEqual("dark");
 });

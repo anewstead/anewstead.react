@@ -1,35 +1,34 @@
+import { DEFAULT_THEME } from "./theme.style";
 import type { IThemeName } from "./theme.style";
 
-export const DEFAULT_THEME: IThemeName = "dark";
-
-const LS_KEY_THEME = "theme";
+const LS_KEY_THEME = "dc-theme";
 
 export const storeThemeName = (themeName: IThemeName) => {
   localStorage.setItem(LS_KEY_THEME, themeName);
 };
 
-export const retreiveThemeName = (): IThemeName | null => {
-  return localStorage.getItem(LS_KEY_THEME) as IThemeName;
-};
-
-export const initThemeName = (): IThemeName => {
+export const retrieveThemeName = (): IThemeName => {
+  // SSR
   if (typeof window === "undefined") {
-    return DEFAULT_THEME; // SSR
+    return DEFAULT_THEME;
   }
-  const lsTheme = retreiveThemeName();
-  if (lsTheme) {
-    return lsTheme; // returning user
+  // returning user
+  let themeName = localStorage.getItem(LS_KEY_THEME) as IThemeName;
+  if (themeName) {
+    return themeName;
   }
-  let themeName: IThemeName = DEFAULT_THEME;
-  // matchMedia is only relevent is the DEFAULT_THEME is not dark
+  // first visit
+  themeName = DEFAULT_THEME;
+  // if default is light matchmedia checks if user prefers dark
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    themeName = "dark"; // firsttime user system pref is dark
+    themeName = "dark";
   }
   storeThemeName(themeName);
   return themeName;
 };
 
-export const toggleThemeName = (currentTheme: IThemeName): IThemeName => {
+export const toggleThemeName = (): IThemeName => {
+  const currentTheme = retrieveThemeName();
   const newTheme: IThemeName = currentTheme === "light" ? "dark" : "light";
   storeThemeName(newTheme);
   return newTheme;

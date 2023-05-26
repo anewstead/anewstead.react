@@ -4,28 +4,28 @@
 import React, { useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
-import Theme from "./Theme";
+import ThemeBase from "./ThemeBase";
 import { ThemeWrapperContext } from "./ThemeWrapperContext";
-import { initThemeName, toggleThemeName } from "./helpers";
+import { retrieveThemeName, toggleThemeName } from "./helpers";
 
 type Props = {
   children: ReactNode;
 };
 
 const ThemeWrapper = ({ children }: Props) => {
-  const [themeName, setThemeName] = useState(initThemeName());
+  const [themeName, setThemeName] = useState(retrieveThemeName());
 
   const toggleThemeMemo = useMemo(() => {
     return {
       toggleTheme: () => {
-        setThemeName(toggleThemeName(themeName));
+        setThemeName(toggleThemeName());
       },
     };
-  }, [themeName]);
+  }, []);
 
   return (
     <ThemeWrapperContext.Provider value={toggleThemeMemo}>
-      <Theme themeName={themeName}>{children}</Theme>
+      <ThemeBase themeName={themeName}>{children}</ThemeBase>
     </ThemeWrapperContext.Provider>
   );
 };

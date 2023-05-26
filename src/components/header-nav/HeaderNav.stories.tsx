@@ -1,18 +1,14 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Provider } from "react-redux";
 import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 import HeaderNav from "./HeaderNav";
 import store from "../../state/store";
-import theme from "../../wrappers/theme-wrapper/theme.style";
 import type { AppState } from "../../state/store";
-import {
-  initThemeName,
-  retreiveThemeName,
-} from "../../wrappers/theme-wrapper/helpers";
+import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------
@@ -28,14 +24,27 @@ const SUB_TITLE = "test subtitle 456";
 
 // -----------------------------------------------------------------------------
 
+// waitForTimout to allow redraw race condition before detecting values
+const testTheme = async (elemWithBG: HTMLElement, themeBtn: HTMLElement) => {
+  await waitForTimeout(5);
+  const currentName = retrieveThemeName();
+  const currentColor = getComputedStyle(elemWithBG).backgroundColor;
+  await waitForTimeout(5);
+  await userEvent.click(themeBtn);
+  await waitForTimeout(5);
+  const updatedName = retrieveThemeName();
+  const updatedColor = getComputedStyle(elemWithBG).backgroundColor;
+  await waitForTimeout(5);
+  expect(currentName).not.toEqual(updatedName);
+  expect(currentColor).not.toEqual(updatedColor);
+  await userEvent.click(themeBtn); // toggle back
+};
+
 export const Default: Story = {
   decorators: [
+    withRouter,
     (Story) => {
-      return (
-        <Provider store={store}>
-          <BrowserRouter>{Story()}</BrowserRouter>
-        </Provider>
-      );
+      return <Provider store={store}>{Story()}</Provider>;
     },
   ],
   args: {
@@ -45,24 +54,12 @@ export const Default: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const nav = await canvas.getByTestId("nav-thumbs");
-    const elemWithBG = nav.firstChild;
-    const bgLight = theme.light.palette.background.paper;
-    const bgDark = theme.dark.palette.background.paper;
+    const nav = await canvas.findByTestId("nav-thumbs");
+    const elemWithBG = nav.firstElementChild! as HTMLElement;
+    const themeBtn = await canvas.findByTestId("nav-thumbs-theme-button");
 
     await step("it toggles theme", async () => {
-      const currentBg = initThemeName();
-      expect(elemWithBG).toHaveStyle({
-        "background-color": currentBg === "dark" ? bgDark : bgLight,
-      });
-      const themeBtn = canvas.getByTestId("nav-thumbs-theme-button");
-      await userEvent.click(themeBtn);
-      await waitForTimeout(500);
-      const updatedBg = retreiveThemeName();
-      expect(elemWithBG).toHaveStyle({
-        "background-color": updatedBg === "dark" ? bgDark : bgLight,
-      });
-      await userEvent.click(themeBtn!); // toggle back
+      await testTheme(elemWithBG, themeBtn);
     });
 
     await step("it clicks about btn", async () => {
@@ -94,23 +91,11 @@ export const DetailPageNav: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const nav = await canvas.getByTestId("nav-detail");
-    const elemWithBG = nav.firstChild;
-    const bgLight = theme.light.palette.background.paper;
-    const bgDark = theme.dark.palette.background.paper;
+    const elemWithBG = nav.firstElementChild! as HTMLElement;
+    const themeBtn = await canvas.findByTestId("nav-detail-theme-button");
 
     await step("it toggles theme", async () => {
-      const currentBg = initThemeName();
-      expect(elemWithBG).toHaveStyle({
-        "background-color": currentBg === "dark" ? bgDark : bgLight,
-      });
-      const themeBtn = canvas.getByTestId("nav-detail-theme-button");
-      await userEvent.click(themeBtn);
-      await waitForTimeout(500);
-      const updatedBg = retreiveThemeName();
-      expect(elemWithBG).toHaveStyle({
-        "background-color": updatedBg === "dark" ? bgDark : bgLight,
-      });
-      await userEvent.click(themeBtn!); // toggle back
+      await testTheme(elemWithBG, themeBtn);
     });
 
     await step("it clicks home btn", async () => {

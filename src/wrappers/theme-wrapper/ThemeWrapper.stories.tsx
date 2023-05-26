@@ -5,8 +5,7 @@ import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
 import ThemeWrapper from "./ThemeWrapper";
-import theme from "./theme.style";
-import { initThemeName, retreiveThemeName } from "./helpers";
+import { retrieveThemeName } from "./helpers";
 import { useThemeWrapperContext } from "./ThemeWrapperContext";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
@@ -45,23 +44,19 @@ export const Default: Story = {
     );
   },
   play: async ({ canvasElement, step }) => {
+    // note. includes timeouts to allow theme redraw
     const canvas = within(canvasElement);
     await step("toggles the theme", async () => {
-      const currentBg = initThemeName();
-      const bgLight = theme.light.palette.background.paper;
-      const bgDark = theme.dark.palette.background.paper;
-      const btn = canvas.getByRole("button");
-      expect(btn).toBeInTheDocument();
-      const elemWithBG = btn;
-      expect(elemWithBG).toHaveStyle({
-        "background-color": currentBg === "dark" ? bgDark : bgLight,
-      });
+      const btn = await canvas.findByRole("button");
+      await waitForTimeout(5);
+      const currentName = retrieveThemeName();
+      const currentColor = btn.style.backgroundColor;
       await userEvent.click(btn);
-      await waitForTimeout(500);
-      const updatedBg = retreiveThemeName();
-      expect(elemWithBG).toHaveStyle({
-        "background-color": updatedBg === "dark" ? bgDark : bgLight,
-      });
+      await waitForTimeout(5);
+      const updatedName = retrieveThemeName();
+      const updatedColor = btn.style.backgroundColor;
+      expect(currentName).not.toEqual(updatedName);
+      expect(currentColor).not.toEqual(updatedColor);
       await userEvent.click(btn); // toggle back
     });
   },

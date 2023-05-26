@@ -7,10 +7,10 @@
 
 # testing
 .nyc_output
-/coverage
-/e2e/test-results
-/playwright-report
-/playwright/.cache
+**/coverage
+**/test-results
+**/playwright-report
+**/playwright/.cache
 
 # next.js
 /.next/
@@ -41,3 +41,6 @@ yarn-error.log*
 # lint
 .eslintcache
 .stylelintcache
+/test-results/
+/playwright-report/
+/playwright/.cache/

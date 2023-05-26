@@ -55,6 +55,7 @@ test("the video poster loaded", async ({ page }) => {
   const img2 = `${path}/2.png`;
   const imgD1 = `${path}/diff1-2.png`;
   const video = await page.$("video");
+  // should have poster
   await page.screenshot({ path: img1 });
   await page.evaluate((vid) => {
     if (!vid) {
@@ -65,6 +66,7 @@ test("the video poster loaded", async ({ page }) => {
       resolve();
     });
   }, video);
+  // removed poster
   await page.screenshot({ path: img2 });
   const diff1 = await imgDiff({
     actualFilename: img2,
