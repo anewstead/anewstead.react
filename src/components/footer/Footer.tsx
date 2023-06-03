@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 
-import useStyles from "./footer.style";
+import classes from "./footer.module.scss";
 
 type Props = {
   brand: string;
@@ -9,8 +9,6 @@ type Props = {
 
 const Footer = (props: Props) => {
   const { brand } = props;
-
-  const { classes } = useStyles();
 
   const date = new Date().getFullYear();
 

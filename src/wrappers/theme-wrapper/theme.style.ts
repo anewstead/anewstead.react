@@ -1,28 +1,19 @@
+import type {} from "@mui/material/themeCssVarsAugmentation";
+
+import "./theme.scss";
+
 import type { CssVarsTheme, Theme } from "@mui/material/styles";
 import { blueGrey, grey } from "@mui/material/colors";
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
-/*
-in order to use responsive breakpoint at theme/global level 
-first need to init a base theme to reference breakpoints from
-its possible then to overwrite it referencing back its own breakpoints
-*/
+// helper to make the mui type easier to use
+export type IThemeStyles = Omit<Theme, "palette"> & CssVarsTheme;
 
-const breakpoints = {
-  values: {
-    xs: 0,
-    sm: 600,
-    md: 900,
-    lg: 1200,
-    xl: 1536,
-  },
-};
+export type IThemeName = "light" | "dark";
 
-let theme = extendTheme({
-  breakpoints,
-});
-theme = extendTheme({
-  breakpoints,
+export const DEFAULT_THEME: IThemeName = "dark";
+
+const theme = extendTheme({
   cssVarPrefix: "dc",
   colorSchemes: {
     light: {
@@ -47,10 +38,6 @@ theme = extendTheme({
       styleOverrides: {
         html: {
           height: "100%",
-          fontSize: 16,
-          [theme.breakpoints.up("sm")]: {
-            fontSize: 18,
-          },
         },
         body: {
           height: "100%",
@@ -69,12 +56,4 @@ theme = extendTheme({
   },
 });
 
-// helper to make the mui type easier to use
-export type IThemeStyles = Omit<Theme, "palette"> & CssVarsTheme;
-
-export type IThemeName = "light" | "dark";
-
-export const DEFAULT_THEME: IThemeName = "dark";
-
-const styles: IThemeStyles = theme;
-export default styles;
+export default theme as IThemeStyles;

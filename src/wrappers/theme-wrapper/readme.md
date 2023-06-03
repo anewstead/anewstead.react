@@ -5,7 +5,7 @@ theme name - init, get, set and toggle(light/dark)
 ### theme.styles
 the actual theme styles and settings
 
-### Theme
+### ThemeBase
 wraps children to provide specified theme
 allows the theme to be used simply without state and context
 (useful for creating a storybook decorator variation)
