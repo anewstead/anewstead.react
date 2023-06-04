@@ -6,7 +6,7 @@ import { Box, useTheme } from "@mui/material";
 import type { Settings as SlickSettings } from "react-slick";
 
 import PrevNextButton from "./PrevNextButton";
-import useStyles from "./carousel.style";
+import cls from "./carousel.module.scss";
 
 type Props = {
   slides: JSX.Element[];
@@ -17,7 +17,6 @@ const Carousel = (props: Props) => {
   const { slides, settings } = props;
 
   const theme = useTheme();
-  const { classes } = useStyles();
 
   const defaults: SlickSettings = {
     dots: true,
@@ -36,11 +35,11 @@ const Carousel = (props: Props) => {
 
   return (
     <Box
-      className={classes.root}
+      className={cls.carousel}
       style={{ marginBottom: bmargin }}
       data-testid="carousel"
     >
-      <Slider {...config} className={classes.slider}>
+      <Slider {...config} className={cls.slider}>
         {slides}
       </Slider>
     </Box>
