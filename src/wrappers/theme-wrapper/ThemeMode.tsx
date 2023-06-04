@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from "react";
 import { useColorScheme } from "@mui/material";
 
-import type { IThemeName } from "./theme.style";
+import type { IThemeName } from "./theme";
 
 type Props = {
   themeName: IThemeName;

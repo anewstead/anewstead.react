@@ -1,5 +1,5 @@
-import { DEFAULT_THEME } from "./theme.style";
-import type { IThemeName } from "./theme.style";
+import { DEFAULT_THEME } from "./theme";
+import type { IThemeName } from "./theme";
 
 const LS_KEY_THEME = "dc-theme";
 
