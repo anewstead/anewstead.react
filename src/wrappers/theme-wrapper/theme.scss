@@ -1,3 +1,10 @@
+/*
+mui@5.13 is not yet exporting all theme vars!
+these are tmp fill-ins until they do
+*/
 :root {
-  --dc-spacing: 8px; // tmp fix. mui@5.13 is not exporting all theme vars!
+  --dc-spacing: 8px;
+  --dc-spacing2: 16px;
+  --dc-spacing3: 24px;
+  --dc-spacing4: 32px;
 }

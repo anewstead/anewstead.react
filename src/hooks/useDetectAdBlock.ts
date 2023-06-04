@@ -30,11 +30,11 @@ import { useEffect, useState } from "react";
 export const adBlockTestURL = "https://ad-emea.doubleclick.net";
 
 export const useDetectAdBlock = () => {
-  const [adblockChecked, setAdblockChecked] = useState(false);
+  const [adblockCheckComplete, setAdblockCheckComplete] = useState(false);
   const [adBlockDetected, setAdBlockDetected] = useState(false);
 
   useEffect(() => {
-    if (!adblockChecked) {
+    if (!adblockCheckComplete) {
       fetch(adBlockTestURL, {
         method: "HEAD",
         mode: "no-cors",
@@ -44,10 +44,10 @@ export const useDetectAdBlock = () => {
           setAdBlockDetected(true);
         })
         .finally(() => {
-          setAdblockChecked(true);
+          setAdblockCheckComplete(true);
         });
     }
-  }, [adblockChecked]);
+  }, [adblockCheckComplete]);
 
-  return { adblockChecked, adBlockDetected };
+  return { adblockCheckComplete, adBlockDetected };
 };

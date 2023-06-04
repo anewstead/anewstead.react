@@ -9,14 +9,14 @@ test("adBlock NOT Detected", async () => {
     return useDetectAdBlock();
   });
   expect(result.current).toEqual({
-    adblockChecked: false,
+    adblockCheckComplete: false,
     adBlockDetected: false,
   });
   await waitFor(() => {
-    expect(result.current.adblockChecked).toBeTruthy();
+    expect(result.current.adblockCheckComplete).toBeTruthy();
   });
   expect(result.current).toEqual({
-    adblockChecked: true,
+    adblockCheckComplete: true,
     adBlockDetected: false,
   });
 });
@@ -27,10 +27,10 @@ test("adBlock IS Detected", async () => {
     return useDetectAdBlock();
   });
   await waitFor(() => {
-    expect(result.current.adblockChecked).toBeTruthy();
+    expect(result.current.adblockCheckComplete).toBeTruthy();
   });
   expect(result.current).toEqual({
-    adblockChecked: true,
+    adblockCheckComplete: true,
     adBlockDetected: true,
   });
 });
