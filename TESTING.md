@@ -1,6 +1,5 @@
 # Testing 
 
-#### TLDR;
 Always think about separating content, business logic and display code.  
 There are 2 unit test suites and 2 coverage outputs,  
 - `pnpm test-js` - Functional (js)
