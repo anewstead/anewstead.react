@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { Box, useTheme } from "@mui/material";
 import type { Settings as SlickSettings } from "react-slick";
 
-import PrevNextButton from "./PrevNextButton";
+import CarouselButton from "./CarouselButton";
 import cls from "./carousel.module.scss";
 
 type Props = {
@@ -22,8 +22,8 @@ const Carousel = (props: Props) => {
     dots: true,
     lazyLoad: "progressive",
     adaptiveHeight: true,
-    prevArrow: <PrevNextButton direction="prev" />,
-    nextArrow: <PrevNextButton direction="next" />,
+    prevArrow: <CarouselButton direction="prev" />,
+    nextArrow: <CarouselButton direction="next" />,
   };
 
   const config: SlickSettings = {
