@@ -1,12 +1,12 @@
 # global
 
 Global styles  
-Index should be imported once at the root/app level
+Index imported once at the root/app level
 
 # sass
 
 Global scss variable, mixins, functions etc,  
-Index should be imported by webpack/vite pre-processor so available to all scss file
+Index imported by webpack/vite pre-processor so available to all scss file
 
 **DO NOT WRITE ANY UNWRAPPED CSS CLASSES IN GLOBAL SCSS**
 

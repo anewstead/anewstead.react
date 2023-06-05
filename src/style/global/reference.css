@@ -2,12 +2,14 @@
 variables as of: MUI 5.13
 
 This is a reference file only
+ensure this file is not included anywhere or otherwise added into compilation.
+
 The values are not used but the keys are for reference in vscode autocomplete via plugin:
 https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables
+https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar
 if you dont want autocomplete this file could be deleted
 
 the actual variable styles used are created at build time by MUI
-ensure this file is not included anywhere or otherwise added into compilation.
 
 if you update mui and you think the vars list has changed
 you need to manually copy/paste it from the developer tools of a running build/dev
