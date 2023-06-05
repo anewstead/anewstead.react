@@ -5,6 +5,7 @@
   },
 
   "css.validate": false,
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
@@ -14,6 +15,7 @@
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.renderWhitespace": "all",
+
   "eslint.format.enable": true,
 
   "files.exclude": {
@@ -30,9 +32,12 @@
   },
 
   "html.format.enable": false,
+
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
+
   "json.format.enable": false,
+
   "less.validate": false,
   "scss.validate": false,
 

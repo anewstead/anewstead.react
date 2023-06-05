@@ -14,7 +14,7 @@ import { addons } from "@storybook/addons";
 import { themes as sbThemes } from "@storybook/theming";
 
 import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
-import themeBaseStyles from "../src/wrappers/theme-wrapper/theme";
+import themeBaseStyles from "../src/style/global/theme";
 import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 import {
   retrieveThemeName,
