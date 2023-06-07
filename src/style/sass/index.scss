@@ -1,2 +1,2 @@
-@import "variables";
-@import "media-queries";
+@forward "./variables";
+@forward "./media-queries";

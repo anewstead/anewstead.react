@@ -10,9 +10,10 @@ function chunkPolicy(id) {
 }
 
 const baseCSS = {
+  devSourcemap: true,
   preprocessorOptions: {
     scss: {
-      additionalData: `@import "./src/style/sass/";`,
+      additionalData: `@use "/src/style/sass/" as *;`,
     },
   },
 };

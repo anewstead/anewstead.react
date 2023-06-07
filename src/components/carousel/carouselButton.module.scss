@@ -19,7 +19,7 @@
     display: flex;
     position: relative;
 
-    &:before {
+    &::before {
       content: "";
       border-radius: 36px;
       width: 100%;
@@ -32,13 +32,15 @@
     }
   }
 
-  & :global(.MuiSvgIcon-root) {
-    z-index: 1;
-  }
+  & :global() {
+    .MuiSvgIcon {
+      z-index: 1;
+    }
 
-  & :global(.MuiTouchRipple-root) {
-    opacity: 0.1;
-    background-color: var(--dc-palette-background-paper);
+    .MuiTouchRipple-root {
+      opacity: 0.1;
+      background-color: var(--dc-palette-background-paper);
+    }
   }
 }
 
@@ -48,6 +50,7 @@
 
 .next-button {
   right: 0;
+
   & svg {
     transform: rotate(180deg);
   }

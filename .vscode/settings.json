@@ -47,6 +47,10 @@
     "**/node_modules": true
   },
 
+  "somesass.suggestFromUseOnly": true,
+
+  "stylelint.validate": ["css", "scss", "less"],
+
   "typescript.format.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.validate.enable": true

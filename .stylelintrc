@@ -1,33 +1,36 @@
 {
-  "customSyntax": "postcss-jsx",
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-styled-components"
+  "extends": ["stylelint-config-standard", "stylelint-config-standard-scss"],
+  "overrides": [
+    {
+      "customSyntax": "postcss-scss",
+      "files": ["**/*.scss"]
+    },
+    {
+      "customSyntax": "postcss-jsx",
+      "files": ["**/*.{js,ts,jsx,tsx}"]
+    }
   ],
+
   "rules": {
-    "at-rule-no-unknown": [
-      true,
+    "custom-property-pattern": [
+      "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$",
       {
-        "ignoreAtRules": [
-          "include",
-          "mixin",
-          "if",
-          "else",
-          "for",
-          "function",
-          "return",
-          "content",
-          "each",
-          "debug",
-          "warn",
-          "use",
-          "forward",
-          "extend"
-        ],
-        "severity": "error"
+        "message": "Expected custom property name to be kebab-case (need CAPS for MUI)"
       }
     ],
     "declaration-empty-line-before": "never",
-    "no-empty-source": null
+    "no-empty-source": null,
+    "selector-class-pattern": [
+      "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$",
+      {
+        "message": "Expected custom property name to be kebab-case (need CAPS for MUI)"
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local"]
+      }
+    ]
   }
 }
