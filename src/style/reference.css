@@ -22,10 +22,6 @@ js: theme.vars.palette.primary.light
 
 /* stylelint-disable selector-type-no-unknown */
 
-currently_not_included_via_mui_css_vars_but_in_use {
-  --dc-spacing: 8px;
-}
-
 mui_shadow_block {
   --dc-shape-borderRadius: 4px;
   --dc-shadows-0: none;

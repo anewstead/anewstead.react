@@ -7,7 +7,7 @@
   background-color: var(--dc-palette-background-paper);
   position: relative;
   width: 100%;
-  margin-bottom: calc(var(--dc-spacing) * 4);
+  margin-bottom: calc($dc-spacing * 4);
 
   & :global {
     .slick-slide {
@@ -27,8 +27,8 @@
       justify-content: center;
       list-style: none;
       padding: 0;
-      margin-top: var(--dc-spacing);
-      margin-bottom: var(--dc-spacing);
+      margin-top: $dc-spacing;
+      margin-bottom: $dc-spacing;
 
       & button {
         border: 0;

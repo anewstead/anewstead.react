@@ -1,9 +1,13 @@
 .still {
-  margin-bottom: var(--dc-spacing3);
+  margin-bottom: $dc-spacing3;
+
+  & img {
+    display: block;
+  }
 }
 
 .iframe {
-  margin-bottom: var(--dc-spacing3);
+  margin-bottom: $dc-spacing3;
   border: none;
   background-color: var(--dc-palette-background-paper);
 }

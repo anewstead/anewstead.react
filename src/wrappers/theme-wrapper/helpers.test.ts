@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "../../style/global/theme";
+import { DEFAULT_THEME } from "../../style/theme";
 import { createMatchMedia } from "../../../test-utils/jestWindowExtended";
 import { retrieveThemeName, storeThemeName, toggleThemeName } from "./helpers";
 
