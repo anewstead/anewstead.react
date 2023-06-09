@@ -1,0 +1,26 @@
+.page-layout {
+  /*
+  mobile height bug:
+  100vh on mobile pushes page bottom/footer too low
+
+  height: -webkit-fill-available
+  this fix doesn't work universally
+
+  solution:
+  parent elements leading to this layout wrapper must have "height:100%"
+  there should not be any content outside of layout class 
+  so this should be simple and is best set in root/global css
+  e.g. html,body,#root{height:100%}
+
+  layout then uses % instead of vh
+  on mobile this layout needs to set height 100.1%
+  this allows short pages to be pulled-to-refresh
+  */
+  height: 100.1%;
+
+  @include media-above($dc-breakpoint-sm) {
+    height: 100%;
+  }
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

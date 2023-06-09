@@ -1,5 +1,6 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-standard-scss"],
+
   "overrides": [
     {
       "customSyntax": "postcss-scss",
@@ -15,7 +16,7 @@
     "custom-property-pattern": [
       "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$",
       {
-        "message": "Expected custom property name to be kebab-case (need CAPS for MUI)"
+        "message": "Expected custom property name to be kebab-case (allows CAPS because of MUI)"
       }
     ],
     "declaration-empty-line-before": "never",
@@ -23,7 +24,7 @@
     "selector-class-pattern": [
       "^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$",
       {
-        "message": "Expected custom property name to be kebab-case (need CAPS for MUI)"
+        "message": "Expected custom property name to be kebab-case (allows CAPS because of MUI)"
       }
     ],
     "selector-pseudo-class-no-unknown": [

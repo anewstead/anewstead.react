@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/header-nav";
-import useStyles from "./pageLayout.style";
+import cls from "./pageLayout.module.scss";
 import { BRAND } from "../../const";
 
 type Props = {
@@ -17,17 +17,21 @@ type Props = {
 const PageLayout = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
-  const { classes } = useStyles();
-
   return (
-    <Box className={classes.root} data-testid="app-layout">
-      <HeaderNav
-        navType={headerNavType}
-        titleText={headerNavTitle}
-        subtitleText={headerNavSubtitle}
-      />
-      <main className={classes.main}>{children}</main>
-      <Footer brand={BRAND} />
+    <Box className={cls["page-layout"]} data-testid="app-layout">
+      <div className={cls.header}>
+        <HeaderNav
+          navType={headerNavType}
+          titleText={headerNavTitle}
+          subtitleText={headerNavSubtitle}
+        />
+      </div>
+
+      <main className={cls.main}>{children}</main>
+
+      <div className={cls.footer}>
+        <Footer brand={BRAND} />
+      </div>
     </Box>
   );
 };

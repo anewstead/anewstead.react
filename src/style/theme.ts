@@ -34,11 +34,11 @@ const theme = extendTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        a: {
-          color: "inherit",
-        },
         "html, body, #root, .sb-story, #storybook-root": {
           height: "100%",
+        },
+        a: {
+          color: "inherit",
         },
       },
     },
