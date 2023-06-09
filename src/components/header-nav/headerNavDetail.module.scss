@@ -1,0 +1,37 @@
+.app-bar {
+  background-color: var(--dc-palette-background-paper);
+  color: var(--dc-palette-text-primary);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.grid-root {
+  min-height: 80px;
+}
+
+.grid-back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.grid-title {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 4;
+  justify-content: center;
+  flex-direction: column;
+
+  @include media-above($dc-breakpoint-sm) {
+    align-items: center;
+  }
+}
+
+.grid-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import useStyles from "./headerNavDetail.style";
+import cls from "./headerNavDetail.module.scss";
 
 type Props = {
   onThemeClick: () => unknown;
@@ -28,7 +28,6 @@ const HeaderNavDetail = (props: Props) => {
     subtitleText,
   } = props;
 
-  const { classes } = useStyles();
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -78,19 +77,19 @@ const HeaderNavDetail = (props: Props) => {
 
   return (
     <nav data-testid="nav-detail">
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static" className={cls["app-bar"]}>
         <Toolbar variant={isXS ? "dense" : "regular"}>
-          <Grid container className={classes.gridRoot}>
-            <Grid item xs={1} className={classes.gridBack}>
+          <Grid container className={cls["grid-root"]}>
+            <Grid item xs={1} className={cls["grid-back"]}>
               {backButton}
             </Grid>
-            <Grid item xs={11} sm={10} className={classes.gridTitle}>
+            <Grid item xs={11} sm={10} className={cls["grid-title"]}>
               {title}
               {subtitle}
             </Grid>
 
             {!isXS && (
-              <Grid item xs={1} className={classes.gridToggle}>
+              <Grid item xs={1} className={cls["grid-toggle"]}>
                 {toggleButton}
               </Grid>
             )}
