@@ -17,7 +17,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 
 import HeaderNavCheckBox from "./HeaderNavCheckBox";
-import useStyles from "./headerNavThumbs.style";
+import cls from "./headerNavThumbs.module.scss";
 import type { ICheckbox } from "../../state/home/state";
 
 type Props = {
@@ -37,7 +37,6 @@ const HeaderNavThumbs = (props: Props) => {
     onCheckboxChange,
   } = props;
 
-  const { classes } = useStyles();
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("md"));
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
@@ -59,7 +58,7 @@ const HeaderNavThumbs = (props: Props) => {
       <Button
         aria-label="about"
         onClick={onBrandClick}
-        className={classes.brandButton}
+        className={cls["brand-button"]}
         data-testid="nav-thumbs-about-button"
       >
         <Typography variant="h5" component="span">
@@ -67,13 +66,13 @@ const HeaderNavThumbs = (props: Props) => {
         </Typography>
       </Button>
     );
-  }, [brandName, classes.brandButton, onBrandClick]);
+  }, [brandName, onBrandClick]);
 
   const menuButton = useMemo(() => {
     return (
       <IconButton
         edge="start"
-        className={classes.menuButton}
+        className={cls["menu-button"]}
         aria-label="menu"
         size="large"
         data-testid="nav-thumbs-menu-button"
@@ -81,7 +80,7 @@ const HeaderNavThumbs = (props: Props) => {
         <MenuIcon fontSize="large" />
       </IconButton>
     );
-  }, [classes.menuButton]);
+  }, []);
 
   const toggleButton = useMemo(() => {
     return (
@@ -111,13 +110,13 @@ const HeaderNavThumbs = (props: Props) => {
         square
         expanded={expanded === "panel1"}
         onChange={expansionPanelOnChange("panel1")}
-        className={classes.expansionPanel}
+        className={cls["expansion-panel"]}
         TransitionProps={{ timeout: 300 }}
       >
         <AccordionSummary
           classes={{
-            root: classes.expansionPanelSummaryRoot,
-            content: classes.expansionPanelSummaryContent,
+            root: cls["expansion-panel-summary-root"],
+            content: cls["expansion-panel-summary-content"],
           }}
           aria-controls="panel1d-content"
           id="panel1d-header"
@@ -129,7 +128,7 @@ const HeaderNavThumbs = (props: Props) => {
             xs
             container
             justifyContent="center"
-            className={classes.gridBrand}
+            className={cls["grid-brand"]}
           >
             {brandButton}
           </Grid>
@@ -147,10 +146,10 @@ const HeaderNavThumbs = (props: Props) => {
 
   const desktopView = (
     <>
-      <Grid item sm={4} md={5} className={classes.gridBrand}>
+      <Grid item sm={4} md={5} className={cls["grid-brand"]}>
         {brandButton}
       </Grid>
-      <Grid item flexGrow={1} sm className={classes.gridCheckboxesOpen}>
+      <Grid item flexGrow={1} sm className={cls["grid-checkboxes-open"]}>
         <FormGroup row data-testid="nav-thumbs-desktop-checkbox">
           {checkboxes}
         </FormGroup>
@@ -160,15 +159,15 @@ const HeaderNavThumbs = (props: Props) => {
 
   return (
     <nav data-testid="nav-thumbs">
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static" className={cls["app-bar"]}>
         <Toolbar variant={isSM ? "dense" : "regular"}>
           <Grid
             container
             justifyContent="space-between"
-            className={classes.gridRoot}
+            className={cls["grid-root"]}
           >
             {isXS ? mobileView : desktopView}
-            <Grid item xs={2} sm={1} className={classes.gridToggle}>
+            <Grid item xs={2} sm={1} className={cls["grid-toggle"]}>
               {toggleButton}
             </Grid>
           </Grid>
