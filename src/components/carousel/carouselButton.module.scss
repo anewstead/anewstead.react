@@ -14,7 +14,7 @@
     }
   }
 
-  & div:first-of-type {
+  div:first-of-type {
     padding: 12px;
     display: flex;
     position: relative;
@@ -30,13 +30,13 @@
       left: 0;
       opacity: 0.6;
     }
-  }
 
-  & :global() {
-    .MuiSvgIcon {
+    svg {
       z-index: 1;
     }
+  }
 
+  & :global {
     .MuiTouchRipple-root {
       opacity: 0.1;
       background-color: var(--dc-palette-background-paper);
@@ -51,7 +51,7 @@
 .next-button {
   right: 0;
 
-  & svg {
+  svg {
     transform: rotate(180deg);
   }
 }
