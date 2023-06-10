@@ -2,20 +2,18 @@ import React, { memo } from "react";
 import { Button, Card, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-import useStyles from "./home.style";
+import cls from "./home.module.scss";
 
 const HomeThumb = (props: { id: number; url: string; alt: string }) => {
   const { id, url, alt } = props;
 
-  const { classes } = useStyles();
-
   return (
-    <Grid item className={classes.gridItem}>
+    <Grid item className={cls["grid-item"]}>
       <Card elevation={6}>
         <Button
           component={RouterLink}
           to={`/project/${id}`}
-          className={classes.gridItemButton}
+          className={cls["grid-item-button"]}
         >
           <img src={url} alt={alt} />
         </Button>

@@ -1,0 +1,29 @@
+.home {
+  padding-top: $dc-spacing4;
+  padding-bottom: $dc-spacing3;
+}
+
+.grid-item {
+  img {
+    width: 80px;
+    height: 80px;
+
+    @include media-above($dc-breakpoint-sm) {
+      width: 128px;
+      height: 128px;
+    }
+  }
+
+  &-button {
+    padding: 0;
+    transition: transform 0.2s ease-out;
+
+    &:hover {
+      transform: perspective(500px) translateZ(30px);
+    }
+  }
+}
+
+.info {
+  padding: $dc-spacing4;
+}

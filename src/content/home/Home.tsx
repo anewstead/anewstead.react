@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import HomeThumb from "./HomeThumb";
 import PageLayout from "../../layout/page-layout";
-import useStyles from "./home.style";
+import cls from "./home.module.scss";
 import type { AppState } from "../../state/store";
 import { BASE_CONTENT_URL } from "../../const";
 import { INIT_DISPLAY_THUMBS } from "../../state/home/slice";
@@ -12,8 +12,6 @@ import type { InitDisplayThumbsPayload } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
 
 const Home = () => {
-  const { classes } = useStyles();
-
   const dispatch = useAppDispatch();
 
   const allThumbs = useAppSelector((state: AppState) => {
@@ -43,7 +41,7 @@ const Home = () => {
       content = thumbs;
     } else {
       content = (
-        <Card className={classes.info} data-testid="home-nothumbs">
+        <Card className={cls.info} data-testid="home-nothumbs">
           Please make a selection
         </Card>
       );
@@ -52,7 +50,7 @@ const Home = () => {
 
   return (
     <PageLayout headerNavType="thumbs">
-      <Container className={classes.root} data-testid="home-page">
+      <Container className={cls.home} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
