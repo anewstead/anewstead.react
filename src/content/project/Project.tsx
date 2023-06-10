@@ -8,15 +8,13 @@ import NoMatch from "../no-match/NoMatch";
 import PageLayout from "../../layout/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import useStyles from "./project.style";
+import cls from "./project.module.scss";
 import type { AppState } from "../../state/store";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
 import { useAppSelector } from "../../state/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();
-
-  const { classes } = useStyles();
 
   const mainData = useAppSelector((state: AppState) => {
     return state.mainData.data;
@@ -86,7 +84,7 @@ const Project: React.FC = () => {
       headerNavSubtitle={subtitleText}
     >
       <Container
-        className={classes.root}
+        className={cls.project}
         style={{ maxWidth: data.view.width }}
         data-testid="project-page"
       >
