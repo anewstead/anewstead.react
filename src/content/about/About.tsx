@@ -2,16 +2,14 @@ import React from "react";
 import { Box, Container, Paper, Typography } from "@mui/material";
 
 import PageLayout from "../../layout/page-layout";
-import useStyles from "./about.style";
+import cls from "./about.module.scss";
 import { BRAND } from "../../const";
 
 const About = () => {
-  const { classes } = useStyles();
-
   return (
     <PageLayout headerNavType="detail" headerNavTitle={BRAND}>
-      <Container className={classes.root} data-testid="about-page">
-        <Paper className={classes.paper}>
+      <Container className={cls.about} data-testid="about-page">
+        <Paper className={cls.paper}>
           <Typography variant="h4" component="h2">
             About
           </Typography>

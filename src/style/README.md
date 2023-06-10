@@ -1,5 +1,5 @@
 # Global
-All code here is in global space.  
+All code here is in global space. use wisely!  
 Everywhere else in the app should use modules to prevent namespace clashes
 
 ## theme.ts
@@ -24,4 +24,4 @@ this also allows this sass to correctly list in autocomplete/intellisense
 Any css that is not wrapped by scss is automatically written into every consuming file  
 Whereas sass only writes the output of a variable, mixins, function when used  
 Whilst unwrapped css should ultimatly be de-duped at build time it is not good 
-use of sass in global space, even after de-dupe due to hierarchy it may act as you expect.
+use of sass in global space, even after de-dupe due to hierarchy it may not act as you expect.
