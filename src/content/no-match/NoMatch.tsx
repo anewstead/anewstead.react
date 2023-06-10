@@ -3,16 +3,15 @@ import { Button, Container, Paper, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import PageLayout from "../../layout/page-layout";
-import useStyles from "./noMatch.style";
+import cls from "./noMatch.module.scss";
 
 const NoMatch = () => {
-  const { classes } = useStyles();
   const location = useLocation();
 
   return (
     <PageLayout headerNavType="detail">
-      <Container className={classes.root} data-testid="nomatch-page">
-        <Paper className={classes.paper}>
+      <Container className={cls["no-match"]} data-testid="nomatch-page">
+        <Paper className={cls.paper}>
           <Typography variant="h3">404 - Page Not Found</Typography>
           <Typography variant="h4">
             <code>{location.pathname}</code>
@@ -20,7 +19,7 @@ const NoMatch = () => {
           <Button
             component={RouterLink}
             to="/"
-            className={classes.button}
+            className={cls.button}
             size="large"
           >
             Go to Homepage
