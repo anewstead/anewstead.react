@@ -41,7 +41,6 @@ see .vscode/README.md for more information
 - React (hooks),
 - Redux (toolkit)
 - MaterialUI
-- @emotion with tss-react
 - Jest, React Testing Library, Playwright
 - Storybook
 
