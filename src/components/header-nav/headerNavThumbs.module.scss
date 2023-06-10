@@ -5,7 +5,6 @@
 
 .menu-button {
   margin-right: $dc-spacing2;
-  height: 100%;
 }
 
 .brand-button {
@@ -40,9 +39,9 @@
 }
 
 .expansion-panel-summary-content {
-  margin: 0 !important;
+  margin: 0 !important; // important as dynamic write in by mui
 }
 
 .expansion-panel-summary-root {
-  min-height: 80px !important;
+  min-height: 80px !important; // important as dynamic write in by mui
 }

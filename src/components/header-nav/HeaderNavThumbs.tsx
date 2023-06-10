@@ -122,7 +122,9 @@ const HeaderNavThumbs = (props: Props) => {
           id="panel1d-header"
           data-testid="nav-thumbs-accordion-summary"
         >
-          <Grid item>{menuButton}</Grid>
+          <Grid item alignSelf="center">
+            {menuButton}
+          </Grid>
           <Grid
             item
             xs
