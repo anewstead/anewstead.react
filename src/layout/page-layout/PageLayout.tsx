@@ -19,19 +19,15 @@ const PageLayout = (props: Props) => {
 
   return (
     <Box className={cls["page-layout"]} data-testid="app-layout">
-      <div className={cls.header}>
-        <HeaderNav
-          navType={headerNavType}
-          titleText={headerNavTitle}
-          subtitleText={headerNavSubtitle}
-        />
-      </div>
+      <HeaderNav
+        navType={headerNavType}
+        titleText={headerNavTitle}
+        subtitleText={headerNavSubtitle}
+      />
 
-      <main className={cls.main}>{children}</main>
+      <main>{children}</main>
 
-      <div className={cls.footer}>
-        <Footer brand={BRAND} />
-      </div>
+      <Footer brand={BRAND} />
     </Box>
   );
 };
