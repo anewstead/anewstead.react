@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Checkbox, FormControlLabel } from "@mui/material";
 
-const HeaderNavCheckBox = (props: {
+const HeadNavCheckbox = (props: {
   id: string;
   label: string;
   checked: boolean;
@@ -23,4 +23,4 @@ const HeaderNavCheckBox = (props: {
   );
 };
 
-export default memo(HeaderNavCheckBox);
+export default memo(HeadNavCheckbox);

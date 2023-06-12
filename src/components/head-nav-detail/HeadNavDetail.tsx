@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import cls from "./headerNavDetail.module.scss";
+import cls from "./headNavDetail.module.scss";
 
 type Props = {
   onThemeClick: () => unknown;
@@ -20,7 +20,7 @@ type Props = {
   subtitleText?: string;
 };
 
-const HeaderNavDetail = (props: Props) => {
+const HeadNavDetail = (props: Props) => {
   const {
     onThemeClick,
     onHomeClick: onBackClick,
@@ -100,4 +100,4 @@ const HeaderNavDetail = (props: Props) => {
   );
 };
 
-export default HeaderNavDetail;
+export default HeadNavDetail;

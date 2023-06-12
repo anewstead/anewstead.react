@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, jest } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
-import HeaderNavThumbs from "./HeaderNavThumbs";
+import HeadNavThumbs from "./HeadNavThumbs";
 import { initialState } from "../../state/home/state";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------
-const meta: Meta<typeof HeaderNavThumbs> = {
-  component: HeaderNavThumbs,
+const meta: Meta<typeof HeadNavThumbs> = {
+  component: HeadNavThumbs,
 };
 export default meta;
 type Story = StoryObj<typeof meta>;

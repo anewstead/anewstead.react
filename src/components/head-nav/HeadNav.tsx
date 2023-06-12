@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import HeaderNavDetail from "./HeaderNavDetail";
-import HeaderNavThumbs from "./HeaderNavThumbs";
+import HeadNavDetail from "../head-nav-detail";
+import HeadNavThumbs from "../head-nav-thumbs";
 import { BRAND } from "../../const";
 import { NAV_CHECKBOX_CHANGE } from "../../state/home/slice";
 import type { NavCheckboxChangePayload } from "../../state/home/slice";
@@ -14,7 +14,7 @@ type Props = {
   titleText?: string;
   subtitleText?: string;
 };
-const HeaderNav = (props: Props) => {
+const HeadNav = (props: Props) => {
   const { navType, titleText, subtitleText } = props;
 
   const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ const HeaderNav = (props: Props) => {
   );
 
   const navThumbs = (
-    <HeaderNavThumbs
+    <HeadNavThumbs
       brandName={BRAND}
       checkboxData={navCheckboxes}
       onBrandClick={brandClick}
@@ -61,7 +61,7 @@ const HeaderNav = (props: Props) => {
   );
 
   const navDetail = (
-    <HeaderNavDetail
+    <HeadNavDetail
       onHomeClick={homeClick}
       onThemeClick={toggleTheme}
       titleText={titleText}
@@ -72,4 +72,4 @@ const HeaderNav = (props: Props) => {
   return navType === "thumbs" ? navThumbs : navDetail;
 };
 
-export default memo(HeaderNav);
+export default memo(HeadNav);

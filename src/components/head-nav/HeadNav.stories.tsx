@@ -5,15 +5,15 @@ import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 import { withRouter } from "storybook-addon-react-router-v6";
 
-import HeaderNav from "./HeaderNav";
+import HeadNav from "./HeadNav";
 import store from "../../state/store";
 import type { AppState } from "../../state/store";
 import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------
-const meta: Meta<typeof HeaderNav> = {
-  component: HeaderNav,
+const meta: Meta<typeof HeadNav> = {
+  component: HeadNav,
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -26,15 +26,15 @@ const SUB_TITLE = "test subtitle 456";
 
 // waitForTimout to allow redraw race condition before detecting values
 const testTheme = async (elemWithBG: HTMLElement, themeBtn: HTMLElement) => {
-  await waitForTimeout(5);
+  await waitForTimeout(50);
   const currentName = retrieveThemeName();
   const currentColor = getComputedStyle(elemWithBG).backgroundColor;
-  await waitForTimeout(5);
+  await waitForTimeout(50);
   await userEvent.click(themeBtn);
-  await waitForTimeout(5);
+  await waitForTimeout(50);
   const updatedName = retrieveThemeName();
   const updatedColor = getComputedStyle(elemWithBG).backgroundColor;
-  await waitForTimeout(5);
+  await waitForTimeout(50);
   expect(currentName).not.toEqual(updatedName);
   expect(currentColor).not.toEqual(updatedColor);
   await userEvent.click(themeBtn); // toggle back

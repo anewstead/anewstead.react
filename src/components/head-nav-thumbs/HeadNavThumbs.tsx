@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import HeaderNavCheckBox from "./HeaderNavCheckBox";
-import cls from "./headerNavThumbs.module.scss";
+import HeadNavCheckbox from "./HeadNavCheckbox";
+import cls from "./headNavThumbs.module.scss";
 import type { ICheckbox } from "../../state/home/state";
 
 type Props = {
@@ -28,7 +28,7 @@ type Props = {
   onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const HeaderNavThumbs = (props: Props) => {
+const HeadNavThumbs = (props: Props) => {
   const {
     brandName,
     checkboxData,
@@ -43,7 +43,7 @@ const HeaderNavThumbs = (props: Props) => {
 
   const checkboxes = checkboxData.map((cb) => {
     return (
-      <HeaderNavCheckBox
+      <HeadNavCheckbox
         key={cb.id}
         id={cb.id as string}
         label={cb.label as string}
@@ -179,4 +179,4 @@ const HeaderNavThumbs = (props: Props) => {
   );
 };
 
-export default HeaderNavThumbs;
+export default HeadNavThumbs;

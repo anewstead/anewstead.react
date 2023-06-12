@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, jest } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
-import HeaderNavDetail from "./HeaderNavDetail";
+import HeadNavDetail from "./HeadNavDetail";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 // -----------------------------------------------------------------------------
-const meta: Meta<typeof HeaderNavDetail> = {
-  component: HeaderNavDetail,
+const meta: Meta<typeof HeadNavDetail> = {
+  component: HeadNavDetail,
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
