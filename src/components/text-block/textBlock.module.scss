@@ -1,0 +1,6 @@
+@use "../../style/gbl.scss";
+
+.text-block {
+  padding: gbl.$spacing2;
+  margin-bottom: gbl.$spacing3;
+}

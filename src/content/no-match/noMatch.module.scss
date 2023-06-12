@@ -1,0 +1,14 @@
+@use "../../style/gbl.scss";
+
+.no-match {
+  margin-top: gbl.$spacing4;
+}
+
+.paper {
+  padding: gbl.$spacing4;
+}
+
+.button {
+  margin-top: gbl.$spacing4;
+  border: solid 1px var(--dc-palette-text-primary);
+}

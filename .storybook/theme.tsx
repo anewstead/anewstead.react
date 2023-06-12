@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+/*
+light and dark themes  
+use the component theme from ./src as a storybook decorator in preview and docs pages  
+sync component theme and storybook-dark-mode addon
+*/
+
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   DARK_MODE_EVENT_NAME,
   UPDATE_DARK_MODE_EVENT_NAME,
@@ -7,68 +13,85 @@ import { DocsContainer } from "@storybook/addon-docs";
 import { addons } from "@storybook/addons";
 import { themes as sbThemes } from "@storybook/theming";
 
-import Theme from "../src/wrappers/theme-wrapper/Theme";
+import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
+import themeBaseStyles from "../src/style/theme";
 import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 import {
-  initThemeName,
+  retrieveThemeName,
+  storeThemeName,
   toggleThemeName,
 } from "../src/wrappers/theme-wrapper/helpers";
 
-/*
-configure ./src theme for use as storybook decorator in preview and docs pages
-sync ./src theme (dark|light) with storybook-dark-mode addon
-so components (dark|light) matches storybook layout (dark|light) 
-*/
+const themeBGColor = {
+  light: themeBaseStyles.colorSchemes.light.palette.background.default,
+  dark: themeBaseStyles.colorSchemes.dark.palette.background.default,
+};
 
 const getBgColor = () => {
-  return global.getComputedStyle(document.body).backgroundColor;
+  return themeBGColor[retrieveThemeName()];
 };
 
 const channel = addons.getChannel();
 
-// listens for storybook-dark-mode changeEvent
-// stores (dark|light) in hook for use in components
+/*
+useCurrentTheme
+utility to sync storybook-dark-mode to component theme
+*/
 const useCurrentTheme = () => {
-  const [themeName, setThemeName] = useState(initThemeName());
+  const [themeName, setThemeName] = useState(retrieveThemeName());
   const [bgColor, setBgColor] = useState(getBgColor());
-  useEffect(() => {
-    const updateTheme = (isDark) => {
-      setThemeName(toggleThemeName(isDark ? "light" : "dark"));
-      // timeout to allow redraw before we grab bg colour value
-      // not ideal but preferable to hard coding values
-      setTimeout(() => {
-        setBgColor(getBgColor());
-      }, 100);
-    };
-    channel.on(DARK_MODE_EVENT_NAME, updateTheme);
-    return () => {
-      return channel.removeListener(DARK_MODE_EVENT_NAME, updateTheme);
-    };
+  // call from component theme
+  // channel.emit does not fire when running tests via storybook test-runner
+  // which is fine as you wont be testing SB theme
+  const toggleTheme = useCallback(() => {
+    setThemeName(toggleThemeName);
+    setBgColor(getBgColor());
+    channel.emit(UPDATE_DARK_MODE_EVENT_NAME);
   }, []);
-  return { themeName, bgColor };
+  // add/remove darkmode addon event listener
+  useEffect(() => {
+    // passed from SB theme
+    // important! DARK_MODE_EVENT_NAME can fire multiple times when page changes,
+    // therefore component theme must be set implicitly not toggled
+    const onDarkModeEvent = (isDark) => {
+      const sbTheme = isDark ? "dark" : "light";
+      if (sbTheme !== themeName) {
+        setThemeName(sbTheme);
+        storeThemeName(sbTheme);
+        setBgColor(getBgColor());
+      }
+    };
+    channel.on(DARK_MODE_EVENT_NAME, onDarkModeEvent);
+    return () => {
+      return channel.removeListener(DARK_MODE_EVENT_NAME, onDarkModeEvent);
+    };
+  }, [themeName]);
+
+  return { bgColor, themeName, toggleTheme };
 };
 
-// theme preview page decorator
+/*
+theme preview page decorator
+*/
 export const ThemeWrapper = ({ children }) => {
-  const { themeName } = useCurrentTheme();
+  const { themeName, toggleTheme } = useCurrentTheme();
   const toggleThemeMemo = useMemo(() => {
     return {
-      toggleTheme: () => {
-        channel.emit(UPDATE_DARK_MODE_EVENT_NAME);
-      },
+      toggleTheme,
     };
-  }, []);
+  }, [toggleTheme]);
   return (
     <ThemeWrapperContext.Provider value={toggleThemeMemo}>
-      <Theme themeName={themeName}>{children}</Theme>
+      <ThemeBase themeName={themeName}>{children}</ThemeBase>
     </ThemeWrapperContext.Provider>
   );
 };
 
-// theme docs pages decorator
+/*
+theme docs pages decorator
+*/
 export const ThemeDocsContainer = ({ children, context }) => {
   const { themeName, bgColor } = useCurrentTheme();
-  // correct bg in each component iframe
   useEffect(() => {
     const elems = document.querySelectorAll(".docs-story");
     elems.forEach((el) => {

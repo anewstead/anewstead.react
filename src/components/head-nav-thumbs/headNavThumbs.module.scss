@@ -1,0 +1,49 @@
+@use "../../style/gbl.scss";
+
+.app-bar {
+  background-color: var(--dc-palette-background-paper);
+  color: var(--dc-palette-text-primary);
+}
+
+.menu-button {
+  margin-right: gbl.$spacing2;
+}
+
+.brand-button {
+  text-align: left;
+}
+
+.grid-brand {
+  display: flex;
+  align-items: center;
+}
+
+.grid-root {
+  min-height: 80px;
+}
+
+.grid-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-height: 80px;
+}
+
+.grid-checkboxes-open {
+  display: flex;
+}
+
+.expansion-panel {
+  background-color: unset;
+  background-image: unset;
+  box-shadow: unset;
+  width: 100%;
+}
+
+.expansion-panel-summary-content {
+  margin: 0 !important; // important as dynamic write in by mui
+}
+
+.expansion-panel-summary-root {
+  min-height: 80px !important; // important as dynamic write in by mui
+}

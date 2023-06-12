@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import { Box, useTheme } from "@mui/material";
 import type { Settings as SlickSettings } from "react-slick";
 
-import PrevNextButton from "./PrevNextButton";
-import useStyles from "./carousel.style";
+import CarouselButton from "./CarouselButton";
+import cls from "./carousel.module.scss";
 
 type Props = {
   slides: JSX.Element[];
@@ -17,14 +17,13 @@ const Carousel = (props: Props) => {
   const { slides, settings } = props;
 
   const theme = useTheme();
-  const { classes } = useStyles();
 
   const defaults: SlickSettings = {
     dots: true,
     lazyLoad: "progressive",
     adaptiveHeight: true,
-    prevArrow: <PrevNextButton direction="prev" />,
-    nextArrow: <PrevNextButton direction="next" />,
+    prevArrow: <CarouselButton direction="prev" />,
+    nextArrow: <CarouselButton direction="next" />,
   };
 
   const config: SlickSettings = {
@@ -36,11 +35,11 @@ const Carousel = (props: Props) => {
 
   return (
     <Box
-      className={classes.root}
+      className={cls.carousel}
       style={{ marginBottom: bmargin }}
       data-testid="carousel"
     >
-      <Slider {...config} className={classes.slider}>
+      <Slider {...config} className={cls.slider}>
         {slides}
       </Slider>
     </Box>

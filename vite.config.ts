@@ -9,15 +9,21 @@ function chunkPolicy(id) {
   return "index";
 }
 
+const baseCSS = {
+  devSourcemap: true,
+};
+
 const dev = () => {
   return {
     plugins: [react()],
+    css: baseCSS,
   };
 };
 
 const buildProd = () => {
   return {
     plugins: [react()],
+    css: baseCSS,
     build: {
       rollupOptions: {
         output: {
@@ -30,6 +36,7 @@ const buildProd = () => {
   };
 };
 
+// same as buildProd but with analyzer
 const buildDev = () => {
   const bp = buildProd();
   return {

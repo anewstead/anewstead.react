@@ -1,0 +1,31 @@
+@use "../../style/gbl.scss";
+
+.home {
+  padding-top: gbl.$spacing4;
+  padding-bottom: gbl.$spacing3;
+}
+
+.grid-item {
+  img {
+    width: 80px;
+    height: 80px;
+
+    @include gbl.media-above(gbl.$breakpoint-sm) {
+      width: 128px;
+      height: 128px;
+    }
+  }
+
+  &-button {
+    padding: 0;
+    transition: transform 0.2s ease-out;
+
+    &:hover {
+      transform: perspective(500px) translateZ(30px);
+    }
+  }
+}
+
+.info {
+  padding: gbl.$spacing4;
+}

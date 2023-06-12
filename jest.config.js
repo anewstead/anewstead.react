@@ -32,6 +32,7 @@ module.exports = {
 
   collectCoverageFrom: [
     "src/**/*.[jt]s",
+    "!src/**/*.d.[jt]s",
     "!src/**/.*.[jt]s",
     "!src/**/index.[jt]s",
     "!src/**/*.style?(s).[jt]s",

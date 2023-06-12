@@ -2,7 +2,7 @@ import React from "react";
 import { Paper } from "@mui/material";
 
 import TextBlock from "../text-block";
-import useStyles from "./inFrame.style";
+import cls from "./inFrame.module.scss";
 import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
 
 type Props = {
@@ -18,41 +18,35 @@ const InFrame = (props: Props) => {
   const { title, width, height, iframeURL, failOverImageURL, checkAdBlock } =
     props;
 
-  const { classes } = useStyles();
+  const { adblockCheckComplete, adBlockDetected } = useDetectAdBlock();
 
-  const { adblockChecked, adBlockDetected } = useDetectAdBlock();
-
-  if (!adblockChecked) {
+  if (!adblockCheckComplete) {
     return <></>;
   }
 
-  const iframe = (
-    <iframe
-      title={title}
-      src={iframeURL}
-      width={width}
-      height={height}
-      className={classes.iframe}
-      data-testid="inframe-iframe"
-    />
-  );
-
-  if (!checkAdBlock) {
-    return iframe;
+  if (!adBlockDetected || !checkAdBlock) {
+    return (
+      <iframe
+        title={title}
+        src={iframeURL}
+        width={width}
+        height={height}
+        className={cls.iframe}
+        data-testid="inframe-iframe"
+      />
+    );
   }
 
   const adBlockMsg = `Ad Blocker Detected, you will need to pause it to view full content`;
 
-  const failover = (
+  return (
     <div data-testid="inframe-failover">
       <TextBlock htmlText={adBlockMsg} />
-      <Paper className={classes.still}>
+      <Paper className={cls.still}>
         <img src={failOverImageURL} alt={title} />
       </Paper>
     </div>
   );
-
-  return adBlockDetected ? failover : iframe;
 };
 
 export default InFrame;

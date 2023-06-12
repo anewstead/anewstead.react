@@ -3,8 +3,8 @@ import { Box } from "@mui/material";
 import type { ReactNode } from "react";
 
 import Footer from "../../components/footer";
-import HeaderNav from "../../components/header-nav";
-import useStyles from "./pageLayout.style";
+import HeaderNav from "../../components/head-nav";
+import cls from "./pageLayout.module.scss";
 import { BRAND } from "../../const";
 
 type Props = {
@@ -17,16 +17,16 @@ type Props = {
 const PageLayout = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
-  const { classes } = useStyles();
-
   return (
-    <Box className={classes.root} data-testid="app-layout">
+    <Box className={cls["page-layout"]} data-testid="app-layout">
       <HeaderNav
         navType={headerNavType}
         titleText={headerNavTitle}
         subtitleText={headerNavSubtitle}
       />
-      <main className={classes.main}>{children}</main>
+
+      <main>{children}</main>
+
       <Footer brand={BRAND} />
     </Box>
   );

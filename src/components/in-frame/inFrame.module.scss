@@ -1,0 +1,15 @@
+@use "../../style/gbl.scss";
+
+.still {
+  margin-bottom: gbl.$spacing3;
+
+  & img {
+    display: block;
+  }
+}
+
+.iframe {
+  margin-bottom: gbl.$spacing3;
+  border: none;
+  background-color: var(--dc-palette-background-paper);
+}

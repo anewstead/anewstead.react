@@ -1,0 +1,59 @@
+@use "../../style/gbl.scss";
+
+.carousel-button {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 100%;
+  padding: gbl.$spacing2;
+  color: var(--dc-palette-text-primary);
+  opacity: 0.1;
+
+  @include gbl.media-above(gbl.$breakpoint-sm) {
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+
+  div:first-of-type {
+    padding: 12px;
+    display: flex;
+    position: relative;
+
+    &::before {
+      content: "";
+      border-radius: 36px;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dc-palette-background-paper);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.6;
+    }
+
+    svg {
+      z-index: 1;
+    }
+  }
+
+  & :global {
+    .MuiTouchRipple-root {
+      opacity: 0.1;
+      background-color: var(--dc-palette-background-paper);
+    }
+  }
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+
+  svg {
+    transform: rotate(180deg);
+  }
+}

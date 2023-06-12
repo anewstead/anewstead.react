@@ -5,6 +5,7 @@
   },
 
   "css.validate": false,
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
@@ -14,7 +15,9 @@
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.renderWhitespace": "all",
+
   "eslint.format.enable": true,
+  "eslint.packageManager": "pnpm",
 
   "files.exclude": {
     ".eslintcache": true,
@@ -30,10 +33,16 @@
   },
 
   "html.format.enable": false,
+
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
+
   "json.format.enable": false,
+
   "less.validate": false,
+
+  "npm.packageManager": "pnpm",
+
   "scss.validate": false,
 
   "search.exclude": {
@@ -42,7 +51,13 @@
     "**/node_modules": true
   },
 
+  "somesass.suggestFromUseOnly": true,
+
+  "stylelint.packageManager": "pnpm",
+  "stylelint.validate": ["css", "scss", "less"],
+
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.format.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.validate.enable": true
 }

@@ -41,7 +41,6 @@ see .vscode/README.md for more information
 - React (hooks),
 - Redux (toolkit)
 - MaterialUI
-- @emotion with tss-react
 - Jest, React Testing Library, Playwright
 - Storybook
 
@@ -58,7 +57,7 @@ In a standard React/ non-NextJs App we simply follow the same concept and folder
 
 # Testing 
 This needed its own file:  
-See [README-TESTING.md](/README-TESTING.md)
+See [TESTING.md](/TESTING.md)
 
 
 
