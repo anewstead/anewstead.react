@@ -1,3 +1,5 @@
+@use "../../style/gbl.scss";
+
 .app-bar {
   background-color: var(--dc-palette-background-paper);
   color: var(--dc-palette-text-primary);
@@ -25,7 +27,7 @@
   justify-content: center;
   flex-direction: column;
 
-  @include media-above($dc-breakpoint-sm) {
+  @include gbl.media-above(gbl.$breakpoint-sm) {
     align-items: center;
   }
 }

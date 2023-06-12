@@ -17,6 +17,7 @@
   "editor.renderWhitespace": "all",
 
   "eslint.format.enable": true,
+  "eslint.packageManager": "pnpm",
 
   "files.exclude": {
     ".eslintcache": true,
@@ -39,6 +40,9 @@
   "json.format.enable": false,
 
   "less.validate": false,
+
+  "npm.packageManager": "pnpm",
+
   "scss.validate": false,
 
   "search.exclude": {
@@ -49,9 +53,11 @@
 
   "somesass.suggestFromUseOnly": true,
 
+  "stylelint.packageManager": "pnpm",
   "stylelint.validate": ["css", "scss", "less"],
 
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.format.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.validate.enable": true
 }

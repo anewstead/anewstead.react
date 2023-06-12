@@ -11,11 +11,6 @@ function chunkPolicy(id) {
 
 const baseCSS = {
   devSourcemap: true,
-  preprocessorOptions: {
-    scss: {
-      additionalData: `@use "/src/style/sass/" as *;`,
-    },
-  },
 };
 
 const dev = () => {

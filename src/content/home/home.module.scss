@@ -1,6 +1,8 @@
+@use "../../style/gbl.scss";
+
 .home {
-  padding-top: $dc-spacing4;
-  padding-bottom: $dc-spacing3;
+  padding-top: gbl.$spacing4;
+  padding-bottom: gbl.$spacing3;
 }
 
 .grid-item {
@@ -8,7 +10,7 @@
     width: 80px;
     height: 80px;
 
-    @include media-above($dc-breakpoint-sm) {
+    @include gbl.media-above(gbl.$breakpoint-sm) {
       width: 128px;
       height: 128px;
     }
@@ -25,5 +27,5 @@
 }
 
 .info {
-  padding: $dc-spacing4;
+  padding: gbl.$spacing4;
 }

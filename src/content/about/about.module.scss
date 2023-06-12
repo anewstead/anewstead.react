@@ -1,7 +1,9 @@
+@use "../../style/gbl.scss";
+
 .about {
-  margin-top: $dc-spacing4;
+  margin-top: gbl.$spacing4;
 }
 
 .paper {
-  padding: $dc-spacing4;
+  padding: gbl.$spacing4;
 }

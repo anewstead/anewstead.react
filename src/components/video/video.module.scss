@@ -1,3 +1,5 @@
+@use "../../style/gbl.scss";
+
 .video {
-  margin-bottom: $dc-spacing3;
+  margin-bottom: gbl.$spacing3;
 }

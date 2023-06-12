@@ -1,3 +1,5 @@
+@use "../../style/gbl.scss";
+
 .page-layout {
   /*
   mobile height bug:
@@ -18,7 +20,7 @@
   */
   height: 100.1%;
 
-  @include media-above($dc-breakpoint-sm) {
+  @include gbl.media-above(gbl.$breakpoint-sm) {
     height: 100%;
   }
   display: grid;

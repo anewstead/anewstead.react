@@ -1,5 +1,7 @@
+@use "../../style/gbl.scss";
+
 .project {
   padding: 0;
-  margin-top: $dc-spacing4;
-  margin-bottom: $dc-spacing3;
+  margin-top: gbl.$spacing4;
+  margin-bottom: gbl.$spacing3;
 }

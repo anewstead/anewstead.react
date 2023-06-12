@@ -1,13 +1,15 @@
+@use "../../style/gbl.scss";
+
 .carousel-button {
   position: absolute;
   z-index: 1;
   top: 0;
   height: 100%;
-  padding: $dc-spacing2;
+  padding: gbl.$spacing2;
   color: var(--dc-palette-text-primary);
   opacity: 0.1;
 
-  @include media-above($dc-breakpoint-sm) {
+  @include gbl.media-above(gbl.$breakpoint-sm) {
     &:hover,
     &:focus-visible {
       opacity: 1;

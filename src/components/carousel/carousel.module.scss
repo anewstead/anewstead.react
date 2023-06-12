@@ -1,3 +1,5 @@
+@use "../../style/gbl.scss";
+
 .carousel {
   position: relative;
   width: 100%;
@@ -7,7 +9,7 @@
   background-color: var(--dc-palette-background-paper);
   position: relative;
   width: 100%;
-  margin-bottom: calc($dc-spacing * 4);
+  margin-bottom: gbl.$spacing4;
 
   & :global {
     .slick-slide {
@@ -27,8 +29,8 @@
       justify-content: center;
       list-style: none;
       padding: 0;
-      margin-top: $dc-spacing;
-      margin-bottom: $dc-spacing;
+      margin-top: gbl.$spacing;
+      margin-bottom: gbl.$spacing;
 
       & button {
         border: 0;
