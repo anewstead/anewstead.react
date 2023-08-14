@@ -85,6 +85,31 @@
       { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
     ],
     "curly": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react+(|-native)",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react+(|-native)"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
     "import/prefer-default-export": "off",
     "json/*": ["error", { "allowComments": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],
