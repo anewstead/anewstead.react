@@ -1,13 +1,15 @@
 import React, { memo, useCallback } from "react";
+
 import { useNavigate } from "react-router-dom";
 
-import HeadNavDetail from "../head-nav-detail";
-import HeadNavThumbs from "../head-nav-thumbs";
 import { BRAND } from "../../const";
 import { NAV_CHECKBOX_CHANGE } from "../../state/home/slice";
-import type { NavCheckboxChangePayload } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
 import { useThemeWrapperContext } from "../../wrappers/theme-wrapper/ThemeWrapperContext";
+import HeadNavDetail from "../head-nav-detail";
+import HeadNavThumbs from "../head-nav-thumbs";
+
+import type { NavCheckboxChangePayload } from "../../state/home/slice";
 
 type Props = {
   navType: "thumbs" | "detail";

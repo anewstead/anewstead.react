@@ -2,11 +2,12 @@
 // https://mui.com/material-ui/customization/dark-mode/#toggling-color-mode
 
 import React, { useMemo, useState } from "react";
-import type { ReactNode } from "react";
 
+import { retrieveThemeName, toggleThemeName } from "./helpers";
 import ThemeBase from "./ThemeBase";
 import { ThemeWrapperContext } from "./ThemeWrapperContext";
-import { retrieveThemeName, toggleThemeName } from "./helpers";
+
+import type { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;

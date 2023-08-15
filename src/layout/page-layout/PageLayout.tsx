@@ -1,11 +1,14 @@
 import React from "react";
+
 import { Box } from "@mui/material";
-import type { ReactNode } from "react";
 
 import Footer from "../../components/footer";
 import HeaderNav from "../../components/head-nav";
-import cls from "./pageLayout.module.scss";
 import { BRAND } from "../../const";
+
+import cls from "./pageLayout.module.scss";
+
+import type { ReactNode } from "react";
 
 type Props = {
   headerNavType: "thumbs" | "detail";

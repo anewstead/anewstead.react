@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Paper } from "@mui/material";
 
-import TextBlock from "../text-block";
-import cls from "./inFrame.module.scss";
 import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
+import TextBlock from "../text-block";
+
+import cls from "./inFrame.module.scss";
 
 type Props = {
   title: string;

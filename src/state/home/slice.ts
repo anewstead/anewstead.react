@@ -1,9 +1,10 @@
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { IMainData } from "../main-data/state";
-import { initialState } from "./state";
 import { thumbHelper } from "./helpers";
+import { initialState } from "./state";
+
+import type { IMainData } from "../main-data/state";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type InitDisplayThumbsPayload = {
   allThumbs: IMainData[];

@@ -1,17 +1,20 @@
 import React from "react";
+
 import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
-import NoMatch from "../no-match/NoMatch";
-import PageLayout from "../../layout/page-layout";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import cls from "./project.module.scss";
-import type { AppState } from "../../state/store";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
+import PageLayout from "../../layout/page-layout";
 import { useAppSelector } from "../../state/store";
+import NoMatch from "../no-match/NoMatch";
+
+import cls from "./project.module.scss";
+
+import type { AppState } from "../../state/store";
 
 const Project: React.FC = () => {
   const { id } = useParams();

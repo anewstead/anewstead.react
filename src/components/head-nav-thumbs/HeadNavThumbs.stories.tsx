@@ -1,10 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { expect, jest } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
-import HeadNavThumbs from "./HeadNavThumbs";
-import { initialState } from "../../state/home/state";
 import { waitForTimeout } from "../../../test-utils/waitFor";
+import { initialState } from "../../state/home/state";
+
+import HeadNavThumbs from "./HeadNavThumbs";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof HeadNavThumbs> = {

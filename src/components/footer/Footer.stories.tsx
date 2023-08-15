@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
 
 import Footer from "./Footer";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Footer> = {

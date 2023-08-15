@@ -1,8 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { expect } from "@storybook/jest";
 
-import Video from "./Video";
 import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
+
+import Video from "./Video";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Video> = {

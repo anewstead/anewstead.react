@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Box, Container, Paper, Typography } from "@mui/material";
 
-import PageLayout from "../../layout/page-layout";
-import cls from "./about.module.scss";
 import { BRAND } from "../../const";
+import PageLayout from "../../layout/page-layout";
+
+import cls from "./about.module.scss";
 
 const About = () => {
   return (

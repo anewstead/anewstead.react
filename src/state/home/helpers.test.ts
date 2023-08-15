@@ -1,6 +1,7 @@
+import { thumbHelper } from "./helpers";
+
 import type { ICheckbox } from "./state";
 import type { IMainData } from "../main-data/state";
-import { thumbHelper } from "./helpers";
 
 describe("thumbHelper", () => {
   const site = { type: "site" } as IMainData;

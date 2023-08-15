@@ -1,5 +1,6 @@
-import HomeIcon from "@mui/icons-material/Home";
 import React from "react";
+
+import HomeIcon from "@mui/icons-material/Home";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import {
   AppBar,

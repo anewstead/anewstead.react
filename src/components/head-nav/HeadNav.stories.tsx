@@ -1,19 +1,22 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Outlet } from "react-router-dom";
-import { Provider } from "react-redux";
+
 import { expect } from "@storybook/jest";
+import { userEvent, within } from "@storybook/testing-library";
+import { Provider } from "react-redux";
+import { Outlet } from "react-router-dom";
 import {
   reactRouterParameters,
   withRouter,
 } from "storybook-addon-react-router-v6";
-import { userEvent, within } from "@storybook/testing-library";
+
+import { waitForTimeout } from "../../../test-utils/waitFor";
+import store from "../../state/store";
+import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 
 import HeadNav from "./HeadNav";
-import store from "../../state/store";
+
 import type { AppState } from "../../state/store";
-import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof HeadNav> = {
