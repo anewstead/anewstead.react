@@ -86,13 +86,17 @@
     ],
     "curly": "error",
     "import/order": [
-      "error",
+      "warn",
       {
+        "distinctGroup": true,
         "groups": [
           "builtin",
           "external",
           "internal",
-          ["parent", "sibling"],
+          "parent",
+          "sibling",
+          "index",
+          "object",
           "type"
         ],
         "pathGroups": [
@@ -100,9 +104,14 @@
             "pattern": "react+(|-native)",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "react+(|-native)",
+            "group": "type",
+            "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react+(|-native)"],
+        "pathGroupsExcludedImportTypes": ["react+(|-native)", "type"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
