@@ -1,6 +1,7 @@
+import React, { useMemo, useState } from "react";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
-import React, { useMemo, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -18,6 +19,7 @@ import { useTheme } from "@mui/material/styles";
 
 import HeadNavCheckbox from "./HeadNavCheckbox";
 import cls from "./headNavThumbs.module.scss";
+
 import type { ICheckbox } from "../../state/home/state";
 
 type Props = {

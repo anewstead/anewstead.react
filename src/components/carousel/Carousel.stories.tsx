@@ -1,12 +1,15 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import type { Settings as SlickSettings } from "react-slick";
+
 import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
-import Carousel from "./Carousel";
-import { BASE_CONTENT_URL } from "../../const";
 import { waitForTransition } from "../../../test-utils/waitFor";
+import { BASE_CONTENT_URL } from "../../const";
+
+import Carousel from "./Carousel";
+
+import type { Meta, StoryObj } from "@storybook/react";
+import type { Settings as SlickSettings } from "react-slick";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Carousel> = {

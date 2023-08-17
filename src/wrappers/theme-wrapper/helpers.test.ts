@@ -1,5 +1,6 @@
-import { DEFAULT_THEME } from "../../style/theme";
 import { createMatchMedia } from "../../../test-utils/jestWindowExtended";
+import { DEFAULT_THEME } from "../../style/theme";
+
 import { retrieveThemeName, storeThemeName, toggleThemeName } from "./helpers";
 
 test("should init the theme, save to localStorage and toggle", async () => {

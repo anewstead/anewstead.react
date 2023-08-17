@@ -1,16 +1,19 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
+
 import { expect } from "@storybook/jest";
 import { waitForElementToBeRemoved, within } from "@storybook/testing-library";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import MainDataLoader from "./MainDataLoader";
 import {
   mswLoadMainDataNoContent,
   mswLoadMainDataReject,
 } from "../../../test-utils/msw/handlers/mswLoadMainData";
 import { setupStore } from "../../state/store";
+
+import MainDataLoader from "./MainDataLoader";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof MainDataLoader> = {

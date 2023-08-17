@@ -13,7 +13,7 @@ export const ThemeWrapperContext = React.createContext<
 
 export const useThemeWrapperContext = () => {
   const context = React.useContext(ThemeWrapperContext);
-  /* istanbul ignore next */
+  /* istanbul ignore next -- @preserve */
   if (context === undefined) {
     throw new Error("useContext() must be used within <Context.Provider>");
   }

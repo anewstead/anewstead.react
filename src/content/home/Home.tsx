@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
-import { Card, Container, Grid } from "@mui/material";
-import type { ReactNode } from "react";
 
-import HomeThumb from "./HomeThumb";
-import PageLayout from "../../layout/page-layout";
-import cls from "./home.module.scss";
-import type { AppState } from "../../state/store";
+import { Card, Container, Grid } from "@mui/material";
+
 import { BASE_CONTENT_URL } from "../../const";
+import PageLayout from "../../layout/page-layout";
 import { INIT_DISPLAY_THUMBS } from "../../state/home/slice";
-import type { InitDisplayThumbsPayload } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
+
+import cls from "./home.module.scss";
+import HomeThumb from "./HomeThumb";
+
+import type { InitDisplayThumbsPayload } from "../../state/home/slice";
+import type { AppState } from "../../state/store";
+import type { ReactNode } from "react";
 
 const Home = () => {
   const dispatch = useAppDispatch();

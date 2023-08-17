@@ -1,7 +1,7 @@
 // https://github.com/testing-library/jest-dom
 // https://github.com/clarkbw/jest-localstorage-mock/issues/125
 
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
 import "jest-localstorage-mock";
 import "cross-fetch/polyfill";
 

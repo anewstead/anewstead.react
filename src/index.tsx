@@ -1,11 +1,12 @@
 /* istanbul ignore file */
 
 import React from "react";
+
 import { createRoot } from "react-dom/client";
 
-import * as serviceWorker from "./serviceWorker";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
+import * as serviceWorker from "./serviceWorker";
 
 // Embed App into the HTML. Only!
 // all App code is then contained in the src folder

@@ -1,15 +1,18 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
+
 import { expect } from "@storybook/jest";
 import { within } from "@storybook/testing-library";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+import { mainDataMock } from "../../../test-utils/msw/mockJson";
+import { initialState as homeInitialState } from "../../state/home/state";
+import { setupStore } from "../../state/store";
 
 import Home from "./Home";
+
 import type { IMainData } from "../../state/main-data/state";
-import { initialState as homeInitialState } from "../../state/home/state";
-import { mainDataMock } from "../../../test-utils/msw/mockJson";
-import { setupStore } from "../../state/store";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 

@@ -1,11 +1,13 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Provider as ReduxProvider } from "react-redux";
 
-import AppRoutes from "./AppRoutes";
+import { Provider as ReduxProvider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+import store from "../state/store";
 import MainDataLoader from "../wrappers/main-data-loader";
 import ThemeWrapper from "../wrappers/theme-wrapper";
-import store from "../state/store";
+
+import AppRoutes from "./AppRoutes";
 
 /**
  * React.StrictMode intentionally double-invokes some functions in dev mode to help detect issues

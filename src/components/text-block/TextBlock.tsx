@@ -1,7 +1,8 @@
-import DOMPurify from "dompurify";
 import React from "react";
-import parse from "html-react-parser";
+
 import { Box, Paper, Typography } from "@mui/material";
+import DOMPurify from "dompurify";
+import parse from "html-react-parser";
 
 import cls from "./textBlock.module.scss";
 

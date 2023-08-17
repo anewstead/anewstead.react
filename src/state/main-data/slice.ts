@@ -1,12 +1,13 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 
+import { loadMainData } from "../../services/loadMainData";
+
 import {
   getSessionMainData,
   removeSessionMainData,
   setSessionMainData,
 } from "./helpers";
 import { initialState } from "./state";
-import { loadMainData } from "../../services/loadMainData";
 
 // if session cache return it otherwise load
 export const FETCH_MAIN_DATA = createAsyncThunk("FETCH_MAIN_DATA", async () => {

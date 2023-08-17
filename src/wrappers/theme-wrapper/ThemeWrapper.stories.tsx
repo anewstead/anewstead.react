@@ -1,13 +1,16 @@
 import React from "react";
+
 import { Button, useTheme } from "@mui/material";
-import type { Meta, StoryObj } from "@storybook/react";
 import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
-import ThemeWrapper from "./ThemeWrapper";
-import { retrieveThemeName } from "./helpers";
-import { useThemeWrapperContext } from "./ThemeWrapperContext";
 import { waitForTimeout } from "../../../test-utils/waitFor";
+
+import { retrieveThemeName } from "./helpers";
+import ThemeWrapper from "./ThemeWrapper";
+import { useThemeWrapperContext } from "./ThemeWrapperContext";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof ThemeWrapper> = {

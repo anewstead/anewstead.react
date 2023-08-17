@@ -1,13 +1,16 @@
 import React from "react";
+
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
-import type { ReactNode } from "react";
+
+import theme from "../../style/theme";
 
 import ThemeMode from "./ThemeMode";
-import theme from "../../style/theme";
+
 import type { IThemeName } from "../../style/theme";
+import type { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;

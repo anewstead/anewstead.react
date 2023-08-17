@@ -1,7 +1,8 @@
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import React from "react";
-import clsx from "clsx";
+
+import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { Box, Button } from "@mui/material";
+import clsx from "clsx";
 
 import cls from "./carouselButton.module.scss";
 

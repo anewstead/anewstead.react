@@ -1,12 +1,14 @@
 import "slick-carousel/slick/slick.css";
 
 import React from "react";
-import Slider from "react-slick";
-import { Box, useTheme } from "@mui/material";
-import type { Settings as SlickSettings } from "react-slick";
 
-import CarouselButton from "./CarouselButton";
+import { Box, useTheme } from "@mui/material";
+import Slider from "react-slick";
+
 import cls from "./carousel.module.scss";
+import CarouselButton from "./CarouselButton";
+
+import type { Settings as SlickSettings } from "react-slick";
 
 type Props = {
   slides: JSX.Element[];

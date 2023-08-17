@@ -1,17 +1,18 @@
 // based on:
 // https://redux.js.org/usage/writing-tests#example-app-code
 
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+
+import { homeReducer } from "./home/slice";
+import { mainDataReducer } from "./main-data/slice";
+
 import type {
   PreloadedState,
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { useDispatch, useSelector } from "react-redux";
-
-import { homeReducer } from "./home/slice";
-import { mainDataReducer } from "./main-data/slice";
 
 const appReducer = combineReducers({
   home: homeReducer,

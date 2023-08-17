@@ -1,15 +1,22 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Provider } from "react-redux";
+
 import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
-import { withRouter } from "storybook-addon-react-router-v6";
+import { Provider } from "react-redux";
+import { Outlet } from "react-router-dom";
+import {
+  reactRouterParameters,
+  withRouter,
+} from "storybook-addon-react-router-v6";
+
+import { waitForTimeout } from "../../../test-utils/waitFor";
+import store from "../../state/store";
+import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 
 import HeadNav from "./HeadNav";
-import store from "../../state/store";
+
 import type { AppState } from "../../state/store";
-import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof HeadNav> = {
@@ -47,6 +54,21 @@ export const Default: Story = {
       return <Provider store={store}>{Story()}</Provider>;
     },
   ],
+  parameters: {
+    // routing: '/about' as empty child outlet so the page does'nt navigate away on click
+    reactRouter: reactRouterParameters({
+      location: {
+        path: "/",
+      },
+      routing: [
+        {
+          path: "/",
+          useStoryElement: true,
+          children: [{ path: "about", element: <Outlet /> }],
+        },
+      ],
+    }),
+  },
   args: {
     titleText: TITLE,
     subtitleText: SUB_TITLE,
