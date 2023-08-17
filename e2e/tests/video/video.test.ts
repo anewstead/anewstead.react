@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = "http://localhost:3003/project/1"; // known video
+  const PAGE_URL = "/project/1"; // known video
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   const elem = await page.getByTestId("app-layout");
@@ -50,7 +50,7 @@ test("the video plays", async ({ page }) => {
 });
 
 test("the video poster loaded", async ({ page }) => {
-  const path = "./tests/video/tmp";
+  const path = `${__dirname}/tmp`;
   const img1 = `${path}/1.png`;
   const img2 = `${path}/2.png`;
   const imgD1 = `${path}/diff1-2.png`;
