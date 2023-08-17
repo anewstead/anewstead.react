@@ -4,7 +4,7 @@ import { imgDiff } from "img-diff-js";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = "http://localhost:3003/project/0";
+  const PAGE_URL = "/project/0";
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   const elem = await page.getByTestId("app-layout");
@@ -15,7 +15,7 @@ test("gallery next prev", async ({ page }) => {
   const PREV_BUTTON = "button[aria-label=prev]";
   const NEXT_BUTTON = "button[aria-label=next]";
   const SLICK_LIST = ".slick-list";
-  const path = "./tests/gallery/tmp";
+  const path = `${__dirname}/tmp`;
   const img1 = `${path}/1.png`;
   const img2 = `${path}/2.png`;
   const img3 = `${path}/3.png`;

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 import { waitForTransitionPW } from "../../test-utils/waitFor";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = "http://localhost:3003";
+  const PAGE_URL = "/";
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   const elem = await page.getByTestId("app-layout");

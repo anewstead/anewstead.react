@@ -11,6 +11,7 @@
 **/test-results
 **/playwright-report
 **/playwright/.cache
+/e2e/report
 
 # next.js
 /.next/
@@ -24,6 +25,8 @@ tsconfig.tsbuildinfo
 
 # misc
 .DS_Store
+*_temp
+*temp
 *_tmp
 *tmp
 
