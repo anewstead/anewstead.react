@@ -4,7 +4,6 @@ import { expect } from "@storybook/jest";
 import { userEvent, within } from "@storybook/testing-library";
 
 import { waitForTransition } from "../../../test-utils/waitFor";
-import { BASE_CONTENT_URL } from "../../const";
 
 import Carousel from "./Carousel";
 
@@ -20,9 +19,18 @@ type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
 const imageData = [
-  { url: `${BASE_CONTENT_URL}img/gallery/gx_01.jpg`, alt: "mac1" },
-  { url: `${BASE_CONTENT_URL}img/gallery/gx_02.jpg`, alt: "mac2" },
-  { url: `${BASE_CONTENT_URL}img/gallery/gx_03.jpg`, alt: "mac3" },
+  {
+    url: "https://media.graphassets.com/output=format:jpg/3xnDvAVbROkrwjRYKUQo",
+    alt: "mac1",
+  },
+  {
+    url: "https://media.graphassets.com/output=format:jpg/X8RUyEpRkeTWvLnNk7IA",
+    alt: "mac2",
+  },
+  {
+    url: "https://media.graphassets.com/output=format:jpg/fYpU6VYcQFyrJA2mHI54",
+    alt: "mac3",
+  },
 ];
 
 const slideImages = imageData.map((item) => {

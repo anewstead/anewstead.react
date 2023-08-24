@@ -5,7 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import cls from "./home.module.scss";
 
-const HomeThumb = (props: { id: number; url: string; alt: string }) => {
+const HomeThumb = (props: { id: string; url: string; alt: string }) => {
   const { id, url, alt } = props;
 
   return (

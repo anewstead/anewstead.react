@@ -16,7 +16,7 @@ const MainDataLoader = (props: Props) => {
 
   const dispatch = useAppDispatch();
 
-  const { data, error, loaded, loading } = useAppSelector((state) => {
+  const { errors, loaded, loading, rejected } = useAppSelector((state) => {
     return state.mainData;
   });
 
@@ -34,24 +34,18 @@ const MainDataLoader = (props: Props) => {
   };
 
   useEffect(() => {
-    if (!loaded && !error && !loading) {
+    if (!loaded && !rejected && !loading) {
       dispatch(FETCH_MAIN_DATA());
     }
-  }, [dispatch, error, loaded, loading]);
+  }, [dispatch, rejected, loaded, loading]);
 
-  if (!loaded && !error) {
+  if (!loaded && !rejected) {
     return feedback(<CircularProgress data-testid="maindata-spinner" />);
   }
 
-  if (error) {
+  if (rejected || errors) {
     return feedback(
-      <h3 data-testid="maindata-failed">Failed to load site data 😢</h3>
-    );
-  }
-
-  if (loaded && data.length <= 0) {
-    return feedback(
-      <h3 data-testid="maindata-empty">Server returned empty data 😢</h3>
+      <h3 data-testid="maindata-failed">😢 {errors![0].message}</h3>
     );
   }
 

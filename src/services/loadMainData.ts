@@ -1,11 +1,59 @@
 import axios from "axios";
 
-import { MAIN_DATA_URL } from "../const";
+import { HYG_GQL } from "../const";
 
-// note. we return axios to a createAsyncThunk which handles success/fail
 export const loadMainData = async () => {
-  const url = MAIN_DATA_URL;
-  return axios.get(url).then((res) => {
+  return axios({
+    url: HYG_GQL,
+    method: "post",
+    data: {
+      query: `
+        {
+          projects(first: 50, orderBy: date_DESC) {
+            id
+            agency
+            brand
+            title
+            type
+            info {
+              html
+            }
+            thumb {
+              url(transformation: {document: {output: {format: jpg}}})
+              fileName
+            }
+            view {
+              ... on Video {
+                width
+                height
+                type
+                video {
+                  url
+                }
+                poster {
+                  url(transformation: {document: {output: {format: jpg}}})
+                }
+              }
+              ... on Iframe {
+                height
+                type
+                url
+                width
+              }
+              ... on Gallery {
+                width
+                type
+                height
+                gallery {
+                  url(transformation: {document: {output: {format: jpg}}})
+                }
+              }
+            }
+          }
+        }
+      `,
+    },
+  }).then((res) => {
     return res.data;
   });
 };
