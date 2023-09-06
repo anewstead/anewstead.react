@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { Card, Container, Grid } from "@mui/material";
 
-import { BASE_CONTENT_URL } from "../../const";
 import PageLayout from "../../layout/page-layout";
 import { INIT_DISPLAY_THUMBS } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
@@ -18,7 +17,7 @@ const Home = () => {
   const dispatch = useAppDispatch();
 
   const allThumbs = useAppSelector((state: AppState) => {
-    return state.mainData.data;
+    return state.mainData.data?.projects || [];
   });
 
   const displayThumbs = useAppSelector((state: AppState) => {
@@ -26,7 +25,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    if (!displayThumbs && allThumbs.length > 0) {
+    if (!displayThumbs && allThumbs?.length > 0) {
       const payload: InitDisplayThumbsPayload = { allThumbs };
       dispatch(INIT_DISPLAY_THUMBS(payload));
     }
@@ -37,9 +36,10 @@ const Home = () => {
   if (displayThumbs) {
     if (displayThumbs.length) {
       const thumbs = displayThumbs.map((obj) => {
-        const url = `${BASE_CONTENT_URL}/img/thumbs/${obj.thumb}`;
-        const alt = `${obj.client} - ${obj.brand} - ${obj.project}`;
-        return <HomeThumb key={obj.id} id={obj.id} url={url} alt={alt} />;
+        const alt = `${obj.agency} - ${obj.brand} - ${obj.title}`;
+        return (
+          <HomeThumb key={obj.id} id={obj.id} url={obj.thumb.url} alt={alt} />
+        );
       });
       content = thumbs;
     } else {

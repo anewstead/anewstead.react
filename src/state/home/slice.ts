@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { thumbHelper } from "./helpers";
 import { initialState } from "./state";
 
-import type { IMainData } from "../main-data/state";
+import type { IProject } from "../main-data/state";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type InitDisplayThumbsPayload = {
-  allThumbs: IMainData[];
+  allThumbs: IProject[];
 };
 
 export type NavCheckboxChangePayload = {
   checkbox: { id: string; checked: boolean };
-  allThumbs: IMainData[];
+  allThumbs: IProject[];
 };
 
 const slice = createSlice({

@@ -17,11 +17,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "as site",
+    title: "as website",
     width: "600px",
     height: "520px",
     iframeURL: "logo512.png",
-    failOverImageURL: "",
     checkAdBlock: false,
   },
   play: async ({ canvasElement, step }) => {
@@ -37,11 +36,10 @@ export const Default: Story = {
 
 export const BannerBlocked: Story = {
   args: {
-    title: "as banner",
+    title: "as advert",
     width: "600px",
     height: "200px",
     iframeURL: "logo512.png",
-    failOverImageURL: "logo192.png",
     checkAdBlock: true,
   },
   parameters: {
@@ -62,11 +60,10 @@ export const BannerBlocked: Story = {
 
 export const BannerNotBlocked: Story = {
   args: {
-    title: "as banner",
+    title: "as advert",
     width: "600px",
     height: "200px",
     iframeURL: "logo192.png",
-    failOverImageURL: "logo512.png",
     checkAdBlock: true,
   },
   play: async ({ canvasElement, step }) => {

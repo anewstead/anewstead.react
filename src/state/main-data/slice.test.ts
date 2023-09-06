@@ -9,7 +9,7 @@ import type { AppState } from "../store";
 
 afterEach(() => {
   // FETCH_MAIN_DATA caches loaded data
-  // must clear it before running next test
+  // this clears it before running next test
   removeSessionMainData();
 });
 
@@ -18,7 +18,7 @@ test("FETCH_MAIN_DATA fulfilled", async () => {
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as AppState;
   expect(state.mainData.loaded).toBeTruthy();
-  expect(state.mainData.data.length).toBeGreaterThan(0);
+  expect(state.mainData.data?.projects.length).toBeGreaterThan(0);
   expect(getSessionMainData()).toBeDefined();
 });
 
@@ -27,7 +27,7 @@ test("FETCH_MAIN_DATA rejected", async () => {
   const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as AppState;
-  expect(state.mainData.error).toBeTruthy();
-  expect(state.mainData.data).toEqual([]);
+  expect(state.mainData.rejected).toBeTruthy();
+  expect(state.mainData.data).toBeNull();
   expect(getSessionMainData()).toBeNull();
 });

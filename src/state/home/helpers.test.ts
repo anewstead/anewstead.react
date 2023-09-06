@@ -1,22 +1,25 @@
 import { thumbHelper } from "./helpers";
 
 import type { ICheckbox } from "./state";
-import type { IMainData } from "../main-data/state";
+import type { IMainData, IProject } from "../main-data/state";
+
+const website = { type: "website" } as IProject;
+const app = { type: "app" } as IProject;
+const advert = { type: "advert" } as IProject;
+
+const data: IMainData = {
+  projects: [website, website, website, website, app, app, advert],
+};
 
 describe("thumbHelper", () => {
-  const site = { type: "site" } as IMainData;
-  const app = { type: "app" } as IMainData;
-  const banner = { type: "banner" } as IMainData;
-  const data = [site, site, site, site, app, app, banner];
-
   const cb = [
-    { id: "site", checked: true },
+    { id: "website", checked: true },
     { id: "app", checked: true },
-    { id: "banner", checked: true },
+    { id: "advert", checked: true },
   ] as ICheckbox[];
 
   test("return all (length 7/7)", () => {
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(7);
   });
 
@@ -24,15 +27,15 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = false;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(0);
   });
 
-  test("return site only (length 4/7)", () => {
+  test("return website only (length 4/7)", () => {
     cb[0].checked = true;
     cb[1].checked = false;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(4);
   });
 
@@ -40,23 +43,23 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = true;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(2);
   });
 
-  test("return banner only (length 1/7)", () => {
+  test("return advert only (length 1/7)", () => {
     cb[0].checked = false;
     cb[1].checked = false;
     cb[2].checked = true;
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(1);
   });
 
-  test("return app and banner (length 3/7)", () => {
+  test("return app and advert (length 3/7)", () => {
     cb[0].checked = false;
     cb[1].checked = true;
     cb[2].checked = true;
-    const thumbs = thumbHelper(data, cb);
+    const thumbs = thumbHelper(data.projects, cb);
     expect(thumbs).toHaveLength(3);
   });
 });

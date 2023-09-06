@@ -1,22 +1,19 @@
 import { rest } from "msw";
 
-import { MAIN_DATA_URL } from "../../../src/const";
-import { mainDataMock } from "../mockJson";
+import { HYG_GQL } from "../../../src/const";
+import { sampleFetchData, sampleFetchError } from "../mockJson";
 
-export const mswLoadMainData = rest.get(MAIN_DATA_URL, (req, res, ctx) => {
-  return res(ctx.status(200), ctx.json(mainDataMock));
+export const mswLoadMainData = rest.post(HYG_GQL, (req, res, ctx) => {
+  return res(ctx.status(200), ctx.json(sampleFetchData));
 });
 
-export const mswLoadMainDataNoContent = rest.get(
-  MAIN_DATA_URL,
-  (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([]));
-  }
-);
+export const mswLoadMainDataNoContent = rest.post(HYG_GQL, (req, res, ctx) => {
+  return res(ctx.status(200), ctx.json(sampleFetchError));
+});
 
-export const mswLoadMainDataReject = rest.get(
-  MAIN_DATA_URL,
-  (req, res, ctx) => {
-    return res(ctx.status(400), ctx.json({ message: "msw intended reject" }));
-  }
-);
+export const mswLoadMainDataReject = rest.post(HYG_GQL, (req, res, ctx) => {
+  return res(
+    ctx.status(400),
+    ctx.json({ message: "400: msw intended reject" })
+  );
+});

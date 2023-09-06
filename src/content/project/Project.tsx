@@ -7,7 +7,6 @@ import Carousel from "../../components/carousel";
 import InFrame from "../../components/in-frame";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
-import { BASE_CONTENT_URL, BASE_VIDEO_URL } from "../../const";
 import PageLayout from "../../layout/page-layout";
 import { useAppSelector } from "../../state/store";
 import NoMatch from "../no-match/NoMatch";
@@ -19,57 +18,55 @@ import type { AppState } from "../../state/store";
 const Project: React.FC = () => {
   const { id } = useParams();
 
-  const mainData = useAppSelector((state: AppState) => {
-    return state.mainData.data;
+  const projectsData = useAppSelector((state: AppState) => {
+    /* istanbul ignore next -- @preserve */
+    return state.mainData.data?.projects || [];
   });
 
-  const data = mainData.find((obj) => {
-    return Number(obj.id) === Number(id);
+  const project = projectsData.find((obj) => {
+    return obj.id === id;
   });
 
-  if (!data) {
+  if (!project) {
     return <NoMatch />;
   }
 
-  const titleText = data.client;
+  const titleText = project.agency;
 
-  const hyphen = data.brand && data.project ? " - " : "";
-  const subtitleText = `${data.brand}${hyphen}${data.project}`;
+  const hyphen = project.brand && project.title ? " - " : "";
+  const subtitleText = `${project.brand}${hyphen}${project.title}`;
 
   let content = <></>;
 
-  switch (data.view.type) {
+  switch (project.view.type) {
     case "gallery": {
-      const slides = data.view.stills.map((obj, i) => {
-        const url = `${BASE_CONTENT_URL}img/gallery/${obj}`;
-        const alt = `${data.brand} ${data.project} image ${i}`;
-        return <img src={url} alt={`${alt} ${i}`} key={obj} />;
+      const slides = project.view.gallery.map((obj, i) => {
+        const alt = `${project.brand} ${project.title} image ${i}`;
+        return <img src={obj.url} alt={`${alt} ${i}`} key={obj.url} />;
       });
       content = <Carousel slides={slides} />;
       break;
     }
 
     case "video": {
-      const videoURL = `${BASE_VIDEO_URL}${data.view.href}`;
-      const posterURL = `${BASE_CONTENT_URL}img/poster/${data.view.poster}`;
-      content = <Video videoURL={videoURL} posterURL={posterURL} />;
+      content = (
+        <Video
+          videoURL={project.view.video.url}
+          posterURL={project.view.poster.url}
+        />
+      );
       break;
     }
 
     case "iframe": {
-      const { width } = data.view;
-      const { height } = data.view;
-      const iframeURL = `${BASE_CONTENT_URL}${data.view.href}`;
-      const failOverImageURL = `${BASE_CONTENT_URL}${data.view.still}`;
-      const title = `${data.brand} ${data.project}`;
-      const checkAdBlock = data.type === "banner";
+      const title = `${project.brand} ${project.title}`;
+      const checkAdBlock = project.type === "advert";
       content = (
         <InFrame
           title={title}
-          width={width}
-          height={height}
-          iframeURL={iframeURL}
-          failOverImageURL={failOverImageURL}
+          width={project.view.width}
+          height={project.view.height}
+          iframeURL={project.view.url}
           checkAdBlock={checkAdBlock}
         />
       );
@@ -88,11 +85,11 @@ const Project: React.FC = () => {
     >
       <Container
         className={cls.project}
-        style={{ maxWidth: data.view.width }}
+        style={{ maxWidth: project.view.width }}
         data-testid="project-page"
       >
         {content}
-        <TextBlock htmlText={data.info} />
+        <TextBlock htmlText={project.info.html} />
       </Container>
     </PageLayout>
   );

@@ -5,12 +5,18 @@ import { within } from "@storybook/testing-library";
 import { Provider } from "react-redux";
 import { withRouter } from "storybook-addon-react-router-v6";
 
-import { mainDataMock } from "../../../test-utils/msw/mockJson";
+import {
+  galleryProjectData,
+  iframeProjectData,
+  unknownProjectTypeData,
+  videoProjectData,
+} from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../../state/store";
 
 import Project from "./Project";
 
-import type { IMainData } from "../../state/main-data/state";
+import type { IFetchMainDataState } from "../../state/main-data/state";
+import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -21,33 +27,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
-const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
-
-const dataGallery = MAIN_DATA[0];
-
-const dataVideo = MAIN_DATA[1];
-
-const dataIframe = MAIN_DATA[4];
-
-const dataBadViewType = {
-  ...MAIN_DATA[0],
-  view: {
-    type: "testNoMatch",
-  },
-} as IMainData;
-
-const loadedData = {
+const loadedData: IFetchMainDataState = {
+  data: null,
+  errors: undefined,
   loading: false,
   loaded: true,
-  error: false,
+  rejected: false,
 };
 
 // -----------------------------------------------------------------------------
 
-const BadViewTypeState = {
+const BadViewTypeState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: [dataBadViewType],
+    data: {
+      projects: [unknownProjectTypeData],
+    },
   },
 };
 
@@ -55,7 +50,7 @@ export const Default: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: BadViewTypeState.mainData.data[0].id },
+      routeParams: { id: BadViewTypeState.mainData.data?.projects[0].id },
     },
   },
   decorators: [
@@ -81,10 +76,12 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-const galleryState = {
+const galleryState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: [dataGallery],
+    data: {
+      projects: [galleryProjectData],
+    },
   },
 };
 
@@ -92,7 +89,7 @@ export const GalleryPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: galleryState.mainData.data[0].id },
+      routeParams: { id: galleryState.mainData.data?.projects[0].id },
     },
   },
   decorators: [
@@ -118,10 +115,10 @@ export const GalleryPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const videoState = {
+const videoState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: [dataVideo],
+    data: { projects: [videoProjectData] },
   },
 };
 
@@ -129,7 +126,7 @@ export const VideoPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: videoState.mainData.data[0].id },
+      routeParams: { id: videoState.mainData.data?.projects[0].id },
     },
   },
   decorators: [
@@ -153,10 +150,10 @@ export const VideoPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const inFrameState = {
+const inFrameState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: [dataIframe],
+    data: { projects: [iframeProjectData] },
   },
 };
 
@@ -164,7 +161,7 @@ export const InFramePage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: inFrameState.mainData.data[0].id },
+      routeParams: { id: inFrameState.mainData.data?.projects[0].id },
     },
   },
   decorators: [
@@ -215,3 +212,5 @@ export const UnknownProject: Story = {
     });
   },
 };
+
+// -----------------------------------------------------------------------------

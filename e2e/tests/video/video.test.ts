@@ -1,8 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
+import { videoProjectData } from "../../../test-utils/msw/mockJson";
+
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = "/project/1"; // known video
+  const PAGE_URL = `/project/${videoProjectData.id}`; // known video
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
   const elem = await page.getByTestId("app-layout");

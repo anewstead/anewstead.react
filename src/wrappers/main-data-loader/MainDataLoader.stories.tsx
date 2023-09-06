@@ -13,6 +13,7 @@ import { setupStore } from "../../state/store";
 
 import MainDataLoader from "./MainDataLoader";
 
+import type { IFetchMainDataState } from "../../state/main-data/state";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -25,11 +26,12 @@ type Story = StoryObj<typeof meta>;
 
 const defaultState = {
   mainData: {
+    data: null,
+    errors: undefined,
     loading: false,
     loaded: false,
-    error: false,
-    data: [],
-  },
+    rejected: false,
+  } satisfies IFetchMainDataState,
 };
 
 const Template: Story = {
@@ -45,7 +47,7 @@ const Template: Story = {
   render: (args) => {
     return (
       <MainDataLoader {...args}>
-        <div data-testid="child-content">Lorem Ipsum</div>
+        <div data-testid="child-content">Default content</div>
       </MainDataLoader>
     );
   },
@@ -70,7 +72,7 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-export const LoadFailed: Story = {
+export const LoadRejected: Story = {
   ...Template,
   parameters: {
     msw: {
@@ -80,7 +82,7 @@ export const LoadFailed: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step(
-      "renders spinner, removes it and renders failed message",
+      "renders spinner, removes it, renders failed message",
       async () => {
         const spinner = canvas.getByTestId("maindata-spinner");
         expect(spinner).toBeInTheDocument();
@@ -94,7 +96,7 @@ export const LoadFailed: Story = {
 
 // -----------------------------------------------------------------------------
 
-export const LoadedEmpty: Story = {
+export const LoadedError: Story = {
   ...Template,
   parameters: {
     msw: {
@@ -104,12 +106,12 @@ export const LoadedEmpty: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step(
-      "renders spinner, removes it and renders empty data message",
+      "renders spinner, removes it, renders loaded error message",
       async () => {
         const spinner = canvas.getByTestId("maindata-spinner");
         expect(spinner).toBeInTheDocument();
         await waitForElementToBeRemoved(spinner);
-        const content = canvas.getByTestId("maindata-empty");
+        const content = canvas.getByTestId("maindata-failed");
         expect(content).toBeInTheDocument();
       }
     );

@@ -5,16 +5,13 @@ import { within } from "@storybook/testing-library";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { mainDataMock } from "../../../test-utils/msw/mockJson";
+import { sampleFetchData } from "../../../test-utils/msw/mockJson";
 import { initialState as homeInitialState } from "../../state/home/state";
 import { setupStore } from "../../state/store";
 
 import Home from "./Home";
 
-import type { IMainData } from "../../state/main-data/state";
 import type { Meta, StoryObj } from "@storybook/react";
-
-const MAIN_DATA: IMainData[] = JSON.parse(JSON.stringify(mainDataMock));
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Home> = {
@@ -26,10 +23,11 @@ type Story = StoryObj<typeof meta>;
 
 const defaultState = {
   mainData: {
+    data: sampleFetchData.data,
+    errors: undefined,
     loading: false,
     loaded: true,
-    error: false,
-    data: MAIN_DATA,
+    rejected: false,
   },
   home: {
     ...homeInitialState,
@@ -66,10 +64,11 @@ export const Default: Story = {
 
 const makeSelectionState = {
   mainData: {
+    data: null,
+    errors: undefined,
     loading: false,
     loaded: true,
-    error: false,
-    data: [],
+    rejected: false,
   },
   home: {
     ...homeInitialState,
