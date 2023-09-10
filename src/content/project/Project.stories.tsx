@@ -50,7 +50,7 @@ export const Default: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: BadViewTypeState.mainData.data?.projects[0].id },
+      routeParams: { uid: BadViewTypeState.mainData.data?.projects[0].uid },
     },
   },
   decorators: [
@@ -89,7 +89,7 @@ export const GalleryPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: galleryState.mainData.data?.projects[0].id },
+      routeParams: { uid: galleryState.mainData.data?.projects[0].uid },
     },
   },
   decorators: [
@@ -126,7 +126,7 @@ export const VideoPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: videoState.mainData.data?.projects[0].id },
+      routeParams: { uid: videoState.mainData.data?.projects[0].uid },
     },
   },
   decorators: [
@@ -161,7 +161,7 @@ export const InFramePage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:id",
-      routeParams: { id: inFrameState.mainData.data?.projects[0].id },
+      routeParams: { uid: inFrameState.mainData.data?.projects[0].uid },
     },
   },
   decorators: [

@@ -3,7 +3,7 @@ export type IProjectTech = "flash" | "html";
 export type IProjectViewType = "gallery" | "video" | "iframe" | "testNoMatch";
 
 export type IProject = {
-  id: string;
+  uid: string;
   agency: string;
   brand: string;
   title: string;

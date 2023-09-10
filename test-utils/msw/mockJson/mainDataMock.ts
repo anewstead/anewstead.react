@@ -4,7 +4,7 @@ import type {
 } from "../../../src/state/main-data/state";
 
 export const galleryProjectData: IProject = {
-  id: "cllm97g2ujmpj0bl7ng7futc6",
+  uid: "gx_labs",
   agency: "Haygarth",
   brand: "GX Labs",
   title: "G-Cide",
@@ -34,7 +34,7 @@ export const galleryProjectData: IProject = {
 };
 
 export const videoProjectData: IProject = {
-  id: "cllmig35xkr3w0bmjk6991h2a",
+  uid: "itn_your_news",
   agency: "Global Beach",
   brand: "ITN",
   title: "Your News",
@@ -59,7 +59,7 @@ export const videoProjectData: IProject = {
 };
 
 export const iframeProjectData: IProject = {
-  id: "cllmls0tqkode0bmls4a4oenl",
+  uid: "halifax_adverts",
   agency: "TSL Digital",
   brand: "Halifax",
   title: "Hanna Barbara",
@@ -80,7 +80,7 @@ export const iframeProjectData: IProject = {
 
 export const unknownProjectTypeData: IProject = {
   ...galleryProjectData,
-  id: "non-existing-id",
+  uid: "non-existing-id",
   view: {
     ...galleryProjectData.view,
     type: "testNoMatch",

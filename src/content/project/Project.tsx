@@ -16,7 +16,7 @@ import cls from "./project.module.scss";
 import type { AppState } from "../../state/store";
 
 const Project: React.FC = () => {
-  const { id } = useParams();
+  const { uid } = useParams();
 
   const projectsData = useAppSelector((state: AppState) => {
     /* istanbul ignore next -- @preserve */
@@ -24,7 +24,7 @@ const Project: React.FC = () => {
   });
 
   const project = projectsData.find((obj) => {
-    return obj.id === id;
+    return obj.uid === uid;
   });
 
   if (!project) {

@@ -10,7 +10,7 @@ export const loadMainData = async () => {
       query: `
         {
           projects(first: 50, orderBy: date_DESC) {
-            id
+            uid
             agency
             brand
             title

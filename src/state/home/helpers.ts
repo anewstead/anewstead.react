@@ -27,6 +27,6 @@ export const thumbHelper = (
       );
     })
     .sort((a, b) => {
-      return Number(b.id) - Number(a.id);
+      return Number(b.uid) - Number(a.uid);
     });
 };

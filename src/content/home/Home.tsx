@@ -38,7 +38,7 @@ const Home = () => {
       const thumbs = displayThumbs.map((obj) => {
         const alt = `${obj.agency} - ${obj.brand} - ${obj.title}`;
         return (
-          <HomeThumb key={obj.id} id={obj.id} url={obj.thumb.url} alt={alt} />
+          <HomeThumb key={obj.uid} id={obj.uid} url={obj.thumb.url} alt={alt} />
         );
       });
       content = thumbs;
