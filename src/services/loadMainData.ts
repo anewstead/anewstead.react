@@ -1,59 +1,15 @@
-import axios from "axios";
+import allData from "./hygraph/allData.gql";
+import { ProjectOrderByInput } from "./hygraph/generated/graphql";
+import { gqlRequest } from "./hygraph/utils";
 
-import { HYG_GQL } from "../const";
+import type {
+  AllDataQuery,
+  AllDataQueryVariables,
+} from "./hygraph/generated/graphql";
 
 export const loadMainData = async () => {
-  return axios({
-    url: HYG_GQL,
-    method: "post",
-    data: {
-      query: `
-        {
-          projects(first: 50, orderBy: date_DESC) {
-            uid
-            agency
-            brand
-            title
-            type
-            info {
-              html
-            }
-            thumb {
-              url(transformation: {document: {output: {format: jpg}}})
-              fileName
-            }
-            view {
-              ... on Video {
-                width
-                height
-                type
-                video {
-                  url
-                }
-                poster {
-                  url(transformation: {document: {output: {format: jpg}}})
-                }
-              }
-              ... on Iframe {
-                height
-                type
-                url
-                width
-              }
-              ... on Gallery {
-                width
-                type
-                height
-                gallery {
-                  url(transformation: {document: {output: {format: jpg}}})
-                }
-              }
-            }
-          }
-        }
-      `,
-    },
-  }).then((res) => {
-    return res.data;
+  return gqlRequest<AllDataQuery, AllDataQueryVariables>(allData, {
+    first: 50,
+    orderBy: ProjectOrderByInput.DateDesc,
   });
 };

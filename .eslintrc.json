@@ -26,6 +26,8 @@
     "prettier"
   ],
 
+  "ignorePatterns": ["**/vendor/", "**/generated/"],
+
   "overrides": [
     {
       "files": ["**/*.stories.*"],
@@ -64,14 +66,18 @@
   "root": true,
 
   "rules": {
+    "@typescript-eslint/consistent-type-exports": "warn",
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/naming-convention": "warn",
+
     "@typescript-eslint/no-use-before-define": [
       "error",
       { "functions": false }
     ],
+
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
+
     "check-file/filename-naming-convention": [
       "error",
       {
@@ -80,14 +86,22 @@
       },
       { "ignoreMiddleExtensions": true }
     ],
+
     "check-file/folder-naming-convention": [
       "error",
-      { "src/!(__{tests,mocks}__)/**/": "KEBAB_CASE" }
+      { "src/!(__{tests,mocks}__|@*)/**/": "KEBAB_CASE" }
     ],
+
     "curly": "error",
+    "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
+
     "import/order": [
       "warn",
       {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
         "distinctGroup": true,
         "groups": [
           "builtin",
@@ -99,26 +113,23 @@
           "object",
           "type"
         ],
+        "newlines-between": "always",
         "pathGroups": [
           {
-            "pattern": "react+(|-native)",
             "group": "external",
+            "pattern": "react+(|-native)",
             "position": "before"
           },
           {
-            "pattern": "react+(|-native)",
             "group": "type",
+            "pattern": "react+(|-native)",
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react+(|-native)", "type"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "pathGroupsExcludedImportTypes": ["react+(|-native)", "type"]
       }
     ],
+
     "import/prefer-default-export": "off",
     "json/*": ["error", { "allowComments": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],
@@ -127,10 +138,12 @@
     "prefer-template": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
+
     "react/function-component-definition": [
       "warn",
       { "namedComponents": "arrow-function" }
     ],
+
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",

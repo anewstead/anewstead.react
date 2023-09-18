@@ -49,7 +49,7 @@ const BadViewTypeState: Pick<AppState, "mainData"> = {
 export const Default: Story = {
   parameters: {
     reactRouter: {
-      routePath: "/project/:id",
+      routePath: "/project/:uid",
       routeParams: { uid: BadViewTypeState.mainData.data?.projects[0].uid },
     },
   },
@@ -88,7 +88,7 @@ const galleryState: Pick<AppState, "mainData"> = {
 export const GalleryPage: Story = {
   parameters: {
     reactRouter: {
-      routePath: "/project/:id",
+      routePath: "/project/:uid",
       routeParams: { uid: galleryState.mainData.data?.projects[0].uid },
     },
   },
@@ -125,7 +125,7 @@ const videoState: Pick<AppState, "mainData"> = {
 export const VideoPage: Story = {
   parameters: {
     reactRouter: {
-      routePath: "/project/:id",
+      routePath: "/project/:uid",
       routeParams: { uid: videoState.mainData.data?.projects[0].uid },
     },
   },
@@ -160,7 +160,7 @@ const inFrameState: Pick<AppState, "mainData"> = {
 export const InFramePage: Story = {
   parameters: {
     reactRouter: {
-      routePath: "/project/:id",
+      routePath: "/project/:uid",
       routeParams: { uid: inFrameState.mainData.data?.projects[0].uid },
     },
   },
@@ -188,8 +188,8 @@ export const InFramePage: Story = {
 export const UnknownProject: Story = {
   parameters: {
     reactRouter: {
-      routePath: "/project/:id",
-      routeParams: { id: "unknown_id" },
+      routePath: "/project/:uid",
+      routeParams: { uid: "unknown_uid" },
     },
   },
   decorators: [

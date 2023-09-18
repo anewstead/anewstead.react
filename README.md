@@ -43,6 +43,7 @@ see .vscode/README.md for more information
 - MaterialUI
 - Jest, React Testing Library, Playwright
 - Storybook
+- Hygraph CMS, GraphQL
 
 # Structure
 ### "pages" vs "content"

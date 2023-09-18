@@ -1,8 +1,10 @@
 import path from "path";
+
+import { mergeConfig } from "vite";
+
 import type { AddonOptionsVite } from "@storybook/addon-coverage";
 import type { StorybookConfig } from "@storybook/react-vite";
 import type { UserConfig } from "vite";
-import { mergeConfig } from "vite";
 
 const addonCoverage = {
   name: "@storybook/addon-coverage",

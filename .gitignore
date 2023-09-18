@@ -28,6 +28,7 @@ tsconfig.tsbuildinfo
 *_temp
 *_tmp
 *tmp
+generated
 
 # debug
 npm-debug.log*
