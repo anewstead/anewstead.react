@@ -4,7 +4,7 @@ import type {
 } from "../../../src/state/main-data/state";
 
 export const galleryProjectData: IProject = {
-  uid: "gx_labs",
+  uid: "gxlabs",
   agency: "Haygarth",
   brand: "GX Labs",
   title: "G-Cide",
@@ -34,7 +34,7 @@ export const galleryProjectData: IProject = {
 };
 
 export const videoProjectData: IProject = {
-  uid: "itn_your_news",
+  uid: "itn-your-news",
   agency: "Global Beach",
   brand: "ITN",
   title: "Your News",
@@ -59,7 +59,7 @@ export const videoProjectData: IProject = {
 };
 
 export const iframeProjectData: IProject = {
-  uid: "halifax_adverts",
+  uid: "halifax-adverts",
   agency: "TSL Digital",
   brand: "Halifax",
   title: "Hanna Barbara",
