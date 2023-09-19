@@ -21,6 +21,11 @@ module.exports = {
 
   testEnvironment: "jsdom",
 
+  transform: {
+    "\\.(gql|graphql)$": "./jest-transform-gql.js",
+    "\\.[jt]sx?$": "babel-jest",
+  },
+
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|mjs|cjs|ts)$",
     "^.+\\.module\\.(css|sass|scss)$",
@@ -36,6 +41,7 @@ module.exports = {
     "!src/**/.*.[jt]s",
     "!src/**/index.[jt]s",
     "!src/**/*.style?(s).[jt]s",
+    "!src/**/generated/**",
   ],
 
   testMatch: ["**/*.test.[jt]s"],
