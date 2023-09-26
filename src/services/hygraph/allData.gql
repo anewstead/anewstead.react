@@ -1,4 +1,46 @@
-query allData($first: Int, $orderBy: ProjectOrderByInput) {
+fragment Fproject on Project {
+  uid
+  agency
+  brand
+  title
+  type
+  info {
+    html
+  }
+  thumb {
+    url(transformation: { document: { output: { format: jpg } } })
+    fileName
+  }
+  view {
+    ... on VideoView {
+      width
+      height
+      type
+      video {
+        url
+      }
+      poster {
+        url(transformation: { document: { output: { format: jpg } } })
+      }
+    }
+    ... on IframeView {
+      height
+      type
+      url
+      width
+    }
+    ... on GalleryView {
+      width
+      type
+      height
+      gallery {
+        url(transformation: { document: { output: { format: jpg } } })
+      }
+    }
+  }
+}
+
+query AllData($first: Int, $orderBy: ProjectOrderByInput) {
   global(where: { uid: "an_portfolio" }) {
     brand
   }
@@ -7,44 +49,6 @@ query allData($first: Int, $orderBy: ProjectOrderByInput) {
     info1
   }
   projects(first: $first, orderBy: $orderBy) {
-    uid
-    agency
-    brand
-    title
-    type
-    info {
-      html
-    }
-    thumb {
-      url(transformation: { document: { output: { format: jpg } } })
-      fileName
-    }
-    view {
-      ... on Video {
-        width
-        height
-        type
-        video {
-          url
-        }
-        poster {
-          url(transformation: { document: { output: { format: jpg } } })
-        }
-      }
-      ... on Iframe {
-        height
-        type
-        url
-        width
-      }
-      ... on Gallery {
-        width
-        type
-        height
-        gallery {
-          url(transformation: { document: { output: { format: jpg } } })
-        }
-      }
-    }
+    ...Fproject
   }
 }
