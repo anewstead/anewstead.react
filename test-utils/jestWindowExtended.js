@@ -6,8 +6,8 @@ import mediaQuery from "css-mediaquery";
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 // https://mui.com/material-ui/react-use-media-query/#testing
 // https://github.com/ericf/css-mediaquery
-export function createMatchMedia(props: {}) {
-  return (query: any) => {
+export function createMatchMedia(props) {
+  return (query) => {
     return {
       matches: mediaQuery.match(query, props),
       media: query,

@@ -1,10 +1,11 @@
 import react from "@vitejs/plugin-react";
 import bundleAnalyzer from "rollup-plugin-bundle-analyzer";
 import { defineConfig } from "vite";
+import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
 import graphqlLoader from "vite-plugin-graphql-loader";
 
-function chunkPolicy(id) {
+function chunkPolicy(id: string) {
   if (id.includes("node_modules")) {
     return "vendor";
   }
@@ -13,7 +14,14 @@ function chunkPolicy(id) {
 
 const dev = () => {
   return {
-    plugins: [react(), graphqlLoader(), codegen()],
+    plugins: [
+      react(),
+      graphqlLoader(),
+      codegen(),
+      checker({
+        typescript: true,
+      }),
+    ],
     css: {
       devSourcemap: true,
     },
@@ -29,7 +37,7 @@ const buildProd = () => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
+          manualChunks: (id: string) => {
             return chunkPolicy(id);
           },
         },
