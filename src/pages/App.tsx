@@ -10,8 +10,8 @@ import ThemeWrapper from "../wrappers/theme-wrapper";
 import AppRoutes from "./AppRoutes";
 
 /**
- * React.StrictMode intentionally double-invokes some functions in dev mode to help detect issues
- * notably the render function is called twice, see:
+ * React.StrictMode intentionally double-invokes some functions in dev mode to
+ * help detect issues notably the render function is called twice, see:
  * https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects
  */
 const App = () => {

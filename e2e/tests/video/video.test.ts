@@ -12,16 +12,16 @@ test.beforeEach(async ({ page }) => {
 });
 
 /**
- * its generally advised to test in chromium/firefox-nightly/playwright-webkit
+ * Its generally advised to test in chromium/firefox-nightly/playwright-webkit
  * but these may not support full media playback.
  *
- * during testing we probably only need check if a working media object not all the playback features.
- * so we just listen for the "waiting" event
- * a media element fires this as soon as it tries to initiate playback e.g. video.play()
+ * During testing we probably only need check if a working media object not all
+ * the playback features. so we just listen for the "waiting" event a media
+ * element fires this as soon as it tries to initiate playback e.g. video.play()
  * so regardless of what happens next we know we have a working media element
  * beyond this initial event others may not fire!
  *
- * if you need to test playback you should test in chrome/msedge
+ * If you need to test playback you should test in chrome/msedge
  * https://playwright.dev/docs/browsers
  */
 test("the video plays", async ({ page }) => {

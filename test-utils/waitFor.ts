@@ -1,8 +1,8 @@
 import type { Page } from "@playwright/test";
 
 /**
- * usage:
- * await waitForTimeout(200);
+ * Usage:\
+ * Await waitForTimeout(200);
  */
 export const waitForTimeout = async (ms: number) => {
   return new Promise<void>((resolve) => {
@@ -11,17 +11,18 @@ export const waitForTimeout = async (ms: number) => {
 };
 
 /**
- * waits for css transitions to end.
- * init:
- * returns if transition is not setup within 250ms, e.g.
- * the browser might skip and go to end state without events (to keep display in time).
- * if you find not at expected end state then the transition didnt exist on the specified element.
- * onEnd:
- * onward state may still need to propergate after transition so return is delayed 100ms.
- * e.g. a button might not be clickable.
- * usage:
- * userEvent.click(btnElement);
- * await waitForTransition(animElement);
+ * Waits for css transitions to end.\
+ * Init:\
+ * Returns if transition is not setup within 250ms, e.g.\
+ * The browser might skip and go to end state without events (to keep display in
+ * time). if you find not at expected end state then the transition didnt exist
+ * on the specified element.\
+ * OnEnd:\
+ * Onward state may still need to propergate after transition so return is
+ * delayed 100ms. e.g. a button might not be clickable.\
+ * Usage:\
+ * UserEvent.click(btnElement);\
+ * Await waitForTransition(animElement);
  */
 export const waitForTransition = async (el: HTMLElement | Element) => {
   await new Promise<void>((resolve) => {
@@ -44,10 +45,9 @@ export const waitForTransition = async (el: HTMLElement | Element) => {
 };
 
 /**
- * playwright version of waitForTransition()
- * usage:
- * page.click('.btnElement');
- * await waitForTransition(page, '.animElement');
+ * Playwright version of waitForTransition()\
+ * Usage: page.click('.btnElement');\
+ * Await waitForTransition(page, '.animElement');
  */
 export const waitForTransitionPW = async (page: Page, selector: string) => {
   await page.evaluate(async (sel) => {

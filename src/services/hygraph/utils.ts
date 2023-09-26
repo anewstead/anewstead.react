@@ -8,11 +8,11 @@ import { HYG_GQL } from "../../const";
 import type { ASTNode, DocumentNode } from "graphql/language/ast";
 
 /**
- * requires graphql files to be loadable as module:
- * vite: https://github.com/noiach/vite-plugin-graphql-loader
- * ts: graphql.d.ts > declare module "*.gql";
- * @param query from a .gql file
- * @returns string
+ * Graphql files will need to be loadable as module:\
+ * Vite: https://github.com/noiach/vite-plugin-graphql-loader
+ *
+ * @param query From a .gql file
+ * @returns String
  */
 const gqlToString = (query: DocumentNode) => {
   const AST: ASTNode = gql`
@@ -22,9 +22,10 @@ const gqlToString = (query: DocumentNode) => {
 };
 
 /**
- * custom fetcher
- * @param query from a .gql file
- * @param variables to pass to query
+ * Custom fetcher
+ *
+ * @param query From a .gql file
+ * @param variables To pass to query
  * @param options
  * @returns
  */
