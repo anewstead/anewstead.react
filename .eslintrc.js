@@ -1,23 +1,23 @@
 /**
- * airbnb requires/uses:
- * - eslint
- * - eslint-plugin-import
- * - eslint-plugin-react
- * - eslint-plugin-react-hooks
- * - eslint-plugin-jsx-a11y
- * airbnb-typescript uses:
+ * Airbnb requires/uses:
+ *
+ * - Eslint
+ * - Eslint-plugin-import
+ * - Eslint-plugin-react
+ * - Eslint-plugin-react-hooks
+ * - Eslint-plugin-jsx-a11y airbnb-typescript uses:
  * - @typescript-eslint/eslint-plugin
  * - @typescript-eslint/parser
  */
-{
-  "env": {
-    "browser": true,
-    "jasmine": true,
-    "jest": true,
-    "node": true
+module.exports = {
+  env: {
+    browser: true,
+    jasmine: true,
+    jest: true,
+    node: true,
   },
 
-  "extends": [
+  extends: [
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
@@ -26,50 +26,50 @@
     "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:storybook/recommended",
-    "prettier"
+    "prettier",
   ],
 
-  "ignorePatterns": ["**/vendor/", "**/generated/"],
+  ignorePatterns: ["**/vendor/", "**/generated/"],
 
-  "overrides": [
+  overrides: [
     {
-      "extends": ["plugin:@typescript-eslint/disable-type-checked"],
-      "files": ["**/*.{js,json}"]
+      extends: ["plugin:@typescript-eslint/disable-type-checked"],
+      files: ["**/*.{js,json}"],
     },
     {
-      "extends": [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      extends: [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
       ],
-      "files": ["**/*.{ts,tsx}"]
+      files: ["**/*.{ts,tsx}"],
     },
     {
-      "files": ["**/*.stories.*"],
-      "rules": {
-        "import/no-anonymous-default-export": "off"
-      }
-    }
+      files: ["**/*.stories.*"],
+      rules: {
+        "import/no-anonymous-default-export": "off",
+      },
+    },
   ],
 
-  "parser": "@typescript-eslint/parser",
+  parser: "@typescript-eslint/parser",
 
-  "parserOptions": {
-    "extraFileExtensions": [".json"],
-    "project": ["./tsconfig.eslint.json"]
+  parserOptions: {
+    extraFileExtensions: [".json"],
+    project: ["./tsconfig.eslint.json"],
   },
 
-  "plugins": ["react", "@typescript-eslint", "check-file", "json"],
+  plugins: ["react", "@typescript-eslint", "check-file", "json"],
 
-  "root": true,
+  root: true,
 
-  "rules": {
+  rules: {
     "@typescript-eslint/ban-ts-comment": [
       "warn",
       {
         "ts-check": false,
         "ts-expect-error": "allow-with-description",
         "ts-ignore": "allow-with-description",
-        "ts-nocheck": "allow-with-description"
-      }
+        "ts-nocheck": "allow-with-description",
+      },
     ],
 
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
@@ -79,14 +79,11 @@
 
     "@typescript-eslint/no-floating-promises": "off",
 
-    "@typescript-eslint/no-use-before-define": [
-      "error",
-      { "functions": false }
-    ],
+    "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
 
     "@typescript-eslint/prefer-nullish-coalescing": [
       "error",
-      { "ignoreMixedLogicalExpressions": true }
+      { ignoreMixedLogicalExpressions: true },
     ],
 
     "arrow-body-style": ["error", "always"],
@@ -96,43 +93,43 @@
       "error",
       {
         "src/(!index)/**/*.{jsx,tsx}": "PASCAL_CASE",
-        "src/**/*.{js,ts,css,scss}": "CAMEL_CASE"
+        "src/**/*.{js,ts,css,scss}": "CAMEL_CASE",
       },
-      { "ignoreMiddleExtensions": true }
+      { ignoreMiddleExtensions: true },
     ],
 
     "check-file/folder-naming-convention": [
       "error",
-      { "src/!(__{tests,mocks}__|@*)/**/": "KEBAB_CASE" }
+      { "src/!(__{tests,mocks}__|@*)/**/": "KEBAB_CASE" },
     ],
 
-    "curly": "error",
+    curly: "error",
     "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
 
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
+        devDependencies: [
           "*",
           "e2e/**",
           ".storybook/**",
           "test-utils/**",
           "**/__mocks__/**",
           "**/__tests__/**",
-          "**/*.@(test|spec|stories).{js,jsx,ts,tsx}"
-        ]
-      }
+          "**/*.@(test|spec|stories).{js,jsx,ts,tsx}",
+        ],
+      },
     ],
 
     "import/order": [
       "warn",
       {
-        "alphabetize": {
-          "caseInsensitive": true,
-          "order": "asc"
+        alphabetize: {
+          caseInsensitive: true,
+          order: "asc",
         },
-        "distinctGroup": true,
-        "groups": [
+        distinctGroup: true,
+        groups: [
           "builtin",
           "external",
           "internal",
@@ -140,30 +137,30 @@
           "sibling",
           "index",
           "object",
-          "type"
+          "type",
         ],
         "newlines-between": "always",
-        "pathGroups": [
+        pathGroups: [
           {
-            "group": "external",
-            "pattern": "react+(|-native)",
-            "position": "before"
+            group: "external",
+            pattern: "react+(|-native)",
+            position: "before",
           },
           {
-            "group": "type",
-            "pattern": "react+(|-native)",
-            "position": "after"
-          }
+            group: "type",
+            pattern: "react+(|-native)",
+            position: "after",
+          },
         ],
-        "pathGroupsExcludedImportTypes": ["react+(|-native)", "type"]
-      }
+        pathGroupsExcludedImportTypes: ["react+(|-native)", "type"],
+      },
     ],
 
     "import/prefer-default-export": "off",
-    "json/*": ["error", { "allowComments": true }],
-    "no-confusing-arrow": ["error", { "allowParens": true }],
+    "json/*": ["error", { allowComments: true }],
+    "no-confusing-arrow": ["error", { allowParens: true }],
     "no-mixed-operators": "error",
-    "no-void": ["error", { "allowAsStatement": true }],
+    "no-void": ["error", { allowAsStatement: true }],
 
     "prefer-arrow-callback": "error",
     "prefer-template": "error",
@@ -172,12 +169,12 @@
 
     "react/function-component-definition": [
       "warn",
-      { "namedComponents": "arrow-function" }
+      { namedComponents: "arrow-function" },
     ],
 
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
-    "react/require-default-props": "off"
-  }
-}
+    "react/require-default-props": "off",
+  },
+};
