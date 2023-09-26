@@ -65,9 +65,9 @@ export const Mobile: Story = {
 
     await step("render on mobile", async () => {
       const title = canvas.getByText(TITLE);
-      expect(title).toHaveClass("MuiTypography-h6");
+      await expect(title).toHaveClass("MuiTypography-h6");
       const subTitle = canvas.getByText(SUB_TITLE);
-      expect(subTitle).toHaveClass("MuiTypography-h6");
+      await expect(subTitle).toHaveClass("MuiTypography-h6");
     });
   },
 };

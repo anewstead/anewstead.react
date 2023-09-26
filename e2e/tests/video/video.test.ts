@@ -1,27 +1,27 @@
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { videoProjectData } from "../../../test-utils/msw/mockJson";
+import { projectVideoApp } from "../../../test-utils/msw/mockJson";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = `/project/${videoProjectData.id}`; // known video
+  const PAGE_URL = `/project/${projectVideoApp.uid}`; // known video
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
-  const elem = await page.getByTestId("app-layout");
+  const elem = page.getByTestId("app-layout");
   await expect(elem).toBeVisible();
 });
 
 /**
- * its generally advised to test in chromium/firefox-nightly/playwright-webkit
+ * Its generally advised to test in chromium/firefox-nightly/playwright-webkit
  * but these may not support full media playback.
  *
- * during testing we probably only need check if a working media object not all the playback features.
- * so we just listen for the "waiting" event
- * a media element fires this as soon as it tries to initiate playback e.g. video.play()
+ * During testing we probably only need check if a working media object not all
+ * the playback features. so we just listen for the "waiting" event a media
+ * element fires this as soon as it tries to initiate playback e.g. video.play()
  * so regardless of what happens next we know we have a working media element
  * beyond this initial event others may not fire!
  *
- * if you need to test playback you should test in chrome/msedge
+ * If you need to test playback you should test in chrome/msedge
  * https://playwright.dev/docs/browsers
  */
 test("the video plays", async ({ page }) => {
@@ -45,7 +45,9 @@ test("the video plays", async ({ page }) => {
       }
       vid.addEventListener("waiting", handleSuccess);
       vid.addEventListener("error", handleFail);
-      vid.play();
+      vid.play().catch(() => {
+        handleFail();
+      });
     });
   }, video);
   expect(videoLoads).toBeTruthy();

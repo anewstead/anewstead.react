@@ -1,15 +1,15 @@
-import type { IProject, IProjectType } from "../main-data/state";
+import { ProjectType } from "../../services/hygraph/generated/graphql";
 
-export type IProjectLabel = "Websites" | "Apps" | "Adverts";
+import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
 
 export type ICheckbox = {
-  id: IProjectType;
-  label: IProjectLabel;
+  id: ProjectType;
+  label: string;
   checked: boolean;
 };
 
 type IHomePageState = {
-  displayThumbs: IProject[] | undefined;
+  displayThumbs: FprojectFragment[] | undefined;
   nav: {
     checkboxes: ICheckbox[];
   };
@@ -20,17 +20,17 @@ export const initialState: IHomePageState = {
   nav: {
     checkboxes: [
       {
-        id: "website",
+        id: ProjectType.Website,
         label: "Websites",
         checked: true,
       },
       {
-        id: "app",
+        id: ProjectType.App,
         label: "Apps",
         checked: true,
       },
       {
-        id: "advert",
+        id: ProjectType.Advert,
         label: "Adverts",
         checked: true,
       },

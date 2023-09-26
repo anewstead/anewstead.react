@@ -11,7 +11,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="project/:id" element={<Project />} />
+      <Route path="project/:uid" element={<Project />} />
       <Route path="about" element={<About />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>

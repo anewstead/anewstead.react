@@ -24,8 +24,8 @@ export const Default: Story = {
 
     await step("it render expected content", async () => {
       const footer = canvas.getByRole("contentinfo");
-      expect(footer).toBeInTheDocument();
-      expect(footer).toHaveTextContent(`© ${TEXT} ${DATE}`);
+      await expect(footer).toBeInTheDocument();
+      await expect(footer).toHaveTextContent(`© ${TEXT} ${DATE}`);
     });
   },
 };

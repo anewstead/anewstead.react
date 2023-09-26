@@ -46,7 +46,7 @@ export const Mobile: Story = {
 
     await step("render on mobile", async () => {
       const brand = canvas.getByText(BRAND);
-      expect(brand).toBeInTheDocument();
+      await expect(brand).toBeInTheDocument();
     });
 
     await step("toggles mobile nav", async () => {

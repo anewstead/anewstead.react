@@ -16,8 +16,8 @@ import type { ReactNode } from "react";
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  const allThumbs = useAppSelector((state: AppState) => {
-    return state.mainData.data?.projects || [];
+  const projects = useAppSelector((state: AppState) => {
+    return state.mainData.data!.projects;
   });
 
   const displayThumbs = useAppSelector((state: AppState) => {
@@ -25,11 +25,11 @@ const Home = () => {
   });
 
   useEffect(() => {
-    if (!displayThumbs && allThumbs?.length > 0) {
-      const payload: InitDisplayThumbsPayload = { allThumbs };
+    if (!displayThumbs && projects?.length > 0) {
+      const payload: InitDisplayThumbsPayload = { projects };
       dispatch(INIT_DISPLAY_THUMBS(payload));
     }
-  }, [allThumbs, displayThumbs, dispatch]);
+  }, [projects, displayThumbs, dispatch]);
 
   let content: ReactNode | ReactNode[] = <div data-testid="home-unset" />;
 
@@ -38,7 +38,7 @@ const Home = () => {
       const thumbs = displayThumbs.map((obj) => {
         const alt = `${obj.agency} - ${obj.brand} - ${obj.title}`;
         return (
-          <HomeThumb key={obj.id} id={obj.id} url={obj.thumb.url} alt={alt} />
+          <HomeThumb key={obj.uid} id={obj.uid} url={obj.thumb.url} alt={alt} />
         );
       });
       content = thumbs;

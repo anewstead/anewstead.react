@@ -1,14 +1,14 @@
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { galleryProjectData } from "../../../test-utils/msw/mockJson";
+import { projectGalleryWebsite } from "../../../test-utils/msw/mockJson";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = `/project/${galleryProjectData.id}`;
+  const PAGE_URL = `/project/${projectGalleryWebsite.uid}`;
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
-  const elem = await page.getByTestId("app-layout");
+  const elem = page.getByTestId("app-layout");
   await expect(elem).toBeVisible();
 });
 

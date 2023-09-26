@@ -1,0 +1,54 @@
+fragment Fproject on Project {
+  uid
+  agency
+  brand
+  title
+  type
+  info {
+    html
+  }
+  thumb {
+    url(transformation: { document: { output: { format: jpg } } })
+    fileName
+  }
+  view {
+    ... on VideoView {
+      width
+      height
+      type
+      video {
+        url
+      }
+      poster {
+        url(transformation: { document: { output: { format: jpg } } })
+      }
+    }
+    ... on IframeView {
+      height
+      type
+      url
+      width
+    }
+    ... on GalleryView {
+      width
+      type
+      height
+      gallery {
+        url(transformation: { document: { output: { format: jpg } } })
+      }
+    }
+  }
+}
+
+query AllData($first: Int, $orderBy: ProjectOrderByInput) {
+  global(where: { uid: "an_portfolio" }) {
+    brand
+  }
+  page(where: { uid: "about" }) {
+    title
+    info1
+  }
+  projects(first: $first, orderBy: $orderBy) {
+    ...Fproject
+  }
+}

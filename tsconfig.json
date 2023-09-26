@@ -25,9 +25,10 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "es5"
+    "target": "ES2016"
   },
   "exclude": ["node_modules"],
-  "include": ["vite-env.d.ts", "src/**/*", "test-utils/**/*"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*", "test-utils/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "typeRoots": ["node_modules/@types", "src/@types"]
 }

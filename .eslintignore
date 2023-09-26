@@ -7,4 +7,5 @@ package.json
 package-lock.json
 **/vendor
 **/polyfils
+**/generated
 !.storybook

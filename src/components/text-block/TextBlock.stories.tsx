@@ -21,7 +21,7 @@ export const WithPlainText: Story = {
     const canvas = within(canvasElement);
     await step("renders plain text", async () => {
       const text = canvas.getByText(args.htmlText);
-      expect(text).toBeTruthy();
+      await expect(text).toBeTruthy();
     });
   },
 };
@@ -36,7 +36,7 @@ export const WithHtmlText: Story = {
     const canvas = within(canvasElement);
     await step("renders a html link", async () => {
       const link = canvas.getByRole("link");
-      expect(link).toHaveTextContent("click");
+      await expect(link).toHaveTextContent("click");
     });
   },
 };
@@ -50,7 +50,7 @@ export const WithUnsafeHtmlText: Story = {
   play: async ({ canvasElement, step }) => {
     await step("renders safely from unsafe HTML string", async () => {
       const safeHTML = "<p><em>hello</em></p>";
-      expect(canvasElement).toContainHTML(safeHTML);
+      await expect(canvasElement).toContainHTML(safeHTML);
     });
   },
 };

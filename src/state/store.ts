@@ -32,7 +32,7 @@ export const setupStore = (
   preloadedState?: PreloadedState<AppState>
 ) => {
   return configureStore({
-    reducer: reducer || appReducer,
+    reducer: reducer ?? appReducer,
     preloadedState,
   });
 };

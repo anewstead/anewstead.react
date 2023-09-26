@@ -17,7 +17,6 @@
   "editor.renderWhitespace": "all",
 
   "eslint.format.enable": true,
-  "eslint.packageManager": "pnpm",
 
   "files.exclude": {
     ".eslintcache": true,

@@ -1,5 +1,7 @@
 import { expect } from "@storybook/jest";
 
+import { posterURL, videoURL } from "../../../test-utils/msw/mockJson";
+
 import Video from "./Video";
 
 import type { Meta, StoryObj } from "@storybook/react";
@@ -12,12 +14,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
-const videoURL = "https://media.graphassets.com/lVCbqtaQqCpJkGFGwAfh";
-const posterURL =
-  "https://media.graphassets.com/output=format:jpg/wCOOr73TwuCKcBLKAdSO";
-
-// -----------------------------------------------------------------------------
-
 export const Default: Story = {
   args: {
     videoURL,
@@ -26,7 +22,7 @@ export const Default: Story = {
   play: async ({ canvasElement, step }) => {
     await step("renders a video object", async () => {
       const vid = canvasElement.querySelector("video");
-      expect(vid).toBeInTheDocument();
+      await expect(vid).toBeInTheDocument();
     });
   },
 };

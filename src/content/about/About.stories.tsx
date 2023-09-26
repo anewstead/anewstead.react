@@ -33,9 +33,9 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     await step("renders about page with nav-detail", async () => {
       const page = canvas.getByTestId("about-page");
-      expect(page).toBeInTheDocument();
+      await expect(page).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
+      await expect(navDetail).toBeInTheDocument();
     });
   },
 };

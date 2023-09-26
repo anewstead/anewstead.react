@@ -3,7 +3,7 @@ import { DEFAULT_THEME } from "../../style/theme";
 
 import { retrieveThemeName, storeThemeName, toggleThemeName } from "./helpers";
 
-test("should init the theme, save to localStorage and toggle", async () => {
+test("should init the theme, save to localStorage and toggle", () => {
   const theme = retrieveThemeName();
   // will always DEFAULT because test browser cannot set prefers-color-scheme
   expect(theme).toEqual(DEFAULT_THEME);
@@ -18,7 +18,7 @@ test("should init the theme, save to localStorage and toggle", async () => {
   expect(retrieveThemeName()).toStrictEqual(theme);
 });
 
-test("init uses previous localstorage value", async () => {
+test("init uses previous localstorage value", () => {
   storeThemeName("dark");
   const theme = retrieveThemeName();
   expect(theme).toEqual("dark");
@@ -26,7 +26,7 @@ test("init uses previous localstorage value", async () => {
 
 // note. jest 28+ should allow to use @jest-environment node
 // instead of having to delete and put back window object
-test("works when window is undefined (SSR)", async () => {
+test("works when window is undefined (SSR)", () => {
   const w = global.window;
   // @ts-ignore: 2790
   delete global.window;
@@ -35,7 +35,7 @@ test("works when window is undefined (SSR)", async () => {
   global.window = w; // put it back so any afterEach() doesnt fail
 });
 
-test("returns dark if user preferred", async () => {
+test("returns dark if user preferred", () => {
   window.matchMedia = createMatchMedia({ "prefers-color-scheme": "dark" });
   const theme = retrieveThemeName();
   expect(theme).toEqual("dark");
