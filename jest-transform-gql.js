@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable */
 
 // jest-transform-graphql@2.1.0 doesnt work correctly with jest 28+
 // fix:
@@ -9,7 +9,7 @@
 // also tried @graphql-tools/jest-transform@2.0.0 which didn't work
 //
 // imports jest-transform-graphql process renames as upstreamProcess to avoid name clash
-// returns its output in 'code' variable required by jest 28+
+// returns its output as 'code' variable required by jest 28+
 const { process: upstreamProcess } = require("jest-transform-graphql");
 
 const process = (...args) => {

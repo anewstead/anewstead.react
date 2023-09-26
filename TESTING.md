@@ -1,15 +1,3 @@
-# Setup
-
-tests are currently run manually on desktop.  
-as such playwright has been configured to NOT automatically download browsers on package install (`pnpm i`).  
-so the CI server can skip this download/install process.
-which reduces server time and significantly speeds up releases.  
-you will need to manually install/update browsers locally or you wont be able to test and push to repo.
-
-```
-npx playwright install
-```
-
 # Testing
 
 #### Important read concepts section below
@@ -73,7 +61,7 @@ because content is just variable data to a template
 Code coverage should come from unit tests **not** from integration tests.  
 Default storybook test-runner behaviour includes any touched file for coverage  
 E.G. where a display component imports a js _function_ that functions js _file_ is included for coverage,  
-technically that is an integration test of the function, more annoyingly to be clear its the  
+technically that is an integration test of the function, more annoyingly its the  
 entire imported file's code that is covered not just the imported bit.
 
 **This is not what we want, hence the 2 levels of testing**
@@ -86,3 +74,8 @@ like if the js file is a wider utility class we just use a bit of.
 Further, because it's an integration test of a function  
 instead of being pure e.g. check it returns (success | fail)  
 it becomes secondary via display e.g. does it render (image | errorMsg)
+
+#### Just in case
+
+To exclude the next line/statement of code from coverage:  
+`/* istanbul ignore next -- @preserve */`
