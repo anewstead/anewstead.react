@@ -23,6 +23,9 @@ import {
 import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
 import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 
+import type { DocsContainerProps } from "@storybook/addon-docs";
+import type { PropsWithChildren } from "react";
+
 const themeBGColor = {
   light: themeBaseStyles.colorSchemes.light.palette.background.default,
   dark: themeBaseStyles.colorSchemes.dark.palette.background.default,
@@ -74,7 +77,7 @@ const useCurrentTheme = () => {
 /*
 theme preview page decorator
 */
-export const ThemeWrapper = ({ children }) => {
+export const ThemeWrapper: React.FC<PropsWithChildren> = ({ children }) => {
   const { themeName, toggleTheme } = useCurrentTheme();
   const toggleThemeMemo = useMemo(() => {
     return {
@@ -91,7 +94,9 @@ export const ThemeWrapper = ({ children }) => {
 /*
 theme docs pages decorator
 */
-export const ThemeDocsContainer = ({ children, context }) => {
+export const ThemeDocsContainer: React.FC<
+  PropsWithChildren<DocsContainerProps>
+> = ({ children, context }) => {
   const { themeName, bgColor } = useCurrentTheme();
   useEffect(() => {
     const elems = document.querySelectorAll(".docs-story");

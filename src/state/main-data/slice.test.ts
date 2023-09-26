@@ -1,4 +1,4 @@
-import { mswLoadMainDataReject } from "../../../test-utils/msw/handlers/mswLoadMainData";
+import { mswLoadMainDataError } from "../../../test-utils/msw/handlers/mswLoadMainData";
 import { server } from "../../../test-utils/msw/server";
 import { setupStore } from "../store";
 
@@ -23,11 +23,11 @@ test("FETCH_MAIN_DATA fulfilled", async () => {
 });
 
 test("FETCH_MAIN_DATA rejected", async () => {
-  server.use(mswLoadMainDataReject);
+  server.use(mswLoadMainDataError);
   const store = setupStore({ mainData: mainDataReducer });
   await store.dispatch(FETCH_MAIN_DATA());
   const state = store.getState() as AppState;
-  expect(state.mainData.rejected).toBeTruthy();
+  expect(state.mainData.error).toBeTruthy();
   expect(state.mainData.data).toBeNull();
   expect(getSessionMainData()).toBeNull();
 });

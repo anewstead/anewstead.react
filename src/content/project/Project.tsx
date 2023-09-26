@@ -8,11 +8,17 @@ import InFrame from "../../components/in-frame";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import PageLayout from "../../layout/page-layout";
+import { ProjectType } from "../../services/hygraph/generated/graphql";
 import { useAppSelector } from "../../state/store";
 import NoMatch from "../no-match/NoMatch";
 
 import cls from "./project.module.scss";
 
+import type {
+  GalleryView,
+  IframeView,
+  VideoView,
+} from "../../services/hygraph/generated/graphql";
 import type { AppState } from "../../state/store";
 
 const Project: React.FC = () => {
@@ -20,7 +26,7 @@ const Project: React.FC = () => {
 
   const projectsData = useAppSelector((state: AppState) => {
     /* istanbul ignore next -- @preserve */
-    return state.mainData.data?.projects || [];
+    return state.mainData.data!.projects;
   });
 
   const project = projectsData.find((obj) => {
@@ -38,9 +44,10 @@ const Project: React.FC = () => {
 
   let content = <></>;
 
-  switch (project.view.type) {
+  switch (project.view!.type) {
     case "gallery": {
-      const slides = project.view.gallery.map((obj, i) => {
+      const galleryView = project.view! as GalleryView;
+      const slides = galleryView.gallery.map((obj, i) => {
         const alt = `${project.brand} ${project.title} image ${i}`;
         return <img src={obj.url} alt={`${alt} ${i}`} key={obj.url} />;
       });
@@ -49,24 +56,26 @@ const Project: React.FC = () => {
     }
 
     case "video": {
+      const videoView = project.view! as VideoView;
       content = (
         <Video
-          videoURL={project.view.video.url}
-          posterURL={project.view.poster.url}
+          videoURL={videoView.video.url}
+          posterURL={videoView.poster.url}
         />
       );
       break;
     }
 
     case "iframe": {
+      const iframeView = project.view! as IframeView;
       const title = `${project.brand} ${project.title}`;
-      const checkAdBlock = project.type === "advert";
+      const checkAdBlock = project.type === ProjectType.Advert;
       content = (
         <InFrame
           title={title}
-          width={project.view.width}
-          height={project.view.height}
-          iframeURL={project.view.url}
+          width={iframeView.width}
+          height={iframeView.height}
+          iframeURL={iframeView.url}
           checkAdBlock={checkAdBlock}
         />
       );
@@ -85,7 +94,7 @@ const Project: React.FC = () => {
     >
       <Container
         className={cls.project}
-        style={{ maxWidth: project.view.width }}
+        style={{ maxWidth: project.view!.width }}
         data-testid="project-page"
       >
         {content}

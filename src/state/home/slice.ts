@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { thumbHelper } from "./helpers";
 import { initialState } from "./state";
 
-import type { IProject } from "../main-data/state";
+import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type InitDisplayThumbsPayload = {
-  allThumbs: IProject[];
+  projects: FprojectFragment[];
 };
 
 export type NavCheckboxChangePayload = {
   checkbox: { id: string; checked: boolean };
-  allThumbs: IProject[];
+  projects: FprojectFragment[];
 };
 
 const slice = createSlice({
@@ -24,7 +24,7 @@ const slice = createSlice({
       action: PayloadAction<InitDisplayThumbsPayload>
     ) => {
       state.displayThumbs = thumbHelper(
-        action.payload.allThumbs,
+        action.payload.projects,
         state.nav.checkboxes
       );
     },
@@ -35,7 +35,7 @@ const slice = createSlice({
     ) => {
       const { id, checked } = action.payload.checkbox;
       const stateCheckbox = state.nav.checkboxes.find((cb) => {
-        return cb.id === id;
+        return cb.id.toString() === id;
       });
       if (!stateCheckbox) {
         throw new Error(`home state does not contain checkbox with id: ${id}`);
@@ -43,7 +43,7 @@ const slice = createSlice({
         stateCheckbox.checked = checked; // creates 2 way bind
       }
       state.displayThumbs = thumbHelper(
-        action.payload.allThumbs,
+        action.payload.projects,
         state.nav.checkboxes
       );
     },

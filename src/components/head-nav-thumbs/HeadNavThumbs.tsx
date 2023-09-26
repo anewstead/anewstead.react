@@ -48,8 +48,8 @@ const HeadNavThumbs = (props: Props) => {
       <HeadNavCheckbox
         key={cb.id}
         id={cb.id as string}
-        label={cb.label as string}
-        checked={cb.checked as boolean}
+        label={cb.label}
+        checked={cb.checked}
         onChange={onCheckboxChange}
       />
     );

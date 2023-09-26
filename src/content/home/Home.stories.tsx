@@ -5,7 +5,7 @@ import { within } from "@storybook/testing-library";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { sampleFetchData } from "../../../test-utils/msw/mockJson";
+import { sampleAllData } from "../../../test-utils/msw/mockJson";
 import { initialState as homeInitialState } from "../../state/home/state";
 import { setupStore } from "../../state/store";
 
@@ -23,11 +23,10 @@ type Story = StoryObj<typeof meta>;
 
 const defaultState = {
   mainData: {
-    data: sampleFetchData.data,
-    errors: undefined,
+    data: sampleAllData,
+    error: null,
     loading: false,
     loaded: true,
-    rejected: false,
   },
   home: {
     ...homeInitialState,
@@ -48,14 +47,14 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     await step("renders thumbs (data has items)", async () => {
       const page = canvas.getByTestId("home-page");
-      expect(page).toBeInTheDocument();
+      await expect(page).toBeInTheDocument();
       const nav = canvas.getByTestId("nav-thumbs");
-      expect(nav).toBeInTheDocument();
+      await expect(nav).toBeInTheDocument();
       const links = await canvas.findAllByRole("link");
       const thumbs = links.filter((item) => {
         return item.getAttribute("href")?.includes("/project/");
       });
-      expect(thumbs.length).toBeGreaterThan(0);
+      await expect(thumbs.length).toBeGreaterThan(0);
     });
   },
 };
@@ -64,11 +63,10 @@ export const Default: Story = {
 
 const makeSelectionState = {
   mainData: {
-    data: null,
-    errors: undefined,
+    data: sampleAllData,
+    error: null,
     loading: false,
     loaded: true,
-    rejected: false,
   },
   home: {
     ...homeInitialState,
@@ -90,7 +88,7 @@ export const MakeSelection: Story = {
     const canvas = within(canvasElement);
     await step("renders make a selection", async () => {
       const makeSelection = canvas.getByTestId("home-nothumbs");
-      expect(makeSelection).toBeInTheDocument();
+      await expect(makeSelection).toBeInTheDocument();
     });
   },
 };

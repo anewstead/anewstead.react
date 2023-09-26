@@ -1,13 +1,13 @@
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { videoProjectData } from "../../../test-utils/msw/mockJson";
+import { projectVideoApp } from "../../../test-utils/msw/mockJson";
 
 test.beforeEach(async ({ page }) => {
-  const PAGE_URL = `/project/${videoProjectData.uid}`; // known video
+  const PAGE_URL = `/project/${projectVideoApp.uid}`; // known video
   await page.setViewportSize({ width: 800, height: 600 });
   await page.goto(PAGE_URL, { waitUntil: "networkidle" });
-  const elem = await page.getByTestId("app-layout");
+  const elem = page.getByTestId("app-layout");
   await expect(elem).toBeVisible();
 });
 
@@ -45,7 +45,9 @@ test("the video plays", async ({ page }) => {
       }
       vid.addEventListener("waiting", handleSuccess);
       vid.addEventListener("error", handleFail);
-      vid.play();
+      vid.play().catch(() => {
+        handleFail();
+      });
     });
   }, video);
   expect(videoLoads).toBeTruthy();

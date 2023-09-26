@@ -21,6 +21,9 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended-type-checked", // @typescript-eslint @v6
+    "plugin:@typescript-eslint/stylistic-type-checked", // @typescript-eslint @v6
+    "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:storybook/recommended",
     "prettier"
@@ -34,26 +37,15 @@
       "files": ["**/*.{js,json}"]
     },
     {
+      "extends": [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "files": ["**/*.{ts,tsx}"]
+    },
+    {
       "files": ["**/*.stories.*"],
       "rules": {
         "import/no-anonymous-default-export": "off"
-      }
-    },
-    {
-      "files": [
-        "*",
-        "e2e/**",
-        ".storybook/**",
-        "test-utils/**",
-        "**/__mocks__/**",
-        "**/__tests__/**",
-        "**/*.@(test|spec|stories).{js,jsx,ts,tsx}"
-      ],
-      "rules": {
-        "import/no-extraneous-dependencies": [
-          "error",
-          { "devDependencies": true }
-        ]
       }
     }
   ],
@@ -70,13 +62,31 @@
   "root": true,
 
   "rules": {
+    "@typescript-eslint/ban-ts-comment": [
+      "warn",
+      {
+        "ts-check": false,
+        "ts-expect-error": "allow-with-description",
+        "ts-ignore": "allow-with-description",
+        "ts-nocheck": "allow-with-description"
+      }
+    ],
+
+    "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
     "@typescript-eslint/consistent-type-exports": "warn",
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/naming-convention": "warn",
 
+    "@typescript-eslint/no-floating-promises": "off",
+
     "@typescript-eslint/no-use-before-define": [
       "error",
       { "functions": false }
+    ],
+
+    "@typescript-eslint/prefer-nullish-coalescing": [
+      "error",
+      { "ignoreMixedLogicalExpressions": true }
     ],
 
     "arrow-body-style": ["error", "always"],
@@ -98,6 +108,21 @@
 
     "curly": "error",
     "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
+
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "*",
+          "e2e/**",
+          ".storybook/**",
+          "test-utils/**",
+          "**/__mocks__/**",
+          "**/__tests__/**",
+          "**/*.@(test|spec|stories).{js,jsx,ts,tsx}"
+        ]
+      }
+    ],
 
     "import/order": [
       "warn",
@@ -138,6 +163,8 @@
     "json/*": ["error", { "allowComments": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-mixed-operators": "error",
+    "no-void": ["error", { "allowAsStatement": true }],
+
     "prefer-arrow-callback": "error",
     "prefer-template": "error",
     "react-hooks/exhaustive-deps": "warn",

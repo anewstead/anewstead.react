@@ -1,25 +1,34 @@
+import {
+  projectGalleryWebsite,
+  projectIframeAdvert,
+  projectVideoApp,
+} from "../../../test-utils/msw/mockJson";
+import { ProjectType } from "../../services/hygraph/generated/graphql";
+
 import { thumbHelper } from "./helpers";
 
 import type { ICheckbox } from "./state";
-import type { IMainData, IProject } from "../main-data/state";
+import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
 
-const website = { type: "website" } as IProject;
-const app = { type: "app" } as IProject;
-const advert = { type: "advert" } as IProject;
-
-const data: IMainData = {
-  projects: [website, website, website, website, app, app, advert],
-};
+const projects: FprojectFragment[] = [
+  projectGalleryWebsite,
+  projectGalleryWebsite,
+  projectGalleryWebsite,
+  projectGalleryWebsite,
+  projectVideoApp,
+  projectVideoApp,
+  projectIframeAdvert,
+];
 
 describe("thumbHelper", () => {
   const cb = [
-    { id: "website", checked: true },
-    { id: "app", checked: true },
-    { id: "advert", checked: true },
+    { id: ProjectType.Website, checked: true },
+    { id: ProjectType.App, checked: true },
+    { id: ProjectType.Advert, checked: true },
   ] as ICheckbox[];
 
   test("return all (length 7/7)", () => {
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(7);
   });
 
@@ -27,7 +36,7 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = false;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(0);
   });
 
@@ -35,7 +44,7 @@ describe("thumbHelper", () => {
     cb[0].checked = true;
     cb[1].checked = false;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(4);
   });
 
@@ -43,7 +52,7 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = true;
     cb[2].checked = false;
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(2);
   });
 
@@ -51,7 +60,7 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = false;
     cb[2].checked = true;
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(1);
   });
 
@@ -59,7 +68,7 @@ describe("thumbHelper", () => {
     cb[0].checked = false;
     cb[1].checked = true;
     cb[2].checked = true;
-    const thumbs = thumbHelper(data.projects, cb);
+    const thumbs = thumbHelper(projects, cb);
     expect(thumbs).toHaveLength(3);
   });
 });

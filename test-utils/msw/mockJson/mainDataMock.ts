@@ -1,115 +1,110 @@
-import type {
-  IFetchMainDataState,
-  IProject,
-} from "../../../src/state/main-data/state";
+import {
+  ProjectType,
+  ViewType,
+} from "../../../src/services/hygraph/generated/graphql";
+import {
+  aGalleryView,
+  aProject,
+  aVideoView,
+  anAsset,
+  anIframeView,
+} from "../../../src/services/hygraph/generated/mockData";
 
-export const galleryProjectData: IProject = {
+import type {
+  AllDataQuery,
+  FprojectFragment,
+} from "../../../src/services/hygraph/generated/graphql";
+
+export const videoURL = "https://media.graphassets.com/lVCbqtaQqCpJkGFGwAfh";
+
+export const posterURL =
+  "https://media.graphassets.com/output=format:jpg/wCOOr73TwuCKcBLKAdSO";
+
+export const thumbURL =
+  "https://media.graphassets.com/output=format:jpg/2QaiukKTYiyuHz3rOIQy";
+
+export const iFrameURL =
+  "https://anewstead-content.netlify.app/sites/halifax/index.html";
+
+export const imageURL =
+  "https://media.graphassets.com/output=format:jpg/jPv3Z5BzTfC38RxrRefu";
+
+export const imageURL2 =
+  "https://media.graphassets.com/output=format:jpg/m7lIWY3qSkiAEZymSoig";
+
+export const imageURL3 =
+  "https://media.graphassets.com/output=format:jpg/I10td11KSBW0cpDoiUjs";
+
+export const projectGalleryWebsite: FprojectFragment = aProject({
   uid: "gxlabs",
-  agency: "Haygarth",
-  brand: "GX Labs",
-  title: "G-Cide",
-  type: "website",
-  info: {
-    html: "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>",
-  },
-  view: {
+  type: ProjectType.Website,
+  thumb: anAsset({
+    url: thumbURL,
+  }),
+  view: aGalleryView({
+    type: ViewType.Gallery,
     width: 780,
-    type: "gallery",
     height: 440,
     gallery: [
-      {
-        url: "https://media.graphassets.com/output=format:jpg/3xnDvAVbROkrwjRYKUQo",
-      },
-      {
-        url: "https://media.graphassets.com/output=format:jpg/X8RUyEpRkeTWvLnNk7IA",
-      },
-      {
-        url: "https://media.graphassets.com/output=format:jpg/fYpU6VYcQFyrJA2mHI54",
-      },
+      anAsset({ url: imageURL }),
+      anAsset({ url: imageURL2 }),
+      anAsset({ url: imageURL3 }),
     ],
-  },
-  thumb: {
-    url: "https://media.graphassets.com/output=format:jpg/i8D7TaB2TASh2Tm9GZRh",
-  },
-};
+  }),
+});
 
-export const videoProjectData: IProject = {
-  uid: "itn-your-news",
-  agency: "Global Beach",
-  brand: "ITN",
-  title: "Your News",
-  type: "app",
-  info: {
-    html: "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>",
-  },
-  view: {
-    type: "video",
-    width: 696,
-    height: 222,
-    video: {
-      url: "https://media.graphassets.com/Wocvrk1WS3K8igs7FtqQ",
-    },
-    poster: {
-      url: "https://media.graphassets.com/output=format:jpg/YfcM7Y3UTtyKqZLqPqvR",
-    },
-  },
-  thumb: {
-    url: "https://media.graphassets.com/output=format:jpg/svseUMgDSZun7Oh4O9dw",
-  },
-};
-
-export const iframeProjectData: IProject = {
+export const projectIframeAdvert: FprojectFragment = aProject({
   uid: "halifax-adverts",
-  agency: "TSL Digital",
-  brand: "Halifax",
-  title: "Hanna Barbara",
-  type: "advert",
-  info: {
-    html: "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>",
-  },
-  view: {
-    height: 250,
-    type: "iframe",
-    url: "https://anewstead-content.netlify.app/sites/halifax/index.html",
+  type: ProjectType.Advert,
+  thumb: anAsset({
+    url: thumbURL,
+  }),
+  view: anIframeView({
+    url: iFrameURL,
     width: 300,
-  },
-  thumb: {
-    url: "https://media.graphassets.com/output=format:jpg/qQDj3pVtTXyqpVWKeEIm",
-  },
+    height: 250,
+    type: ViewType.Iframe,
+  }),
+});
+
+export const projectVideoApp: FprojectFragment = aProject({
+  uid: "seat-leon-sc",
+  type: ProjectType.App,
+  thumb: anAsset({
+    url: thumbURL,
+  }),
+  view: aVideoView({
+    type: ViewType.Video,
+    width: 1178,
+    height: 718,
+    poster: anAsset({
+      url: posterURL,
+    }),
+    video: anAsset({
+      url: videoURL,
+    }),
+  }),
+});
+
+export const sampleProjects: FprojectFragment[] = [
+  projectGalleryWebsite,
+  projectIframeAdvert,
+  projectVideoApp,
+];
+
+export const sampleAllData: AllDataQuery = {
+  global: null,
+  page: null,
+  projects: sampleProjects,
 };
 
-export const unknownProjectTypeData: IProject = {
-  ...galleryProjectData,
-  uid: "non-existing-id",
-  view: {
-    ...galleryProjectData.view,
-    type: "testNoMatch",
-  },
-};
-
-export const sampleFetchData: IFetchMainDataState = {
+export const sampleGQLData = {
   data: {
-    projects: [
-      galleryProjectData,
-      videoProjectData,
-      iframeProjectData,
-      unknownProjectTypeData,
-    ],
+    ...sampleAllData,
   },
-  errors: undefined,
-  loading: false,
-  loaded: true,
-  rejected: false,
 };
 
-export const sampleFetchError: IFetchMainDataState = {
+export const sampleGQLError = {
   data: null,
-  errors: [
-    {
-      message: "mocked error message",
-    },
-  ],
-  loading: false,
-  loaded: true,
-  rejected: false,
+  errors: [{ message: "mock gql error message" }],
 };

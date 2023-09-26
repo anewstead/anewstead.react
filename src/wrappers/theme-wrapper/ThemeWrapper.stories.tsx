@@ -58,8 +58,8 @@ export const Default: Story = {
       await waitForTimeout(5);
       const updatedName = retrieveThemeName();
       const updatedColor = btn.style.backgroundColor;
-      expect(currentName).not.toEqual(updatedName);
-      expect(currentColor).not.toEqual(updatedColor);
+      await expect(currentName).not.toEqual(updatedName);
+      await expect(currentColor).not.toEqual(updatedColor);
       await userEvent.click(btn); // toggle back
     });
   },

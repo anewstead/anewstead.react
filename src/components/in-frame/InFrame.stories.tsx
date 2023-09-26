@@ -27,7 +27,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     await step("it ignores adblock and renders an iframe", async () => {
       const iframe = await canvas.findByTestId("inframe-iframe");
-      expect(iframe).toBeInTheDocument();
+      await expect(iframe).toBeInTheDocument();
     });
   },
 };
@@ -51,7 +51,7 @@ export const BannerBlocked: Story = {
     const canvas = within(canvasElement);
     await step("it checks adblock and renders a failover", async () => {
       const failover = await canvas.findByTestId("inframe-failover");
-      expect(failover).toBeInTheDocument();
+      await expect(failover).toBeInTheDocument();
     });
   },
 };
@@ -70,7 +70,7 @@ export const BannerNotBlocked: Story = {
     const canvas = within(canvasElement);
     await step("it checks adblock and renders an iframe", async () => {
       const iframe = await canvas.findByTestId("inframe-iframe");
-      expect(iframe).toBeInTheDocument();
+      await expect(iframe).toBeInTheDocument();
     });
   },
 };

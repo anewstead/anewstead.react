@@ -29,7 +29,7 @@ const HeadNav = (props: Props) => {
   });
 
   const projectsData = useAppSelector((state) => {
-    return state.mainData.data?.projects || [];
+    return state.mainData.data?.projects ?? [];
   });
 
   const homeClick = useCallback(() => {
@@ -45,7 +45,7 @@ const HeadNav = (props: Props) => {
       const { id, checked } = e.currentTarget;
       const payload: NavCheckboxChangePayload = {
         checkbox: { id, checked },
-        allThumbs: projectsData,
+        projects: projectsData,
       };
       dispatch(NAV_CHECKBOX_CHANGE(payload));
     },

@@ -6,15 +6,15 @@ import { Provider } from "react-redux";
 import { withRouter } from "storybook-addon-react-router-v6";
 
 import {
-  galleryProjectData,
-  iframeProjectData,
-  unknownProjectTypeData,
-  videoProjectData,
+  projectGalleryWebsite,
+  projectIframeAdvert,
+  projectVideoApp,
 } from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../../state/store";
 
 import Project from "./Project";
 
+import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
 import type { IFetchMainDataState } from "../../state/main-data/state";
 import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -29,10 +29,9 @@ type Story = StoryObj<typeof meta>;
 
 const loadedData: IFetchMainDataState = {
   data: null,
-  errors: undefined,
+  error: null,
   loading: false,
   loaded: true,
-  rejected: false,
 };
 
 // -----------------------------------------------------------------------------
@@ -41,16 +40,22 @@ const BadViewTypeState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
     data: {
-      projects: [unknownProjectTypeData],
+      projects: [
+        {
+          uid: "unknown_value",
+          view: { type: "unknown_view_type" },
+        } as unknown as FprojectFragment,
+      ],
     },
   },
 };
-
 export const Default: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:uid",
-      routeParams: { uid: BadViewTypeState.mainData.data?.projects[0].uid },
+      routeParams: {
+        uid: BadViewTypeState.mainData.data!.projects[0].uid,
+      },
     },
   },
   decorators: [
@@ -67,9 +72,9 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     await step("renders no-match with nav-detail", async () => {
       const page = canvas.getByTestId("nomatch-page");
-      expect(page).toBeInTheDocument();
+      await expect(page).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
+      await expect(navDetail).toBeInTheDocument();
     });
   },
 };
@@ -80,7 +85,7 @@ const galleryState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
     data: {
-      projects: [galleryProjectData],
+      projects: [projectGalleryWebsite],
     },
   },
 };
@@ -89,7 +94,9 @@ export const GalleryPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:uid",
-      routeParams: { uid: galleryState.mainData.data?.projects[0].uid },
+      routeParams: {
+        uid: galleryState.mainData.data!.projects[0].uid,
+      },
     },
   },
   decorators: [
@@ -105,10 +112,10 @@ export const GalleryPage: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step("renders carousel with nav-detail", async () => {
-      const carousel = await canvas.getByTestId("carousel");
-      expect(carousel).toBeInTheDocument();
+      const carousel = canvas.getByTestId("carousel");
+      await expect(carousel).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
+      await expect(navDetail).toBeInTheDocument();
     });
   },
 };
@@ -118,7 +125,7 @@ export const GalleryPage: Story = {
 const videoState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: { projects: [videoProjectData] },
+    data: { projects: [projectVideoApp] },
   },
 };
 
@@ -126,7 +133,9 @@ export const VideoPage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:uid",
-      routeParams: { uid: videoState.mainData.data?.projects[0].uid },
+      routeParams: {
+        uid: videoState.mainData.data!.projects[0].uid,
+      },
     },
   },
   decorators: [
@@ -141,9 +150,9 @@ export const VideoPage: Story = {
     const canvas = within(canvasElement);
     await step("renders a video with nav-detail", async () => {
       const vid = canvasElement.querySelector("video");
-      expect(vid).toBeInTheDocument();
+      await expect(vid).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
+      await expect(navDetail).toBeInTheDocument();
     });
   },
 };
@@ -153,7 +162,7 @@ export const VideoPage: Story = {
 const inFrameState: Pick<AppState, "mainData"> = {
   mainData: {
     ...loadedData,
-    data: { projects: [iframeProjectData] },
+    data: { projects: [projectIframeAdvert] },
   },
 };
 
@@ -161,7 +170,9 @@ export const InFramePage: Story = {
   parameters: {
     reactRouter: {
       routePath: "/project/:uid",
-      routeParams: { uid: inFrameState.mainData.data?.projects[0].uid },
+      routeParams: {
+        uid: inFrameState.mainData.data!.projects[0].uid,
+      },
     },
   },
   decorators: [
@@ -178,7 +189,7 @@ export const InFramePage: Story = {
     const canvas = within(canvasElement);
     await step("it ignores adblock and renders an iframe", async () => {
       const iframe = await canvas.findByTestId("inframe-iframe");
-      expect(iframe).toBeInTheDocument();
+      await expect(iframe).toBeInTheDocument();
     });
   },
 };
@@ -206,9 +217,9 @@ export const UnknownProject: Story = {
     const canvas = within(canvasElement);
     await step("renders no-match with nav-detail", async () => {
       const page = canvas.getByTestId("nomatch-page");
-      expect(page).toBeInTheDocument();
+      await expect(page).toBeInTheDocument();
       const navDetail = canvas.getByTestId("nav-detail");
-      expect(navDetail).toBeInTheDocument();
+      await expect(navDetail).toBeInTheDocument();
     });
   },
 };

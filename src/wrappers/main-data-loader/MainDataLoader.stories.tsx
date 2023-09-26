@@ -6,8 +6,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import {
-  mswLoadMainDataNoContent,
-  mswLoadMainDataReject,
+  mswLoadMainDataError,
+  mswLoadMainDataGqlError,
 } from "../../../test-utils/msw/handlers/mswLoadMainData";
 import { setupStore } from "../../state/store";
 
@@ -27,10 +27,9 @@ type Story = StoryObj<typeof meta>;
 const defaultState = {
   mainData: {
     data: null,
-    errors: undefined,
+    error: null,
     loading: false,
     loaded: false,
-    rejected: false,
   } satisfies IFetchMainDataState,
 };
 
@@ -61,10 +60,10 @@ export const Default: Story = {
       "renders spinner, removes it and renders child-content",
       async () => {
         const spinner = canvas.getByTestId("maindata-spinner");
-        expect(spinner).toBeInTheDocument();
+        await expect(spinner).toBeInTheDocument();
         await waitForElementToBeRemoved(spinner);
         const content = canvas.getByTestId("child-content");
-        expect(content).toBeInTheDocument();
+        await expect(content).toBeInTheDocument();
       }
     );
   },
@@ -72,35 +71,11 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-export const LoadRejected: Story = {
+export const LoadError: Story = {
   ...Template,
   parameters: {
     msw: {
-      handlers: [mswLoadMainDataReject],
-    },
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    await step(
-      "renders spinner, removes it, renders failed message",
-      async () => {
-        const spinner = canvas.getByTestId("maindata-spinner");
-        expect(spinner).toBeInTheDocument();
-        await waitForElementToBeRemoved(spinner);
-        const content = canvas.getByTestId("maindata-failed");
-        expect(content).toBeInTheDocument();
-      }
-    );
-  },
-};
-
-// -----------------------------------------------------------------------------
-
-export const LoadedError: Story = {
-  ...Template,
-  parameters: {
-    msw: {
-      handlers: [mswLoadMainDataNoContent],
+      handlers: [mswLoadMainDataError],
     },
   },
   play: async ({ canvasElement, step }) => {
@@ -109,10 +84,34 @@ export const LoadedError: Story = {
       "renders spinner, removes it, renders loaded error message",
       async () => {
         const spinner = canvas.getByTestId("maindata-spinner");
-        expect(spinner).toBeInTheDocument();
+        await expect(spinner).toBeInTheDocument();
         await waitForElementToBeRemoved(spinner);
         const content = canvas.getByTestId("maindata-failed");
-        expect(content).toBeInTheDocument();
+        await expect(content).toBeInTheDocument();
+      }
+    );
+  },
+};
+
+// -----------------------------------------------------------------------------
+
+export const LoadGqlError: Story = {
+  ...Template,
+  parameters: {
+    msw: {
+      handlers: [mswLoadMainDataGqlError],
+    },
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      "renders spinner, removes it, renders failed message",
+      async () => {
+        const spinner = canvas.getByTestId("maindata-spinner");
+        await expect(spinner).toBeInTheDocument();
+        await waitForElementToBeRemoved(spinner);
+        const content = canvas.getByTestId("maindata-failed");
+        await expect(content).toBeInTheDocument();
       }
     );
   },

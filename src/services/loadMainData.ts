@@ -1,4 +1,4 @@
-import allData from "./hygraph/allData.gql";
+import AllData from "./hygraph/allData.gql";
 import { ProjectOrderByInput } from "./hygraph/generated/graphql";
 import { gqlRequest } from "./hygraph/utils";
 
@@ -8,7 +8,7 @@ import type {
 } from "./hygraph/generated/graphql";
 
 export const loadMainData = async () => {
-  return gqlRequest<AllDataQuery, AllDataQueryVariables>(allData, {
+  return gqlRequest<AllDataQuery, AllDataQueryVariables>(AllData, {
     first: 50,
     orderBy: ProjectOrderByInput.DateDesc,
   });

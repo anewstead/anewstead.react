@@ -52,13 +52,13 @@ export const Default: Story = {
       "renders layout with nav, footer and dummy content",
       async () => {
         const pageLayout = canvas.getByTestId("app-layout");
-        expect(pageLayout).toBeInTheDocument();
+        await expect(pageLayout).toBeInTheDocument();
         const nav = canvas.getByTestId("nav-detail");
-        expect(nav).toBeInTheDocument();
+        await expect(nav).toBeInTheDocument();
         const content = canvas.getByTestId("dummy-content");
-        expect(content).toBeInTheDocument();
+        await expect(content).toBeInTheDocument();
         const footer = canvas.getByRole("contentinfo");
-        expect(footer).toBeInTheDocument();
+        await expect(footer).toBeInTheDocument();
       }
     );
   },

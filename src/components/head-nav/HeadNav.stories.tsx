@@ -42,8 +42,8 @@ const testTheme = async (elemWithBG: HTMLElement, themeBtn: HTMLElement) => {
   const updatedName = retrieveThemeName();
   const updatedColor = getComputedStyle(elemWithBG).backgroundColor;
   await waitForTimeout(50);
-  expect(currentName).not.toEqual(updatedName);
-  expect(currentColor).not.toEqual(updatedColor);
+  await expect(currentName).not.toEqual(updatedName);
+  await expect(currentColor).not.toEqual(updatedColor);
   await userEvent.click(themeBtn); // toggle back
 };
 
@@ -91,12 +91,12 @@ export const Default: Story = {
 
     await step("it clicks checkboxes", async () => {
       const group = canvas.getByTestId("nav-thumbs-desktop-checkbox");
-      const checkbox = within(group!).getAllByRole("checkbox");
-      expect(checkbox.length).toBeGreaterThan(0);
+      const checkbox = within(group).getAllByRole("checkbox");
+      await expect(checkbox.length).toBeGreaterThan(0);
       const cbState1 = (store.getState() as AppState).home.nav.checkboxes;
       await userEvent.click(checkbox[0]);
       const cbState2 = (store.getState() as AppState).home.nav.checkboxes;
-      expect(cbState2).not.toEqual(cbState1);
+      await expect(cbState2).not.toEqual(cbState1);
     });
   },
 };
@@ -112,7 +112,7 @@ export const DetailPageNav: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const nav = await canvas.getByTestId("nav-detail");
+    const nav = canvas.getByTestId("nav-detail");
     const elemWithBG = nav.firstElementChild! as HTMLElement;
     const themeBtn = await canvas.findByTestId("nav-detail-theme-button");
 

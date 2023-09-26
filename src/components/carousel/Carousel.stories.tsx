@@ -50,7 +50,7 @@ export const Default: Story = {
 
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const carousel = await canvas.getByTestId("carousel");
+    const carousel = canvas.getByTestId("carousel");
     const slick = carousel.firstElementChild;
     const prev = canvas.getByLabelText("prev");
     const next = canvas.getByLabelText("next");
@@ -63,20 +63,20 @@ export const Default: Story = {
       const images = carousel.querySelectorAll(
         ".slick-slide:not(.slick-cloned)"
       );
-      expect(images).toHaveLength(args.slides.length);
+      await expect(images).toHaveLength(args.slides.length);
     });
 
     await step("it handles prev and next", async () => {
       const track = carousel.querySelector(".slick-track");
       const current1 = carousel.querySelector(".slick-current");
-      await userEvent.click(next!);
+      await userEvent.click(next);
       await waitForTransition(track!);
       const current2 = carousel.querySelector(".slick-current");
-      expect(current2).not.toEqual(current1);
-      await userEvent.click(prev!);
+      await expect(current2).not.toEqual(current1);
+      await userEvent.click(prev);
       await waitForTransition(track!);
       const current3 = carousel.querySelector(".slick-current");
-      expect(current3).toEqual(current1);
+      await expect(current3).toEqual(current1);
     });
   },
 };
