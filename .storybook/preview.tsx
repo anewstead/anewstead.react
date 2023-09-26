@@ -1,11 +1,13 @@
 import React from "react";
+
 import { initialize as mswInitialize, mswDecorator } from "msw-storybook-addon";
 
-import customViewports from "./customViewports";
-import handlers from "../test-utils/msw/handlers";
-import { AutoDocsTemplate } from "./AutoDocsTemplate";
-import { ThemeDocsContainer, ThemeWrapper } from "./theme";
 import { retrieveThemeName } from "../src/wrappers/theme-wrapper/helpers";
+import handlers from "../test-utils/msw/handlers";
+
+import { AutoDocsTemplate } from "./AutoDocsTemplate";
+import customViewports from "./customViewports";
+import { ThemeDocsContainer, ThemeWrapper } from "./theme";
 
 // https://github.com/mswjs/msw-storybook-addon#configuring-msw
 mswInitialize({

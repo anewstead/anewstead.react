@@ -1,14 +1,18 @@
 # Global
+
 All code here is in global space. use wisely!  
 Everywhere else in the app should use modules to prevent namespace clashes
 
 ## theme.ts
+
 theme settings imported via base theme wrapper/provider
 
 ## gbl sass
+
 scss variable, mixins, functions etc.  
 @use needs to be reletive import  
 (alias or root based imports are not yet well supported by other tools)
+
 ```
 // scss
 @use "../../style/gbl.scss";
@@ -16,7 +20,8 @@ scss variable, mixins, functions etc.
   padding: gbl.$my-padding;
 }
 ```
-type-safe classes in .tsx via [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)  
+
+type-safe classes in .tsx via [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)
 
 ```
 // tsx

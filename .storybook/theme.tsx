@@ -5,22 +5,23 @@ sync component theme and storybook-dark-mode addon
 */
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+
+import { DocsContainer } from "@storybook/addon-docs";
+import { addons } from "@storybook/addons";
+import { themes as sbThemes } from "@storybook/theming";
 import {
   DARK_MODE_EVENT_NAME,
   UPDATE_DARK_MODE_EVENT_NAME,
 } from "storybook-dark-mode";
-import { DocsContainer } from "@storybook/addon-docs";
-import { addons } from "@storybook/addons";
-import { themes as sbThemes } from "@storybook/theming";
 
-import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
 import themeBaseStyles from "../src/style/theme";
-import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 import {
   retrieveThemeName,
   storeThemeName,
   toggleThemeName,
 } from "../src/wrappers/theme-wrapper/helpers";
+import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
+import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 
 const themeBGColor = {
   light: themeBaseStyles.colorSchemes.light.palette.background.default,
