@@ -30,6 +30,10 @@
 
   "overrides": [
     {
+      "extends": ["plugin:@typescript-eslint/disable-type-checked"],
+      "files": ["**/*.{js,json}"]
+    },
+    {
       "files": ["**/*.stories.*"],
       "rules": {
         "import/no-anonymous-default-export": "off"

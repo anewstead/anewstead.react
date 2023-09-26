@@ -25,10 +25,10 @@
     "cover-js": "nyc report --reporter=html --temp-dir=./coverage/jest-js --report-dir=./coverage/jest-js/report; node -e \"console.log('REPORT:','file://'+process.cwd()+'/coverage/jest-js/report/index.html')\";",
     "cover-sb": "nyc report --reporter=html --temp-dir=./coverage/storybook --report-dir=./coverage/storybook/report; node -e \"console.log('REPORT:','file://'+process.cwd()+'/coverage/storybook/report/index.html')\";",
     "lint": "run-s lint-js lint-style pretty;",
-    "lint-js": "eslint --fix $PWD/'/{src,e2e}/**/*.{js,jsx,ts,tsx,json}' --cache",
-    "lint-style": "stylelint --fix $PWD/'/src/**/*.{css,scss,sass,less,js,jsx,ts,tsx}' --cache",
-    "pretty": "prettier --write $PWD/'/{src,e2e}/**/*.{js,jsx,ts,tsx,json,html,htm,hbs,xml}' --log-level warn --cache",
-    "gqlcodegen": "graphql-codegen --config gqlcodegen.ts"
+    "lint-js": "eslint --fix $PWD/'**/*.{js,jsx,ts,tsx,json}' --cache",
+    "lint-style": "stylelint --fix $PWD/'**/*.{css,scss,sass,less}' --cache",
+    "pretty": "prettier --write $PWD --log-level warn --cache --no-error-on-unmatched-pattern",
+    "gqlcodegen": "graphql-codegen"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
