@@ -30,7 +30,7 @@ const dev = () => {
 
 const buildProd = () => {
   return {
-    plugins: [react(), graphqlLoader(), codegen()],
+    plugins: [react(), graphqlLoader()],
     css: {
       devSourcemap: false,
     },
