@@ -14,14 +14,8 @@ import type { AppState } from "../../state/store";
 
 const About = () => {
   const pageData = useAppSelector((state: AppState) => {
-    return state.mainData.data?.page;
+    return state.mainData.data!.page!;
   });
-
-  console.log("pageData", pageData);
-
-  if (!pageData) {
-    return <></>;
-  }
 
   return (
     <PageLayout headerNavType="detail" headerNavTitle={BRAND}>
