@@ -14,8 +14,14 @@ import type { AppState } from "../../state/store";
 
 const About = () => {
   const pageData = useAppSelector((state: AppState) => {
-    return state.mainData.data!.page;
+    return state.mainData.data?.page;
   });
+
+  console.log("pageData", pageData);
+
+  if (!pageData) {
+    return <></>;
+  }
 
   return (
     <PageLayout headerNavType="detail" headerNavTitle={BRAND}>
@@ -24,7 +30,7 @@ const About = () => {
           <Typography variant="h4" component="h2">
             {pageData?.title}
           </Typography>
-          <Markdown>{DOMPurify.sanitize(pageData!.info1)}</Markdown>
+          <Markdown>{DOMPurify.sanitize(pageData.info1)}</Markdown>
         </Paper>
       </Container>
     </PageLayout>
