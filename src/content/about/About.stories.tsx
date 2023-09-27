@@ -5,7 +5,8 @@ import { within } from "@storybook/testing-library";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import store from "../../state/store";
+import { sampleAllData } from "../../../test-utils/msw/mockJson";
+import { setupStore } from "../../state/store";
 
 import About from "./About";
 
@@ -19,11 +20,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
+const defaultState = {
+  mainData: {
+    data: sampleAllData,
+    error: null,
+    loading: false,
+    loaded: true,
+  },
+};
+
 export const Default: Story = {
   decorators: [
     (Story) => {
       return (
-        <Provider store={store}>
+        <Provider store={setupStore(undefined, defaultState)}>
           <BrowserRouter>{Story()}</BrowserRouter>
         </Provider>
       );
