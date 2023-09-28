@@ -4,6 +4,7 @@ import {
 } from "../../../src/services/hygraph/generated/graphql";
 import {
   aGalleryView,
+  aGlobal,
   aPage,
   aProject,
   aVideoView,
@@ -87,6 +88,8 @@ export const projectVideoApp: FprojectFragment = aProject({
   }),
 });
 
+export const globalData = aGlobal();
+
 export const aboutPageData = aPage();
 
 export const sampleProjects: FprojectFragment[] = [
@@ -96,7 +99,7 @@ export const sampleProjects: FprojectFragment[] = [
 ];
 
 export const sampleAllData: AllDataQuery = {
-  global: null,
+  global: globalData,
   page: aboutPageData,
   projects: sampleProjects,
 };

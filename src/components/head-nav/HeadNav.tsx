@@ -2,7 +2,6 @@ import React, { memo, useCallback } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { BRAND } from "../../const";
 import { NAV_CHECKBOX_CHANGE } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
 import { useThemeWrapperContext } from "../../wrappers/theme-wrapper/ThemeWrapperContext";
@@ -32,6 +31,10 @@ const HeadNav = (props: Props) => {
     return state.mainData.data?.projects ?? [];
   });
 
+  const globalData = useAppSelector((state) => {
+    return state.mainData.data?.global;
+  });
+
   const homeClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
@@ -54,7 +57,7 @@ const HeadNav = (props: Props) => {
 
   const navThumbs = (
     <HeadNavThumbs
-      brandName={BRAND}
+      brandName={globalData?.brand}
       checkboxData={navCheckboxes}
       onBrandClick={brandClick}
       onThemeClick={toggleTheme}
