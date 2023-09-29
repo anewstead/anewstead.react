@@ -5,13 +5,6 @@ import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
 import graphqlLoader from "vite-plugin-graphql-loader";
 
-function chunkPolicy(id: string) {
-  if (id.includes("node_modules")) {
-    return "vendor";
-  }
-  return "index";
-}
-
 const dev = () => {
   return {
     plugins: [
@@ -33,15 +26,6 @@ const buildProd = () => {
     plugins: [react(), graphqlLoader()],
     css: {
       devSourcemap: false,
-    },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: (id: string) => {
-            return chunkPolicy(id);
-          },
-        },
-      },
     },
   };
 };
