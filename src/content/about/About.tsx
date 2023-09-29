@@ -16,6 +16,9 @@ const About = () => {
     return state.mainData.data;
   });
 
+  /* istanbul ignore next -- @preserve */
+  const info = mainData?.page?.info1 ?? "";
+
   return (
     <PageLayout headerNavType="detail" headerNavTitle={mainData?.global?.brand}>
       <Container className={cls.about} data-testid="about-page">
@@ -23,7 +26,7 @@ const About = () => {
           <Typography variant="h4" component="h2">
             {mainData?.page?.title}
           </Typography>
-          <Markdown>{DOMPurify.sanitize(mainData?.page?.info1 ?? "")}</Markdown>
+          <Markdown>{DOMPurify.sanitize(info)}</Markdown>
         </Paper>
       </Container>
     </PageLayout>

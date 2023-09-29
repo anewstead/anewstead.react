@@ -25,7 +25,6 @@ const Project: React.FC = () => {
   const { uid } = useParams();
 
   const projectsData = useAppSelector((state: AppState) => {
-    /* istanbul ignore next -- @preserve */
     return state.mainData.data!.projects;
   });
 
