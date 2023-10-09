@@ -1204,6 +1204,10 @@ export type Global = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
+  /** System Locale field */
+  locale: Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<Global>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
@@ -1217,6 +1221,11 @@ export type Global = Node & {
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+export type GlobalCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
 };
 
 
@@ -1240,6 +1249,17 @@ export type GlobalHistoryArgs = {
 };
 
 
+export type GlobalLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean']['input'];
+  locales?: Array<Locale>;
+};
+
+
+export type GlobalPublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
 export type GlobalPublishedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -1255,6 +1275,11 @@ export type GlobalScheduledInArgs = {
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type GlobalUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
 };
 
 
@@ -1280,10 +1305,30 @@ export type GlobalConnection = {
 };
 
 export type GlobalCreateInput = {
+  /** brand input for default locale (en) */
   brand: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: InputMaybe<GlobalCreateLocalizationsInput>;
   uid: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type GlobalCreateLocalizationDataInput = {
+  brand: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type GlobalCreateLocalizationInput = {
+  /** Localization input */
+  data: GlobalCreateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type GlobalCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: InputMaybe<Array<GlobalCreateLocalizationInput>>;
 };
 
 export type GlobalCreateManyInlineInput = {
@@ -1318,25 +1363,6 @@ export type GlobalManyWhereInput = {
   OR?: InputMaybe<Array<GlobalWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
-  brand?: InputMaybe<Scalars['String']['input']>;
-  /** All values containing the given string. */
-  brand_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values ending with the given string. */
-  brand_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are contained in given list. */
-  brand_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  brand_not?: InputMaybe<Scalars['String']['input']>;
-  /** All values not containing the given string. */
-  brand_not_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values not ending with the given string */
-  brand_not_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are not contained in given list. */
-  brand_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** All values not starting with the given string. */
-  brand_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values starting with the given string. */
-  brand_starts_with?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1447,8 +1473,30 @@ export enum GlobalOrderByInput {
 }
 
 export type GlobalUpdateInput = {
+  /** brand input for default locale (en) */
   brand?: InputMaybe<Scalars['String']['input']>;
+  /** Manage document localizations */
+  localizations?: InputMaybe<GlobalUpdateLocalizationsInput>;
   uid?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GlobalUpdateLocalizationDataInput = {
+  brand?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GlobalUpdateLocalizationInput = {
+  data: GlobalUpdateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type GlobalUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: InputMaybe<Array<GlobalCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete?: InputMaybe<Array<Locale>>;
+  /** Localizations to update */
+  update?: InputMaybe<Array<GlobalUpdateLocalizationInput>>;
+  upsert?: InputMaybe<Array<GlobalUpsertLocalizationInput>>;
 };
 
 export type GlobalUpdateManyInlineInput = {
@@ -1469,7 +1517,24 @@ export type GlobalUpdateManyInlineInput = {
 };
 
 export type GlobalUpdateManyInput = {
+  /** brand input for default locale (en) */
   brand?: InputMaybe<Scalars['String']['input']>;
+  /** Optional updates to localizations */
+  localizations?: InputMaybe<GlobalUpdateManyLocalizationsInput>;
+};
+
+export type GlobalUpdateManyLocalizationDataInput = {
+  brand?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GlobalUpdateManyLocalizationInput = {
+  data: GlobalUpdateManyLocalizationDataInput;
+  locale: Locale;
+};
+
+export type GlobalUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update?: InputMaybe<Array<GlobalUpdateManyLocalizationInput>>;
 };
 
 export type GlobalUpdateManyWithNestedWhereInput = {
@@ -1506,6 +1571,12 @@ export type GlobalUpsertInput = {
   create: GlobalCreateInput;
   /** Update document if it exists */
   update: GlobalUpdateInput;
+};
+
+export type GlobalUpsertLocalizationInput = {
+  create: GlobalCreateLocalizationDataInput;
+  locale: Locale;
+  update: GlobalUpdateLocalizationDataInput;
 };
 
 export type GlobalUpsertWithNestedWhereUniqueInput = {
@@ -2444,8 +2515,11 @@ export type MutationPublishAssetArgs = {
 
 
 export type MutationPublishGlobalArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']['input']>;
   to?: Array<Stage>;
   where: GlobalWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2474,8 +2548,11 @@ export type MutationPublishManyAssetsConnectionArgs = {
 
 
 export type MutationPublishManyGlobalsArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']['input']>;
   to?: Array<Stage>;
   where?: InputMaybe<GlobalManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2485,9 +2562,12 @@ export type MutationPublishManyGlobalsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   from?: InputMaybe<Stage>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   to?: Array<Stage>;
   where?: InputMaybe<GlobalManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2551,10 +2631,13 @@ export type MutationSchedulePublishAssetArgs = {
 
 
 export type MutationSchedulePublishGlobalArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']['input']>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
   to?: Array<Stage>;
   where: GlobalWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -2586,8 +2669,10 @@ export type MutationScheduleUnpublishAssetArgs = {
 
 export type MutationScheduleUnpublishGlobalArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where: GlobalWhereUniqueInput;
 };
 
@@ -2618,6 +2703,8 @@ export type MutationUnpublishAssetArgs = {
 
 export type MutationUnpublishGlobalArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where: GlobalWhereUniqueInput;
 };
 
@@ -2646,6 +2733,8 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
 
 export type MutationUnpublishManyGlobalsArgs = {
   from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<GlobalManyWhereInput>;
 };
 
@@ -2656,8 +2745,10 @@ export type MutationUnpublishManyGlobalsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   from?: Array<Stage>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: InputMaybe<Stage>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<GlobalManyWhereInput>;
 };
 

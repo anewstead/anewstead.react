@@ -1,4 +1,4 @@
-import { Aggregate, Asset, AssetConnectInput, AssetConnection, AssetCreateInput, AssetCreateLocalizationDataInput, AssetCreateLocalizationInput, AssetCreateLocalizationsInput, AssetCreateManyInlineInput, AssetCreateOneInlineInput, AssetEdge, AssetManyWhereInput, AssetTransformationInput, AssetUpdateInput, AssetUpdateLocalizationDataInput, AssetUpdateLocalizationInput, AssetUpdateLocalizationsInput, AssetUpdateManyInlineInput, AssetUpdateManyInput, AssetUpdateManyLocalizationDataInput, AssetUpdateManyLocalizationInput, AssetUpdateManyLocalizationsInput, AssetUpdateManyWithNestedWhereInput, AssetUpdateOneInlineInput, AssetUpdateWithNestedWhereUniqueInput, AssetUpsertInput, AssetUpsertLocalizationInput, AssetUpsertWithNestedWhereUniqueInput, AssetWhereComparatorInput, AssetWhereInput, AssetWhereStageInput, AssetWhereUniqueInput, BatchPayload, Color, ColorInput, ConnectPositionInput, DocumentOutputInput, DocumentTransformationInput, DocumentVersion, GalleryView, GalleryViewConnectInput, GalleryViewConnection, GalleryViewCreateInput, GalleryViewCreateManyInlineInput, GalleryViewCreateOneInlineInput, GalleryViewCreateWithPositionInput, GalleryViewEdge, GalleryViewManyWhereInput, GalleryViewParentConnectInput, GalleryViewParentCreateInput, GalleryViewParentCreateManyInlineInput, GalleryViewParentCreateOneInlineInput, GalleryViewParentUpdateInput, GalleryViewParentUpdateManyInlineInput, GalleryViewParentUpdateManyWithNestedWhereInput, GalleryViewParentUpdateOneInlineInput, GalleryViewParentUpdateWithNestedWhereUniqueInput, GalleryViewParentUpsertWithNestedWhereUniqueInput, GalleryViewParentWhereInput, GalleryViewParentWhereUniqueInput, GalleryViewUpdateInput, GalleryViewUpdateManyInlineInput, GalleryViewUpdateManyInput, GalleryViewUpdateManyWithNestedWhereInput, GalleryViewUpdateOneInlineInput, GalleryViewUpdateWithNestedWhereUniqueAndPositionInput, GalleryViewUpdateWithNestedWhereUniqueInput, GalleryViewUpsertInput, GalleryViewUpsertWithNestedWhereUniqueAndPositionInput, GalleryViewUpsertWithNestedWhereUniqueInput, GalleryViewWhereInput, GalleryViewWhereUniqueInput, Global, GlobalConnectInput, GlobalConnection, GlobalCreateInput, GlobalCreateManyInlineInput, GlobalCreateOneInlineInput, GlobalEdge, GlobalManyWhereInput, GlobalUpdateInput, GlobalUpdateManyInlineInput, GlobalUpdateManyInput, GlobalUpdateManyWithNestedWhereInput, GlobalUpdateOneInlineInput, GlobalUpdateWithNestedWhereUniqueInput, GlobalUpsertInput, GlobalUpsertWithNestedWhereUniqueInput, GlobalWhereComparatorInput, GlobalWhereInput, GlobalWhereStageInput, GlobalWhereUniqueInput, IframeView, IframeViewConnectInput, IframeViewConnection, IframeViewCreateInput, IframeViewCreateManyInlineInput, IframeViewCreateOneInlineInput, IframeViewCreateWithPositionInput, IframeViewEdge, IframeViewManyWhereInput, IframeViewParentConnectInput, IframeViewParentCreateInput, IframeViewParentCreateManyInlineInput, IframeViewParentCreateOneInlineInput, IframeViewParentUpdateInput, IframeViewParentUpdateManyInlineInput, IframeViewParentUpdateManyWithNestedWhereInput, IframeViewParentUpdateOneInlineInput, IframeViewParentUpdateWithNestedWhereUniqueInput, IframeViewParentUpsertWithNestedWhereUniqueInput, IframeViewParentWhereInput, IframeViewParentWhereUniqueInput, IframeViewUpdateInput, IframeViewUpdateManyInlineInput, IframeViewUpdateManyInput, IframeViewUpdateManyWithNestedWhereInput, IframeViewUpdateOneInlineInput, IframeViewUpdateWithNestedWhereUniqueAndPositionInput, IframeViewUpdateWithNestedWhereUniqueInput, IframeViewUpsertInput, IframeViewUpsertWithNestedWhereUniqueAndPositionInput, IframeViewUpsertWithNestedWhereUniqueInput, IframeViewWhereInput, IframeViewWhereUniqueInput, ImageResizeInput, ImageTransformationInput, Location, LocationInput, Mutation, Node, Page, PageConnectInput, PageConnection, PageCreateInput, PageCreateManyInlineInput, PageCreateOneInlineInput, PageEdge, PageInfo, PageManyWhereInput, PageUpdateInput, PageUpdateManyInlineInput, PageUpdateManyInput, PageUpdateManyWithNestedWhereInput, PageUpdateOneInlineInput, PageUpdateWithNestedWhereUniqueInput, PageUpsertInput, PageUpsertWithNestedWhereUniqueInput, PageWhereComparatorInput, PageWhereInput, PageWhereStageInput, PageWhereUniqueInput, Project, ProjectConnectInput, ProjectConnection, ProjectCreateInput, ProjectCreateManyInlineInput, ProjectCreateOneInlineInput, ProjectEdge, ProjectManyWhereInput, ProjectUpdateInput, ProjectUpdateManyInlineInput, ProjectUpdateManyInput, ProjectUpdateManyWithNestedWhereInput, ProjectUpdateOneInlineInput, ProjectUpdateWithNestedWhereUniqueInput, ProjectUpsertInput, ProjectUpsertWithNestedWhereUniqueInput, ProjectWhereComparatorInput, ProjectWhereInput, ProjectWhereStageInput, ProjectWhereUniqueInput, ProjectviewUnionConnectInput, ProjectviewUnionCreateInput, ProjectviewUnionCreateManyInlineInput, ProjectviewUnionCreateOneInlineInput, ProjectviewUnionCreateWithPositionInput, ProjectviewUnionUpdateInput, ProjectviewUnionUpdateManyInlineInput, ProjectviewUnionUpdateManyWithNestedWhereInput, ProjectviewUnionUpdateOneInlineInput, ProjectviewUnionUpdateWithNestedWhereUniqueAndPositionInput, ProjectviewUnionUpdateWithNestedWhereUniqueInput, ProjectviewUnionUpsertWithNestedWhereUniqueAndPositionInput, ProjectviewUnionUpsertWithNestedWhereUniqueInput, ProjectviewUnionWhereInput, ProjectviewUnionWhereUniqueInput, PublishLocaleInput, Query, Rgba, RgbaInput, RichText, ScheduledOperation, ScheduledOperationConnectInput, ScheduledOperationConnection, ScheduledOperationCreateManyInlineInput, ScheduledOperationCreateOneInlineInput, ScheduledOperationEdge, ScheduledOperationManyWhereInput, ScheduledOperationUpdateManyInlineInput, ScheduledOperationUpdateOneInlineInput, ScheduledOperationWhereInput, ScheduledOperationWhereUniqueInput, ScheduledRelease, ScheduledReleaseConnectInput, ScheduledReleaseConnection, ScheduledReleaseCreateInput, ScheduledReleaseCreateManyInlineInput, ScheduledReleaseCreateOneInlineInput, ScheduledReleaseEdge, ScheduledReleaseManyWhereInput, ScheduledReleaseUpdateInput, ScheduledReleaseUpdateManyInlineInput, ScheduledReleaseUpdateManyInput, ScheduledReleaseUpdateManyWithNestedWhereInput, ScheduledReleaseUpdateOneInlineInput, ScheduledReleaseUpdateWithNestedWhereUniqueInput, ScheduledReleaseUpsertInput, ScheduledReleaseUpsertWithNestedWhereUniqueInput, ScheduledReleaseWhereInput, ScheduledReleaseWhereUniqueInput, UnpublishLocaleInput, User, UserConnectInput, UserConnection, UserCreateManyInlineInput, UserCreateOneInlineInput, UserEdge, UserManyWhereInput, UserUpdateManyInlineInput, UserUpdateOneInlineInput, UserWhereComparatorInput, UserWhereInput, UserWhereStageInput, UserWhereUniqueInput, Version, VersionWhereInput, VideoView, VideoViewConnectInput, VideoViewConnection, VideoViewCreateInput, VideoViewCreateManyInlineInput, VideoViewCreateOneInlineInput, VideoViewCreateWithPositionInput, VideoViewEdge, VideoViewManyWhereInput, VideoViewParentConnectInput, VideoViewParentCreateInput, VideoViewParentCreateManyInlineInput, VideoViewParentCreateOneInlineInput, VideoViewParentUpdateInput, VideoViewParentUpdateManyInlineInput, VideoViewParentUpdateManyWithNestedWhereInput, VideoViewParentUpdateOneInlineInput, VideoViewParentUpdateWithNestedWhereUniqueInput, VideoViewParentUpsertWithNestedWhereUniqueInput, VideoViewParentWhereInput, VideoViewParentWhereUniqueInput, VideoViewUpdateInput, VideoViewUpdateManyInlineInput, VideoViewUpdateManyInput, VideoViewUpdateManyWithNestedWhereInput, VideoViewUpdateOneInlineInput, VideoViewUpdateWithNestedWhereUniqueAndPositionInput, VideoViewUpdateWithNestedWhereUniqueInput, VideoViewUpsertInput, VideoViewUpsertWithNestedWhereUniqueAndPositionInput, VideoViewUpsertWithNestedWhereUniqueInput, VideoViewWhereInput, VideoViewWhereUniqueInput, AssetOrderByInput, DocumentFileTypes, GalleryViewOrderByInput, GlobalOrderByInput, IframeViewOrderByInput, ImageFit, Locale, PageOrderByInput, ProjectOrderByInput, ProjectType, ScheduledOperationOrderByInput, ScheduledOperationStatus, ScheduledReleaseOrderByInput, ScheduledReleaseStatus, Stage, SystemDateTimeFieldVariation, UserKind, UserOrderByInput, VideoViewOrderByInput, ViewType, _FilterKind, _MutationInputFieldKind, _MutationKind, _OrderDirection, _RelationInputCardinality, _RelationInputKind, _RelationKind, _SystemDateTimeFieldVariation } from './graphql';
+import { Aggregate, Asset, AssetConnectInput, AssetConnection, AssetCreateInput, AssetCreateLocalizationDataInput, AssetCreateLocalizationInput, AssetCreateLocalizationsInput, AssetCreateManyInlineInput, AssetCreateOneInlineInput, AssetEdge, AssetManyWhereInput, AssetTransformationInput, AssetUpdateInput, AssetUpdateLocalizationDataInput, AssetUpdateLocalizationInput, AssetUpdateLocalizationsInput, AssetUpdateManyInlineInput, AssetUpdateManyInput, AssetUpdateManyLocalizationDataInput, AssetUpdateManyLocalizationInput, AssetUpdateManyLocalizationsInput, AssetUpdateManyWithNestedWhereInput, AssetUpdateOneInlineInput, AssetUpdateWithNestedWhereUniqueInput, AssetUpsertInput, AssetUpsertLocalizationInput, AssetUpsertWithNestedWhereUniqueInput, AssetWhereComparatorInput, AssetWhereInput, AssetWhereStageInput, AssetWhereUniqueInput, BatchPayload, Color, ColorInput, ConnectPositionInput, DocumentOutputInput, DocumentTransformationInput, DocumentVersion, GalleryView, GalleryViewConnectInput, GalleryViewConnection, GalleryViewCreateInput, GalleryViewCreateManyInlineInput, GalleryViewCreateOneInlineInput, GalleryViewCreateWithPositionInput, GalleryViewEdge, GalleryViewManyWhereInput, GalleryViewParentConnectInput, GalleryViewParentCreateInput, GalleryViewParentCreateManyInlineInput, GalleryViewParentCreateOneInlineInput, GalleryViewParentUpdateInput, GalleryViewParentUpdateManyInlineInput, GalleryViewParentUpdateManyWithNestedWhereInput, GalleryViewParentUpdateOneInlineInput, GalleryViewParentUpdateWithNestedWhereUniqueInput, GalleryViewParentUpsertWithNestedWhereUniqueInput, GalleryViewParentWhereInput, GalleryViewParentWhereUniqueInput, GalleryViewUpdateInput, GalleryViewUpdateManyInlineInput, GalleryViewUpdateManyInput, GalleryViewUpdateManyWithNestedWhereInput, GalleryViewUpdateOneInlineInput, GalleryViewUpdateWithNestedWhereUniqueAndPositionInput, GalleryViewUpdateWithNestedWhereUniqueInput, GalleryViewUpsertInput, GalleryViewUpsertWithNestedWhereUniqueAndPositionInput, GalleryViewUpsertWithNestedWhereUniqueInput, GalleryViewWhereInput, GalleryViewWhereUniqueInput, Global, GlobalConnectInput, GlobalConnection, GlobalCreateInput, GlobalCreateLocalizationDataInput, GlobalCreateLocalizationInput, GlobalCreateLocalizationsInput, GlobalCreateManyInlineInput, GlobalCreateOneInlineInput, GlobalEdge, GlobalManyWhereInput, GlobalUpdateInput, GlobalUpdateLocalizationDataInput, GlobalUpdateLocalizationInput, GlobalUpdateLocalizationsInput, GlobalUpdateManyInlineInput, GlobalUpdateManyInput, GlobalUpdateManyLocalizationDataInput, GlobalUpdateManyLocalizationInput, GlobalUpdateManyLocalizationsInput, GlobalUpdateManyWithNestedWhereInput, GlobalUpdateOneInlineInput, GlobalUpdateWithNestedWhereUniqueInput, GlobalUpsertInput, GlobalUpsertLocalizationInput, GlobalUpsertWithNestedWhereUniqueInput, GlobalWhereComparatorInput, GlobalWhereInput, GlobalWhereStageInput, GlobalWhereUniqueInput, IframeView, IframeViewConnectInput, IframeViewConnection, IframeViewCreateInput, IframeViewCreateManyInlineInput, IframeViewCreateOneInlineInput, IframeViewCreateWithPositionInput, IframeViewEdge, IframeViewManyWhereInput, IframeViewParentConnectInput, IframeViewParentCreateInput, IframeViewParentCreateManyInlineInput, IframeViewParentCreateOneInlineInput, IframeViewParentUpdateInput, IframeViewParentUpdateManyInlineInput, IframeViewParentUpdateManyWithNestedWhereInput, IframeViewParentUpdateOneInlineInput, IframeViewParentUpdateWithNestedWhereUniqueInput, IframeViewParentUpsertWithNestedWhereUniqueInput, IframeViewParentWhereInput, IframeViewParentWhereUniqueInput, IframeViewUpdateInput, IframeViewUpdateManyInlineInput, IframeViewUpdateManyInput, IframeViewUpdateManyWithNestedWhereInput, IframeViewUpdateOneInlineInput, IframeViewUpdateWithNestedWhereUniqueAndPositionInput, IframeViewUpdateWithNestedWhereUniqueInput, IframeViewUpsertInput, IframeViewUpsertWithNestedWhereUniqueAndPositionInput, IframeViewUpsertWithNestedWhereUniqueInput, IframeViewWhereInput, IframeViewWhereUniqueInput, ImageResizeInput, ImageTransformationInput, Location, LocationInput, Mutation, Node, Page, PageConnectInput, PageConnection, PageCreateInput, PageCreateManyInlineInput, PageCreateOneInlineInput, PageEdge, PageInfo, PageManyWhereInput, PageUpdateInput, PageUpdateManyInlineInput, PageUpdateManyInput, PageUpdateManyWithNestedWhereInput, PageUpdateOneInlineInput, PageUpdateWithNestedWhereUniqueInput, PageUpsertInput, PageUpsertWithNestedWhereUniqueInput, PageWhereComparatorInput, PageWhereInput, PageWhereStageInput, PageWhereUniqueInput, Project, ProjectConnectInput, ProjectConnection, ProjectCreateInput, ProjectCreateManyInlineInput, ProjectCreateOneInlineInput, ProjectEdge, ProjectManyWhereInput, ProjectUpdateInput, ProjectUpdateManyInlineInput, ProjectUpdateManyInput, ProjectUpdateManyWithNestedWhereInput, ProjectUpdateOneInlineInput, ProjectUpdateWithNestedWhereUniqueInput, ProjectUpsertInput, ProjectUpsertWithNestedWhereUniqueInput, ProjectWhereComparatorInput, ProjectWhereInput, ProjectWhereStageInput, ProjectWhereUniqueInput, ProjectviewUnionConnectInput, ProjectviewUnionCreateInput, ProjectviewUnionCreateManyInlineInput, ProjectviewUnionCreateOneInlineInput, ProjectviewUnionCreateWithPositionInput, ProjectviewUnionUpdateInput, ProjectviewUnionUpdateManyInlineInput, ProjectviewUnionUpdateManyWithNestedWhereInput, ProjectviewUnionUpdateOneInlineInput, ProjectviewUnionUpdateWithNestedWhereUniqueAndPositionInput, ProjectviewUnionUpdateWithNestedWhereUniqueInput, ProjectviewUnionUpsertWithNestedWhereUniqueAndPositionInput, ProjectviewUnionUpsertWithNestedWhereUniqueInput, ProjectviewUnionWhereInput, ProjectviewUnionWhereUniqueInput, PublishLocaleInput, Query, Rgba, RgbaInput, RichText, ScheduledOperation, ScheduledOperationConnectInput, ScheduledOperationConnection, ScheduledOperationCreateManyInlineInput, ScheduledOperationCreateOneInlineInput, ScheduledOperationEdge, ScheduledOperationManyWhereInput, ScheduledOperationUpdateManyInlineInput, ScheduledOperationUpdateOneInlineInput, ScheduledOperationWhereInput, ScheduledOperationWhereUniqueInput, ScheduledRelease, ScheduledReleaseConnectInput, ScheduledReleaseConnection, ScheduledReleaseCreateInput, ScheduledReleaseCreateManyInlineInput, ScheduledReleaseCreateOneInlineInput, ScheduledReleaseEdge, ScheduledReleaseManyWhereInput, ScheduledReleaseUpdateInput, ScheduledReleaseUpdateManyInlineInput, ScheduledReleaseUpdateManyInput, ScheduledReleaseUpdateManyWithNestedWhereInput, ScheduledReleaseUpdateOneInlineInput, ScheduledReleaseUpdateWithNestedWhereUniqueInput, ScheduledReleaseUpsertInput, ScheduledReleaseUpsertWithNestedWhereUniqueInput, ScheduledReleaseWhereInput, ScheduledReleaseWhereUniqueInput, UnpublishLocaleInput, User, UserConnectInput, UserConnection, UserCreateManyInlineInput, UserCreateOneInlineInput, UserEdge, UserManyWhereInput, UserUpdateManyInlineInput, UserUpdateOneInlineInput, UserWhereComparatorInput, UserWhereInput, UserWhereStageInput, UserWhereUniqueInput, Version, VersionWhereInput, VideoView, VideoViewConnectInput, VideoViewConnection, VideoViewCreateInput, VideoViewCreateManyInlineInput, VideoViewCreateOneInlineInput, VideoViewCreateWithPositionInput, VideoViewEdge, VideoViewManyWhereInput, VideoViewParentConnectInput, VideoViewParentCreateInput, VideoViewParentCreateManyInlineInput, VideoViewParentCreateOneInlineInput, VideoViewParentUpdateInput, VideoViewParentUpdateManyInlineInput, VideoViewParentUpdateManyWithNestedWhereInput, VideoViewParentUpdateOneInlineInput, VideoViewParentUpdateWithNestedWhereUniqueInput, VideoViewParentUpsertWithNestedWhereUniqueInput, VideoViewParentWhereInput, VideoViewParentWhereUniqueInput, VideoViewUpdateInput, VideoViewUpdateManyInlineInput, VideoViewUpdateManyInput, VideoViewUpdateManyWithNestedWhereInput, VideoViewUpdateOneInlineInput, VideoViewUpdateWithNestedWhereUniqueAndPositionInput, VideoViewUpdateWithNestedWhereUniqueInput, VideoViewUpsertInput, VideoViewUpsertWithNestedWhereUniqueAndPositionInput, VideoViewUpsertWithNestedWhereUniqueInput, VideoViewWhereInput, VideoViewWhereUniqueInput, AssetOrderByInput, DocumentFileTypes, GalleryViewOrderByInput, GlobalOrderByInput, IframeViewOrderByInput, ImageFit, Locale, PageOrderByInput, ProjectOrderByInput, ProjectType, ScheduledOperationOrderByInput, ScheduledOperationStatus, ScheduledReleaseOrderByInput, ScheduledReleaseStatus, Stage, SystemDateTimeFieldVariation, UserKind, UserOrderByInput, VideoViewOrderByInput, ViewType, _FilterKind, _MutationInputFieldKind, _MutationKind, _OrderDirection, _RelationInputCardinality, _RelationInputKind, _RelationKind, _SystemDateTimeFieldVariation } from './graphql';
 
 export const anAggregate = (overrides?: Partial<Aggregate>, _relationshipsToOmit: Set<string> = new Set()): Aggregate => {
     const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
@@ -963,6 +963,8 @@ export const aGlobal = (overrides?: Partial<Global>, _relationshipsToOmit: Set<s
         documentInStages: overrides && overrides.hasOwnProperty('documentInStages') ? overrides.documentInStages! : [relationshipsToOmit.has('Global') ? {} as Global : aGlobal({}, relationshipsToOmit)],
         history: overrides && overrides.hasOwnProperty('history') ? overrides.history! : [relationshipsToOmit.has('Version') ? {} as Version : aVersion({}, relationshipsToOmit)],
         id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : 'd89cf3b8-464c-43c0-a9a2-cbf70a893d40',
+        locale: overrides && overrides.hasOwnProperty('locale') ? overrides.locale! : Locale.En,
+        localizations: overrides && overrides.hasOwnProperty('localizations') ? overrides.localizations! : [relationshipsToOmit.has('Global') ? {} as Global : aGlobal({}, relationshipsToOmit)],
         publishedAt: overrides && overrides.hasOwnProperty('publishedAt') ? overrides.publishedAt! : 'assumenda',
         publishedBy: overrides && overrides.hasOwnProperty('publishedBy') ? overrides.publishedBy! : relationshipsToOmit.has('User') ? {} as User : aUser({}, relationshipsToOmit),
         scheduledIn: overrides && overrides.hasOwnProperty('scheduledIn') ? overrides.scheduledIn! : [relationshipsToOmit.has('ScheduledOperation') ? {} as ScheduledOperation : aScheduledOperation({}, relationshipsToOmit)],
@@ -998,8 +1000,36 @@ export const aGlobalCreateInput = (overrides?: Partial<GlobalCreateInput>, _rela
     return {
         brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'doloribus',
         createdAt: overrides && overrides.hasOwnProperty('createdAt') ? overrides.createdAt! : 'temporibus',
+        localizations: overrides && overrides.hasOwnProperty('localizations') ? overrides.localizations! : relationshipsToOmit.has('GlobalCreateLocalizationsInput') ? {} as GlobalCreateLocalizationsInput : aGlobalCreateLocalizationsInput({}, relationshipsToOmit),
         uid: overrides && overrides.hasOwnProperty('uid') ? overrides.uid! : 'aspernatur',
         updatedAt: overrides && overrides.hasOwnProperty('updatedAt') ? overrides.updatedAt! : 'vitae',
+    };
+};
+
+export const aGlobalCreateLocalizationDataInput = (overrides?: Partial<GlobalCreateLocalizationDataInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalCreateLocalizationDataInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalCreateLocalizationDataInput');
+    return {
+        brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'ut',
+        createdAt: overrides && overrides.hasOwnProperty('createdAt') ? overrides.createdAt! : 'provident',
+        updatedAt: overrides && overrides.hasOwnProperty('updatedAt') ? overrides.updatedAt! : 'nobis',
+    };
+};
+
+export const aGlobalCreateLocalizationInput = (overrides?: Partial<GlobalCreateLocalizationInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalCreateLocalizationInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalCreateLocalizationInput');
+    return {
+        data: overrides && overrides.hasOwnProperty('data') ? overrides.data! : relationshipsToOmit.has('GlobalCreateLocalizationDataInput') ? {} as GlobalCreateLocalizationDataInput : aGlobalCreateLocalizationDataInput({}, relationshipsToOmit),
+        locale: overrides && overrides.hasOwnProperty('locale') ? overrides.locale! : Locale.En,
+    };
+};
+
+export const aGlobalCreateLocalizationsInput = (overrides?: Partial<GlobalCreateLocalizationsInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalCreateLocalizationsInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalCreateLocalizationsInput');
+    return {
+        create: overrides && overrides.hasOwnProperty('create') ? overrides.create! : [relationshipsToOmit.has('GlobalCreateLocalizationInput') ? {} as GlobalCreateLocalizationInput : aGlobalCreateLocalizationInput({}, relationshipsToOmit)],
     };
 };
 
@@ -1038,16 +1068,6 @@ export const aGlobalManyWhereInput = (overrides?: Partial<GlobalManyWhereInput>,
         NOT: overrides && overrides.hasOwnProperty('NOT') ? overrides.NOT! : [relationshipsToOmit.has('GlobalWhereInput') ? {} as GlobalWhereInput : aGlobalWhereInput({}, relationshipsToOmit)],
         OR: overrides && overrides.hasOwnProperty('OR') ? overrides.OR! : [relationshipsToOmit.has('GlobalWhereInput') ? {} as GlobalWhereInput : aGlobalWhereInput({}, relationshipsToOmit)],
         _search: overrides && overrides.hasOwnProperty('_search') ? overrides._search! : 'nisi',
-        brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'id',
-        brand_contains: overrides && overrides.hasOwnProperty('brand_contains') ? overrides.brand_contains! : 'sit',
-        brand_ends_with: overrides && overrides.hasOwnProperty('brand_ends_with') ? overrides.brand_ends_with! : 'rerum',
-        brand_in: overrides && overrides.hasOwnProperty('brand_in') ? overrides.brand_in! : ['nihil'],
-        brand_not: overrides && overrides.hasOwnProperty('brand_not') ? overrides.brand_not! : 'mollitia',
-        brand_not_contains: overrides && overrides.hasOwnProperty('brand_not_contains') ? overrides.brand_not_contains! : 'porro',
-        brand_not_ends_with: overrides && overrides.hasOwnProperty('brand_not_ends_with') ? overrides.brand_not_ends_with! : 'omnis',
-        brand_not_in: overrides && overrides.hasOwnProperty('brand_not_in') ? overrides.brand_not_in! : ['reprehenderit'],
-        brand_not_starts_with: overrides && overrides.hasOwnProperty('brand_not_starts_with') ? overrides.brand_not_starts_with! : 'et',
-        brand_starts_with: overrides && overrides.hasOwnProperty('brand_starts_with') ? overrides.brand_starts_with! : 'molestiae',
         createdAt: overrides && overrides.hasOwnProperty('createdAt') ? overrides.createdAt! : 'sit',
         createdAt_gt: overrides && overrides.hasOwnProperty('createdAt_gt') ? overrides.createdAt_gt! : 'voluptatem',
         createdAt_gte: overrides && overrides.hasOwnProperty('createdAt_gte') ? overrides.createdAt_gte! : 'iure',
@@ -1109,7 +1129,36 @@ export const aGlobalUpdateInput = (overrides?: Partial<GlobalUpdateInput>, _rela
     relationshipsToOmit.add('GlobalUpdateInput');
     return {
         brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'totam',
+        localizations: overrides && overrides.hasOwnProperty('localizations') ? overrides.localizations! : relationshipsToOmit.has('GlobalUpdateLocalizationsInput') ? {} as GlobalUpdateLocalizationsInput : aGlobalUpdateLocalizationsInput({}, relationshipsToOmit),
         uid: overrides && overrides.hasOwnProperty('uid') ? overrides.uid! : 'eius',
+    };
+};
+
+export const aGlobalUpdateLocalizationDataInput = (overrides?: Partial<GlobalUpdateLocalizationDataInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateLocalizationDataInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateLocalizationDataInput');
+    return {
+        brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'dolore',
+    };
+};
+
+export const aGlobalUpdateLocalizationInput = (overrides?: Partial<GlobalUpdateLocalizationInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateLocalizationInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateLocalizationInput');
+    return {
+        data: overrides && overrides.hasOwnProperty('data') ? overrides.data! : relationshipsToOmit.has('GlobalUpdateLocalizationDataInput') ? {} as GlobalUpdateLocalizationDataInput : aGlobalUpdateLocalizationDataInput({}, relationshipsToOmit),
+        locale: overrides && overrides.hasOwnProperty('locale') ? overrides.locale! : Locale.En,
+    };
+};
+
+export const aGlobalUpdateLocalizationsInput = (overrides?: Partial<GlobalUpdateLocalizationsInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateLocalizationsInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateLocalizationsInput');
+    return {
+        create: overrides && overrides.hasOwnProperty('create') ? overrides.create! : [relationshipsToOmit.has('GlobalCreateLocalizationInput') ? {} as GlobalCreateLocalizationInput : aGlobalCreateLocalizationInput({}, relationshipsToOmit)],
+        delete: overrides && overrides.hasOwnProperty('delete') ? overrides.delete! : [Locale.En],
+        update: overrides && overrides.hasOwnProperty('update') ? overrides.update! : [relationshipsToOmit.has('GlobalUpdateLocalizationInput') ? {} as GlobalUpdateLocalizationInput : aGlobalUpdateLocalizationInput({}, relationshipsToOmit)],
+        upsert: overrides && overrides.hasOwnProperty('upsert') ? overrides.upsert! : [relationshipsToOmit.has('GlobalUpsertLocalizationInput') ? {} as GlobalUpsertLocalizationInput : aGlobalUpsertLocalizationInput({}, relationshipsToOmit)],
     };
 };
 
@@ -1132,6 +1181,32 @@ export const aGlobalUpdateManyInput = (overrides?: Partial<GlobalUpdateManyInput
     relationshipsToOmit.add('GlobalUpdateManyInput');
     return {
         brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'voluptatem',
+        localizations: overrides && overrides.hasOwnProperty('localizations') ? overrides.localizations! : relationshipsToOmit.has('GlobalUpdateManyLocalizationsInput') ? {} as GlobalUpdateManyLocalizationsInput : aGlobalUpdateManyLocalizationsInput({}, relationshipsToOmit),
+    };
+};
+
+export const aGlobalUpdateManyLocalizationDataInput = (overrides?: Partial<GlobalUpdateManyLocalizationDataInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateManyLocalizationDataInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateManyLocalizationDataInput');
+    return {
+        brand: overrides && overrides.hasOwnProperty('brand') ? overrides.brand! : 'qui',
+    };
+};
+
+export const aGlobalUpdateManyLocalizationInput = (overrides?: Partial<GlobalUpdateManyLocalizationInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateManyLocalizationInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateManyLocalizationInput');
+    return {
+        data: overrides && overrides.hasOwnProperty('data') ? overrides.data! : relationshipsToOmit.has('GlobalUpdateManyLocalizationDataInput') ? {} as GlobalUpdateManyLocalizationDataInput : aGlobalUpdateManyLocalizationDataInput({}, relationshipsToOmit),
+        locale: overrides && overrides.hasOwnProperty('locale') ? overrides.locale! : Locale.En,
+    };
+};
+
+export const aGlobalUpdateManyLocalizationsInput = (overrides?: Partial<GlobalUpdateManyLocalizationsInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpdateManyLocalizationsInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpdateManyLocalizationsInput');
+    return {
+        update: overrides && overrides.hasOwnProperty('update') ? overrides.update! : [relationshipsToOmit.has('GlobalUpdateManyLocalizationInput') ? {} as GlobalUpdateManyLocalizationInput : aGlobalUpdateManyLocalizationInput({}, relationshipsToOmit)],
     };
 };
 
@@ -1172,6 +1247,16 @@ export const aGlobalUpsertInput = (overrides?: Partial<GlobalUpsertInput>, _rela
     return {
         create: overrides && overrides.hasOwnProperty('create') ? overrides.create! : relationshipsToOmit.has('GlobalCreateInput') ? {} as GlobalCreateInput : aGlobalCreateInput({}, relationshipsToOmit),
         update: overrides && overrides.hasOwnProperty('update') ? overrides.update! : relationshipsToOmit.has('GlobalUpdateInput') ? {} as GlobalUpdateInput : aGlobalUpdateInput({}, relationshipsToOmit),
+    };
+};
+
+export const aGlobalUpsertLocalizationInput = (overrides?: Partial<GlobalUpsertLocalizationInput>, _relationshipsToOmit: Set<string> = new Set()): GlobalUpsertLocalizationInput => {
+    const relationshipsToOmit: Set<string> = new Set(_relationshipsToOmit);
+    relationshipsToOmit.add('GlobalUpsertLocalizationInput');
+    return {
+        create: overrides && overrides.hasOwnProperty('create') ? overrides.create! : relationshipsToOmit.has('GlobalCreateLocalizationDataInput') ? {} as GlobalCreateLocalizationDataInput : aGlobalCreateLocalizationDataInput({}, relationshipsToOmit),
+        locale: overrides && overrides.hasOwnProperty('locale') ? overrides.locale! : Locale.En,
+        update: overrides && overrides.hasOwnProperty('update') ? overrides.update! : relationshipsToOmit.has('GlobalUpdateLocalizationDataInput') ? {} as GlobalUpdateLocalizationDataInput : aGlobalUpdateLocalizationDataInput({}, relationshipsToOmit),
     };
 };
 
