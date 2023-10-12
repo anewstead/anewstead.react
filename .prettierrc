@@ -1,5 +1,5 @@
 {
-  "jsdocSingleLineComment": false,
+  "jsdocCommentLineStrategy": "keep",
   "jsonRecursiveSort": true,
   "plugins": ["prettier-plugin-sort-json", "prettier-plugin-jsdoc"],
   "trailingComma": "es5"
