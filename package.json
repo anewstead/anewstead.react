@@ -39,6 +39,7 @@
     "@mui/utils": "^5.14.12",
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.5.1",
+    "axios-hooks": "^5.0.1",
     "clsx": "^2.0.0",
     "dompurify": "^3.0.6",
     "graphql": "^16.8.1",
