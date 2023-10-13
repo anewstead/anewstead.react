@@ -18,7 +18,7 @@ type TFeature = GeoJSON.Feature<GeoJSON.Point>;
 type TFeatureCollection = GeoJSON.FeatureCollection<GeoJSON.Point>;
 
 /* 
-example only, currently not intended to be complete component!
+example only, currently not intended as complete component!
 passing in dataset so can write test to check error state
 */
 export const MapExample = ({ dataSetID = "clnishn2f0yff2qnne28ghtko" }) => {
