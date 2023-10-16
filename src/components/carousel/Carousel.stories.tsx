@@ -8,7 +8,7 @@ import { waitForTransition } from "../../../test-utils/waitFor";
 import Carousel from "./Carousel";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import type { Settings as SlickSettings } from "react-slick";
+// import type { Settings as SlickSettings } from "react-slick";
 
 // -----------------------------------------------------------------------------
 const meta: Meta<typeof Carousel> = {
@@ -34,7 +34,14 @@ const imageData = [
 ];
 
 const slideImages = imageData.map((item) => {
-  return <img src={item.url} alt={item.alt} key={item.alt} />;
+  return (
+    <img
+      src={item.url}
+      alt={item.alt}
+      key={item.alt}
+      // style={{ width: "100%" }}
+    />
+  );
 });
 
 // -----------------------------------------------------------------------------
@@ -42,10 +49,10 @@ const slideImages = imageData.map((item) => {
 export const Default: Story = {
   args: {
     slides: slideImages,
-    settings: {
-      speed: 0,
-      lazyLoad: undefined,
-    } satisfies SlickSettings,
+    // settings: {
+    //   speed: 0,
+    //   lazyLoad: undefined,
+    // } satisfies SlickSettings,
   },
 
   play: async ({ args, canvasElement, step }) => {
@@ -86,9 +93,9 @@ export const Default: Story = {
 export const WithoutDotNavigation: Story = {
   args: {
     slides: slideImages,
-    settings: {
-      speed: 1500,
-      dots: false,
-    } satisfies SlickSettings,
+    // settings: {
+    //   speed: 1500,
+    //   dots: false,
+    // } satisfies SlickSettings,
   },
 };

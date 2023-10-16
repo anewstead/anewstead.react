@@ -1,50 +1,110 @@
-import "slick-carousel/slick/slick.css";
+import React, { useState } from "react";
 
-import React from "react";
+import "keen-slider/keen-slider.min.css";
 
-import { Box, useTheme } from "@mui/material";
-import Slider from "react-slick";
+import clsx from "clsx";
+import { useKeenSlider } from "keen-slider/react";
 
 import cls from "./carousel.module.scss";
 import CarouselButton from "./CarouselButton";
 
-import type { Settings as SlickSettings } from "react-slick";
+import type { KeenSliderPlugin } from "keen-slider/react";
 
 type Props = {
   slides: JSX.Element[];
-  settings?: SlickSettings;
+  // settings?: SlickSettings;
+};
+
+const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+  function updateHeight() {
+    // eslint-disable-next-line no-param-reassign
+    // slider.container.style.height = `${
+    //   slider.slides[slider.track.details.rel].offsetHeight
+    // }px`;
+  }
+  slider.on("created", updateHeight);
+  slider.on("slideChanged", updateHeight);
 };
 
 const Carousel = (props: Props) => {
-  const { slides, settings } = props;
+  const { slides } = props;
 
-  const theme = useTheme();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
-  const defaults: SlickSettings = {
-    dots: true,
-    lazyLoad: "progressive",
-    adaptiveHeight: true,
-    prevArrow: <CarouselButton direction="prev" />,
-    nextArrow: <CarouselButton direction="next" />,
-  };
-
-  const config: SlickSettings = {
-    ...defaults,
-    ...settings,
-  };
-
-  const bmargin = config.dots ? theme.spacing(6) : theme.spacing(4);
-
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
+    {
+      initial: 0,
+      slideChanged(s) {
+        setCurrentSlide(s.track.details.rel);
+      },
+      created() {
+        setLoaded(true);
+      },
+    },
+    [AdaptiveHeight]
+  );
   return (
-    <Box
-      className={cls.carousel}
-      style={{ marginBottom: bmargin }}
-      data-testid="carousel"
-    >
-      <Slider {...config} className={cls.slider}>
-        {slides}
-      </Slider>
-    </Box>
+    <div className={cls.carousel} data-testid="carousel">
+      <div ref={sliderRef} className="keen-slider">
+        {slides.map((slide) => {
+          return (
+            <div className="keen-slider__slide" key={slide.key}>
+              {slide}
+            </div>
+          );
+        })}
+
+        {loaded && instanceRef.current && (
+          <>
+            <CarouselButton
+              direction="prev"
+              onClick={(e) => {
+                e?.stopPropagation();
+                instanceRef.current?.prev();
+              }}
+              disabled={currentSlide === 0}
+            />
+
+            <CarouselButton
+              direction="next"
+              onClick={(e) => {
+                e?.stopPropagation();
+                instanceRef.current?.next();
+              }}
+              disabled={
+                currentSlide ===
+                instanceRef.current.track.details.slides.length - 1
+              }
+            />
+          </>
+        )}
+      </div>
+
+      {loaded && instanceRef.current && (
+        <div className={cls.dots}>
+          {[
+            ...Array(instanceRef.current.track.details.slides.length).keys(),
+          ].map((index) => {
+            return (
+              <button
+                type="button"
+                key={`slide${index}`}
+                aria-label={`slide${index}`}
+                onClick={() => {
+                  instanceRef.current?.moveToIdx(index);
+                }}
+                // className={`dot${currentSlide === index ? " active" : ""}`}
+                className={clsx(
+                  cls.dot,
+                  currentSlide === index ? cls["dot-active"] : ""
+                )}
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 };
 

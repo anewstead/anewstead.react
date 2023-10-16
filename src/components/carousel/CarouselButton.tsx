@@ -6,13 +6,16 @@ import clsx from "clsx";
 
 import cls from "./carouselButton.module.scss";
 
+import type { MouseEvent } from "react";
+
 type Props = {
   direction: "prev" | "next";
-  onClick?: () => void;
+  onClick?: (e?: MouseEvent<HTMLElement>) => void;
+  disabled?: boolean;
 };
 
 const CarouselButton = (props: Props) => {
-  const { direction, onClick } = props;
+  const { direction, onClick, disabled = false } = props;
 
   const btnCls = clsx(
     cls["carousel-button"],
@@ -20,7 +23,12 @@ const CarouselButton = (props: Props) => {
   );
 
   return (
-    <Button className={btnCls} onClick={onClick} aria-label={`${direction}`}>
+    <Button
+      className={btnCls}
+      onClick={onClick}
+      aria-label={`${direction}`}
+      disabled={disabled}
+    >
       <Box className="carousel-slidebutton-icon-wrapper">
         <ArrowBackIosNewRoundedIcon fontSize="large" />
       </Box>

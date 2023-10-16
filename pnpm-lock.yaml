@@ -50,6 +50,9 @@ dependencies:
   html-react-parser:
     specifier: ^4.2.2
     version: 4.2.2(react@18.2.0)
+  keen-slider:
+    specifier: ^6.8.6
+    version: 6.8.6
   mapbox-gl:
     specifier: ^2.15.0
     version: 2.15.0
@@ -12556,6 +12559,10 @@ packages:
 
   /kdbush@4.0.2:
     resolution: {integrity: sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==}
+    dev: false
+
+  /keen-slider@6.8.6:
+    resolution: {integrity: sha512-dcEQ7GDBpCjUQA8XZeWh3oBBLLmyn8aoeIQFGL/NTVkoEOsmlnXqA4QykUm/SncolAZYGsEk/PfUhLZ7mwMM2w==}
     dev: false
 
   /kind-of@6.0.3:
