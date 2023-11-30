@@ -1,7 +1,6 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { Outlet } from "react-router-dom";
 import {

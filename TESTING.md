@@ -79,3 +79,6 @@ it becomes secondary via display e.g. does it render (image | errorMsg)
 
 To exclude the next line/statement of code from coverage:  
 `/* istanbul ignore next -- @preserve */`
+
+If changing config jest local cache might need clearing:  
+`pnpm jest --clearCache`

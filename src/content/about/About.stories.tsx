@@ -1,7 +1,6 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 

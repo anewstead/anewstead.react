@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Button, useTheme } from "@mui/material";
-import { expect } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect } from "@storybook/test";
 
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
