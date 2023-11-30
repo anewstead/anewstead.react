@@ -17,9 +17,15 @@ module.exports = {
 
   roots: ["<rootDir>/src"],
 
+  setupFiles: ["./jest.polyfills.js"],
+
   setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
 
   testEnvironment: "jsdom",
+
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
 
   transform: {
     "\\.(gql|graphql)$": "./jest-transform-gql.js",

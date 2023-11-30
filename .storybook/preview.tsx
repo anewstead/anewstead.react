@@ -1,6 +1,6 @@
 import React from "react";
 
-import { initialize as mswInitialize, mswDecorator } from "msw-storybook-addon";
+import { initialize as mswInitialize, mswLoader } from "msw-storybook-addon";
 
 import { retrieveThemeName } from "../src/wrappers/theme-wrapper/helpers";
 import handlers from "../test-utils/msw/handlers";
@@ -57,8 +57,9 @@ const preview: Preview = {
       }
       return <>{Story(context)}</>;
     },
-    mswDecorator,
   ],
+
+  loaders: [mswLoader],
 };
 
 export default preview;
