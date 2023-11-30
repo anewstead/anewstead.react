@@ -1,7 +1,22 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
 import { projectVideoApp } from "../../../test-utils/msw/mockJson";
+
+/**
+ * https://nodejs.org/api/esm.html#importmeta\
+ * The built in __dirname is node cjs not esm\
+ * Import.meta.dirname available node 21.2.0\
+ * Until that node version is LTS and is an option on live server\
+ * We need the following import.meta.url workaround
+ */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/naming-convention */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 test.beforeEach(async ({ page }) => {
   const PAGE_URL = `/project/${projectVideoApp.uid}`; // known video

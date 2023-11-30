@@ -3,13 +3,13 @@ import bundleAnalyzer from "rollup-plugin-bundle-analyzer";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
-import graphqlLoader from "vite-plugin-graphql-loader";
+import { vitePluginGraphqlLoader } from "vite-plugin-graphql-loader";
 
 const dev = () => {
   return {
     plugins: [
       react(),
-      graphqlLoader(),
+      vitePluginGraphqlLoader(),
       codegen(),
       checker({
         typescript: true,
@@ -23,7 +23,7 @@ const dev = () => {
 
 const buildProd = () => {
   return {
-    plugins: [react(), graphqlLoader()],
+    plugins: [react(), vitePluginGraphqlLoader()],
     css: {
       devSourcemap: false,
     },

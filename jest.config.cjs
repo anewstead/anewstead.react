@@ -10,14 +10,14 @@ https://testing-library.com/docs/react-testing-library/api/#renderhook
 
 module.exports = {
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/test-utils/styleMock.js",
+    ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/test-utils/styleMock.cjs",
   },
 
   resetMocks: false,
 
   roots: ["<rootDir>/src"],
 
-  setupFiles: ["./jest.polyfills.js"],
+  setupFiles: ["./jest.polyfills.cjs"],
 
   setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
 
@@ -28,7 +28,7 @@ module.exports = {
   },
 
   transform: {
-    "\\.(gql|graphql)$": "./jest-transform-gql.js",
+    "\\.(gql|graphql)$": "./jest-transform-gql.cjs",
     "\\.[jt]sx?$": "babel-jest",
   },
 

@@ -31,7 +31,7 @@ const ensureTestRunnerHasExpectedViewport = async (page, story) => {
 };
 
 export default {
-  async preRender(page, story) {
+  async preVisit(page, story) {
     await ensureTestRunnerHasExpectedViewport(page, story);
   },
 };

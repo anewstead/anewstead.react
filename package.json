@@ -5,6 +5,7 @@
   "private": true,
   "author": "Andrew Newstead",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "prepare": "husky install; git config core.ignorecase false;",
     "preinstall": "npx only-allow pnpm",
@@ -25,7 +26,7 @@
     "cover-js": "nyc report --reporter=html --temp-dir=./coverage/jest-js --report-dir=./coverage/jest-js/report; node -e \"console.log('REPORT:','file://'+process.cwd()+'/coverage/jest-js/report/index.html')\";",
     "cover-sb": "nyc report --reporter=html --temp-dir=./coverage/storybook --report-dir=./coverage/storybook/report; node -e \"console.log('REPORT:','file://'+process.cwd()+'/coverage/storybook/report/index.html')\";",
     "lint": "run-s lint-js lint-style pretty;",
-    "lint-js": "eslint --fix $PWD/'**/*.{js,jsx,ts,tsx,json}' --cache",
+    "lint-js": "eslint --fix $PWD/'**/*.{js,jsx,ts,tsx,json,cjs,mjs,cts,mts}' --cache",
     "lint-style": "stylelint --fix $PWD/'**/*.{css,scss,sass,less}' --cache",
     "pretty": "prettier --write $PWD --log-level warn --cache --no-error-on-unmatched-pattern",
     "codegen": "graphql-codegen"
@@ -103,11 +104,11 @@
     "@types/testing-library__jest-dom": "^5.14.9",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
-    "@vitejs/plugin-react": "^4.1.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "babel-jest": "^29.7.0",
     "cross-fetch": "^4.0.0",
     "css-mediaquery": "^0.1.2",
-    "eslint": "^8.51.0",
+    "eslint": "^8.54.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-next": "^13.5.4",
@@ -154,9 +155,9 @@
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.1",
     "undici": "^5.28.1",
-    "vite": "^4.4.11",
+    "vite": "^5.0.4",
     "vite-plugin-checker": "^0.6.2",
-    "vite-plugin-graphql-codegen": "^3.3.1",
+    "vite-plugin-graphql-codegen": "^3.3.5",
     "vite-plugin-graphql-loader": "^2.0.0"
   },
   "msw": {
