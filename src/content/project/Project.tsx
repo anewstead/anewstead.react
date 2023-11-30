@@ -8,7 +8,10 @@ import InFrame from "../../components/in-frame";
 import TextBlock from "../../components/text-block";
 import Video from "../../components/video";
 import PageLayout from "../../layout/page-layout";
-import { ProjectType } from "../../services/hygraph/generated/graphql";
+import {
+  ProjectType,
+  ViewType,
+} from "../../services/hygraph/generated/graphql";
 import { useAppSelector } from "../../state/store";
 import NoMatch from "../no-match/NoMatch";
 
@@ -44,7 +47,7 @@ const Project: React.FC = () => {
   let content = <></>;
 
   switch (project.view!.type) {
-    case "gallery": {
+    case ViewType.Gallery: {
       const galleryView = project.view! as GalleryView;
       const slides = galleryView.gallery.map((obj, i) => {
         const alt = `${project.brand} ${project.title} image ${i}`;
@@ -54,7 +57,7 @@ const Project: React.FC = () => {
       break;
     }
 
-    case "video": {
+    case ViewType.Video: {
       const videoView = project.view! as VideoView;
       content = (
         <Video
@@ -65,7 +68,7 @@ const Project: React.FC = () => {
       break;
     }
 
-    case "iframe": {
+    case ViewType.Iframe: {
       const iframeView = project.view! as IframeView;
       const title = `${project.brand} ${project.title}`;
       const checkAdBlock = project.type === ProjectType.Advert;
