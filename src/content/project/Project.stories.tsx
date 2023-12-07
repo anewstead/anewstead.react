@@ -35,7 +35,7 @@ const loadedData: IFetchMainDataState = {
 
 // -----------------------------------------------------------------------------
 
-const BadViewTypeState: Pick<AppState, "mainData"> = {
+const BadViewTypeState = {
   mainData: {
     ...loadedData,
     data: {
@@ -47,7 +47,8 @@ const BadViewTypeState: Pick<AppState, "mainData"> = {
       ],
     },
   },
-};
+} as AppState;
+
 export const Default: Story = {
   parameters: {
     reactRouter: {
@@ -80,14 +81,14 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-const galleryState: Pick<AppState, "mainData"> = {
+const galleryState = {
   mainData: {
     ...loadedData,
     data: {
       projects: [projectGalleryWebsite],
     },
   },
-};
+} as AppState;
 
 export const GalleryPage: Story = {
   parameters: {
@@ -121,12 +122,12 @@ export const GalleryPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const videoState: Pick<AppState, "mainData"> = {
+const videoState = {
   mainData: {
     ...loadedData,
     data: { projects: [projectVideoApp] },
   },
-};
+} as AppState;
 
 export const VideoPage: Story = {
   parameters: {
@@ -158,12 +159,12 @@ export const VideoPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const inFrameState: Pick<AppState, "mainData"> = {
+const inFrameState = {
   mainData: {
     ...loadedData,
     data: { projects: [projectIframeAdvert] },
   },
-};
+} as AppState;
 
 export const InFramePage: Story = {
   parameters: {

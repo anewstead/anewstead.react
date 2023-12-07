@@ -1,20 +1,16 @@
 // based on:
 // https://redux.js.org/usage/writing-tests#example-app-code
 
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 import { homeReducer } from "./home/slice";
 import { mainDataReducer } from "./main-data/slice";
 
-import type {
-  PreloadedState,
-  Reducer,
-  ReducersMapObject,
-} from "@reduxjs/toolkit";
+import type { Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
 
-const appReducer = combineReducers({
+const appReducer = combineSlices({
   home: homeReducer,
   mainData: mainDataReducer,
 });
@@ -29,7 +25,7 @@ const appReducer = combineReducers({
 // setupStore(undefined, {}) = default appReducer, empty preloadedState
 export const setupStore = (
   reducer?: Reducer | ReducersMapObject,
-  preloadedState?: PreloadedState<AppState>
+  preloadedState?: AppState
 ) => {
   return configureStore({
     reducer: reducer ?? appReducer,

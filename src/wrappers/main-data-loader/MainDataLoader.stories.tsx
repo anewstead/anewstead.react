@@ -13,6 +13,7 @@ import { setupStore } from "../../state/store";
 import MainDataLoader from "./MainDataLoader";
 
 import type { IFetchMainDataState } from "../../state/main-data/state";
+import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -30,7 +31,7 @@ const defaultState = {
     loading: false,
     loaded: false,
   } satisfies IFetchMainDataState,
-};
+} as AppState;
 
 const Template: Story = {
   decorators: [

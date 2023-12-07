@@ -9,6 +9,7 @@ import { setupStore } from "../../state/store";
 
 import About from "./About";
 
+import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -26,7 +27,7 @@ const defaultState = {
     loading: false,
     loaded: true,
   },
-};
+} as AppState;
 
 export const Default: Story = {
   decorators: [
