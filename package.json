@@ -20,7 +20,7 @@
     "e2e": "playwright test",
     "test": "run-s test-sb test-js e2e",
     "test-js": "rimraf ./coverage/jest-js; jest --coverage",
-    "test-sb": "rimraf ./coverage/storybook; test-storybook --coverage",
+    "test-sb": "rimraf ./coverage/storybook; test-storybook --coverage && nyc report --reporter=text --temp-dir coverage/storybook",
     "test-ci": "CI=true jest --maxWorkers=2 --coverage=false",
     "cover": "run-s cover-js cover-sb",
     "cover-js": "nyc report --reporter=html --temp-dir=./coverage/jest-js --report-dir=./coverage/jest-js/report; node -e \"console.log('REPORT:','file://'+process.cwd()+'/coverage/jest-js/report/index.html')\";",
