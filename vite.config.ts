@@ -14,8 +14,8 @@ import { muteWarningsPlugin } from "./vite-mute-warnings-plugin";
  * reporting sourcemap errors possibly due to "use client" flag\
  * See: https://github.com/vitejs/vite/issues/15012
  *
- * TODO: check if resolved with newer releases of vite & plugin-react\
- * Last checked vite 5.0.8
+ * TODO: check resolved in newer storybook, vite\
+ * Last checked vite 5.0.10, storybook 7.6.5
  */
 const warningsToIgnore = [
   ["SOURCEMAP_ERROR", "Can't resolve original location of error"],
@@ -23,6 +23,14 @@ const warningsToIgnore = [
 
 const dev = () => {
   return {
+    /**
+     * AssetsInclude sb-preview temp fix\
+     * See: https://github.com/vitejs/vite/issues/15374
+     *
+     * TODO: check resolved in newer storybook, vite\
+     * Last checked vite 5.0.10, storybook 7.6.5
+     */
+    assetsInclude: ["/sb-preview/runtime.js"],
     plugins: [
       react(),
       vitePluginGraphqlLoader(),
