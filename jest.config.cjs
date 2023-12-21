@@ -17,11 +17,9 @@ module.exports = {
 
   roots: ["<rootDir>/src"],
 
-  setupFiles: ["./jest.polyfills.cjs"],
-
   setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
 
-  testEnvironment: "jsdom",
+  testEnvironment: "<rootDir>/jsdom-extended.cjs",
 
   testEnvironmentOptions: {
     customExportConditions: [""],
