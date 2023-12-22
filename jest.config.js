@@ -8,9 +8,9 @@ react hooks are tested via 'renderhook()'
 https://testing-library.com/docs/react-testing-library/api/#renderhook
 */
 
-module.exports = {
+const config = {
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss)$": "<rootDir>/test-utils/styleMock.cjs",
+    ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
   },
 
   resetMocks: false,
@@ -19,14 +19,14 @@ module.exports = {
 
   setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
 
-  testEnvironment: "<rootDir>/jsdom-extended.cjs",
+  testEnvironment: "<rootDir>/jsdom-extended.js",
 
   testEnvironmentOptions: {
     customExportConditions: [""],
   },
 
   transform: {
-    "\\.(gql|graphql)$": "./jest-transform-gql.cjs",
+    "\\.(gql|graphql)$": "./jest-transform-gql.js",
     "\\.[jt]sx?$": "babel-jest",
   },
 
@@ -50,3 +50,5 @@ module.exports = {
 
   testMatch: ["**/*.test.[jt]s"],
 };
+
+export default config;

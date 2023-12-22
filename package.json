@@ -122,6 +122,7 @@
     "graphql-codegen-typescript-mock-data": "^3.7.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.3",
+    "identity-obj-proxy": "^3.0.0",
     "img-diff-js": "^0.5.2",
     "import-sort-style-renke": "^6.0.0",
     "istanbul-merge": "^2.0.0",
