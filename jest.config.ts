@@ -8,25 +8,27 @@ react hooks are tested via 'renderhook()'
 https://testing-library.com/docs/react-testing-library/api/#renderhook
 */
 
-const config = {
+import type { Config } from "jest";
+
+const config: Config = {
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
   },
 
   resetMocks: false,
 
-  roots: ["<rootDir>/src"],
+  roots: ["./src"],
 
-  setupFilesAfterEnv: ["<rootDir>/test-utils/setupTests.ts"],
+  setupFilesAfterEnv: ["./test-utils/setupTests.ts"],
 
-  testEnvironment: "<rootDir>/jsdom-extended.js",
+  testEnvironment: "./test-utils/jsdom-extended.ts",
 
   testEnvironmentOptions: {
     customExportConditions: [""],
   },
 
   transform: {
-    "\\.(gql|graphql)$": "./jest-transform-gql.js",
+    "\\.(gql|graphql)$": "./test-utils/jest-transform-gql.js",
     "\\.[jt]sx?$": "babel-jest",
   },
 

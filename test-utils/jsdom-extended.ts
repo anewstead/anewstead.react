@@ -18,8 +18,8 @@
 
 import JSDOMEnvironment from "jest-environment-jsdom";
 
-class JSDOMEnvironmentExtended extends JSDOMEnvironment.default {
-  constructor(...args) {
+class JSDOMEnvironmentExtended extends JSDOMEnvironment {
+  constructor(...args: ConstructorParameters<typeof JSDOMEnvironment>) {
     super(...args);
     this.global.ReadableStream = ReadableStream;
     this.global.TextDecoder = TextDecoder;
