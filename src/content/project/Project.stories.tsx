@@ -11,7 +11,7 @@ import {
 } from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../../state/store";
 
-import Project from "./Project";
+import { Project } from "./Project";
 
 import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
 import type { IFetchMainDataState } from "../../state/main-data/state";

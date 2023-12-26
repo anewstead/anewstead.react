@@ -21,7 +21,7 @@ type Props = {
   subtitleText?: string;
 };
 
-const HeadNavDetail = (props: Props) => {
+export const HeadNavDetail = (props: Props) => {
   const {
     onThemeClick,
     onHomeClick: onBackClick,
@@ -100,5 +100,3 @@ const HeadNavDetail = (props: Props) => {
     </nav>
   );
 };
-
-export default HeadNavDetail;

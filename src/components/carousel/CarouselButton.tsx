@@ -11,7 +11,7 @@ type Props = {
   onClick?: () => void;
 };
 
-const CarouselButton = (props: Props) => {
+export const CarouselButton = (props: Props) => {
   const { direction, onClick } = props;
 
   const btnCls = clsx(
@@ -27,5 +27,3 @@ const CarouselButton = (props: Props) => {
     </Button>
   );
 };
-
-export default CarouselButton;

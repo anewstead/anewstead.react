@@ -2,8 +2,8 @@ import React from "react";
 
 import { Box } from "@mui/material";
 
-import Footer from "../../components/footer";
-import HeaderNav from "../../components/head-nav";
+import { Footer } from "../../components/footer";
+import { HeadNav } from "../../components/head-nav";
 import { useAppSelector } from "../../state/store";
 
 import cls from "./pageLayout.module.scss";
@@ -18,7 +18,7 @@ type Props = {
   children?: ReactNode;
 };
 
-const PageLayout = (props: Props) => {
+export const PageLayout = (props: Props) => {
   const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
 
   const mainData = useAppSelector((state: AppState) => {
@@ -29,7 +29,7 @@ const PageLayout = (props: Props) => {
 
   return (
     <Box className={cls["page-layout"]} data-testid="app-layout">
-      <HeaderNav
+      <HeadNav
         navType={headerNavType}
         titleText={headerNavTitle}
         subtitleText={headerNavSubtitle}
@@ -41,5 +41,3 @@ const PageLayout = (props: Props) => {
     </Box>
   );
 };
-
-export default PageLayout;

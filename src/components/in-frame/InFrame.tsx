@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
-import TextBlock from "../text-block";
+import { TextBlock } from "../text-block";
 
 import cls from "./inFrame.module.scss";
 
@@ -14,7 +14,7 @@ type Props = {
   checkAdBlock: boolean;
 };
 
-const InFrame = (props: Props) => {
+export const InFrame = (props: Props) => {
   const { title, width, height, iframeURL, checkAdBlock } = props;
 
   const { adblockCheckComplete, adBlockDetected } = useDetectAdBlock();
@@ -47,5 +47,3 @@ const InFrame = (props: Props) => {
     </>
   );
 };
-
-export default InFrame;

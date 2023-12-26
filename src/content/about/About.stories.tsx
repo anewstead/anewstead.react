@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { sampleAllData } from "../../../test-utils/msw/mockJson";
 import { setupStore } from "../../state/store";
 
-import About from "./About";
+import { About } from "./About";
 
 import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";

@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { NAV_CHECKBOX_CHANGE } from "../../state/home/slice";
 import { useAppDispatch, useAppSelector } from "../../state/store";
 import { useThemeWrapperContext } from "../../wrappers/theme-wrapper/ThemeWrapperContext";
-import HeadNavDetail from "../head-nav-detail";
-import HeadNavThumbs from "../head-nav-thumbs";
+import { HeadNavDetail } from "../head-nav-detail";
+import { HeadNavThumbs } from "../head-nav-thumbs";
 
 import type { NavCheckboxChangePayload } from "../../state/home/slice";
 
@@ -15,7 +15,8 @@ type Props = {
   titleText?: string;
   subtitleText?: string;
 };
-const HeadNav = (props: Props) => {
+
+export const HeadNav = memo((props: Props) => {
   const { navType, titleText, subtitleText } = props;
 
   const dispatch = useAppDispatch();
@@ -75,6 +76,4 @@ const HeadNav = (props: Props) => {
   );
 
   return navType === "thumbs" ? navThumbs : navDetail;
-};
-
-export default memo(HeadNav);
+});

@@ -3,7 +3,7 @@ import { within, userEvent, expect, fn } from "@storybook/test";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 import { initialState } from "../../state/home/state";
 
-import HeadNavThumbs from "./HeadNavThumbs";
+import { HeadNavThumbs } from "./HeadNavThumbs";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

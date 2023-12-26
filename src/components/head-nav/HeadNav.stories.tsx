@@ -9,10 +9,10 @@ import {
 } from "storybook-addon-react-router-v6";
 
 import { waitForTimeout } from "../../../test-utils/waitFor";
-import store from "../../state/store";
+import { store } from "../../state/store";
 import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 
-import HeadNav from "./HeadNav";
+import { HeadNav } from "./HeadNav";
 
 import type { AppState } from "../../state/store";
 import type { Meta, StoryObj } from "@storybook/react";

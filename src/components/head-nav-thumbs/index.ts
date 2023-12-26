@@ -1,3 +1,1 @@
-import HeadNavThumbs from "./HeadNavThumbs";
-
-export default HeadNavThumbs;
+export * from "./HeadNavThumbs";

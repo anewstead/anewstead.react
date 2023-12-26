@@ -1,3 +1,1 @@
-import HeadNavDetail from "./HeadNavDetail";
-
-export default HeadNavDetail;
+export * from "./HeadNavDetail";

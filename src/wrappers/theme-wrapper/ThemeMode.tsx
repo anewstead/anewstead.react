@@ -8,7 +8,7 @@ type Props = {
   themeName: IThemeName;
 };
 
-const ThemeMode = ({ themeName }: Props) => {
+export const ThemeMode = memo(({ themeName }: Props) => {
   const { mode, setMode } = useColorScheme();
 
   useEffect(() => {
@@ -18,6 +18,4 @@ const ThemeMode = ({ themeName }: Props) => {
   }, [mode, setMode, themeName]);
 
   return <></>;
-};
-
-export default memo(ThemeMode);
+});

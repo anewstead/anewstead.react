@@ -62,7 +62,9 @@ export const MapExample = ({ dataSetID = "clnishn2f0yff2qnne28ghtko" }) => {
     );
   }, []);
 
-  if (loading) return <p>Map data loading...</p>;
+  if (loading) {
+    return <p>Map data loading...</p>;
+  }
 
   if (error) {
     return (

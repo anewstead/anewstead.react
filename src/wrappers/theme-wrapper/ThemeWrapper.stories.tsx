@@ -6,7 +6,7 @@ import { within, userEvent, expect } from "@storybook/test";
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
 import { retrieveThemeName } from "./helpers";
-import ThemeWrapper from "./ThemeWrapper";
+import { ThemeWrapper } from "./ThemeWrapper";
 import { useThemeWrapperContext } from "./ThemeWrapperContext";
 
 import type { Meta, StoryObj } from "@storybook/react";

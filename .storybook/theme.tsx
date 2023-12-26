@@ -14,13 +14,13 @@ import {
   UPDATE_DARK_MODE_EVENT_NAME,
 } from "storybook-dark-mode";
 
-import themeBaseStyles from "../src/style/theme";
+import { theme as themeBaseStyles } from "../src/style/theme";
 import {
   retrieveThemeName,
   storeThemeName,
   toggleThemeName,
 } from "../src/wrappers/theme-wrapper/helpers";
-import ThemeBase from "../src/wrappers/theme-wrapper/ThemeBase";
+import { ThemeBase } from "../src/wrappers/theme-wrapper/ThemeBase";
 import { ThemeWrapperContext } from "../src/wrappers/theme-wrapper/ThemeWrapperContext";
 
 import type { DocsContainerProps } from "@storybook/addon-docs";

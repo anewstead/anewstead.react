@@ -8,7 +8,7 @@ import { sampleAllData } from "../../../test-utils/msw/mockJson";
 import { initialState as homeInitialState } from "../../state/home/state";
 import { setupStore } from "../../state/store";
 
-import Home from "./Home";
+import { Home } from "./Home";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

@@ -9,7 +9,8 @@ import cls from "./textBlock.module.scss";
 type Props = {
   htmlText: string;
 };
-const TextBlock = (props: Props) => {
+
+export const TextBlock = (props: Props) => {
   const { htmlText } = props;
 
   // safelySetInnerHTML :)
@@ -23,5 +24,3 @@ const TextBlock = (props: Props) => {
     </Paper>
   );
 };
-
-export default TextBlock;

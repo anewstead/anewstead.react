@@ -8,7 +8,7 @@ type Props = {
   posterURL: string;
 };
 
-const Video = (props: Props) => {
+export const Video = (props: Props) => {
   const { videoURL, posterURL } = props;
 
   return (
@@ -26,5 +26,3 @@ const Video = (props: Props) => {
     </video>
   );
 };
-
-export default Video;

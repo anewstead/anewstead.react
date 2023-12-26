@@ -34,8 +34,7 @@ export const setupStore = (
 };
 
 // this is THE store at runtime
-const store = setupStore();
-export default store;
+export const store = setupStore();
 
 // Infer types `Appstore` `AppState` and `AppDispatch`
 export type AppState = ReturnType<typeof appReducer>;

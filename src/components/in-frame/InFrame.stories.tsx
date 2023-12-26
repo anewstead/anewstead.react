@@ -2,7 +2,7 @@ import { within, expect } from "@storybook/test";
 
 import { mswDetectAdBlockBlocked } from "../../../test-utils/msw/handlers/mswDetectAdBlock";
 
-import InFrame from "./InFrame";
+import { InFrame } from "./InFrame";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

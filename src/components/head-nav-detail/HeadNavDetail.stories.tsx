@@ -2,7 +2,7 @@ import { within, userEvent, expect, fn } from "@storybook/test";
 
 import { waitForTimeout } from "../../../test-utils/waitFor";
 
-import HeadNavDetail from "./HeadNavDetail";
+import { HeadNavDetail } from "./HeadNavDetail";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

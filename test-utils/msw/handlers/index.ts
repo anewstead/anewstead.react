@@ -29,5 +29,4 @@ parameters: {
 },
 */
 
-const handlers = [mswLoadMainData, mswDetectAdBlock];
-export default handlers;
+export const handlers = [mswLoadMainData, mswDetectAdBlock];

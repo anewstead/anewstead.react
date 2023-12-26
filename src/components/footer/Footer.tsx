@@ -8,7 +8,7 @@ type Props = {
   brand: string;
 };
 
-const Footer = (props: Props) => {
+export const Footer = (props: Props) => {
   const { brand } = props;
 
   const date = new Date().getFullYear();
@@ -23,5 +23,3 @@ const Footer = (props: Props) => {
     </footer>
   );
 };
-
-export default Footer;

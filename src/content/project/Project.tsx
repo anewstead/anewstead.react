@@ -3,17 +3,17 @@ import React from "react";
 import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-import Carousel from "../../components/carousel";
-import InFrame from "../../components/in-frame";
-import TextBlock from "../../components/text-block";
-import Video from "../../components/video";
-import PageLayout from "../../layout/page-layout";
+import { Carousel } from "../../components/carousel";
+import { InFrame } from "../../components/in-frame";
+import { TextBlock } from "../../components/text-block";
+import { Video } from "../../components/video";
+import { PageLayout } from "../../layout/page-layout";
 import {
   ProjectType,
   ViewType,
 } from "../../services/hygraph/generated/graphql";
 import { useAppSelector } from "../../state/store";
-import NoMatch from "../no-match/NoMatch";
+import { NoMatch } from "../no-match/NoMatch";
 
 import cls from "./project.module.scss";
 
@@ -24,7 +24,7 @@ import type {
 } from "../../services/hygraph/generated/graphql";
 import type { AppState } from "../../state/store";
 
-const Project: React.FC = () => {
+export const Project: React.FC = () => {
   const { uid } = useParams();
 
   const projectsData = useAppSelector((state: AppState) => {
@@ -105,5 +105,3 @@ const Project: React.FC = () => {
     </PageLayout>
   );
 };
-
-export default Project;

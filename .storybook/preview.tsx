@@ -3,10 +3,10 @@ import React from "react";
 import { initialize as mswInitialize, mswLoader } from "msw-storybook-addon";
 
 import { retrieveThemeName } from "../src/wrappers/theme-wrapper/helpers";
-import handlers from "../test-utils/msw/handlers";
+import { handlers } from "../test-utils/msw/handlers";
 
 import { AutoDocsTemplate } from "./AutoDocsTemplate";
-import customViewports from "./customViewports";
+import { customViewports } from "./customViewports";
 import { ThemeDocsContainer, ThemeWrapper } from "./theme";
 
 import type { DocsContextProps } from "@storybook/blocks";
@@ -62,4 +62,5 @@ const preview: Preview = {
   loaders: [mswLoader],
 };
 
+// eslint-disable-next-line import/no-default-export
 export default preview;

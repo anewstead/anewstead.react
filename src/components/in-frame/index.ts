@@ -1,3 +1,1 @@
-import InFrame from "./InFrame";
-
-export default InFrame;
+export * from "./InFrame";

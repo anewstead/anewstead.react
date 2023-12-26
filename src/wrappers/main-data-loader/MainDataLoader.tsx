@@ -11,7 +11,7 @@ type Props = {
   children: ReactNode;
 };
 
-const MainDataLoader = (props: Props) => {
+export const MainDataLoader = (props: Props) => {
   const { children } = props;
 
   const dispatch = useAppDispatch();
@@ -49,5 +49,3 @@ const MainDataLoader = (props: Props) => {
 
   return <>{children}</>;
 };
-
-export default MainDataLoader;

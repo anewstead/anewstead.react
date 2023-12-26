@@ -30,6 +30,7 @@ const ensureTestRunnerHasExpectedViewport = async (page, story) => {
   }
 };
 
+// eslint-disable-next-line import/no-default-export
 export default {
   async preVisit(page, story) {
     await ensureTestRunnerHasExpectedViewport(page, story);

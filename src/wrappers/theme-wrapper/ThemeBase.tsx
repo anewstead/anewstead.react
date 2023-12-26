@@ -5,9 +5,9 @@ import { CacheProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 
-import theme from "../../style/theme";
+import { theme } from "../../style/theme";
 
-import ThemeMode from "./ThemeMode";
+import { ThemeMode } from "./ThemeMode";
 
 import type { IThemeName } from "../../style/theme";
 import type { ReactNode } from "react";
@@ -22,7 +22,7 @@ export const muiCache = createCache({
   prepend: true,
 });
 
-const ThemeBase = ({ children, themeName }: Props) => {
+export const ThemeBase = ({ children, themeName }: Props) => {
   return (
     <CacheProvider value={muiCache}>
       <CssVarsProvider theme={theme}>
@@ -33,5 +33,3 @@ const ThemeBase = ({ children, themeName }: Props) => {
     </CacheProvider>
   );
 };
-
-export default ThemeBase;

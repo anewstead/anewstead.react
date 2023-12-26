@@ -1,21 +1,24 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 
+import { lazily } from "react-lazily";
 import { Route, Routes } from "react-router-dom";
 
-const About = lazy(() => {
+// TODO: update to reactRouter v6 syntax
+
+const { About } = lazily(() => {
   return import("../content/about");
 });
-const Home = lazy(() => {
+const { Home } = lazily(() => {
   return import("../content/home");
 });
-const NoMatch = lazy(() => {
+const { NoMatch } = lazily(() => {
   return import("../content/no-match");
 });
-const Project = lazy(() => {
+const { Project } = lazily(() => {
   return import("../content/project");
 });
 
-const AppRoutes = () => {
+export const AppRoutes = () => {
   return (
     <Suspense fallback={<></>}>
       <Routes>
@@ -27,5 +30,3 @@ const AppRoutes = () => {
     </Suspense>
   );
 };
-
-export default AppRoutes;

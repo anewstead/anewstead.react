@@ -10,7 +10,7 @@ import {
 } from "../../../test-utils/msw/handlers/mswLoadMainData";
 import { setupStore } from "../../state/store";
 
-import MainDataLoader from "./MainDataLoader";
+import { MainDataLoader } from "./MainDataLoader";
 
 import type { IFetchMainDataState } from "../../state/main-data/state";
 import type { AppState } from "../../state/store";
