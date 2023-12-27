@@ -24,7 +24,7 @@ import type {
 } from "../../services/hygraph/generated/graphql";
 import type { AppState } from "../../state/store";
 
-export const Project: React.FC = () => {
+export const Project = () => {
   const { uid } = useParams();
 
   const projectsData = useAppSelector((state: AppState) => {

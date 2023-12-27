@@ -17,6 +17,7 @@ type Props = {
   themeName: IThemeName;
 };
 
+// https://mui.com/material-ui/guides/interoperability/#css-injection-order
 export const muiCache = createCache({
   key: "mui",
   prepend: true,
