@@ -4,11 +4,11 @@ import { useColorScheme } from "@mui/material";
 
 import type { IThemeName } from "../../style/theme";
 
-type Props = {
+export type ThemeModeProps = {
   themeName: IThemeName;
 };
 
-export const ThemeMode = memo(({ themeName }: Props) => {
+export const ThemeMode = memo(({ themeName }: ThemeModeProps) => {
   const { mode, setMode } = useColorScheme();
 
   useEffect(() => {

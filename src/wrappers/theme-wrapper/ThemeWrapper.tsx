@@ -9,11 +9,11 @@ import { ThemeWrapperContext } from "./ThemeWrapperContext";
 
 import type { ReactNode } from "react";
 
-type Props = {
+export type ThemeWrapperProps = {
   children: ReactNode;
 };
 
-export const ThemeWrapper = ({ children }: Props) => {
+export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
   const [themeName, setThemeName] = useState(retrieveThemeName());
 
   const toggleThemeMemo = useMemo(() => {

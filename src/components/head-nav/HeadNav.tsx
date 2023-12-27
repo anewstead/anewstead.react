@@ -10,70 +10,70 @@ import { HeadNavThumbs } from "../head-nav-thumbs";
 
 import type { NavCheckboxChangePayload } from "../../state/home/slice";
 
-type Props = {
+export type HeadNavProps = {
   navType: "thumbs" | "detail";
   titleText?: string;
   subtitleText?: string;
 };
 
-export const HeadNav = memo((props: Props) => {
-  const { navType, titleText, subtitleText } = props;
+export const HeadNav = memo(
+  ({ navType, titleText, subtitleText }: HeadNavProps) => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+    const { toggleTheme } = useThemeWrapperContext();
 
-  const { toggleTheme } = useThemeWrapperContext();
+    const navCheckboxes = useAppSelector((state) => {
+      return state.home.nav.checkboxes;
+    });
 
-  const navCheckboxes = useAppSelector((state) => {
-    return state.home.nav.checkboxes;
-  });
+    const projectsData = useAppSelector((state) => {
+      return state.mainData.data?.projects ?? [];
+    });
 
-  const projectsData = useAppSelector((state) => {
-    return state.mainData.data?.projects ?? [];
-  });
+    const globalData = useAppSelector((state) => {
+      return state.mainData.data?.global;
+    });
 
-  const globalData = useAppSelector((state) => {
-    return state.mainData.data?.global;
-  });
+    const homeClick = useCallback(() => {
+      navigate("/");
+    }, [navigate]);
 
-  const homeClick = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
+    const brandClick = useCallback(() => {
+      navigate("/about");
+    }, [navigate]);
 
-  const brandClick = useCallback(() => {
-    navigate("/about");
-  }, [navigate]);
+    const checkboxChange = useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, checked } = e.currentTarget;
+        const payload: NavCheckboxChangePayload = {
+          checkbox: { id, checked },
+          projects: projectsData,
+        };
+        dispatch(NAV_CHECKBOX_CHANGE(payload));
+      },
+      [dispatch, projectsData]
+    );
 
-  const checkboxChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { id, checked } = e.currentTarget;
-      const payload: NavCheckboxChangePayload = {
-        checkbox: { id, checked },
-        projects: projectsData,
-      };
-      dispatch(NAV_CHECKBOX_CHANGE(payload));
-    },
-    [dispatch, projectsData]
-  );
+    const navThumbs = (
+      <HeadNavThumbs
+        brandName={globalData?.brand}
+        checkboxData={navCheckboxes}
+        onBrandClick={brandClick}
+        onThemeClick={toggleTheme}
+        onCheckboxChange={checkboxChange}
+      />
+    );
 
-  const navThumbs = (
-    <HeadNavThumbs
-      brandName={globalData?.brand}
-      checkboxData={navCheckboxes}
-      onBrandClick={brandClick}
-      onThemeClick={toggleTheme}
-      onCheckboxChange={checkboxChange}
-    />
-  );
+    const navDetail = (
+      <HeadNavDetail
+        onHomeClick={homeClick}
+        onThemeClick={toggleTheme}
+        titleText={titleText}
+        subtitleText={subtitleText}
+      />
+    );
 
-  const navDetail = (
-    <HeadNavDetail
-      onHomeClick={homeClick}
-      onThemeClick={toggleTheme}
-      titleText={titleText}
-      subtitleText={subtitleText}
-    />
-  );
-
-  return navType === "thumbs" ? navThumbs : navDetail;
-});
+    return navType === "thumbs" ? navThumbs : navDetail;
+  }
+);

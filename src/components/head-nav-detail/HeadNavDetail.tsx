@@ -14,21 +14,19 @@ import { useTheme } from "@mui/material/styles";
 
 import cls from "./headNavDetail.module.scss";
 
-type Props = {
+export type HeadNavDetailProps = {
   onThemeClick: () => unknown;
   onHomeClick: () => unknown;
   titleText?: string;
   subtitleText?: string;
 };
 
-export const HeadNavDetail = (props: Props) => {
-  const {
-    onThemeClick,
-    onHomeClick: onBackClick,
-    titleText,
-    subtitleText,
-  } = props;
-
+export const HeadNavDetail = ({
+  onThemeClick,
+  onHomeClick,
+  titleText,
+  subtitleText,
+}: HeadNavDetailProps) => {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -36,7 +34,7 @@ export const HeadNavDetail = (props: Props) => {
     <IconButton
       edge="end"
       aria-label="back"
-      onClick={onBackClick}
+      onClick={onHomeClick}
       size="large"
       data-testid="nav-detail-home-button"
     >

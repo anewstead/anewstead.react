@@ -12,7 +12,7 @@ import { ThemeMode } from "./ThemeMode";
 import type { IThemeName } from "../../style/theme";
 import type { ReactNode } from "react";
 
-type Props = {
+export type ThemeBaseProps = {
   children: ReactNode;
   themeName: IThemeName;
 };
@@ -23,7 +23,7 @@ export const muiCache = createCache({
   prepend: true,
 });
 
-export const ThemeBase = ({ children, themeName }: Props) => {
+export const ThemeBase = ({ children, themeName }: ThemeBaseProps) => {
   return (
     <CacheProvider value={muiCache}>
       <CssVarsProvider theme={theme}>

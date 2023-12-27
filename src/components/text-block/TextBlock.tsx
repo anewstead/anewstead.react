@@ -6,13 +6,11 @@ import parse from "html-react-parser";
 
 import cls from "./textBlock.module.scss";
 
-type Props = {
+export type TextBlockProps = {
   htmlText: string;
 };
 
-export const TextBlock = (props: Props) => {
-  const { htmlText } = props;
-
+export const TextBlock = ({ htmlText }: TextBlockProps) => {
   // safelySetInnerHTML :)
   const html = parse(DOMPurify.sanitize(htmlText));
 

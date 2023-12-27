@@ -22,7 +22,7 @@ import cls from "./headNavThumbs.module.scss";
 
 import type { ICheckbox } from "../../state/home/state";
 
-type Props = {
+export type HeadNavThumbsProps = {
   brandName?: string;
   checkboxData: ICheckbox[];
   onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -30,15 +30,13 @@ type Props = {
   onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const HeadNavThumbs = (props: Props) => {
-  const {
-    brandName,
-    checkboxData,
-    onBrandClick,
-    onThemeClick,
-    onCheckboxChange,
-  } = props;
-
+export const HeadNavThumbs = ({
+  brandName,
+  checkboxData,
+  onBrandClick,
+  onThemeClick,
+  onCheckboxChange,
+}: HeadNavThumbsProps) => {
   const theme = useTheme();
   const isSM = useMediaQuery(theme.breakpoints.down("md"));
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));

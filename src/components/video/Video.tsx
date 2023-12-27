@@ -3,14 +3,12 @@ import React from "react";
 
 import cls from "./video.module.scss";
 
-type Props = {
+export type VideoProps = {
   videoURL: string;
   posterURL: string;
 };
 
-export const Video = (props: Props) => {
-  const { videoURL, posterURL } = props;
-
+export const Video = ({ videoURL, posterURL }: VideoProps) => {
   return (
     <video
       className={cls.video}

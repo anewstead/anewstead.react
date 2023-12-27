@@ -10,14 +10,12 @@ import { CarouselButton } from "./CarouselButton";
 
 import type { Settings as SlickSettings } from "react-slick";
 
-type Props = {
+export type CarouselProps = {
   slides: JSX.Element[];
   settings?: SlickSettings;
 };
 
-export const Carousel = (props: Props) => {
-  const { slides, settings } = props;
-
+export const Carousel = ({ slides, settings }: CarouselProps) => {
   const theme = useTheme();
 
   const defaults: SlickSettings = {

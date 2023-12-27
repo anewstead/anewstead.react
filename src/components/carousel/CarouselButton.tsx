@@ -6,14 +6,12 @@ import clsx from "clsx";
 
 import cls from "./carouselButton.module.scss";
 
-type Props = {
+export type CarouselButtonProps = {
   direction: "prev" | "next";
   onClick?: () => void;
 };
 
-export const CarouselButton = (props: Props) => {
-  const { direction, onClick } = props;
-
+export const CarouselButton = ({ direction, onClick }: CarouselButtonProps) => {
   const btnCls = clsx(
     cls["carousel-button"],
     direction === "prev" ? cls["prev-button"] : cls["next-button"]

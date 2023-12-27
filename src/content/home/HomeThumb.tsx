@@ -5,22 +5,24 @@ import { Link as RouterLink } from "react-router-dom";
 
 import cls from "./home.module.scss";
 
-export const HomeThumb = memo(
-  (props: { id: string; url: string; alt: string }) => {
-    const { id, url, alt } = props;
+export type HomeThumbProps = {
+  id: string;
+  url: string;
+  alt: string;
+};
 
-    return (
-      <Grid item className={cls["grid-item"]}>
-        <Card elevation={6}>
-          <Button
-            component={RouterLink}
-            to={`/project/${id}`}
-            className={cls["grid-item-button"]}
-          >
-            <img src={url} alt={alt} />
-          </Button>
-        </Card>
-      </Grid>
-    );
-  }
-);
+export const HomeThumb = memo(({ id, url, alt }: HomeThumbProps) => {
+  return (
+    <Grid item className={cls["grid-item"]}>
+      <Card elevation={6}>
+        <Button
+          component={RouterLink}
+          to={`/project/${id}`}
+          className={cls["grid-item-button"]}
+        >
+          <img src={url} alt={alt} />
+        </Button>
+      </Card>
+    </Grid>
+  );
+});

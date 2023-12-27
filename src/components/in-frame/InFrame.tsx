@@ -5,18 +5,21 @@ import { TextBlock } from "../text-block";
 
 import cls from "./inFrame.module.scss";
 
-type Props = {
+export type InFrameProps = {
   title: string;
   width: number | string;
   height: number | string;
   iframeURL: string;
-
   checkAdBlock: boolean;
 };
 
-export const InFrame = (props: Props) => {
-  const { title, width, height, iframeURL, checkAdBlock } = props;
-
+export const InFrame = ({
+  title,
+  width,
+  height,
+  iframeURL,
+  checkAdBlock,
+}: InFrameProps) => {
   const { adblockCheckComplete, adBlockDetected } = useDetectAdBlock();
 
   // dont display anything until test is run

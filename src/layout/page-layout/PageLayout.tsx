@@ -11,16 +11,19 @@ import cls from "./pageLayout.module.scss";
 import type { AppState } from "../../state/store";
 import type { ReactNode } from "react";
 
-type Props = {
+export type PageLayoutProps = {
   headerNavType: "thumbs" | "detail";
   headerNavTitle?: string;
   headerNavSubtitle?: string;
   children?: ReactNode;
 };
 
-export const PageLayout = (props: Props) => {
-  const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
-
+export const PageLayout = ({
+  headerNavType,
+  headerNavTitle,
+  headerNavSubtitle,
+  children,
+}: PageLayoutProps) => {
   const mainData = useAppSelector((state: AppState) => {
     return state.mainData.data;
   });
