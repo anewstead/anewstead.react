@@ -5,7 +5,10 @@
  * - Eslint-plugin-import
  * - Eslint-plugin-react
  * - Eslint-plugin-react-hooks
- * - Eslint-plugin-jsx-a11y airbnb-typescript uses:
+ * - Eslint-plugin-jsx-a11y
+ *
+ * Airbnb-typescript uses:
+ *
  * - @typescript-eslint/eslint-plugin
  * - @typescript-eslint/parser
  */
