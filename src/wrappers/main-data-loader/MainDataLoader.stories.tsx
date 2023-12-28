@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import {
   mswLoadMainDataError,
   mswLoadMainDataGqlError,
-} from "../../../test-utils/msw/handlers/mswLoadMainData";
+} from "../../../testing/msw/handlers/mswLoadMainData";
 import { setupStore } from "../../state/store";
 
 import { MainDataLoader } from "./MainDataLoader";

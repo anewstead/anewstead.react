@@ -2,7 +2,7 @@ import React from "react";
 
 import { within, userEvent, expect } from "@storybook/test";
 
-import { waitForTransition } from "../../../test-utils/waitFor";
+import { waitForTransition } from "../../../testing/waitFor";
 
 import { Carousel } from "./Carousel";
 

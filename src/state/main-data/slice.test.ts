@@ -1,5 +1,5 @@
-import { mswLoadMainDataError } from "../../../test-utils/msw/handlers/mswLoadMainData";
-import { server } from "../../../test-utils/msw/server";
+import { mswLoadMainDataError } from "../../../testing/msw/handlers/mswLoadMainData";
+import { server } from "../../../testing/msw/server";
 import { setupStore } from "../store";
 
 import { getSessionMainData, removeSessionMainData } from "./helpers";

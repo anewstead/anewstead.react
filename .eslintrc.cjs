@@ -124,7 +124,7 @@ module.exports = {
           "*",
           "e2e/**",
           ".storybook/**",
-          "test-utils/**",
+          "testing/**",
           "**/__mocks__/**",
           "**/__tests__/**",
           "**/*.@(test|spec|stories).{js,jsx,ts,tsx}",

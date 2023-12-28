@@ -8,7 +8,7 @@ import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
-} from "../../../test-utils/msw/mockJson";
+} from "../../../testing/msw/mockJson";
 import { setupStore } from "../../state/store";
 
 import { Project } from "./Project";

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { waitForTransitionPW } from "../../test-utils/waitFor";
+import { waitForTransitionPW } from "../../testing/waitFor";
 
 import type { Page } from "@playwright/test";
 

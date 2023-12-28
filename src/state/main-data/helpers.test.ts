@@ -1,4 +1,4 @@
-import { sampleAllData } from "../../../test-utils/msw/mockJson";
+import { sampleAllData } from "../../../testing/msw/mockJson";
 
 import {
   getSessionMainData,

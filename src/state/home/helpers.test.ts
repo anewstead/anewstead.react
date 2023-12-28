@@ -2,7 +2,7 @@ import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
-} from "../../../test-utils/msw/mockJson";
+} from "../../../testing/msw/mockJson";
 import { ProjectType } from "../../services/hygraph/generated/graphql";
 
 import { thumbHelper } from "./helpers";

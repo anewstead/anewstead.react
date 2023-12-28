@@ -1,6 +1,6 @@
 import { within, userEvent, expect, fn } from "@storybook/test";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import { waitForTimeout } from "../../../testing/waitFor";
 
 import { HeadNavDetail } from "./HeadNavDetail";
 

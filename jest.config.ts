@@ -19,16 +19,16 @@ const config: Config = {
 
   roots: ["./src"],
 
-  setupFilesAfterEnv: ["./test-utils/setupTests.ts"],
+  setupFilesAfterEnv: ["./testing/setupTests.ts"],
 
-  testEnvironment: "./test-utils/jsdom-extended.ts",
+  testEnvironment: "./testing/jsdom-extended.ts",
 
   testEnvironmentOptions: {
     customExportConditions: [""],
   },
 
   transform: {
-    "\\.(gql|graphql)$": "./test-utils/jest-transform-gql.js",
+    "\\.(gql|graphql)$": "./testing/jest-transform-gql.js",
     "\\.[jt]sx?$": "babel-jest",
   },
 

@@ -1,4 +1,4 @@
-import { sampleProjects } from "../../../test-utils/msw/mockJson";
+import { sampleProjects } from "../../../testing/msw/mockJson";
 import { setupStore } from "../store";
 
 import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";

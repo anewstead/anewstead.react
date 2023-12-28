@@ -3,7 +3,7 @@ import React from "react";
 import { initialize as mswInitialize, mswLoader } from "msw-storybook-addon";
 
 import { retrieveThemeName } from "../src/wrappers/theme-wrapper/helpers";
-import { handlers } from "../test-utils/msw/handlers";
+import { handlers } from "../testing/msw/handlers";
 
 import { AutoDocsTemplate } from "./AutoDocsTemplate";
 import { customViewports } from "./customViewports";

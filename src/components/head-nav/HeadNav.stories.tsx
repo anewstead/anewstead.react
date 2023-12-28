@@ -8,7 +8,7 @@ import {
   withRouter,
 } from "storybook-addon-react-router-v6";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import { waitForTimeout } from "../../../testing/waitFor";
 import { store } from "../../state/store";
 import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
 

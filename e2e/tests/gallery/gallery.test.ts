@@ -4,8 +4,8 @@ import { fileURLToPath } from "url";
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { projectGalleryWebsite } from "../../../test-utils/msw/mockJson";
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import { projectGalleryWebsite } from "../../../testing/msw/mockJson";
+import { waitForTimeout } from "../../../testing/waitFor";
 
 /**
  * https://nodejs.org/api/esm.html#importmeta\
