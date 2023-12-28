@@ -1,14 +1,13 @@
 import React from "react";
 
 import { Provider as ReduxProvider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 import { store } from "../state/store";
 import { MainDataLoader } from "../wrappers/main-data-loader";
 import { ThemeWrapper } from "../wrappers/theme-wrapper";
 
-import { AppRoutes } from "./AppRoutes";
-
+import { router } from "./AppRoutes";
 /**
  * React.StrictMode intentionally double-invokes some functions in dev mode to
  * help detect issues notably the render function is called twice, see:
@@ -20,9 +19,7 @@ export const App = () => {
       <ReduxProvider store={store}>
         <ThemeWrapper>
           <MainDataLoader>
-            <BrowserRouter>
-              <AppRoutes />
-            </BrowserRouter>
+            <RouterProvider router={router} />
           </MainDataLoader>
         </ThemeWrapper>
       </ReduxProvider>

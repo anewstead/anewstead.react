@@ -1,32 +1,32 @@
-import React, { Suspense } from "react";
+import { createBrowserRouter } from "react-router-dom";
 
-import { lazily } from "react-lazily";
-import { Route, Routes } from "react-router-dom";
-
-// TODO: update to reactRouter v6 syntax
-
-const { About } = lazily(() => {
-  return import("../content/about");
-});
-const { Home } = lazily(() => {
-  return import("../content/home");
-});
-const { NoMatch } = lazily(() => {
-  return import("../content/no-match");
-});
-const { Project } = lazily(() => {
-  return import("../content/project");
-});
-
-export const AppRoutes = () => {
-  return (
-    <Suspense fallback={<></>}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="project/:uid" element={<Project />} />
-        <Route path="about" element={<About />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </Suspense>
-  );
-};
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    async lazy() {
+      const { Home } = await import("../content/home");
+      return { Component: Home };
+    },
+  },
+  {
+    path: "project/:uid",
+    async lazy() {
+      const { Project } = await import("../content/project");
+      return { Component: Project };
+    },
+  },
+  {
+    path: "about  ",
+    async lazy() {
+      const { About } = await import("../content/about");
+      return { Component: About };
+    },
+  },
+  {
+    path: "*",
+    async lazy() {
+      const { NoMatch } = await import("../content/no-match");
+      return { Component: NoMatch };
+    },
+  },
+]);
