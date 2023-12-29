@@ -1,6 +1,6 @@
 import { within, expect } from "@storybook/test";
 
-import { mswDetectAdBlockBlocked } from "../../../testing/msw/handlers/mswDetectAdBlock";
+import { mswDetectAdBlockBlocked } from "@testing/msw/handlers/mswDetectAdBlock";
 
 import { InFrame } from "./InFrame";
 

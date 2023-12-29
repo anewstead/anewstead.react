@@ -3,9 +3,9 @@ import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import { store } from "../state/store";
-import { MainDataLoader } from "../wrappers/main-data-loader";
-import { ThemeWrapper } from "../wrappers/theme-wrapper";
+import { store } from "@/state/store";
+import { MainDataLoader } from "@/wrappers/main-data-loader";
+import { ThemeWrapper } from "@/wrappers/theme-wrapper";
 
 import { router } from "./AppRoutes";
 /**

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useDetectAdBlock } from "../../hooks/useDetectAdBlock";
-import { TextBlock } from "../text-block";
+import { TextBlock } from "@/components/text-block";
+import { useDetectAdBlock } from "@/hooks/useDetectAdBlock";
 
 import cls from "./inFrame.module.scss";
 

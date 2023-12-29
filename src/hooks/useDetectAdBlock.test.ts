@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 
-import { mswDetectAdBlockBlocked } from "../../testing/msw/handlers/mswDetectAdBlock";
-import { server } from "../../testing/msw/server";
+import { mswDetectAdBlockBlocked } from "@testing/msw/handlers/mswDetectAdBlock";
+import { server } from "@testing/msw/server";
 
 import { useDetectAdBlock } from "./useDetectAdBlock";
 

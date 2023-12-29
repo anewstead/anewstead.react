@@ -3,7 +3,7 @@ import React from "react";
 import { Button, useTheme } from "@mui/material";
 import { within, userEvent, expect } from "@storybook/test";
 
-import { waitForTimeout } from "../../../testing/waitFor";
+import { waitForTimeout } from "@testing/waitFor";
 
 import { retrieveThemeName } from "./helpers";
 import { ThemeWrapper } from "./ThemeWrapper";

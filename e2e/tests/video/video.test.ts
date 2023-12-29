@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { expect, test } from "@playwright/test";
 import { imgDiff } from "img-diff-js";
 
-import { projectVideoApp } from "../../../testing/msw/mockJson";
+import { projectVideoApp } from "@testing/msw/mockJson";
 
 /**
  * https://nodejs.org/api/esm.html#importmeta\

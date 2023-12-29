@@ -1,6 +1,6 @@
 import { expect } from "@storybook/test";
 
-import { posterURL, videoURL } from "../../../testing/msw/mockJson";
+import { posterURL, videoURL } from "@testing/msw/mockJson";
 
 import { Video } from "./Video";
 

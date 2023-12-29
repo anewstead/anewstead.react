@@ -4,18 +4,18 @@ import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { withRouter } from "storybook-addon-react-router-v6";
 
+import { setupStore } from "@/state/store";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
-} from "../../../testing/msw/mockJson";
-import { setupStore } from "../../state/store";
+} from "@testing/msw/mockJson";
 
 import { Project } from "./Project";
 
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
-import type { IFetchMainDataState } from "../../state/main-data/state";
-import type { AppState } from "../../state/store";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
+import type { IFetchMainDataState } from "@/state/main-data/state";
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------

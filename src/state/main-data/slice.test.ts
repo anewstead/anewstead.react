@@ -1,11 +1,11 @@
-import { mswLoadMainDataError } from "../../../testing/msw/handlers/mswLoadMainData";
-import { server } from "../../../testing/msw/server";
-import { setupStore } from "../store";
+import { setupStore } from "@/state/store";
+import { mswLoadMainDataError } from "@testing/msw/handlers/mswLoadMainData";
+import { server } from "@testing/msw/server";
 
 import { getSessionMainData, removeSessionMainData } from "./helpers";
 import { FETCH_MAIN_DATA, mainDataReducer } from "./slice";
 
-import type { AppState } from "../store";
+import type { AppState } from "@/state/store";
 
 afterEach(() => {
   // FETCH_MAIN_DATA caches loaded data

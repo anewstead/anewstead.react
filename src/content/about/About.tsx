@@ -4,12 +4,12 @@ import { Container, Paper, Typography } from "@mui/material";
 import DOMPurify from "dompurify";
 import Markdown from "markdown-to-jsx";
 
-import { PageLayout } from "../../layout/page-layout";
-import { useAppSelector } from "../../state/store";
+import { PageLayout } from "@/layout/page-layout";
+import { useAppSelector } from "@/state/store";
 
 import cls from "./about.module.scss";
 
-import type { AppState } from "../../state/store";
+import type { AppState } from "@/state/store";
 
 export const About = () => {
   const mainData = useAppSelector((state: AppState) => {

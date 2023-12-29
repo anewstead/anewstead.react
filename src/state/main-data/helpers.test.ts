@@ -1,4 +1,4 @@
-import { sampleAllData } from "../../../testing/msw/mockJson";
+import { sampleAllData } from "@testing/msw/mockJson";
 
 import {
   getSessionMainData,
@@ -6,7 +6,7 @@ import {
   removeSessionMainData,
 } from "./helpers";
 
-import type { AllDataQuery } from "../../services/hygraph/generated/graphql";
+import type { AllDataQuery } from "@/services/hygraph/generated/graphql";
 
 describe("sessionMainData", () => {
   const TEST_VALUE: AllDataQuery = sampleAllData;

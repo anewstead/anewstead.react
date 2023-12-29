@@ -2,7 +2,7 @@ import React, { memo, useEffect } from "react";
 
 import { useColorScheme } from "@mui/material";
 
-import type { IThemeName } from "../../style/theme";
+import type { IThemeName } from "@/style/theme";
 
 export type ThemeModeProps = {
   themeName: IThemeName;

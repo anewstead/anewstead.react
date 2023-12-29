@@ -1,5 +1,5 @@
-import { sampleProjects } from "../../../testing/msw/mockJson";
-import { setupStore } from "../store";
+import { setupStore } from "@/state/store";
+import { sampleProjects } from "@testing/msw/mockJson";
 
 import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
 
@@ -7,7 +7,7 @@ import type {
   InitDisplayThumbsPayload,
   NavCheckboxChangePayload,
 } from "./slice";
-import type { AppState } from "../store";
+import type { AppState } from "@/state/store";
 
 test("init displayThumbs", () => {
   const payload: InitDisplayThumbsPayload = {

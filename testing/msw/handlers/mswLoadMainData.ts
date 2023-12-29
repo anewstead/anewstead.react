@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 
-import { HYG_GQL } from "../../../src/const";
+import { HYG_GQL } from "@/const";
+
 import { sampleGQLData, sampleGQLError } from "../mockJson";
 
 export const mswLoadMainData = http.post(HYG_GQL, () => {

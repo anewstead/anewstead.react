@@ -7,13 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 import {
   mswLoadMainDataError,
   mswLoadMainDataGqlError,
-} from "../../../testing/msw/handlers/mswLoadMainData";
-import { setupStore } from "../../state/store";
+} from "@testing/msw/handlers/mswLoadMainData";
+
+import { setupStore } from "@/state/store";
 
 import { MainDataLoader } from "./MainDataLoader";
 
-import type { IFetchMainDataState } from "../../state/main-data/state";
-import type { AppState } from "../../state/store";
+import type { IFetchMainDataState } from "@/state/main-data/state";
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------

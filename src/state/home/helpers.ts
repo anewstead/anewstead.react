@@ -1,7 +1,7 @@
-import { ProjectType } from "../../services/hygraph/generated/graphql";
+import { ProjectType } from "@/services/hygraph/generated/graphql";
 
 import type { ICheckbox } from "./state";
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 // filters which thumbs to show depending on which checkboxes are checked
 export const thumbHelper = (

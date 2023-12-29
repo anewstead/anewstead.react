@@ -1,4 +1,4 @@
-import type { AllDataQuery } from "../../services/hygraph/generated/graphql";
+import type { AllDataQuery } from "@/services/hygraph/generated/graphql";
 
 export const SS_KEY_MAINDATA = "mainData";
 

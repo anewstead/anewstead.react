@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Container, Paper, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
-import { PageLayout } from "../../layout/page-layout";
+import { PageLayout } from "@/layout/page-layout";
 
 import cls from "./noMatch.module.scss";
 

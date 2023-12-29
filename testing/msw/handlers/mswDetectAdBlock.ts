@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 
-import { adBlockTestURL } from "../../../src/hooks/useDetectAdBlock";
+import { adBlockTestURL } from "@/hooks/useDetectAdBlock";
 
 export const mswDetectAdBlock = http.head(adBlockTestURL, () => {
   return new HttpResponse(null, {

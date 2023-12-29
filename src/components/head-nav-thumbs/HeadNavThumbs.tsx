@@ -20,7 +20,7 @@ import { useTheme } from "@mui/material/styles";
 import { HeadNavCheckbox } from "./HeadNavCheckbox";
 import cls from "./headNavThumbs.module.scss";
 
-import type { ICheckbox } from "../../state/home/state";
+import type { ICheckbox } from "@/state/home/state";
 
 export type HeadNavThumbsProps = {
   brandName?: string;

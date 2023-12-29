@@ -2,13 +2,13 @@ import React from "react";
 
 import { Box } from "@mui/material";
 
-import { Footer } from "../../components/footer";
-import { HeadNav } from "../../components/head-nav";
-import { useAppSelector } from "../../state/store";
+import { Footer } from "@/components/footer";
+import { HeadNav } from "@/components/head-nav";
+import { useAppSelector } from "@/state/store";
 
 import cls from "./pageLayout.module.scss";
 
-import type { AppState } from "../../state/store";
+import type { AppState } from "@/state/store";
 import type { ReactNode } from "react";
 
 export type PageLayoutProps = {
