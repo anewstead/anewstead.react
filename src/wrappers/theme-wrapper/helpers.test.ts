@@ -1,6 +1,5 @@
-import { createMatchMedia } from "@testing/jestWindowExtended";
-
 import { DEFAULT_THEME } from "@/style/theme";
+import { createMatchMedia } from "@testing/jestWindowExtended";
 
 import { retrieveThemeName, storeThemeName, toggleThemeName } from "./helpers";
 

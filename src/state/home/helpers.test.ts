@@ -1,10 +1,9 @@
+import { ProjectType } from "@/services/hygraph/generated/graphql";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
 } from "@testing/msw/mockJson";
-
-import { ProjectType } from "@/services/hygraph/generated/graphql";
 
 import { thumbHelper } from "./helpers";
 

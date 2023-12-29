@@ -4,10 +4,9 @@ import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { sampleAllData } from "@testing/msw/mockJson";
-
 import { initialState as homeInitialState } from "@/state/home/state";
 import { setupStore } from "@/state/store";
+import { sampleAllData } from "@testing/msw/mockJson";
 
 import { Home } from "./Home";
 

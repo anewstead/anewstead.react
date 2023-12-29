@@ -4,12 +4,11 @@ import { within, expect, waitForElementToBeRemoved } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
+import { setupStore } from "@/state/store";
 import {
   mswLoadMainDataError,
   mswLoadMainDataGqlError,
 } from "@testing/msw/handlers/mswLoadMainData";
-
-import { setupStore } from "@/state/store";
 
 import { MainDataLoader } from "./MainDataLoader";
 

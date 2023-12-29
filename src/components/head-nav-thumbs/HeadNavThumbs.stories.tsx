@@ -1,8 +1,7 @@
 import { within, userEvent, expect, fn } from "@storybook/test";
 
-import { waitForTimeout } from "@testing/waitFor";
-
 import { initialState } from "@/state/home/state";
+import { waitForTimeout } from "@testing/waitFor";
 
 import { HeadNavThumbs } from "./HeadNavThumbs";
 
