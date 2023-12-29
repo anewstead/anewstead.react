@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
     },
   },
   {
-    path: "about  ",
+    path: "about",
     async lazy() {
       const { About } = await import("../content/about");
       return { Component: About };
