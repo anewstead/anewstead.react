@@ -57,7 +57,7 @@ const useCurrentTheme = () => {
     // passed from SB theme
     // important! DARK_MODE_EVENT_NAME can fire multiple times when page changes,
     // therefore component theme must be set implicitly not toggled
-    const onDarkModeEvent = (isDark) => {
+    const onDarkModeEvent = (isDark: boolean) => {
       const sbTheme = isDark ? "dark" : "light";
       if (sbTheme !== themeName) {
         setThemeName(sbTheme);

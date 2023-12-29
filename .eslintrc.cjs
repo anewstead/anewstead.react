@@ -32,6 +32,23 @@ module.exports = {
     "prettier",
   ],
 
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
+
+  parser: "@typescript-eslint/parser",
+
+  parserOptions: {
+    extraFileExtensions: [".json"],
+    project: ["./tsconfig.eslint.json"],
+  },
+
+  plugins: ["import", "react", "@typescript-eslint", "check-file", "json"],
+
+  root: true,
+
   ignorePatterns: ["**/vendor/", "**/generated/"],
 
   overrides: [
@@ -59,17 +76,6 @@ module.exports = {
       },
     },
   ],
-
-  parser: "@typescript-eslint/parser",
-
-  parserOptions: {
-    extraFileExtensions: [".json"],
-    project: ["./tsconfig.eslint.json"],
-  },
-
-  plugins: ["react", "@typescript-eslint", "check-file", "json"],
-
-  root: true,
 
   rules: {
     "@typescript-eslint/ban-ts-comment": [

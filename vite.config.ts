@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
 import { vitePluginGraphqlLoader } from "vite-plugin-graphql-loader";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 import { muteWarningsPlugin } from "./vite-mute-warnings-plugin";
 
@@ -32,6 +33,7 @@ const dev = () => {
      */
     assetsInclude: ["/sb-preview/runtime.js"],
     plugins: [
+      tsconfigPaths(),
       react(),
       vitePluginGraphqlLoader(),
       codegen(),
@@ -48,6 +50,7 @@ const dev = () => {
 const buildProd = () => {
   return {
     plugins: [
+      tsconfigPaths(),
       react(),
       vitePluginGraphqlLoader(),
       muteWarningsPlugin(warningsToIgnore),

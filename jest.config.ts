@@ -2,9 +2,9 @@
 js should unit test before potential use in jsx
 
 note.
-reack hooks are js and ahould never themselves include jsx
-they are however only used within a react jsx file.
-react hooks are tested via 'renderhook()'
+reack hooks are js not jsx and should never themselves include jsx
+they are however only used from within a react jsx file.
+react hooks are unit tested as js via 'renderhook()'
 https://testing-library.com/docs/react-testing-library/api/#renderhook
 */
 
@@ -13,22 +13,24 @@ import type { Config } from "jest";
 const config: Config = {
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@testing/(.*)$": "<rootDir>/testing/$1",
   },
 
   resetMocks: false,
 
-  roots: ["./src"],
+  roots: ["<rootDir>/src"],
 
-  setupFilesAfterEnv: ["./testing/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/testing/setupTests.ts"],
 
-  testEnvironment: "./testing/jsdom-extended.ts",
+  testEnvironment: "<rootDir>/testing/jsdom-extended.ts",
 
   testEnvironmentOptions: {
     customExportConditions: [""],
   },
 
   transform: {
-    "\\.(gql|graphql)$": "./testing/jest-transform-gql.js",
+    "\\.(gql|graphql)$": "<rootDir>/testing/jest-transform-gql.js",
     "\\.[jt]sx?$": "babel-jest",
   },
 
@@ -37,7 +39,7 @@ const config: Config = {
     "^.+\\.module\\.(css|sass|scss)$",
   ],
 
-  coverageDirectory: "./coverage/jest-js",
+  coverageDirectory: "<rootDir>/coverage/jest-js",
 
   coverageReporters: ["text", ["json", { file: "coverage-js.json" }]],
 
