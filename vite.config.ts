@@ -1,13 +1,13 @@
+import { fileURLToPath, URL } from "url";
+
 import react from "@vitejs/plugin-react";
 import bundleAnalyzer from "rollup-plugin-bundle-analyzer";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
 import { vitePluginGraphqlLoader } from "vite-plugin-graphql-loader";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 import { muteWarningsPlugin } from "./vite-mute-warnings-plugin";
-
 /**
  * MuteWarningsPlugin / warningsToIgnore\
  *
@@ -22,6 +22,37 @@ const warningsToIgnore = [
   ["SOURCEMAP_ERROR", "Can't resolve original location of error"],
 ];
 
+/**
+ * Scss resolver\
+ * Alias @ path is not supported by vscode & ext for code completion\
+ * Alias works in vite and compiles fine, but is a no go without code completion\
+ * Current best option to use absolute path in scss i.e. "/src/..."\
+ * This gives vscode code completion, but then need to alias it for vite\
+ * "/src/" to "./src/"\
+ * We can do this because "/" in scss refer to project root,\
+ * And in typescript "/" defaults to HD root, so is never used\
+ *
+ * Support may be coming for scss paths in 2024:\
+ * https://github.com/microsoft/vscode/issues/163967\
+ * https://github.com/wkillerud/vscode-scss/issues/41
+ */
+
+const viteAlias = (findGlob: string, localPath: string) => {
+  return {
+    find: findGlob,
+    replacement: fileURLToPath(new URL(localPath, import.meta.url)),
+  };
+};
+
+const resolver = {
+  alias: [
+    viteAlias("/src/", "./src/"), // this is for scss
+    viteAlias("@/", "./src/"),
+    viteAlias("@testing/", "./testing/"),
+  ],
+};
+
+// UserConfig
 const dev = () => {
   return {
     /**
@@ -32,8 +63,8 @@ const dev = () => {
      * Last checked vite 5.0.10, storybook 7.6.5
      */
     assetsInclude: ["/sb-preview/runtime.js"],
+    resolve: resolver,
     plugins: [
-      tsconfigPaths(),
       react(),
       vitePluginGraphqlLoader(),
       codegen(),
@@ -49,8 +80,8 @@ const dev = () => {
 
 const buildProd = () => {
   return {
+    resolve: resolver,
     plugins: [
-      tsconfigPaths(),
       react(),
       vitePluginGraphqlLoader(),
       muteWarningsPlugin(warningsToIgnore),
