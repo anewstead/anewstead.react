@@ -9,9 +9,9 @@ theme settings imported via base theme wrapper/provider
 
 ## gbl sass
 
-scss variable, mixins, functions etc.  
+scss variable, mixins, functions etc.
 
-SCSS NOTE: 
+SCSS NOTE:
 Alias @ path is not supported by vscode & ext for code completion  
 Alias works in vite and compiles fine, but is a no go without code completion  
 Current best option to use absolute path in scss i.e. "/src/..."  
@@ -22,8 +22,9 @@ And in typescript "/" defaults to HD root, so is never used there
 otherwise @use needs to be relative e.g "../../../styles/file.scss"
 
 Support may be coming for scss paths in 2024:\
- * https://github.com/microsoft/vscode/issues/163967\
- * https://github.com/wkillerud/vscode-scss/issues/41
+
+- https://github.com/microsoft/vscode/issues/163967\
+- https://github.com/wkillerud/vscode-scss/issues/41
 
 ```
 // scss
