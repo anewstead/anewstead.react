@@ -55,14 +55,6 @@ const resolver = {
 // UserConfig
 const dev = () => {
   return {
-    /**
-     * AssetsInclude sb-preview temp fix\
-     * See: https://github.com/vitejs/vite/issues/15374
-     *
-     * TODO: check resolved in newer storybook, vite\
-     * Last checked vite 5.0.10, storybook 7.6.5
-     */
-    assetsInclude: ["/sb-preview/runtime.js"],
     resolve: resolver,
     plugins: [
       react(),
