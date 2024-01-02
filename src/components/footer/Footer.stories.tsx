@@ -1,7 +1,6 @@
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 
-import Footer from "./Footer";
+import { Footer } from "./Footer";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

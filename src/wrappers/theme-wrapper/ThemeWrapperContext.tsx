@@ -3,7 +3,7 @@
 
 import React from "react";
 
-type ThemeWrapperContextType = {
+export type ThemeWrapperContextType = {
   toggleTheme: () => void;
 };
 

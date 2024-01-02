@@ -1,11 +1,10 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect } from "@storybook/test";
 
-import { waitForTransition } from "../../../test-utils/waitFor";
+import { waitForTransition } from "@testing/waitFor";
 
-import Carousel from "./Carousel";
+import { Carousel } from "./Carousel";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import type { Settings as SlickSettings } from "react-slick";

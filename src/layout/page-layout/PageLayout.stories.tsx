@@ -1,13 +1,12 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import store from "../../state/store";
+import { store } from "@/state/store";
 
-import PageLayout from "./PageLayout";
+import { PageLayout } from "./PageLayout";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

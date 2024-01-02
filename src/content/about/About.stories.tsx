@@ -1,15 +1,15 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { sampleAllData } from "../../../test-utils/msw/mockJson";
-import { setupStore } from "../../state/store";
+import { setupStore } from "@/state/store";
+import { sampleAllData } from "@testing/msw/mockJson";
 
-import About from "./About";
+import { About } from "./About";
 
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@ const defaultState = {
     loading: false,
     loaded: true,
   },
-};
+} as AppState;
 
 export const Default: Story = {
   decorators: [

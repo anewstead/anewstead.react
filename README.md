@@ -60,8 +60,3 @@ I.E. it passes data to other display component.
 E.G. website.com/about = src/pages/about > instantiates > src/layout/about ...and so on
 
 In a standard React/ non-NextJs App we simply follow the same concept and folder names.
-
-# Testing
-
-This needed its own file:  
-See [TESTING.md](/TESTING.md)

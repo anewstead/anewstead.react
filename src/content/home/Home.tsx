@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 
 import { Card, Container, Grid } from "@mui/material";
 
-import PageLayout from "../../layout/page-layout";
-import { INIT_DISPLAY_THUMBS } from "../../state/home/slice";
-import { useAppDispatch, useAppSelector } from "../../state/store";
+import { PageLayout } from "@/layout/page-layout";
+import { INIT_DISPLAY_THUMBS } from "@/state/home/slice";
+import { useAppDispatch, useAppSelector } from "@/state/store";
 
 import cls from "./home.module.scss";
-import HomeThumb from "./HomeThumb";
+import { HomeThumb } from "./HomeThumb";
 
-import type { InitDisplayThumbsPayload } from "../../state/home/slice";
-import type { AppState } from "../../state/store";
+import type { InitDisplayThumbsPayload } from "@/state/home/slice";
+import type { AppState } from "@/state/store";
 import type { ReactNode } from "react";
 
-const Home = () => {
+export const Home = () => {
   const dispatch = useAppDispatch();
 
   const projects = useAppSelector((state: AppState) => {
@@ -61,5 +61,3 @@ const Home = () => {
     </PageLayout>
   );
 };
-
-export default Home;

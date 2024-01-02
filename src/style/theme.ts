@@ -12,7 +12,7 @@ export type IThemeName = "light" | "dark";
 
 export const DEFAULT_THEME: IThemeName = "dark";
 
-const theme = extendTheme({
+export const theme = extendTheme({
   cssVarPrefix: "dc",
   colorSchemes: {
     light: {
@@ -44,6 +44,4 @@ const theme = extendTheme({
       },
     },
   },
-});
-
-export default theme as IThemeStyles;
+}) as IThemeStyles;

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { thumbHelper } from "./helpers";
 import { initialState } from "./state";
 
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type InitDisplayThumbsPayload = {

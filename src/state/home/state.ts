@@ -1,6 +1,6 @@
-import { ProjectType } from "../../services/hygraph/generated/graphql";
+import { ProjectType } from "@/services/hygraph/generated/graphql";
 
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 export type ICheckbox = {
   id: ProjectType;

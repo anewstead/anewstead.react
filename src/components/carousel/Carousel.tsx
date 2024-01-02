@@ -6,18 +6,16 @@ import { Box, useTheme } from "@mui/material";
 import Slider from "react-slick";
 
 import cls from "./carousel.module.scss";
-import CarouselButton from "./CarouselButton";
+import { CarouselButton } from "./CarouselButton";
 
 import type { Settings as SlickSettings } from "react-slick";
 
-type Props = {
+export type CarouselProps = {
   slides: JSX.Element[];
   settings?: SlickSettings;
 };
 
-const Carousel = (props: Props) => {
-  const { slides, settings } = props;
-
+export const Carousel = ({ slides, settings }: CarouselProps) => {
   const theme = useTheme();
 
   const defaults: SlickSettings = {
@@ -47,5 +45,3 @@ const Carousel = (props: Props) => {
     </Box>
   );
 };
-
-export default Carousel;

@@ -5,9 +5,13 @@ import { Link as RouterLink } from "react-router-dom";
 
 import cls from "./home.module.scss";
 
-const HomeThumb = (props: { id: string; url: string; alt: string }) => {
-  const { id, url, alt } = props;
+export type HomeThumbProps = {
+  id: string;
+  url: string;
+  alt: string;
+};
 
+export const HomeThumb = memo(({ id, url, alt }: HomeThumbProps) => {
   return (
     <Grid item className={cls["grid-item"]}>
       <Card elevation={6}>
@@ -21,6 +25,4 @@ const HomeThumb = (props: { id: string; url: string; alt: string }) => {
       </Card>
     </Grid>
   );
-};
-
-export default memo(HomeThumb);
+});

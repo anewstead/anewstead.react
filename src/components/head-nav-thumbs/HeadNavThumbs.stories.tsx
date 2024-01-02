@@ -1,10 +1,9 @@
-import { expect, jest } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect, fn } from "@storybook/test";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
-import { initialState } from "../../state/home/state";
+import { initialState } from "@/state/home/state";
+import { waitForTimeout } from "@testing/waitFor";
 
-import HeadNavThumbs from "./HeadNavThumbs";
+import { HeadNavThumbs } from "./HeadNavThumbs";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -24,9 +23,9 @@ export const Default: Story = {
   args: {
     brandName: BRAND,
     checkboxData: initialState.nav.checkboxes,
-    onBrandClick: jest.fn(),
-    onThemeClick: jest.fn(),
-    onCheckboxChange: jest.fn(),
+    onBrandClick: fn(),
+    onThemeClick: fn(),
+    onCheckboxChange: fn(),
   },
 };
 

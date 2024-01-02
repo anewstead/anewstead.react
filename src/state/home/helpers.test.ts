@@ -1,14 +1,14 @@
+import { ProjectType } from "@/services/hygraph/generated/graphql";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
-} from "../../../test-utils/msw/mockJson";
-import { ProjectType } from "../../services/hygraph/generated/graphql";
+} from "@testing/msw/mockJson";
 
 import { thumbHelper } from "./helpers";
 
 import type { ICheckbox } from "./state";
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 const projects: FprojectFragment[] = [
   projectGalleryWebsite,

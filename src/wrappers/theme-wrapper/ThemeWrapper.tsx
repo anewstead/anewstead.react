@@ -4,16 +4,16 @@
 import React, { useMemo, useState } from "react";
 
 import { retrieveThemeName, toggleThemeName } from "./helpers";
-import ThemeBase from "./ThemeBase";
+import { ThemeBase } from "./ThemeBase";
 import { ThemeWrapperContext } from "./ThemeWrapperContext";
 
 import type { ReactNode } from "react";
 
-type Props = {
+export type ThemeWrapperProps = {
   children: ReactNode;
 };
 
-const ThemeWrapper = ({ children }: Props) => {
+export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
   const [themeName, setThemeName] = useState(retrieveThemeName());
 
   const toggleThemeMemo = useMemo(() => {
@@ -30,5 +30,3 @@ const ThemeWrapper = ({ children }: Props) => {
     </ThemeWrapperContext.Provider>
   );
 };
-
-export default ThemeWrapper;

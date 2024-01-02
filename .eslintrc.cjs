@@ -5,7 +5,10 @@
  * - Eslint-plugin-import
  * - Eslint-plugin-react
  * - Eslint-plugin-react-hooks
- * - Eslint-plugin-jsx-a11y airbnb-typescript uses:
+ * - Eslint-plugin-jsx-a11y
+ *
+ * Airbnb-typescript uses:
+ *
  * - @typescript-eslint/eslint-plugin
  * - @typescript-eslint/parser
  */
@@ -29,6 +32,23 @@ module.exports = {
     "prettier",
   ],
 
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
+
+  parser: "@typescript-eslint/parser",
+
+  parserOptions: {
+    extraFileExtensions: [".json"],
+    project: ["./tsconfig.eslint.json"],
+  },
+
+  plugins: ["import", "react", "@typescript-eslint", "check-file", "json"],
+
+  root: true,
+
   ignorePatterns: ["**/vendor/", "**/generated/"],
 
   overrides: [
@@ -43,23 +63,19 @@ module.exports = {
       files: ["**/*.{ts,tsx}"],
     },
     {
-      files: ["**/*.stories.*"],
+      files: ["**/*.{stories,config}.*"],
       rules: {
         "import/no-anonymous-default-export": "off",
+        "import/no-default-export": "off",
+      },
+    },
+    {
+      files: ["src/pages/**/*"],
+      rules: {
+        "import/no-default-export": "off",
       },
     },
   ],
-
-  parser: "@typescript-eslint/parser",
-
-  parserOptions: {
-    extraFileExtensions: [".json"],
-    project: ["./tsconfig.eslint.json"],
-  },
-
-  plugins: ["react", "@typescript-eslint", "check-file", "json"],
-
-  root: true,
 
   rules: {
     "@typescript-eslint/ban-ts-comment": [
@@ -76,7 +92,6 @@ module.exports = {
     "@typescript-eslint/consistent-type-exports": "warn",
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/naming-convention": "warn",
-
     "@typescript-eslint/no-floating-promises": "off",
 
     "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
@@ -104,7 +119,9 @@ module.exports = {
     ],
 
     curly: "error",
+
     "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
+    "import/no-default-export": "error",
 
     "import/no-extraneous-dependencies": [
       "error",
@@ -113,7 +130,7 @@ module.exports = {
           "*",
           "e2e/**",
           ".storybook/**",
-          "test-utils/**",
+          "testing/**",
           "**/__mocks__/**",
           "**/__tests__/**",
           "**/*.@(test|spec|stories).{js,jsx,ts,tsx}",
@@ -158,12 +175,14 @@ module.exports = {
 
     "import/prefer-default-export": "off",
     "json/*": ["error", { allowComments: true }],
+
     "no-confusing-arrow": ["error", { allowParens: true }],
     "no-mixed-operators": "error",
     "no-void": ["error", { allowAsStatement: true }],
 
     "prefer-arrow-callback": "error",
     "prefer-template": "error",
+
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
 

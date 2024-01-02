@@ -4,13 +4,11 @@ import { Container } from "@mui/material";
 
 import classes from "./footer.module.scss";
 
-type Props = {
+export type FooterProps = {
   brand: string;
 };
 
-const Footer = (props: Props) => {
-  const { brand } = props;
-
+export const Footer = ({ brand }: FooterProps) => {
   const date = new Date().getFullYear();
 
   const text = `© ${brand} ${date}`;
@@ -23,5 +21,3 @@ const Footer = (props: Props) => {
     </footer>
   );
 };
-
-export default Footer;

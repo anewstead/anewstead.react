@@ -2,7 +2,7 @@
 these are sample screen sizes
 not design breakpoints
 */
-const customViewports = {
+export const customViewports = {
   extraSmall: {
     name: "Extra Small Mobile",
     styles: {
@@ -39,4 +39,3 @@ const customViewports = {
     },
   },
 };
-export default customViewports;

@@ -1,22 +1,21 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { withRouter } from "storybook-addon-react-router-v6";
 
+import { setupStore } from "@/state/store";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
   projectVideoApp,
-} from "../../../test-utils/msw/mockJson";
-import { setupStore } from "../../state/store";
+} from "@testing/msw/mockJson";
 
-import Project from "./Project";
+import { Project } from "./Project";
 
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
-import type { IFetchMainDataState } from "../../state/main-data/state";
-import type { AppState } from "../../state/store";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
+import type { IFetchMainDataState } from "@/state/main-data/state";
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -36,7 +35,7 @@ const loadedData: IFetchMainDataState = {
 
 // -----------------------------------------------------------------------------
 
-const BadViewTypeState: Pick<AppState, "mainData"> = {
+const BadViewTypeState = {
   mainData: {
     ...loadedData,
     data: {
@@ -48,7 +47,8 @@ const BadViewTypeState: Pick<AppState, "mainData"> = {
       ],
     },
   },
-};
+} as AppState;
+
 export const Default: Story = {
   parameters: {
     reactRouter: {
@@ -81,14 +81,14 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-const galleryState: Pick<AppState, "mainData"> = {
+const galleryState = {
   mainData: {
     ...loadedData,
     data: {
       projects: [projectGalleryWebsite],
     },
   },
-};
+} as AppState;
 
 export const GalleryPage: Story = {
   parameters: {
@@ -122,12 +122,12 @@ export const GalleryPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const videoState: Pick<AppState, "mainData"> = {
+const videoState = {
   mainData: {
     ...loadedData,
     data: { projects: [projectVideoApp] },
   },
-};
+} as AppState;
 
 export const VideoPage: Story = {
   parameters: {
@@ -159,12 +159,12 @@ export const VideoPage: Story = {
 
 // -----------------------------------------------------------------------------
 
-const inFrameState: Pick<AppState, "mainData"> = {
+const inFrameState = {
   mainData: {
     ...loadedData,
     data: { projects: [projectIframeAdvert] },
   },
-};
+} as AppState;
 
 export const InFramePage: Story = {
   parameters: {

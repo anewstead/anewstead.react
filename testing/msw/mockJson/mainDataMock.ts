@@ -1,7 +1,4 @@
-import {
-  ProjectType,
-  ViewType,
-} from "../../../src/services/hygraph/generated/graphql";
+import { ProjectType, ViewType } from "@/services/hygraph/generated/graphql";
 import {
   aGalleryView,
   aGlobal,
@@ -10,12 +7,12 @@ import {
   aVideoView,
   anAsset,
   anIframeView,
-} from "../../../src/services/hygraph/generated/mockData";
+} from "@/services/hygraph/generated/mockData";
 
 import type {
   AllDataQuery,
   FprojectFragment,
-} from "../../../src/services/hygraph/generated/graphql";
+} from "@/services/hygraph/generated/graphql";
 
 export const videoURL = "https://media.graphassets.com/lVCbqtaQqCpJkGFGwAfh";
 

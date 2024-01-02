@@ -7,7 +7,7 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 
-import App from "./App";
+import { App } from "./App";
 
 test("loads data, renders home (inc. nav) and navigates to about", async () => {
   render(<App />);
