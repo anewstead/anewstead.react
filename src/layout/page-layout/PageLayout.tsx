@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { HeadNav } from "@/components/head-nav";
 import { useAppSelector } from "@/state/store";
 
-import cls from "./pageLayout.module.scss";
+import css from "./pageLayout.module.scss";
 
 import type { AppState } from "@/state/store";
 import type { ReactNode } from "react";
@@ -31,7 +31,7 @@ export const PageLayout = ({
   const brand = mainData?.global?.brand ?? "";
 
   return (
-    <Box className={cls["page-layout"]} data-testid="app-layout">
+    <Box className={css["page-layout"]} data-testid="app-layout">
       <HeadNav
         navType={headerNavType}
         titleText={headerNavTitle}

@@ -4,7 +4,7 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { Box, Button } from "@mui/material";
 import clsx from "clsx";
 
-import cls from "./carouselButton.module.scss";
+import css from "./carouselButton.module.scss";
 
 export type CarouselButtonProps = {
   direction: "prev" | "next";
@@ -13,8 +13,8 @@ export type CarouselButtonProps = {
 
 export const CarouselButton = ({ direction, onClick }: CarouselButtonProps) => {
   const btnCls = clsx(
-    cls["carousel-button"],
-    direction === "prev" ? cls["prev-button"] : cls["next-button"]
+    css["carousel-button"],
+    direction === "prev" ? css["prev-button"] : css["next-button"]
   );
 
   return (

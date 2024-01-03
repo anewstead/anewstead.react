@@ -3,7 +3,7 @@ import React from "react";
 import { TextBlock } from "@/components/text-block";
 import { useDetectAdBlock } from "@/hooks/useDetectAdBlock";
 
-import cls from "./inFrame.module.scss";
+import css from "./inFrame.module.scss";
 
 export type InFrameProps = {
   title: string;
@@ -44,7 +44,7 @@ export const InFrame = ({
         src={iframeURL}
         width={width}
         height={height}
-        className={cls.iframe}
+        className={css.iframe}
         data-testid="inframe-iframe"
       />
     </>

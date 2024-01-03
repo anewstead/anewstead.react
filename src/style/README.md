@@ -38,11 +38,11 @@ type-safe classes in .tsx via [typescript-plugin-css-modules](https://github.com
 
 ```
 // tsx
-import cls from "./carouselButton.module.scss";
-className={cls.***} // when type dot *** should be autocomplete suggestion
+import css from "./carouselButton.module.scss";
+className={css.***} // when type dot *** should be autocomplete suggestion
 // inserts correct syntax for class names
-className={cls.someClass} // camelCase
-className={cls["my-class"]} // kebab-case
+className={css.someClass} // camelCase
+className={css["my-class"]} // kebab-case
 ```
 
 **DO NOT WRITE ANY UNWRAPPED CSS CLASSES IN GLOBAL SASS**  

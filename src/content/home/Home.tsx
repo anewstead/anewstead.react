@@ -6,7 +6,7 @@ import { PageLayout } from "@/layout/page-layout";
 import { INIT_DISPLAY_THUMBS } from "@/state/home/slice";
 import { useAppDispatch, useAppSelector } from "@/state/store";
 
-import cls from "./home.module.scss";
+import css from "./home.module.scss";
 import { HomeThumb } from "./HomeThumb";
 
 import type { InitDisplayThumbsPayload } from "@/state/home/slice";
@@ -44,7 +44,7 @@ export const Home = () => {
       content = thumbs;
     } else {
       content = (
-        <Card className={cls.info} data-testid="home-nothumbs">
+        <Card className={css.info} data-testid="home-nothumbs">
           Please make a selection
         </Card>
       );
@@ -53,7 +53,7 @@ export const Home = () => {
 
   return (
     <PageLayout headerNavType="thumbs">
-      <Container className={cls.home} data-testid="home-page">
+      <Container className={css.home} data-testid="home-page">
         <Grid container spacing={2} justifyContent="center">
           {content}
         </Grid>
