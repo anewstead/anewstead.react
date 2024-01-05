@@ -1,10 +1,10 @@
 import { within, userEvent, expect, fn } from "@storybook/test";
 
-import { initialState } from "@/state/home/state";
 import { waitForTimeout } from "@testing/waitFor";
 
 import { HeadNavThumbs } from "./HeadNavThumbs";
 
+import type { TNavCheckState } from "./HeadNavThumbs";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -15,14 +15,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 // -----------------------------------------------------------------------------
 
-const BRAND = "test brand 123";
-
+const BRAND = "test 123";
+const CB: TNavCheckState = [
+  { id: "a", label: "aa", checked: true },
+  { id: "b", label: "bb", checked: true },
+  { id: "c", label: "cc", checked: true },
+];
 // -----------------------------------------------------------------------------
 
 export const Default: Story = {
   args: {
     brandName: BRAND,
-    checkboxData: initialState.nav.checkboxes,
+    checkboxData: CB,
     onBrandClick: fn(),
     onThemeClick: fn(),
     onCheckboxChange: fn(),

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
@@ -20,14 +20,20 @@ import { useTheme } from "@mui/material/styles";
 import { HeadNavCheckbox } from "./HeadNavCheckbox";
 import css from "./headNavThumbs.module.scss";
 
-import type { ICheckbox } from "@/state/home/state";
+export type TNavCheck = {
+  id: string;
+  label: string;
+  checked: boolean;
+};
+
+export type TNavCheckState = [TNavCheck, TNavCheck, TNavCheck];
 
 export type HeadNavThumbsProps = {
   brandName?: string;
-  checkboxData: ICheckbox[];
-  onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  checkboxData: TNavCheckState;
+  onBrandClick: () => void;
   onThemeClick: () => void;
-  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCheckboxChange: (checkboxData: TNavCheckState) => void;
 };
 
 export const HeadNavThumbs = ({
@@ -41,17 +47,37 @@ export const HeadNavThumbs = ({
   const isSM = useMediaQuery(theme.breakpoints.down("md"));
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const checkboxes = checkboxData.map((cb) => {
-    return (
-      <HeadNavCheckbox
-        key={cb.id}
-        id={cb.id as string}
-        label={cb.label}
-        checked={cb.checked}
-        onChange={onCheckboxChange}
-      />
-    );
-  });
+  const [navCheckState, setNavCheckState] = useState(checkboxData);
+
+  const handleCheckboxClick = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { id, checked } = e.currentTarget;
+      const newState = navCheckState.map((cb) => {
+        if (cb.id === id) {
+          return { ...cb, checked };
+        }
+        return cb;
+      }) as TNavCheckState;
+
+      setNavCheckState(newState);
+      onCheckboxChange(newState);
+    },
+    [navCheckState, onCheckboxChange]
+  );
+
+  const checkboxes = useMemo(() => {
+    return navCheckState.map((cb) => {
+      return (
+        <HeadNavCheckbox
+          key={cb.id}
+          id={cb.id}
+          label={cb.label}
+          checked={cb.checked}
+          onChange={handleCheckboxClick}
+        />
+      );
+    });
+  }, [handleCheckboxClick, navCheckState]);
 
   const brandButton = useMemo(() => {
     return (

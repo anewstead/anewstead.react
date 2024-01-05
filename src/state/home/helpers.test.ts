@@ -1,4 +1,3 @@
-import { ProjectType } from "@/services/hygraph/generated/graphql";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
@@ -7,7 +6,7 @@ import {
 
 import { thumbHelper } from "./helpers";
 
-import type { ICheckbox } from "./state";
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 const projects: FprojectFragment[] = [
@@ -21,11 +20,11 @@ const projects: FprojectFragment[] = [
 ];
 
 describe("thumbHelper", () => {
-  const cb = [
-    { id: ProjectType.Website, checked: true },
-    { id: ProjectType.App, checked: true },
-    { id: ProjectType.Advert, checked: true },
-  ] as ICheckbox[];
+  const cb: TNavCheckState = [
+    { id: "a", label: "aa", checked: true },
+    { id: "b", label: "bb", checked: true },
+    { id: "c", label: "cc", checked: true },
+  ];
 
   test("return all (length 7/7)", () => {
     const thumbs = thumbHelper(projects, cb);

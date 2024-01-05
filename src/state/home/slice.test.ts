@@ -7,7 +7,14 @@ import type {
   InitDisplayThumbsPayload,
   NavCheckboxChangePayload,
 } from "./slice";
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { AppState } from "@/state/store";
+
+const CB: TNavCheckState = [
+  { id: "a", label: "aa", checked: true },
+  { id: "b", label: "bb", checked: true },
+  { id: "c", label: "cc", checked: true },
+];
 
 test("init displayThumbs", () => {
   const payload: InitDisplayThumbsPayload = {
@@ -22,8 +29,10 @@ test("init displayThumbs", () => {
 });
 
 test("checkbox changes displayThumbs", () => {
+  const testCB: TNavCheckState = [...CB];
+  testCB[0].checked = false;
   const payload: NavCheckboxChangePayload = {
-    checkbox: { id: "website", checked: false },
+    navCheckState: testCB,
     projects: sampleProjects,
   };
   const store = setupStore({ home: homeReducer });
@@ -32,19 +41,4 @@ test("checkbox changes displayThumbs", () => {
   store.dispatch(NAV_CHECKBOX_CHANGE(payload));
   const posthumbs = (store.getState() as AppState).home.displayThumbs;
   expect(posthumbs).not.toStrictEqual(preThumbs);
-});
-
-test("throws an Error for unknown checkbox", () => {
-  const payload: NavCheckboxChangePayload = {
-    checkbox: { id: "unknown", checked: false },
-    projects: sampleProjects,
-  };
-  const store = setupStore({ home: homeReducer });
-  let gotError = false;
-  try {
-    store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  } catch (error) {
-    gotError = true;
-  }
-  expect(gotError).toBeTruthy();
 });
