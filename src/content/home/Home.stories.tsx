@@ -10,6 +10,7 @@ import { sampleAllData } from "@testing/msw/mockJson";
 
 import { Home } from "./Home";
 
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -60,18 +61,14 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-const makeSelectionState = {
-  mainData: {
-    data: sampleAllData,
-    error: null,
-    loading: false,
-    loaded: true,
-  },
-  home: {
-    ...homeInitialState,
-    displayThumbs: [],
-  },
-};
+const uncheckedBoxes = structuredClone(homeInitialState.nav.checkboxes).map(
+  (cb) => {
+    return { ...cb, checked: false };
+  }
+) as TNavCheckState;
+
+const makeSelectionState = structuredClone(defaultState);
+makeSelectionState.home.nav.checkboxes = uncheckedBoxes;
 
 export const MakeSelection: Story = {
   decorators: [
