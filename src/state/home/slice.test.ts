@@ -1,44 +1,24 @@
 import { setupStore } from "@/state/store";
-import { sampleProjects } from "@testing/msw/mockJson";
 
-import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
+import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
 
-import type {
-  InitDisplayThumbsPayload,
-  NavCheckboxChangePayload,
-} from "./slice";
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { NavCheckboxChangePayload } from "./slice";
 import type { AppState } from "@/state/store";
 
-const CB: TNavCheckState = [
-  { id: "a", label: "aa", checked: true },
-  { id: "b", label: "bb", checked: true },
-  { id: "c", label: "cc", checked: true },
-];
-
-test("init displayThumbs", () => {
-  const payload: InitDisplayThumbsPayload = {
-    projects: sampleProjects,
-  };
+test("checkbox changes redux state", () => {
   const store = setupStore({ home: homeReducer });
-  const preThumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(preThumbs).not.toBeDefined();
-  store.dispatch(INIT_DISPLAY_THUMBS(payload));
-  const postThumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(postThumbs?.length).toEqual(sampleProjects.length);
-});
+  const preCheckbox = (store.getState() as AppState).home.nav.checkboxes;
 
-test("checkbox changes displayThumbs", () => {
-  const testCB: TNavCheckState = [...CB];
+  const testCB = structuredClone(preCheckbox);
   testCB[0].checked = false;
-  const payload: NavCheckboxChangePayload = {
+
+  const payload = {
     navCheckState: testCB,
-    projects: sampleProjects,
-  };
-  const store = setupStore({ home: homeReducer });
+  } as NavCheckboxChangePayload;
+
   store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const preThumbs = (store.getState() as AppState).home.nav;
-  store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const posthumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(posthumbs).not.toStrictEqual(preThumbs);
+
+  const postCheckbox = (store.getState() as AppState).home.nav.checkboxes;
+
+  expect(postCheckbox).not.toStrictEqual(preCheckbox);
 });

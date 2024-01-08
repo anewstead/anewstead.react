@@ -5,8 +5,8 @@ import {
 } from "@testing/msw/mockJson";
 
 import { thumbHelper } from "./helpers";
+import { initialState } from "./state";
 
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 const projects: FprojectFragment[] = [
@@ -20,11 +20,7 @@ const projects: FprojectFragment[] = [
 ];
 
 describe("thumbHelper", () => {
-  const cb: TNavCheckState = [
-    { id: "a", label: "aa", checked: true },
-    { id: "b", label: "bb", checked: true },
-    { id: "c", label: "cc", checked: true },
-  ];
+  const cb = structuredClone(initialState.nav.checkboxes);
 
   test("return all (length 7/7)", () => {
     const thumbs = thumbHelper(projects, cb);

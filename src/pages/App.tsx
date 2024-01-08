@@ -15,14 +15,14 @@ import { router } from "./AppRoutes";
  */
 export const App = () => {
   return (
-    // <React.StrictMode>
-    <ReduxProvider store={store}>
-      <ThemeWrapper>
-        <MainDataLoader>
-          <RouterProvider router={router} />
-        </MainDataLoader>
-      </ThemeWrapper>
-    </ReduxProvider>
-    // </React.StrictMode>
+    <React.StrictMode>
+      <ReduxProvider store={store}>
+        <ThemeWrapper>
+          <MainDataLoader>
+            <RouterProvider router={router} />
+          </MainDataLoader>
+        </ThemeWrapper>
+      </ReduxProvider>
+    </React.StrictMode>
   );
 };

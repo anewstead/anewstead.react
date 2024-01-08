@@ -24,22 +24,11 @@ export const HeadNav = memo(
 
     const { toggleTheme } = useThemeWrapperContext();
 
-    console.log("HeadNav:render");
-
     const navCheckboxes = useAppSelector((state) => {
-      console.log("HeadNav:useAppSelector-navCheckboxes");
       return state.home.nav.checkboxes;
     });
 
-    const projectsData = useAppSelector((state) => {
-      console.log("HeadNav:useAppSelector-projectsData");
-      return state.mainData.data?.projects ?? [];
-    });
-
-    console.log(projectsData);
-
     const globalData = useAppSelector((state) => {
-      console.log("HeadNav:useAppSelector-globalData");
       return state.mainData.data?.global;
     });
 
@@ -53,15 +42,12 @@ export const HeadNav = memo(
 
     const checkboxChange = useCallback(
       (navCheckState: TNavCheckState) => {
-        console.log("checkboxChange");
-
         const payload: NavCheckboxChangePayload = {
           navCheckState,
-          projects: projectsData,
         };
         dispatch(NAV_CHECKBOX_CHANGE(payload));
       },
-      [dispatch, projectsData]
+      [dispatch]
     );
 
     const navThumbs = (
