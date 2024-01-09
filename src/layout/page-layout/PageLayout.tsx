@@ -2,25 +2,28 @@ import React from "react";
 
 import { Box } from "@mui/material";
 
-import Footer from "../../components/footer";
-import HeaderNav from "../../components/head-nav";
-import { useAppSelector } from "../../state/store";
+import { Footer } from "@/components/footer";
+import { HeadNav } from "@/layout/head-nav";
+import { useAppSelector } from "@/state/store";
 
-import cls from "./pageLayout.module.scss";
+import css from "./pageLayout.module.scss";
 
-import type { AppState } from "../../state/store";
+import type { AppState } from "@/state/store";
 import type { ReactNode } from "react";
 
-type Props = {
+export type PageLayoutProps = {
   headerNavType: "thumbs" | "detail";
   headerNavTitle?: string;
   headerNavSubtitle?: string;
   children?: ReactNode;
 };
 
-const PageLayout = (props: Props) => {
-  const { headerNavType, headerNavTitle, headerNavSubtitle, children } = props;
-
+export const PageLayout = ({
+  headerNavType,
+  headerNavTitle,
+  headerNavSubtitle,
+  children,
+}: PageLayoutProps) => {
   const mainData = useAppSelector((state: AppState) => {
     return state.mainData.data;
   });
@@ -28,8 +31,8 @@ const PageLayout = (props: Props) => {
   const brand = mainData?.global?.brand ?? "";
 
   return (
-    <Box className={cls["page-layout"]} data-testid="app-layout">
-      <HeaderNav
+    <Box className={css["page-layout"]} data-testid="app-layout">
+      <HeadNav
         navType={headerNavType}
         titleText={headerNavTitle}
         subtitleText={headerNavSubtitle}
@@ -41,5 +44,3 @@ const PageLayout = (props: Props) => {
     </Box>
   );
 };
-
-export default PageLayout;

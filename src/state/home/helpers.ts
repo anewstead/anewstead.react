@@ -1,23 +1,23 @@
-import { ProjectType } from "../../services/hygraph/generated/graphql";
+import { ProjectType } from "@/services/hygraph/generated/graphql";
 
-import type { ICheckbox } from "./state";
-import type { FprojectFragment } from "../../services/hygraph/generated/graphql";
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 // filters which thumbs to show depending on which checkboxes are checked
 export const thumbHelper = (
   allThumbs: FprojectFragment[],
-  checkboxes: ICheckbox[]
+  checkboxes: TNavCheckState
 ): FprojectFragment[] => {
   const showSites = checkboxes.find((cb) => {
-    return cb.id === ProjectType.Website;
+    return cb.id === (ProjectType.Website as string);
   })?.checked;
 
   const showApps = checkboxes.find((cb) => {
-    return cb.id === ProjectType.App;
+    return cb.id === (ProjectType.App as string);
   })?.checked;
 
   const showAds = checkboxes.find((cb) => {
-    return cb.id === ProjectType.Advert;
+    return cb.id === (ProjectType.Advert as string);
   })?.checked;
 
   return allThumbs

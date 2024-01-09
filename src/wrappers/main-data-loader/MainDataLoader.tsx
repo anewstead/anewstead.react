@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 
 import { CircularProgress, Grid } from "@mui/material";
 
-import { FETCH_MAIN_DATA } from "../../state/main-data/slice";
-import { useAppDispatch, useAppSelector } from "../../state/store";
+import { FETCH_MAIN_DATA } from "@/state/main-data/slice";
+import { useAppDispatch, useAppSelector } from "@/state/store";
 
 import type { ReactNode } from "react";
 
@@ -11,7 +11,7 @@ type Props = {
   children: ReactNode;
 };
 
-const MainDataLoader = (props: Props) => {
+export const MainDataLoader = (props: Props) => {
   const { children } = props;
 
   const dispatch = useAppDispatch();
@@ -49,5 +49,3 @@ const MainDataLoader = (props: Props) => {
 
   return <>{children}</>;
 };
-
-export default MainDataLoader;

@@ -1,16 +1,16 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { sampleAllData } from "../../../test-utils/msw/mockJson";
-import { initialState as homeInitialState } from "../../state/home/state";
-import { setupStore } from "../../state/store";
+import { initialState as homeInitialState } from "@/state/home/state";
+import { setupStore } from "@/state/store";
+import { sampleAllData } from "@testing/msw/mockJson";
 
-import Home from "./Home";
+import { Home } from "./Home";
 
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -61,18 +61,14 @@ export const Default: Story = {
 
 // -----------------------------------------------------------------------------
 
-const makeSelectionState = {
-  mainData: {
-    data: sampleAllData,
-    error: null,
-    loading: false,
-    loaded: true,
-  },
-  home: {
-    ...homeInitialState,
-    displayThumbs: [],
-  },
-};
+const uncheckedBoxes = structuredClone(homeInitialState.nav.checkboxes).map(
+  (cb) => {
+    return { ...cb, checked: false };
+  }
+) as TNavCheckState;
+
+const makeSelectionState = structuredClone(defaultState);
+makeSelectionState.home.nav.checkboxes = uncheckedBoxes;
 
 export const MakeSelection: Story = {
   decorators: [

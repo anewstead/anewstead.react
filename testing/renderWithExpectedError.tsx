@@ -7,7 +7,7 @@ import type React from "react";
 // pass in component that you have setup to throw an error, e.g. is configured wrong
 // returns the error without it being thrown to test runner and stopping tests
 // use: expect(renderWithExpectedError(<TestComponent />)).toBeTruthy();
-const renderWithExpectedError = (ui: React.ReactElement) => {
+export const renderWithExpectedError = (ui: React.ReactElement) => {
   const consoleErrorFn = jest.spyOn(console, "error").mockImplementation(() => {
     return jest.fn();
   });
@@ -20,5 +20,3 @@ const renderWithExpectedError = (ui: React.ReactElement) => {
   consoleErrorFn.mockRestore();
   return err;
 };
-
-export default renderWithExpectedError;

@@ -16,6 +16,10 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@testing/*": ["./testing/*"]
+    },
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"
@@ -23,12 +27,13 @@
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
     "target": "ES2016"
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*", "test-utils/**/*"],
+  "include": ["src/**/*", "testing/**/*", ".storybook/**/*", "e2e/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "typeRoots": ["node_modules/@types", "src/@types"]
 }

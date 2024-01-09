@@ -1,13 +1,12 @@
 import React from "react";
 
 import { Button, useTheme } from "@mui/material";
-import { expect } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect } from "@storybook/test";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import { waitForTimeout } from "@testing/waitFor";
 
 import { retrieveThemeName } from "./helpers";
-import ThemeWrapper from "./ThemeWrapper";
+import { ThemeWrapper } from "./ThemeWrapper";
 import { useThemeWrapperContext } from "./ThemeWrapperContext";
 
 import type { Meta, StoryObj } from "@storybook/react";

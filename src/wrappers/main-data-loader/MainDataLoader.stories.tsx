@@ -1,19 +1,19 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { waitForElementToBeRemoved, within } from "@storybook/testing-library";
+import { within, expect, waitForElementToBeRemoved } from "@storybook/test";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
+import { setupStore } from "@/state/store";
 import {
   mswLoadMainDataError,
   mswLoadMainDataGqlError,
-} from "../../../test-utils/msw/handlers/mswLoadMainData";
-import { setupStore } from "../../state/store";
+} from "@testing/msw/handlers/mswLoadMainData";
 
-import MainDataLoader from "./MainDataLoader";
+import { MainDataLoader } from "./MainDataLoader";
 
-import type { IFetchMainDataState } from "../../state/main-data/state";
+import type { IFetchMainDataState } from "@/state/main-data/state";
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------
@@ -31,7 +31,7 @@ const defaultState = {
     loading: false,
     loaded: false,
   } satisfies IFetchMainDataState,
-};
+} as AppState;
 
 const Template: Story = {
   decorators: [

@@ -10,11 +10,12 @@
 //
 // imports jest-transform-graphql process renames as upstreamProcess to avoid name clash
 // returns its output as 'code' variable required by jest 28+
-const { process: upstreamProcess } = require("jest-transform-graphql");
+
+import { process as upstreamProcess } from "jest-transform-graphql";
 
 const process = (...args) => {
   const code = upstreamProcess(...args);
   return { code };
 };
 
-module.exports = { process };
+export default { process };

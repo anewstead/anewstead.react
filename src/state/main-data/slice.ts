@@ -1,6 +1,6 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 
-import { loadMainData } from "../../services/loadMainData";
+import { loadMainData } from "@/services/loadMainData";
 
 import {
   getSessionMainData,

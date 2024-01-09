@@ -1,4 +1,4 @@
-@use "../../style/gbl.scss";
+@use "/src/style/gbl.scss";
 
 .no-match {
   margin-top: gbl.$spacing4;
@@ -6,6 +6,7 @@
 
 .paper {
   padding: gbl.$spacing4;
+  margin-bottom: gbl.$spacing3;
 }
 
 .button {

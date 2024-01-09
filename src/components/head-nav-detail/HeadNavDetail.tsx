@@ -12,23 +12,21 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import cls from "./headNavDetail.module.scss";
+import css from "./headNavDetail.module.scss";
 
-type Props = {
+export type HeadNavDetailProps = {
   onThemeClick: () => unknown;
   onHomeClick: () => unknown;
   titleText?: string;
   subtitleText?: string;
 };
 
-const HeadNavDetail = (props: Props) => {
-  const {
-    onThemeClick,
-    onHomeClick: onBackClick,
-    titleText,
-    subtitleText,
-  } = props;
-
+export const HeadNavDetail = ({
+  onThemeClick,
+  onHomeClick,
+  titleText,
+  subtitleText,
+}: HeadNavDetailProps) => {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -36,7 +34,7 @@ const HeadNavDetail = (props: Props) => {
     <IconButton
       edge="end"
       aria-label="back"
-      onClick={onBackClick}
+      onClick={onHomeClick}
       size="large"
       data-testid="nav-detail-home-button"
     >
@@ -78,19 +76,19 @@ const HeadNavDetail = (props: Props) => {
 
   return (
     <nav data-testid="nav-detail">
-      <AppBar position="static" className={cls["app-bar"]}>
+      <AppBar position="static" className={css["app-bar"]}>
         <Toolbar variant={isXS ? "dense" : "regular"}>
-          <Grid container className={cls["grid-root"]}>
-            <Grid item xs={1} className={cls["grid-back"]}>
+          <Grid container className={css["grid-root"]}>
+            <Grid item xs={1} className={css["grid-back"]}>
               {backButton}
             </Grid>
-            <Grid item xs={11} sm={10} className={cls["grid-title"]}>
+            <Grid item xs={11} sm={10} className={css["grid-title"]}>
               {title}
               {subtitle}
             </Grid>
 
             {!isXS && (
-              <Grid item xs={1} className={cls["grid-toggle"]}>
+              <Grid item xs={1} className={css["grid-toggle"]}>
                 {toggleButton}
               </Grid>
             )}
@@ -100,5 +98,3 @@ const HeadNavDetail = (props: Props) => {
     </nav>
   );
 };
-
-export default HeadNavDetail;

@@ -2,13 +2,13 @@ import React, { memo, useEffect } from "react";
 
 import { useColorScheme } from "@mui/material";
 
-import type { IThemeName } from "../../style/theme";
+import type { IThemeName } from "@/style/theme";
 
-type Props = {
+export type ThemeModeProps = {
   themeName: IThemeName;
 };
 
-const ThemeMode = ({ themeName }: Props) => {
+export const ThemeMode = memo(({ themeName }: ThemeModeProps) => {
   const { mode, setMode } = useColorScheme();
 
   useEffect(() => {
@@ -18,6 +18,4 @@ const ThemeMode = ({ themeName }: Props) => {
   }, [mode, setMode, themeName]);
 
   return <></>;
-};
-
-export default memo(ThemeMode);
+});

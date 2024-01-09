@@ -4,14 +4,14 @@ import { Container, Paper, Typography } from "@mui/material";
 import DOMPurify from "dompurify";
 import Markdown from "markdown-to-jsx";
 
-import PageLayout from "../../layout/page-layout";
-import { useAppSelector } from "../../state/store";
+import { PageLayout } from "@/layout/page-layout";
+import { useAppSelector } from "@/state/store";
 
-import cls from "./about.module.scss";
+import css from "./about.module.scss";
 
-import type { AppState } from "../../state/store";
+import type { AppState } from "@/state/store";
 
-const About = () => {
+export const About = () => {
   const mainData = useAppSelector((state: AppState) => {
     return state.mainData.data;
   });
@@ -21,8 +21,8 @@ const About = () => {
 
   return (
     <PageLayout headerNavType="detail" headerNavTitle={mainData?.global?.brand}>
-      <Container className={cls.about} data-testid="about-page">
-        <Paper className={cls.paper}>
+      <Container className={css.about} data-testid="about-page">
+        <Paper className={css.paper}>
           <Typography variant="h4" component="h2">
             {mainData?.page?.title}
           </Typography>
@@ -32,5 +32,3 @@ const About = () => {
     </PageLayout>
   );
 };
-
-export default About;

@@ -18,7 +18,7 @@ handers = [myMockRequestHandler, other, etc]
 test load error (returns 400 bad): 
 
 myUtil.test.ts
-import { server } from "../../test-utils/msw/server";
+import { server } from "@testing/msw/server";
 server.use(myMockRequestHandlerReject);
 
 MyComponent.stories.tsx (storybook & msw addon):
@@ -29,5 +29,4 @@ parameters: {
 },
 */
 
-const handlers = [mswLoadMainData, mswDetectAdBlock];
-export default handlers;
+export const handlers = [mswLoadMainData, mswDetectAdBlock];

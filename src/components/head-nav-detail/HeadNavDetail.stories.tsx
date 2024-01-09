@@ -1,9 +1,8 @@
-import { expect, jest } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect, fn } from "@storybook/test";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
+import { waitForTimeout } from "@testing/waitFor";
 
-import HeadNavDetail from "./HeadNavDetail";
+import { HeadNavDetail } from "./HeadNavDetail";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -24,8 +23,8 @@ export const Default: Story = {
   args: {
     titleText: TITLE,
     subtitleText: SUB_TITLE,
-    onHomeClick: jest.fn(),
-    onThemeClick: jest.fn(),
+    onHomeClick: fn(),
+    onThemeClick: fn(),
   },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -50,8 +49,8 @@ export const Mobile: Story = {
   args: {
     titleText: TITLE,
     subtitleText: SUB_TITLE,
-    onHomeClick: jest.fn(),
-    onThemeClick: jest.fn(),
+    onHomeClick: fn(),
+    onThemeClick: fn(),
   },
   parameters: {
     viewport: {

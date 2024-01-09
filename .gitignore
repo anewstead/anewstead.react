@@ -18,9 +18,9 @@
 /out/
 
 # production
-/build
-/dist
-/storybook-static
+/*build
+/*dist
+/*storybook-static
 tsconfig.tsbuildinfo
 
 # misc
@@ -28,11 +28,13 @@ tsconfig.tsbuildinfo
 *_temp
 *_tmp
 *tmp
+**/generated
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log*
 
 # local env files
 .env.local

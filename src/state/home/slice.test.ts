@@ -1,50 +1,24 @@
-import { sampleProjects } from "../../../test-utils/msw/mockJson";
-import { setupStore } from "../store";
+import { setupStore } from "@/state/store";
 
-import { INIT_DISPLAY_THUMBS, NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
+import { NAV_CHECKBOX_CHANGE, homeReducer } from "./slice";
 
-import type {
-  InitDisplayThumbsPayload,
-  NavCheckboxChangePayload,
-} from "./slice";
-import type { AppState } from "../store";
+import type { NavCheckboxChangePayload } from "./slice";
+import type { AppState } from "@/state/store";
 
-test("init displayThumbs", () => {
-  const payload: InitDisplayThumbsPayload = {
-    projects: sampleProjects,
-  };
+test("checkbox changes redux state", () => {
   const store = setupStore({ home: homeReducer });
-  const preThumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(preThumbs).not.toBeDefined();
-  store.dispatch(INIT_DISPLAY_THUMBS(payload));
-  const postThumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(postThumbs?.length).toEqual(sampleProjects.length);
-});
+  const preCheckbox = (store.getState() as AppState).home.nav.checkboxes;
 
-test("checkbox changes displayThumbs", () => {
-  const payload: NavCheckboxChangePayload = {
-    checkbox: { id: "website", checked: false },
-    projects: sampleProjects,
-  };
-  const store = setupStore({ home: homeReducer });
+  const testCB = structuredClone(preCheckbox);
+  testCB[0].checked = false;
+
+  const payload = {
+    navCheckState: testCB,
+  } as NavCheckboxChangePayload;
+
   store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const preThumbs = (store.getState() as AppState).home.nav;
-  store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  const posthumbs = (store.getState() as AppState).home.displayThumbs;
-  expect(posthumbs).not.toStrictEqual(preThumbs);
-});
 
-test("throws an Error for unknown checkbox", () => {
-  const payload: NavCheckboxChangePayload = {
-    checkbox: { id: "unknown", checked: false },
-    projects: sampleProjects,
-  };
-  const store = setupStore({ home: homeReducer });
-  let gotError = false;
-  try {
-    store.dispatch(NAV_CHECKBOX_CHANGE(payload));
-  } catch (error) {
-    gotError = true;
-  }
-  expect(gotError).toBeTruthy();
+  const postCheckbox = (store.getState() as AppState).home.nav.checkboxes;
+
+  expect(postCheckbox).not.toStrictEqual(preCheckbox);
 });

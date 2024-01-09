@@ -1,31 +1,32 @@
-import React, { Suspense, lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
 
-import { Route, Routes } from "react-router-dom";
-
-const About = lazy(() => {
-  return import("../content/about");
-});
-const Home = lazy(() => {
-  return import("../content/home");
-});
-const NoMatch = lazy(() => {
-  return import("../content/no-match");
-});
-const Project = lazy(() => {
-  return import("../content/project");
-});
-
-const AppRoutes = () => {
-  return (
-    <Suspense fallback={<></>}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="project/:uid" element={<Project />} />
-        <Route path="about" element={<About />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </Suspense>
-  );
-};
-
-export default AppRoutes;
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    async lazy() {
+      const { Home } = await import("@/content/home");
+      return { Component: Home };
+    },
+  },
+  {
+    path: "project/:uid",
+    async lazy() {
+      const { Project } = await import("@/content/project");
+      return { Component: Project };
+    },
+  },
+  {
+    path: "about",
+    async lazy() {
+      const { About } = await import("@/content/about");
+      return { Component: About };
+    },
+  },
+  {
+    path: "*",
+    async lazy() {
+      const { NoMatch } = await import("@/content/no-match");
+      return { Component: NoMatch };
+    },
+  },
+]);

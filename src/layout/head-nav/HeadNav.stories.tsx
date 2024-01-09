@@ -1,7 +1,6 @@
 import React from "react";
 
-import { expect } from "@storybook/jest";
-import { userEvent, within } from "@storybook/testing-library";
+import { within, userEvent, expect } from "@storybook/test";
 import { Provider } from "react-redux";
 import { Outlet } from "react-router-dom";
 import {
@@ -9,13 +8,13 @@ import {
   withRouter,
 } from "storybook-addon-react-router-v6";
 
-import { waitForTimeout } from "../../../test-utils/waitFor";
-import store from "../../state/store";
-import { retrieveThemeName } from "../../wrappers/theme-wrapper/helpers";
+import { store } from "@/state/store";
+import { retrieveThemeName } from "@/wrappers/theme-wrapper/helpers";
+import { waitForTimeout } from "@testing/waitFor";
 
-import HeadNav from "./HeadNav";
+import { HeadNav } from "./HeadNav";
 
-import type { AppState } from "../../state/store";
+import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------

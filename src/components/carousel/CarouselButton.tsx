@@ -4,22 +4,24 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { Box, Button } from "@mui/material";
 import clsx from "clsx";
 
-import cls from "./carouselButton.module.scss";
+import css from "./carouselButton.module.scss";
 
 import type { MouseEvent } from "react";
 
-type Props = {
+export type CarouselButtonProps = {
   direction: "prev" | "next";
   onClick?: (e?: MouseEvent<HTMLElement>) => void;
   disabled?: boolean;
 };
 
-const CarouselButton = (props: Props) => {
-  const { direction, onClick, disabled = false } = props;
-
+export const CarouselButton = ({
+  direction,
+  onClick,
+  disabled = false,
+}: CarouselButtonProps) => {
   const btnCls = clsx(
-    cls["carousel-button"],
-    direction === "prev" ? cls["prev-button"] : cls["next-button"]
+    css["carousel-button"],
+    direction === "prev" ? css["prev-button"] : css["next-button"]
   );
 
   return (
@@ -35,5 +37,3 @@ const CarouselButton = (props: Props) => {
     </Button>
   );
 };
-
-export default CarouselButton;

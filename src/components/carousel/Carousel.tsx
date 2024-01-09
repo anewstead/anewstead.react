@@ -5,12 +5,12 @@ import "keen-slider/keen-slider.min.css";
 import clsx from "clsx";
 import { useKeenSlider } from "keen-slider/react";
 
-import cls from "./carousel.module.scss";
-import CarouselButton from "./CarouselButton";
+import css from "./carousel.module.scss";
+import { CarouselButton } from "./CarouselButton";
 
 import type { KeenSliderPlugin } from "keen-slider/react";
 
-type Props = {
+export type CarouselProps = {
   slides: JSX.Element[];
   // settings?: SlickSettings;
 };
@@ -26,9 +26,7 @@ const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   slider.on("slideChanged", updateHeight);
 };
 
-const Carousel = (props: Props) => {
-  const { slides } = props;
-
+export const Carousel = ({ slides }: CarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -45,7 +43,7 @@ const Carousel = (props: Props) => {
     [AdaptiveHeight]
   );
   return (
-    <div className={cls.carousel} data-testid="carousel">
+    <div className={css.carousel} data-testid="carousel">
       <div ref={sliderRef} className="keen-slider">
         {slides.map((slide) => {
           return (
@@ -82,7 +80,7 @@ const Carousel = (props: Props) => {
       </div>
 
       {loaded && instanceRef.current && (
-        <div className={cls.dots}>
+        <div className={css.dots}>
           {[
             ...Array(instanceRef.current.track.details.slides.length).keys(),
           ].map((index) => {
@@ -96,8 +94,8 @@ const Carousel = (props: Props) => {
                 }}
                 // className={`dot${currentSlide === index ? " active" : ""}`}
                 className={clsx(
-                  cls.dot,
-                  currentSlide === index ? cls["dot-active"] : ""
+                  css.dot,
+                  currentSlide === index ? css["dot-active"] : ""
                 )}
               />
             );
@@ -107,5 +105,3 @@ const Carousel = (props: Props) => {
     </div>
   );
 };
-
-export default Carousel;

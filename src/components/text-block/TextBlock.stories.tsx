@@ -1,7 +1,6 @@
-import { expect } from "@storybook/jest";
-import { within } from "@storybook/testing-library";
+import { within, expect } from "@storybook/test";
 
-import TextBlock from "./TextBlock";
+import { TextBlock } from "./TextBlock";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

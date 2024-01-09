@@ -1,3 +1,1 @@
-import MainDataLoader from "./MainDataLoader";
-
-export default MainDataLoader;
+export * from "./MainDataLoader";

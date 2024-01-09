@@ -1,3 +1,1 @@
-import TextBlock from "./TextBlock";
-
-export default TextBlock;
+export * from "./TextBlock";

@@ -9,13 +9,26 @@ theme settings imported via base theme wrapper/provider
 
 ## gbl sass
 
-scss variable, mixins, functions etc.  
-@use needs to be reletive import  
-(alias or root based imports are not yet well supported by other tools)
+scss variable, mixins, functions etc.
+
+SCSS NOTE:
+Alias @ path is not supported by vscode & ext for code completion  
+Alias works in vite and compiles fine, but is a no go without code completion  
+Current best option to use absolute path in scss i.e. "/src/..."  
+This gives vscode code completion, but then need to alias it for vite  
+"/src/" to "./src/"  
+We can do this because "/" in scss refer to project root,  
+And in typescript "/" defaults to HD root, so is never used there  
+otherwise @use needs to be relative e.g "../../../styles/file.scss"
+
+Support may be coming for scss paths in 2024:\
+
+- https://github.com/microsoft/vscode/issues/163967\
+- https://github.com/wkillerud/vscode-scss/issues/41
 
 ```
 // scss
-@use "../../style/gbl.scss";
+@use "/src/style/gbl.scss";
 .my-class{
   padding: gbl.$my-padding;
 }
@@ -25,11 +38,11 @@ type-safe classes in .tsx via [typescript-plugin-css-modules](https://github.com
 
 ```
 // tsx
-import cls from "./carouselButton.module.scss";
-className={cls.***} // when type dot *** should be autocomplete suggestion
+import css from "./carouselButton.module.scss";
+className={css.***} // when type dot *** should be autocomplete suggestion
 // inserts correct syntax for class names
-className={cls.someClass} // camelCase
-className={cls["my-class"]} // kebab-case
+className={css.someClass} // camelCase
+className={css["my-class"]} // kebab-case
 ```
 
 **DO NOT WRITE ANY UNWRAPPED CSS CLASSES IN GLOBAL SASS**  

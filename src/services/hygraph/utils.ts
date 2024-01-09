@@ -3,7 +3,7 @@ import { print } from "graphql/language/printer";
 import compress from "graphql-query-compress";
 import gql from "graphql-tag";
 
-import { HYG_GQL } from "../../const";
+import { HYG_GQL } from "@/const";
 
 import type { AxiosError } from "axios";
 import type { ASTNode, DocumentNode } from "graphql/language/ast";

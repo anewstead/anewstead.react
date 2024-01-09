@@ -59,4 +59,6 @@ const sbConfig: StorybookConfig = {
   },
   staticDirs: ["./static"],
 };
+
+// eslint-disable-next-line import/no-default-export
 export default sbConfig;
