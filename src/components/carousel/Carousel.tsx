@@ -5,7 +5,7 @@ import React from "react";
 import { Box, useTheme } from "@mui/material";
 import Slider from "react-slick";
 
-import cls from "./carousel.module.scss";
+import css from "./carousel.module.scss";
 import { CarouselButton } from "./CarouselButton";
 
 import type { Settings as SlickSettings } from "react-slick";
@@ -35,11 +35,11 @@ export const Carousel = ({ slides, settings }: CarouselProps) => {
 
   return (
     <Box
-      className={cls.carousel}
+      className={css.carousel}
       style={{ marginBottom: bmargin }}
       data-testid="carousel"
     >
-      <Slider {...config} className={cls.slider}>
+      <Slider {...config} className={css.slider}>
         {slides}
       </Slider>
     </Box>

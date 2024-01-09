@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from "react";
 
-import cls from "./video.module.scss";
+import css from "./video.module.scss";
 
 export type VideoProps = {
   videoURL: string;
@@ -11,7 +11,7 @@ export type VideoProps = {
 export const Video = ({ videoURL, posterURL }: VideoProps) => {
   return (
     <video
-      className={cls.video}
+      className={css.video}
       width="100%"
       height="auto"
       poster={posterURL}

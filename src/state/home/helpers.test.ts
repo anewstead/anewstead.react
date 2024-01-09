@@ -1,4 +1,3 @@
-import { ProjectType } from "@/services/hygraph/generated/graphql";
 import {
   projectGalleryWebsite,
   projectIframeAdvert,
@@ -6,8 +5,8 @@ import {
 } from "@testing/msw/mockJson";
 
 import { thumbHelper } from "./helpers";
+import { initialState } from "./state";
 
-import type { ICheckbox } from "./state";
 import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
 
 const projects: FprojectFragment[] = [
@@ -21,11 +20,7 @@ const projects: FprojectFragment[] = [
 ];
 
 describe("thumbHelper", () => {
-  const cb = [
-    { id: ProjectType.Website, checked: true },
-    { id: ProjectType.App, checked: true },
-    { id: ProjectType.Advert, checked: true },
-  ] as ICheckbox[];
+  const cb = structuredClone(initialState.nav.checkboxes);
 
   test("return all (length 7/7)", () => {
     const thumbs = thumbHelper(projects, cb);

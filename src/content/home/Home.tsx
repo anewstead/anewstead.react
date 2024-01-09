@@ -1,35 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 
 import { Card, Container, Grid } from "@mui/material";
 
 import { PageLayout } from "@/layout/page-layout";
-import { INIT_DISPLAY_THUMBS } from "@/state/home/slice";
-import { useAppDispatch, useAppSelector } from "@/state/store";
+import { thumbHelper } from "@/state/home/helpers";
+import { useAppSelector } from "@/state/store";
 
-import cls from "./home.module.scss";
+import css from "./home.module.scss";
 import { HomeThumb } from "./HomeThumb";
 
-import type { InitDisplayThumbsPayload } from "@/state/home/slice";
 import type { AppState } from "@/state/store";
 import type { ReactNode } from "react";
 
 export const Home = () => {
-  const dispatch = useAppDispatch();
-
   const projects = useAppSelector((state: AppState) => {
     return state.mainData.data!.projects;
   });
 
-  const displayThumbs = useAppSelector((state: AppState) => {
-    return state.home.displayThumbs;
+  const navCheckState = useAppSelector((state: AppState) => {
+    return state.home.nav.checkboxes;
   });
 
-  useEffect(() => {
-    if (!displayThumbs && projects?.length > 0) {
-      const payload: InitDisplayThumbsPayload = { projects };
-      dispatch(INIT_DISPLAY_THUMBS(payload));
-    }
-  }, [projects, displayThumbs, dispatch]);
+  // displayThumbs is derivied,
+  // so in current data structure is not needed in redux.
+  // https://redux.js.org/usage/deriving-data-selectors
+  const displayThumbs = useMemo(() => {
+    return thumbHelper(projects, navCheckState);
+  }, [projects, navCheckState]);
 
   let content: ReactNode | ReactNode[] = <div data-testid="home-unset" />;
 
@@ -44,7 +41,7 @@ export const Home = () => {
       content = thumbs;
     } else {
       content = (
-        <Card className={cls.info} data-testid="home-nothumbs">
+        <Card className={css.info} data-testid="home-nothumbs">
           Please make a selection
         </Card>
       );
@@ -53,8 +50,13 @@ export const Home = () => {
 
   return (
     <PageLayout headerNavType="thumbs">
-      <Container className={cls.home} data-testid="home-page">
-        <Grid container spacing={2} justifyContent="center">
+      <Container className={css.home} data-testid="home-page">
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          data-testid="home-thumbs"
+        >
           {content}
         </Grid>
       </Container>

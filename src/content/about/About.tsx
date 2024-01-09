@@ -7,7 +7,7 @@ import Markdown from "markdown-to-jsx";
 import { PageLayout } from "@/layout/page-layout";
 import { useAppSelector } from "@/state/store";
 
-import cls from "./about.module.scss";
+import css from "./about.module.scss";
 
 import type { AppState } from "@/state/store";
 
@@ -21,8 +21,8 @@ export const About = () => {
 
   return (
     <PageLayout headerNavType="detail" headerNavTitle={mainData?.global?.brand}>
-      <Container className={cls.about} data-testid="about-page">
-        <Paper className={cls.paper}>
+      <Container className={css.about} data-testid="about-page">
+        <Paper className={css.paper}>
           <Typography variant="h4" component="h2">
             {mainData?.page?.title}
           </Typography>

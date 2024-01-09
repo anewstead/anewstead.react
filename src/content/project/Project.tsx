@@ -12,7 +12,7 @@ import { PageLayout } from "@/layout/page-layout";
 import { ProjectType, ViewType } from "@/services/hygraph/generated/graphql";
 import { useAppSelector } from "@/state/store";
 
-import cls from "./project.module.scss";
+import css from "./project.module.scss";
 
 import type {
   GalleryView,
@@ -92,7 +92,7 @@ export const Project = () => {
       headerNavSubtitle={subtitleText}
     >
       <Container
-        className={cls.project}
+        className={css.project}
         style={{ maxWidth: project.view!.width }}
         data-testid="project-page"
       >

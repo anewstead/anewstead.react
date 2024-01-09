@@ -8,6 +8,7 @@ import { NAV_CHECKBOX_CHANGE } from "@/state/home/slice";
 import { useAppDispatch, useAppSelector } from "@/state/store";
 import { useThemeWrapperContext } from "@/wrappers/theme-wrapper/ThemeWrapperContext";
 
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 import type { NavCheckboxChangePayload } from "@/state/home/slice";
 
 export type HeadNavProps = {
@@ -27,10 +28,6 @@ export const HeadNav = memo(
       return state.home.nav.checkboxes;
     });
 
-    const projectsData = useAppSelector((state) => {
-      return state.mainData.data?.projects ?? [];
-    });
-
     const globalData = useAppSelector((state) => {
       return state.mainData.data?.global;
     });
@@ -44,15 +41,13 @@ export const HeadNav = memo(
     }, [navigate]);
 
     const checkboxChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { id, checked } = e.currentTarget;
+      (navCheckState: TNavCheckState) => {
         const payload: NavCheckboxChangePayload = {
-          checkbox: { id, checked },
-          projects: projectsData,
+          navCheckState,
         };
         dispatch(NAV_CHECKBOX_CHANGE(payload));
       },
-      [dispatch, projectsData]
+      [dispatch]
     );
 
     const navThumbs = (

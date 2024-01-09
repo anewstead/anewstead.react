@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
@@ -18,16 +18,22 @@ import {
 import { useTheme } from "@mui/material/styles";
 
 import { HeadNavCheckbox } from "./HeadNavCheckbox";
-import cls from "./headNavThumbs.module.scss";
+import css from "./headNavThumbs.module.scss";
 
-import type { ICheckbox } from "@/state/home/state";
+export type TNavCheck = {
+  id: string;
+  label: string;
+  checked: boolean;
+};
+
+export type TNavCheckState = [TNavCheck, TNavCheck, TNavCheck];
 
 export type HeadNavThumbsProps = {
   brandName?: string;
-  checkboxData: ICheckbox[];
-  onBrandClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  checkboxData: TNavCheckState;
+  onBrandClick: () => void;
   onThemeClick: () => void;
-  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCheckboxChange: (checkboxData: TNavCheckState) => void;
 };
 
 export const HeadNavThumbs = ({
@@ -41,24 +47,44 @@ export const HeadNavThumbs = ({
   const isSM = useMediaQuery(theme.breakpoints.down("md"));
   const isXS = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const checkboxes = checkboxData.map((cb) => {
-    return (
-      <HeadNavCheckbox
-        key={cb.id}
-        id={cb.id as string}
-        label={cb.label}
-        checked={cb.checked}
-        onChange={onCheckboxChange}
-      />
-    );
-  });
+  const [navCheckState, setNavCheckState] = useState(checkboxData);
+
+  const handleCheckboxClick = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { id, checked } = e.currentTarget;
+      const newState = navCheckState.map((cb) => {
+        if (cb.id === id) {
+          return { ...cb, checked };
+        }
+        return cb;
+      }) as TNavCheckState;
+
+      setNavCheckState(newState);
+      onCheckboxChange(newState);
+    },
+    [navCheckState, onCheckboxChange]
+  );
+
+  const checkboxes = useMemo(() => {
+    return navCheckState.map((cb) => {
+      return (
+        <HeadNavCheckbox
+          key={cb.id}
+          id={cb.id}
+          label={cb.label}
+          checked={cb.checked}
+          onChange={handleCheckboxClick}
+        />
+      );
+    });
+  }, [handleCheckboxClick, navCheckState]);
 
   const brandButton = useMemo(() => {
     return (
       <Button
         aria-label="about"
         onClick={onBrandClick}
-        className={cls["brand-button"]}
+        className={css["brand-button"]}
         data-testid="nav-thumbs-about-button"
       >
         <Typography variant="h5" component="span">
@@ -72,7 +98,7 @@ export const HeadNavThumbs = ({
     return (
       <IconButton
         edge="start"
-        className={cls["menu-button"]}
+        className={css["menu-button"]}
         aria-label="menu"
         size="large"
         data-testid="nav-thumbs-menu-button"
@@ -110,13 +136,13 @@ export const HeadNavThumbs = ({
         square
         expanded={expanded === "panel1"}
         onChange={expansionPanelOnChange("panel1")}
-        className={cls["expansion-panel"]}
+        className={css["expansion-panel"]}
         TransitionProps={{ timeout: 300 }}
       >
         <AccordionSummary
           classes={{
-            root: cls["expansion-panel-summary-root"],
-            content: cls["expansion-panel-summary-content"],
+            root: css["expansion-panel-summary-root"],
+            content: css["expansion-panel-summary-content"],
           }}
           aria-controls="panel1d-content"
           id="panel1d-header"
@@ -130,7 +156,7 @@ export const HeadNavThumbs = ({
             xs
             container
             justifyContent="center"
-            className={cls["grid-brand"]}
+            className={css["grid-brand"]}
           >
             {brandButton}
           </Grid>
@@ -148,10 +174,10 @@ export const HeadNavThumbs = ({
 
   const desktopView = (
     <>
-      <Grid item sm={4} md={5} className={cls["grid-brand"]}>
+      <Grid item sm={4} md={5} className={css["grid-brand"]}>
         {brandButton}
       </Grid>
-      <Grid item flexGrow={1} sm className={cls["grid-checkboxes-open"]}>
+      <Grid item flexGrow={1} sm className={css["grid-checkboxes-open"]}>
         <FormGroup row data-testid="nav-thumbs-desktop-checkbox">
           {checkboxes}
         </FormGroup>
@@ -161,15 +187,15 @@ export const HeadNavThumbs = ({
 
   return (
     <nav data-testid="nav-thumbs">
-      <AppBar position="static" className={cls["app-bar"]}>
+      <AppBar position="static" className={css["app-bar"]}>
         <Toolbar variant={isSM ? "dense" : "regular"}>
           <Grid
             container
             justifyContent="space-between"
-            className={cls["grid-root"]}
+            className={css["grid-root"]}
           >
             {isXS ? mobileView : desktopView}
-            <Grid item xs={2} sm={1} className={cls["grid-toggle"]}>
+            <Grid item xs={2} sm={1} className={css["grid-toggle"]}>
               {toggleButton}
             </Grid>
           </Grid>

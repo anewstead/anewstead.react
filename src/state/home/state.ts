@@ -1,22 +1,14 @@
 import { ProjectType } from "@/services/hygraph/generated/graphql";
 
-import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
-
-export type ICheckbox = {
-  id: ProjectType;
-  label: string;
-  checked: boolean;
-};
+import type { TNavCheckState } from "@/components/head-nav-thumbs";
 
 type IHomePageState = {
-  displayThumbs: FprojectFragment[] | undefined;
   nav: {
-    checkboxes: ICheckbox[];
+    checkboxes: TNavCheckState;
   };
 };
 
 export const initialState: IHomePageState = {
-  displayThumbs: undefined,
   nav: {
     checkboxes: [
       {
