@@ -7,21 +7,6 @@ import checker from "vite-plugin-checker";
 import codegen from "vite-plugin-graphql-codegen";
 import { vitePluginGraphqlLoader } from "vite-plugin-graphql-loader";
 
-import { muteWarningsPlugin } from "./vite-mute-warnings-plugin";
-/**
- * MuteWarningsPlugin / warningsToIgnore\
- *
- * SOURCEMAP_ERROR - noticed storybook build with vite 5 and mui components
- * reporting sourcemap errors possibly due to "use client" flag\
- * See: https://github.com/vitejs/vite/issues/15012
- *
- * TODO: check resolved in newer storybook, vite\
- * Last checked vite 5.0.10, storybook 7.6.5
- */
-const warningsToIgnore = [
-  ["SOURCEMAP_ERROR", "Can't resolve original location of error"],
-];
-
 /**
  * Scss resolver\
  * Alias @ path is not supported by vscode & ext for code completion\
@@ -86,11 +71,7 @@ const buildProd = () => {
   return {
     server,
     resolve,
-    plugins: [
-      react(),
-      vitePluginGraphqlLoader(),
-      muteWarningsPlugin(warningsToIgnore),
-    ],
+    plugins: [react(), vitePluginGraphqlLoader()],
     css: {
       devSourcemap: false,
     },
