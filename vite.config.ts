@@ -44,7 +44,7 @@ const viteAlias = (findGlob: string, localPath: string) => {
   };
 };
 
-const resolver = {
+const resolve = {
   alias: [
     viteAlias("/src/", "./src/"), // this is for scss
     viteAlias("@/", "./src/"),
@@ -52,10 +52,22 @@ const resolver = {
   ],
 };
 
+// TODO: check if can be removed
+// @alias fix
+// issue introduced vite@5.1.2
+// https://github.com/vitejs/vite/issues/15901
+// https://github.com/vitejs/vite/issues/15858
+const server = {
+  fs: {
+    cachedChecks: false,
+  },
+};
+
 // UserConfig
 const dev = () => {
   return {
-    resolve: resolver,
+    server,
+    resolve,
     plugins: [
       react(),
       vitePluginGraphqlLoader(),
@@ -72,7 +84,8 @@ const dev = () => {
 
 const buildProd = () => {
   return {
-    resolve: resolver,
+    server,
+    resolve,
     plugins: [
       react(),
       vitePluginGraphqlLoader(),
