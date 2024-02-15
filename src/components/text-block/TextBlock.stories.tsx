@@ -20,7 +20,7 @@ export const WithPlainText: Story = {
     const canvas = within(canvasElement);
     await step("renders plain text", async () => {
       const text = canvas.getByText(args.htmlText);
-      await expect(text).toBeTruthy();
+      await expect(text).toBeInTheDocument();
     });
   },
 };

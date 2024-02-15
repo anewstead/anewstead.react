@@ -23,10 +23,11 @@ module.exports = {
   extends: [
     "airbnb",
     "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended-type-checked", // @typescript-eslint @v6
-    "plugin:@typescript-eslint/stylistic-type-checked", // @typescript-eslint @v6
     "plugin:jest/recommended",
+    "plugin:jest-dom/recommended",
     "plugin:json/recommended",
     "plugin:storybook/recommended",
     "prettier",
