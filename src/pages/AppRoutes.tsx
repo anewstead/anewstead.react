@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
   {
     path: "*",
     async lazy() {
-      const { NoMatch } = await import("@/content/no-match");
+      const { NoMatch } = await import("@/content/noMatch");
       return { Component: NoMatch };
     },
   },

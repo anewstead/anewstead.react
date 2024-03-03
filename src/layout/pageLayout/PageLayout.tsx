@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import { Footer } from "@/components/footer";
-import { HeadNav } from "@/layout/head-nav";
+import { HeadNav } from "@/layout/headNav";
 import { useAppSelector } from "@/state/store";
 
 import css from "./pageLayout.module.scss";

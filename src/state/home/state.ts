@@ -1,6 +1,6 @@
 import { ProjectType } from "@/services/hygraph/generated/graphql";
 
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { TNavCheckState } from "@/components/headNavThumbs";
 
 type IHomePageState = {
   nav: {

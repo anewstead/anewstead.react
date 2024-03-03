@@ -10,7 +10,7 @@ import { sampleAllData } from "@testing/msw/mockJson";
 
 import { Home } from "./Home";
 
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { TNavCheckState } from "@/components/headNavThumbs";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // -----------------------------------------------------------------------------

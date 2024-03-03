@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TextBlock } from "@/components/text-block";
+import { TextBlock } from "@/components/textBlock";
 import { useDetectAdBlock } from "@/hooks/useDetectAdBlock";
 
 import css from "./inFrame.module.scss";

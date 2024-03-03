@@ -2,7 +2,7 @@ import React from "react";
 
 import { initialize as mswInitialize, mswLoader } from "msw-storybook-addon";
 
-import { retrieveThemeName } from "@/wrappers/theme-wrapper/helpers";
+import { retrieveThemeName } from "@/wrappers/themeWrapper/helpers";
 import { handlers } from "@testing/msw/handlers";
 
 import { AutoDocsTemplate } from "./AutoDocsTemplate";

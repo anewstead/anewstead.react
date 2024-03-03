@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import { Card, Container, Grid } from "@mui/material";
 
-import { PageLayout } from "@/layout/page-layout";
+import { PageLayout } from "@/layout/pageLayout";
 import { thumbHelper } from "@/state/home/helpers";
 import { useAppSelector } from "@/state/store";
 
