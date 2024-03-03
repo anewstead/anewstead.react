@@ -90,8 +90,8 @@ module.exports = {
     ],
 
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-    "@typescript-eslint/consistent-type-exports": "warn",
-    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/naming-convention": "warn",
     "@typescript-eslint/no-floating-promises": "off",
 
@@ -121,7 +121,7 @@ module.exports = {
 
     curly: "error",
 
-    "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     "import/no-default-export": "error",
 
     "import/no-extraneous-dependencies": [

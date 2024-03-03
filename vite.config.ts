@@ -8,16 +8,17 @@ import codegen from "vite-plugin-graphql-codegen";
 import { vitePluginGraphqlLoader } from "vite-plugin-graphql-loader";
 
 /**
- * Scss resolver\
- * Alias @ path is not supported by vscode & ext for code completion\
- * Alias works in vite and compiles fine, but is a no go without code completion\
- * Current best option to use absolute path in scss i.e. "/src/..."\
+ * Notes on scss resolver absolute paths doesnt really need @ alias.\
+ * Alias @ path in scss is not supported by vscode for import code completion\
+ * Alias @ works in vite dev/build, but is a no go without IDE code completion\
+ * Current best option to use absolute path in scss\
+ * I.e. start with "/" like "/src/etc/..."\
  * This gives vscode code completion, but then need to alias it for vite\
- * "/src/" to "./src/"\
- * We can do this because "/" in scss refer to project root,\
- * And in typescript "/" defaults to HD root, so is never used\
+ * So we do: ViteAlias("/src/", "./src/")\
+ * This is fine because "/" in scss refers to project root,\
+ * And in typescript "/" is HD root, so never used in scripts anyway\
  *
- * Support may be coming for scss paths in 2024:\
+ * Support for scss @ alias may be coming, ref:\
  * https://github.com/microsoft/vscode/issues/163967\
  * https://github.com/wkillerud/vscode-scss/issues/41
  */
@@ -37,21 +38,9 @@ const resolve = {
   ],
 };
 
-// TODO: check if can be removed
-// @alias fix
-// issue introduced vite@5.1.2
-// https://github.com/vitejs/vite/issues/15901
-// https://github.com/vitejs/vite/issues/15858
-const server = {
-  fs: {
-    cachedChecks: false,
-  },
-};
-
 // UserConfig
 const dev = () => {
   return {
-    server,
     resolve,
     plugins: [
       react(),
@@ -69,7 +58,6 @@ const dev = () => {
 
 const buildProd = () => {
   return {
-    server,
     resolve,
     plugins: [react(), vitePluginGraphqlLoader()],
     css: {
