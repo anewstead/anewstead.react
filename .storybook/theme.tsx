@@ -19,9 +19,9 @@ import {
   retrieveThemeName,
   storeThemeName,
   toggleThemeName,
-} from "@/wrappers/theme-wrapper/helpers";
-import { ThemeBase } from "@/wrappers/theme-wrapper/ThemeBase";
-import { ThemeWrapperContext } from "@/wrappers/theme-wrapper/ThemeWrapperContext";
+} from "@/wrappers/themeWrapper/helpers";
+import { ThemeBase } from "@/wrappers/themeWrapper/ThemeBase";
+import { ThemeWrapperContext } from "@/wrappers/themeWrapper/ThemeWrapperContext";
 
 import type { DocsContainerProps } from "@storybook/addon-docs";
 import type { PropsWithChildren } from "react";

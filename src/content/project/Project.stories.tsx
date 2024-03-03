@@ -14,7 +14,7 @@ import {
 import { Project } from "./Project";
 
 import type { FprojectFragment } from "@/services/hygraph/generated/graphql";
-import type { IFetchMainDataState } from "@/state/main-data/state";
+import type { IFetchMainDataState } from "@/state/mainData/state";
 import type { AppState } from "@/state/store";
 import type { Meta, StoryObj } from "@storybook/react";
 

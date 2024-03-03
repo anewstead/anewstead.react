@@ -116,7 +116,7 @@ module.exports = {
 
     "check-file/folder-naming-convention": [
       "error",
-      { "src/!(__{tests,mocks}__|@*)/**/": "KEBAB_CASE" },
+      { "src/!(__{tests,mocks}__|@*)/**/": "CAMEL_CASE" },
     ],
 
     curly: "error",

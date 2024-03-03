@@ -5,7 +5,7 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 import { homeReducer } from "./home/slice";
-import { mainDataReducer } from "./main-data/slice";
+import { mainDataReducer } from "./mainData/slice";
 
 import type { Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";

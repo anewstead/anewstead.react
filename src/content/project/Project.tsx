@@ -4,11 +4,11 @@ import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import { Carousel } from "@/components/carousel";
-import { InFrame } from "@/components/in-frame";
-import { TextBlock } from "@/components/text-block";
+import { InFrame } from "@/components/inFrame";
+import { TextBlock } from "@/components/textBlock";
 import { Video } from "@/components/video";
-import { NoMatch } from "@/content/no-match/";
-import { PageLayout } from "@/layout/page-layout";
+import { NoMatch } from "@/content/noMatch";
+import { PageLayout } from "@/layout/pageLayout";
 import { ProjectType, ViewType } from "@/services/hygraph/generated/graphql";
 import { useAppSelector } from "@/state/store";
 

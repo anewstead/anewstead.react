@@ -9,7 +9,7 @@ import {
 } from "storybook-addon-react-router-v6";
 
 import { store } from "@/state/store";
-import { retrieveThemeName } from "@/wrappers/theme-wrapper/helpers";
+import { retrieveThemeName } from "@/wrappers/themeWrapper/helpers";
 import { waitForTimeout } from "@testing/waitFor";
 
 import { HeadNav } from "./HeadNav";

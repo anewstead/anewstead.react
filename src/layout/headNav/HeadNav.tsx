@@ -2,13 +2,13 @@ import React, { memo, useCallback } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { HeadNavDetail } from "@/components/head-nav-detail";
-import { HeadNavThumbs } from "@/components/head-nav-thumbs";
+import { HeadNavDetail } from "@/components/headNavDetail";
+import { HeadNavThumbs } from "@/components/headNavThumbs";
 import { NAV_CHECKBOX_CHANGE } from "@/state/home/slice";
 import { useAppDispatch, useAppSelector } from "@/state/store";
-import { useThemeWrapperContext } from "@/wrappers/theme-wrapper/ThemeWrapperContext";
+import { useThemeWrapperContext } from "@/wrappers/themeWrapper/ThemeWrapperContext";
 
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { TNavCheckState } from "@/components/headNavThumbs";
 import type { NavCheckboxChangePayload } from "@/state/home/slice";
 
 export type HeadNavProps = {

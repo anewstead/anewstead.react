@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialState } from "./state";
 
-import type { TNavCheckState } from "@/components/head-nav-thumbs";
+import type { TNavCheckState } from "@/components/headNavThumbs";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type NavCheckboxChangePayload = {

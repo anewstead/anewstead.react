@@ -4,7 +4,7 @@ import { Container, Paper, Typography } from "@mui/material";
 import DOMPurify from "dompurify";
 import Markdown from "markdown-to-jsx";
 
-import { PageLayout } from "@/layout/page-layout";
+import { PageLayout } from "@/layout/pageLayout";
 import { useAppSelector } from "@/state/store";
 
 import css from "./about.module.scss";
