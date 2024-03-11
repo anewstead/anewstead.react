@@ -11,6 +11,9 @@
  * However undici updated to v6 and as of 6.2.0 still errors with ReadableStream\
  * So the inter-dependancy is currently unstable, hence this fix instead.\
  *
+ * Also note: removed > this.global.File = File; as not in node 18.12.1 +?
+ * https://github.com/mswjs/msw/issues/1916#issuecomment-1954445388
+ *
  * Side note:\
  * Future update may want to swap jest for vitest if/when fully adopted in
  * storybook testrunner
@@ -25,7 +28,6 @@ class JSDOMEnvironmentExtended extends JSDOMEnvironment {
     this.global.TextDecoder = TextDecoder;
     this.global.TextEncoder = TextEncoder;
     this.global.Blob = Blob;
-    this.global.File = File;
     this.global.Headers = Headers;
     this.global.FormData = FormData;
     this.global.Request = Request;
