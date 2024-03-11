@@ -42,6 +42,12 @@
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
 
+  "jest.runMode": {
+    "deferred": true,
+    "runAllTestsOnStartup": false,
+    "type": "on-demand"
+  },
+
   "json.format.enable": false,
 
   "less.validate": false,

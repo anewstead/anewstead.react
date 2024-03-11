@@ -10,7 +10,8 @@
     "unifiedjs.vscode-mdx",
     "eamodio.gitlens",
     "joelday.docthis",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "orta.vscode-jest"
   ],
 
   "unwantedRecommendations": []
