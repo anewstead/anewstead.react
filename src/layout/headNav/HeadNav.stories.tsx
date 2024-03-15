@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 import {
   reactRouterParameters,
   withRouter,
-} from "storybook-addon-react-router-v6";
+} from "storybook-addon-remix-react-router";
 
 import { store } from "@/state/store";
 import { retrieveThemeName } from "@/wrappers/themeWrapper/helpers";

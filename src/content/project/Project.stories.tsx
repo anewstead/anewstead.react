@@ -2,7 +2,7 @@ import React from "react";
 
 import { within, expect } from "@storybook/test";
 import { Provider } from "react-redux";
-import { withRouter } from "storybook-addon-react-router-v6";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 import { setupStore } from "@/state/store";
 import {
