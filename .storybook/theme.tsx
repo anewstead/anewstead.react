@@ -7,7 +7,7 @@ sync component theme and storybook-dark-mode addon
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { DocsContainer } from "@storybook/addon-docs";
-import { addons } from "@storybook/addons";
+import { addons } from "@storybook/preview-api";
 import { themes as sbThemes } from "@storybook/theming";
 import {
   DARK_MODE_EVENT_NAME,

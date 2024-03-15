@@ -45,7 +45,7 @@ const sbConfig: StorybookConfig = {
     "@storybook/addon-a11y",
     addonCoverage,
     "storybook-dark-mode",
-    "storybook-addon-react-router-v6",
+    "storybook-addon-remix-react-router",
   ],
   framework: {
     name: "@storybook/react-vite",
