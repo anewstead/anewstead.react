@@ -93,8 +93,6 @@ module.exports = {
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/naming-convention": "warn",
-    "@typescript-eslint/no-floating-promises": "off",
-
     "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
 
     "@typescript-eslint/prefer-nullish-coalescing": [

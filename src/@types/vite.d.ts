@@ -8,6 +8,9 @@ this could not be done if they were "type"
 
 interface ImportMetaEnv {
   readonly VITE_MAPBOX_TOKEN: string;
+  readonly VITE_DD_SITE: string;
+  readonly VITE_DD_API_KEY: string;
+  readonly VITE_DD_APP_KEY: string;
   // more env variables...
 }
 
