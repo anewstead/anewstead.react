@@ -33,7 +33,13 @@
     "target": "ES2016"
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*", "testing/**/*", ".storybook/**/*", "e2e/**/*"],
+  "include": [
+    "*.d.ts",
+    "src/**/*",
+    "testing/**/*",
+    ".storybook/**/*",
+    "e2e/**/*"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "typeRoots": ["node_modules/@types", "src/@types"]
 }
